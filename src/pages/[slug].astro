@@ -1,0 +1,25 @@
+---
+import characterTable from "../../ArknightsGameData/en_US/gamedata/excel/character_table.json";
+
+export function getStaticPaths() {
+  return Object.entries(characterTable)
+    .filter(
+      ([_, char]) =>
+        char.profession !== "TOKEN" &&
+        char.profession !== "TRAP" &&
+        !char.isNotObtainable
+    )
+    .map(([charId, char]) => ({
+      params: { slug: char.name.toLowerCase() },
+      props: { charId, char },
+    }));
+}
+const { slug } = Astro.params;
+const { charId, char } = Astro.props;
+---
+
+<h1>{slug}</h1>
+
+<small>{charId}</small>
+
+<pre>{JSON.stringify(char, null, 2)}</pre>
