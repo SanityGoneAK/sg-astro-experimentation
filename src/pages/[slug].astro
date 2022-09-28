@@ -1,4 +1,5 @@
 ---
+import slugify from "../slugify";
 import characterTable from "../../ArknightsGameData/en_US/gamedata/excel/character_table.json";
 
 export function getStaticPaths() {
@@ -10,7 +11,9 @@ export function getStaticPaths() {
         !char.isNotObtainable
     )
     .map(([charId, char]) => ({
-      params: { slug: char.name.toLowerCase() },
+      params: {
+        slug: slugify(char.name),
+      },
       props: { charId, char },
     }));
 }

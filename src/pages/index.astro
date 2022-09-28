@@ -1,7 +1,7 @@
 ---
 import Layout from "../layouts/Layout.astro";
 import Card from "../components/Card.astro";
-
+import slugify from "../slugify";
 import characterTable from "../../ArknightsGameData/en_US/gamedata/excel/character_table.json";
 
 const operators = Object.values(characterTable).filter(
@@ -23,7 +23,7 @@ const operators = Object.values(characterTable).filter(
       {
         operators.map((op) => (
           <Card
-            href={op.name.toLowerCase()}
+            href={slugify(op.name)}
             title={op.name}
             body={op.itemUsage ?? ""}
           />
