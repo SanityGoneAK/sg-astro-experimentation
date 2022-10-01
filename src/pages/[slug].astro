@@ -1,6 +1,8 @@
 ---
 import slugify from "../slugify";
 import characterTable from "../../ArknightsGameData/en_US/gamedata/excel/character_table.json";
+import TraitInfo from "../components/TraitInfo";
+import Layout from "../layouts/Layout.astro";
 
 export function getStaticPaths() {
   return Object.entries(characterTable)
@@ -14,15 +16,21 @@ export function getStaticPaths() {
       params: {
         slug: slugify(char.name),
       },
-      props: { charId, char },
+      props: { charId },
     }));
 }
 const { slug } = Astro.params;
-const { charId, char } = Astro.props;
+const { charId } = Astro.props;
+const char = characterTable[charId];
+const { subProfessionId } = char;
 ---
 
 <h1>{slug}</h1>
 
-<small>{charId}</small>
-
-<pre>{JSON.stringify(char, null, 2)}</pre>
+<Layout title={char.name}>
+  <TraitInfo
+    client:visible
+    subProfessionId={subProfessionId}
+    showSubclassIcon
+  />
+</Layout>
