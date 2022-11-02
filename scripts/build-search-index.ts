@@ -2,7 +2,7 @@ import type { SearchResult } from "./types";
 import {
   professionToClass,
   subProfessionIdToSubclass,
-} from "../src/utils/globals";
+} from "../src/utils/classes";
 import FlexSearch from "flexsearch";
 import { fetchContentfulGraphQl } from "../src/utils/fetch";
 import fs from "fs";

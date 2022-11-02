@@ -1,19 +1,17 @@
 import fs from "fs";
 import path from "path";
-import enCharacterTable from "./ArknightsGameData/en_US/gamedata/excel/character_table.json";
-import { patchChars as enPatchChars } from "./ArknightsGameData/en_US/gamedata/excel/char_patch_table.json";
-import cnCharacterTable from "./ArknightsGameData/zh_CN/gamedata/excel/character_table.json";
-import enSkillTable from "./ArknightsGameData/en_US/gamedata/excel/skill_table.json";
-import cnSkillTable from "./ArknightsGameData/zh_CN/gamedata/excel/skill_table.json";
-import rangeTable from "./ArknightsGameData/zh_CN/gamedata/excel/range_table.json";
-import jetSkillTranslations from "./tls/jet-tls/skills.json";
-import jetTalentTranslations from "./tls/jet-tls/talents.json";
-import type {
-  GameDataCharacter,
-  DenormalizedCharacter,
-  SkillAtLevel,
-} from "./types";
+import enCharacterTable from "../ArknightsGameData/en_US/gamedata/excel/character_table.json";
+import { patchChars as enPatchChars } from "../ArknightsGameData/en_US/gamedata/excel/char_patch_table.json";
+import cnCharacterTable from "../ArknightsGameData/zh_CN/gamedata/excel/character_table.json";
+import enSkillTable from "../ArknightsGameData/en_US/gamedata/excel/skill_table.json";
+import cnSkillTable from "../ArknightsGameData/zh_CN/gamedata/excel/skill_table.json";
+import rangeTable from "../ArknightsGameData/zh_CN/gamedata/excel/range_table.json";
+import jetSkillTranslations from "./translations/jet/skills.json";
+import jetTalentTranslations from "./translations/jet/talents.json";
 import { fixJetSkillDescriptionTags } from "./fix-jet-skill-descs";
+
+import type * as GameData from "../src/gamedata-types";
+import type { InterpolatedValue } from "../src/description-parser";
 
 const dataDir = path.join(__dirname, "../data");
 fs.mkdirSync(dataDir, { recursive: true });
@@ -23,6 +21,35 @@ const NAME_OVERRIDES: { [characterId: string]: string } = {
   char_1001_amiya2: "Amiya (Guard)",
 };
 
+// I CBA to fix this typing
+// so I will just whack this here
+interface DenormalizedCharacter extends GameData.SharedProperties {
+  charId: string;
+  isCnOnly: boolean;
+  phases: {
+    range: Range | null;
+    [otherProperties: string]: unknown;
+  }[];
+  talents:
+    | {
+        candidates: {
+          range: Range | null;
+          name: string;
+          description: string;
+        }[];
+      }[]
+    | null;
+  fileIndex: number;
+}
+
+interface SkillAtLevel {
+  name: string;
+  description: string | null;
+  rangeId: string | null;
+  duration: number;
+  blackboard: InterpolatedValue[];
+}
+
 void (async () => {
   console.log("Updating operators and summons...");
   const enCharacterIds = new Set(Object.keys(enCharacterTable));
@@ -31,12 +58,13 @@ void (async () => {
   );
 
   const summonIdToOperatorName: Record<string, string> = {};
+  // @ts-expect-error bro
   const denormalizedCharacters: DenormalizedCharacter[] = (
     [
       ...Object.entries(enCharacterTable),
       ...cnOnlyCharacters,
       ...Object.entries(enPatchChars),
-    ] as [string, GameDataCharacter][]
+    ] as [string, GameData.Character][]
   )
     .filter(
       ([_, character]) =>
@@ -100,8 +128,9 @@ void (async () => {
             ? cnSkillTable[skillId as keyof typeof cnSkillTable]
             : enSkillTable[skillId as keyof typeof enSkillTable];
 
+          // @ts-expect-error idk what TS is doing, this doesn't error on the old repo
           const levels = baseSkillObject.levels.map(
-            (skillAtLevel: SkillAtLevel, levelIndex) => {
+            (skillAtLevel: SkillAtLevel, levelIndex: number) => {
               const baseSkillLevelObject = {
                 ...skillAtLevel,
                 range: skillAtLevel.rangeId
@@ -139,6 +168,7 @@ void (async () => {
             }
           );
           return {
+            // @ts-expect-error go figure
             ...baseSkillObject,
             levels,
           };

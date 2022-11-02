@@ -1,13 +1,15 @@
-import type { Module, ModuleObject, ModulePhase } from "./types";
 import cnBattleEquipTable from "../ArknightsGameData/zh_CN/gamedata/excel/battle_equip_table.json";
 import cnUniequipTable from "../ArknightsGameData/zh_CN/gamedata/excel/uniequip_table.json";
 import enBattleEquipTable from "../ArknightsGameData/en_US/gamedata/excel/battle_equip_table.json";
 import enUniequipTable from "../ArknightsGameData/en_US/gamedata/excel/uniequip_table.json";
-import moduleTranslations from "./tls/module-tls.json";
+import moduleTranslations from "./translations/module-tls.json";
 import rangeTable from "../ArknightsGameData/zh_CN/gamedata/excel/range_table.json";
 import { descriptionToHtml } from "../src/description-parser";
 import fs from "fs";
 import path from "path";
+
+import type * as GameData from "../src/gamedata-types";
+import type * as OutputTypes from "../src/output-types";
 
 const dataDir = path.join(__dirname, "../data");
 
@@ -56,7 +58,7 @@ void (() => {
   // included in the effects of the skill itself.
 
   console.log("Updating modules...");
-  const denormalizedModules: Record<string, Module[]> = {};
+  const denormalizedModules: Record<string, OutputTypes.Module[]> = {};
   Object.entries(cnBattleEquipTable).forEach(([moduleId, moduleObject]) => {
     const operatorName: string =
       cnUniequipTable.equipDict[
@@ -64,7 +66,8 @@ void (() => {
       ].charId;
 
     // my sanity is rapidly deteriorating
-    const morbius: ModuleObject = moduleObject as unknown as ModuleObject;
+    const morbius: GameData.BattleEquip =
+      moduleObject as unknown as GameData.BattleEquip;
 
     // Put in any relevant EN data, by overwriting any CN data with EN data if
     // the corresponding EN data exists.
@@ -105,7 +108,7 @@ void (() => {
           ].uniEquipName;
 
     // This will be our final module object that represents this module.
-    const denormalizedModuleObject: Module = {
+    const denormalizedModuleObject: OutputTypes.Module = {
       moduleId,
       moduleIcon,
       moduleName,
@@ -114,7 +117,7 @@ void (() => {
 
     for (let i = 0; i < morbius.phases.length; i++) {
       const currentPhase = morbius.phases[i];
-      const candidates: Record<string, ModulePhase> = {};
+      const candidates: Record<string, OutputTypes.ModulePhase> = {};
 
       // We loop through 0-5 to check each possible potential rank.
       // If that potential rank exists within the list of potential candidates

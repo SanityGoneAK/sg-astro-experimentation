@@ -2,8 +2,8 @@ import enUniequipTable from "../ArknightsGameData/en_US/gamedata/excel/uniequip_
 import cnUniequipTable from "../ArknightsGameData/zh_CN/gamedata/excel/uniequip_table.json";
 import enCharacterTable from "../ArknightsGameData/en_US/gamedata/excel/character_table.json";
 import cnCharacterTable from "../ArknightsGameData/zh_CN/gamedata/excel/character_table.json";
-import { professionToClass } from "../src/utils/globals";
-import jetTraitTranslations from "./jet-tls/traits.json";
+import { professionToClass } from "../src/utils/classes";
+import jetTraitTranslations from "./translations/jet/traits.json";
 import { descriptionToHtml } from "../src/description-parser";
 import { fixJetSkillDescriptionTags } from "./fix-jet-skill-descs";
 import fs from "fs";
@@ -28,6 +28,7 @@ const CN_BRANCH_TLS: Record<string, string> = {
   agent: "Agent",
   shotprotector: "Longstrike",
   chainhealer: "Chain",
+  crusher: "Crusher",
 };
 // Separate EN overrides.
 // Kept separate from the above overrides for the sake of clarity.

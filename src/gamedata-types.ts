@@ -4,7 +4,7 @@ import type { InterpolatedValue } from "./description-parser";
 // This file is for UNPROCESSED typings that fully conform with game data.
 // Typings post-transformation can be found in output-types.ts.
 
-interface SharedProperties {
+export interface SharedProperties {
   name: string;
   description: string;
   appellation: string;
@@ -42,14 +42,6 @@ export interface Character extends SharedProperties {
     rangeId: string | null;
     overrideTokenKey: string | null;
   }[];
-}
-
-export interface SkillAtLevel {
-  name: string;
-  description: string | null;
-  rangeId: string | null;
-  duration: number;
-  blackboard: InterpolatedValue[];
 }
 
 /**
