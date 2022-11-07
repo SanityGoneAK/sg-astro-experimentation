@@ -32,10 +32,5 @@ const { subProfessionId } = char;
 
 <Layout title={char.title}>
   <h1 class={classes.heading}>{char.name}</h1>
-  <TraitInfo
-    client:visible
-    subProfessionId={subProfessionId}
-    showSubclassIcon
-  />
-  <CharacterStats client:load characterObject={char} />
+  <CharacterStats client:visible characterObject={char} />
 </Layout>
