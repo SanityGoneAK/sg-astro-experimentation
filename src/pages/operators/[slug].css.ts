@@ -1,5 +1,5 @@
-import { style } from "@vanilla-extract/css";
-import { transparentize } from "polished";
+import { style, globalStyle } from "@vanilla-extract/css";
+import { rgba, transparentize } from "polished";
 import { breakpoints, spacing } from "../../theme-helpers";
 import { rawColors, vars } from "../../theme.css";
 // import { heading as defaultHeading } from "../../components/Layout/styles.css";

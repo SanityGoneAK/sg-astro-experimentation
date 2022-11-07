@@ -23,7 +23,7 @@ const operators = Object.values(characterTable).filter(
       {
         operators.map((op) => (
           <Card
-            href={slugify(op.name)}
+            href={`/operators/${slugify(op.name)}`}
             title={op.name}
             body={op.itemUsage ?? ""}
           />

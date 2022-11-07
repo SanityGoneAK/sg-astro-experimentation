@@ -1,11 +1,16 @@
 ---
-import slugify from "../slugify";
-import characterTable from "../../ArknightsGameData/en_US/gamedata/excel/character_table.json";
-import TraitInfo from "../components/TraitInfo";
-import Layout from "../layouts/Layout.astro";
+import slugify from "../../slugify";
+import operators from "../../../data/operators.json";
+import TraitInfo from "../../components/TraitInfo";
+import Layout from "../../layouts/Layout.astro";
+import CharacterStats from "../../components/CharacterStats";
+
+import type * as OutputTypes from "../../output-types";
+
+import * as classes from "./[slug].css";
 
 export function getStaticPaths() {
-  return Object.entries(characterTable)
+  return Object.entries(operators)
     .filter(
       ([_, char]) =>
         char.profession !== "TOKEN" &&
@@ -21,16 +26,16 @@ export function getStaticPaths() {
 }
 const { slug } = Astro.params;
 const { charId } = Astro.props;
-const char = characterTable[charId];
+const char: OutputTypes.Character = operators[charId as keyof typeof operators];
 const { subProfessionId } = char;
 ---
 
-<h1>{slug}</h1>
-
-<Layout title={char.name}>
+<Layout title={char.title}>
+  <h1 class={classes.heading}>{char.name}</h1>
   <TraitInfo
     client:visible
     subProfessionId={subProfessionId}
     showSubclassIcon
   />
+  <CharacterStats client:load characterObject={char} />
 </Layout>
