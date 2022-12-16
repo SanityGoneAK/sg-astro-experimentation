@@ -351,10 +351,6 @@ void (() => {
         candidates: Object.values(candidates),
       });
 
-      if (operatorName === "char_304_zebra") {
-        console.log(JSON.stringify(denormalizedModuleObject));
-      }
-
       // Quick and dirty regular expression for any Chinese characters to log
       // any missing translations.
       if (

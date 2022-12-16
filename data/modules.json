@@ -8916,7 +8916,7 @@
     {
       "moduleId": "uniequip_002_ghost2",
       "moduleIcon": "pum-x",
-      "moduleName": "“唱片”收藏箱",
+      "moduleName": "'Vinyl Record' Box",
       "phases": [
         {
           "candidates": [
@@ -8936,7 +8936,7 @@
               "requiredPotentialRank": 0,
               "talentEffect": null,
               "talentIndex": -1,
-              "traitEffect": "受到致命伤时不撤退，切换成&lt;替身&gt;作战（替身阻挡数为0但攻击力<span class=\"keyword\">提升</span>），持续20秒后自身再次替换&lt;替身&gt;",
+              "traitEffect": "Instead of retreating when defeated, switch to a &lt;Substitute&gt; (Substitute has 0 Block, but ATK is <span class=\"keyword\">increased</span>) for 20 seconds before switching back to the original",
               "traitEffectType": "override"
             }
           ]
@@ -9136,7 +9136,7 @@
     {
       "moduleId": "uniequip_002_bena",
       "moduleIcon": "pum-y",
-      "moduleName": "<The Jeffreys Collection of Fairy Tales, New and Old> Hardcover Edition",
+      "moduleName": "The Jeffreys Collection of Fairytales New and Old, Hardback Edition",
       "phases": [
         {
           "candidates": [
@@ -9252,7 +9252,7 @@
     {
       "moduleId": "uniequip_002_kazema",
       "moduleIcon": "pum-x",
-      "moduleName": "旧物",
+      "moduleName": "An Old Thing",
       "phases": [
         {
           "candidates": [
@@ -9272,7 +9272,7 @@
               "requiredPotentialRank": 0,
               "talentEffect": null,
               "talentIndex": -1,
-              "traitEffect": "受到致命伤时不撤退，切换成&lt;替身&gt;作战（替身阻挡数为0但攻击力<span class=\"keyword\">提升</span>），持续20秒后自身再次替换&lt;替身&gt;",
+              "traitEffect": "Instead of retreating when defeated, switch to a &lt;Substitute&gt; (Substitute has 0 Block, but ATK is <span class=\"keyword\">increased</span>) for 20 seconds before switching back to the original",
               "traitEffectType": "override"
             }
           ]
@@ -9368,7 +9368,7 @@
     {
       "moduleId": "uniequip_002_lumen",
       "moduleIcon": "wah-x",
-      "moduleName": "纯铜单筒望远镜",
+      "moduleName": "Spyglass",
       "phases": [
         {
           "candidates": [
@@ -9388,7 +9388,7 @@
               "requiredPotentialRank": 0,
               "talentEffect": null,
               "talentIndex": -1,
-              "traitEffect": "自身获得<span class=\"skill-tooltip\">抵抗</span>且更不容易受到敌人的攻击",
+              "traitEffect": "Gain <span class=\"skill-tooltip\">status resistance</span>, and become less likely to be attacked",
               "traitEffectType": "update"
             }
           ]
@@ -9446,7 +9446,7 @@
     {
       "moduleId": "uniequip_002_ceylon",
       "moduleIcon": "wah-x",
-      "moduleName": "野外考察套装",
+      "moduleName": "Field Research Equipment",
       "phases": [
         {
           "candidates": [
@@ -9466,7 +9466,7 @@
               "requiredPotentialRank": 0,
               "talentEffect": null,
               "talentIndex": -1,
-              "traitEffect": "自身获得<span class=\"skill-tooltip\">抵抗</span>且更不容易受到敌人的攻击",
+              "traitEffect": "Gain <span class=\"skill-tooltip\">status resistance</span>, and become less likely to be attacked",
               "traitEffectType": "update"
             }
           ]
@@ -9562,7 +9562,7 @@
     {
       "moduleId": "uniequip_002_whispr",
       "moduleIcon": "wah-x",
-      "moduleName": "古朴的急救箱",
+      "moduleName": "A Quaint First-Aid Kit",
       "phases": [
         {
           "candidates": [
@@ -9582,7 +9582,7 @@
               "requiredPotentialRank": 0,
               "talentEffect": null,
               "talentIndex": -1,
-              "traitEffect": "自身获得<span class=\"skill-tooltip\">抵抗</span>且更不容易受到敌人的攻击",
+              "traitEffect": "Gain <span class=\"skill-tooltip\">status resistance</span>, and become less likely to be attacked",
               "traitEffectType": "update"
             }
           ]
@@ -9678,7 +9678,7 @@
     {
       "moduleId": "uniequip_002_finlpp",
       "moduleIcon": "wah-y",
-      "moduleName": "“江河之韵”",
+      "moduleName": "'The River's Lingering Charm'",
       "phases": [
         {
           "candidates": [
@@ -9698,7 +9698,7 @@
               "requiredPotentialRank": 0,
               "talentEffect": null,
               "talentIndex": -1,
-              "traitEffect": "拥有较大治疗范围，治疗较远目标时治疗量<span class=\"keyword\">不再降低</span>",
+              "traitEffect": "Has a large healing range and healing is <span class=\"keyword\">no longer reduced</span> for distant targets",
               "traitEffectType": "override"
             }
           ]
@@ -9756,7 +9756,7 @@
     {
       "moduleId": "uniequip_002_zumama",
       "moduleIcon": "hes-x",
-      "moduleName": "Zumama's Toolbox",
+      "moduleName": "Zumama's Tool Box",
       "phases": [
         {
           "candidates": [
@@ -9948,7 +9948,7 @@
     {
       "moduleId": "uniequip_002_aurora",
       "moduleIcon": "hes-x",
-      "moduleName": "盾用摄制模块",
+      "moduleName": "Shield Photography Module",
       "phases": [
         {
           "candidates": [
@@ -9968,7 +9968,7 @@
               "requiredPotentialRank": 0,
               "talentEffect": null,
               "talentIndex": -1,
-              "traitEffect": "缓慢回复技力，只有阻挡敌人时恢复技力回复速度",
+              "traitEffect": "SP recovery is slowed except when blocking enemies",
               "traitEffectType": "override"
             }
           ]
@@ -10064,7 +10064,7 @@
     {
       "moduleId": "uniequip_002_irene",
       "moduleIcon": "swo-y",
-      "moduleName": "厚重的经卷",
+      "moduleName": "Liber Sacer",
       "phases": [
         {
           "candidates": [
@@ -10084,7 +10084,7 @@
               "requiredPotentialRank": 0,
               "talentEffect": null,
               "talentIndex": -1,
-              "traitEffect": "攻击时无视敌人<span class=\"value-up\">70</span>点的防御力",
+              "traitEffect": "Attacks ignore <span class=\"value-up\">70</span> DEF",
               "traitEffectType": "update"
             }
           ]
@@ -12258,6 +12258,82 @@
           ]
         }
       ]
+    },
+    {
+      "moduleId": "uniequip_003_archet",
+      "moduleIcon": "mar-x",
+      "moduleName": "旧日重现",
+      "phases": [
+        {
+          "candidates": [
+            {
+              "attributeBlackboard": [
+                {
+                  "key": "max_hp",
+                  "value": 90
+                },
+                {
+                  "key": "atk",
+                  "value": 32
+                }
+              ],
+              "displayRange": false,
+              "range": null,
+              "requiredPotentialRank": 0,
+              "talentEffect": null,
+              "talentIndex": -1,
+              "traitEffect": "攻击空中单位时攻击力提升至<span class=\"keyword\">110%</span>",
+              "traitEffectType": "update"
+            }
+          ]
+        },
+        {
+          "candidates": [
+            {
+              "attributeBlackboard": [
+                {
+                  "key": "max_hp",
+                  "value": 130
+                },
+                {
+                  "key": "atk",
+                  "value": 40
+                }
+              ],
+              "displayRange": false,
+              "range": null,
+              "requiredPotentialRank": 0,
+              "talentEffect": "在场时所有【狙击】干员的攻击回复技能每2.3秒回复1点技力，场上存在其他【狙击】干员时自身改为每2秒回复1点技力",
+              "talentIndex": 0,
+              "traitEffect": "攻击空中单位时攻击力提升至<span class=\"keyword\">110%</span>",
+              "traitEffectType": "update"
+            }
+          ]
+        },
+        {
+          "candidates": [
+            {
+              "attributeBlackboard": [
+                {
+                  "key": "max_hp",
+                  "value": 160
+                },
+                {
+                  "key": "atk",
+                  "value": 48
+                }
+              ],
+              "displayRange": false,
+              "range": null,
+              "requiredPotentialRank": 0,
+              "talentEffect": "在场时所有【狙击】干员的攻击回复技能每2.2秒回复1点技力，场上存在其他【狙击】干员时自身改为每1.8秒回复1点技力",
+              "talentIndex": 0,
+              "traitEffect": "攻击空中单位时攻击力提升至<span class=\"keyword\">110%</span>",
+              "traitEffectType": "update"
+            }
+          ]
+        }
+      ]
     }
   ],
   "char_456_ash": [
@@ -12952,6 +13028,120 @@
               "talentIndex": 0,
               "traitEffect": "Movement Speed of enemies in Attack Range is reduced by <span class=\"keyword\">20%</span>",
               "traitEffectType": "update"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "moduleId": "uniequip_003_mizuki",
+      "moduleIcon": "amb-y",
+      "moduleName": "深蓝之籽",
+      "phases": [
+        {
+          "candidates": [
+            {
+              "attributeBlackboard": [
+                {
+                  "key": "atk",
+                  "value": 50
+                },
+                {
+                  "key": "attack_speed",
+                  "value": 5
+                }
+              ],
+              "displayRange": false,
+              "range": null,
+              "requiredPotentialRank": 0,
+              "talentEffect": null,
+              "talentIndex": -1,
+              "traitEffect": "对攻击范围内<span class=\"keyword\">所有敌人</span>造成伤害\\n拥有65%的物理和法术闪避且不容易成为敌人的<span class=\"keyword\">攻击目标</span>",
+              "traitEffectType": "override"
+            }
+          ]
+        },
+        {
+          "candidates": [
+            {
+              "attributeBlackboard": [
+                {
+                  "key": "atk",
+                  "value": 62
+                },
+                {
+                  "key": "attack_speed",
+                  "value": 6
+                }
+              ],
+              "displayRange": false,
+              "range": null,
+              "requiredPotentialRank": 0,
+              "talentEffect": "攻击范围内存在生命值低于一半的敌人时，攻击力+15%；每击杀一名敌人，回复5%的最大生命",
+              "talentIndex": 1,
+              "traitEffect": "对攻击范围内<span class=\"keyword\">所有敌人</span>造成伤害\\n拥有65%的物理和法术闪避且不容易成为敌人的<span class=\"keyword\">攻击目标</span>",
+              "traitEffectType": "override"
+            },
+            {
+              "attributeBlackboard": [
+                {
+                  "key": "atk",
+                  "value": 62
+                },
+                {
+                  "key": "attack_speed",
+                  "value": 6
+                }
+              ],
+              "displayRange": false,
+              "range": null,
+              "requiredPotentialRank": 4,
+              "talentEffect": "攻击范围内存在生命值低于一半的敌人时，攻击力+17%<span class=\"potential\">（+2%）</span>；每击杀一名敌人，回复5%的最大生命",
+              "talentIndex": 1,
+              "traitEffect": "对攻击范围内<span class=\"keyword\">所有敌人</span>造成伤害\\n拥有65%的物理和法术闪避且不容易成为敌人的<span class=\"keyword\">攻击目标</span>",
+              "traitEffectType": "override"
+            }
+          ]
+        },
+        {
+          "candidates": [
+            {
+              "attributeBlackboard": [
+                {
+                  "key": "atk",
+                  "value": 70
+                },
+                {
+                  "key": "attack_speed",
+                  "value": 7
+                }
+              ],
+              "displayRange": false,
+              "range": null,
+              "requiredPotentialRank": 0,
+              "talentEffect": "攻击范围内存在生命值低于一半的敌人时，攻击力+20%；每击杀一名敌人，回复10%的最大生命",
+              "talentIndex": 1,
+              "traitEffect": "对攻击范围内<span class=\"keyword\">所有敌人</span>造成伤害\\n拥有65%的物理和法术闪避且不容易成为敌人的<span class=\"keyword\">攻击目标</span>",
+              "traitEffectType": "override"
+            },
+            {
+              "attributeBlackboard": [
+                {
+                  "key": "atk",
+                  "value": 70
+                },
+                {
+                  "key": "attack_speed",
+                  "value": 7
+                }
+              ],
+              "displayRange": false,
+              "range": null,
+              "requiredPotentialRank": 4,
+              "talentEffect": "攻击范围内存在生命值低于一半的敌人时，攻击力+22%<span class=\"potential\">（+2%）</span>；每击杀一名敌人，回复10%的最大生命",
+              "talentIndex": 1,
+              "traitEffect": "对攻击范围内<span class=\"keyword\">所有敌人</span>造成伤害\\n拥有65%的物理和法术闪避且不容易成为敌人的<span class=\"keyword\">攻击目标</span>",
+              "traitEffectType": "override"
             }
           ]
         }
@@ -16434,6 +16624,744 @@
               "talentIndex": 0,
               "traitEffect": "周围四格没有友方干员时攻击力<span class=\"keyword\">+10%</span>",
               "traitEffectType": "update"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "char_197_poca": [
+    {
+      "moduleId": "uniequip_002_poca",
+      "moduleIcon": "sie-x",
+      "moduleName": "攻城器械训练装置",
+      "phases": [
+        {
+          "candidates": [
+            {
+              "attributeBlackboard": [
+                {
+                  "key": "atk",
+                  "value": 60
+                },
+                {
+                  "key": "def",
+                  "value": 30
+                }
+              ],
+              "displayRange": false,
+              "range": null,
+              "requiredPotentialRank": 0,
+              "talentEffect": null,
+              "talentIndex": -1,
+              "traitEffect": "攻击重量较重（重量等级大于等于3）的敌人时，攻击力提升至<span class=\"keyword\">115%</span>",
+              "traitEffectType": "update"
+            }
+          ]
+        },
+        {
+          "candidates": [
+            {
+              "attributeBlackboard": [
+                {
+                  "key": "atk",
+                  "value": 78
+                },
+                {
+                  "key": "def",
+                  "value": 40
+                }
+              ],
+              "displayRange": false,
+              "range": null,
+              "requiredPotentialRank": 0,
+              "talentEffect": "攻击重量较重（重量等级大于等于3）的敌人时，无视其防御力的60%，并额外造成40%攻击力的物理伤害",
+              "talentIndex": 0,
+              "traitEffect": "攻击重量较重（重量等级大于等于3）的敌人时，攻击力提升至<span class=\"keyword\">115%</span>",
+              "traitEffectType": "update"
+            }
+          ]
+        },
+        {
+          "candidates": [
+            {
+              "attributeBlackboard": [
+                {
+                  "key": "atk",
+                  "value": 90
+                },
+                {
+                  "key": "def",
+                  "value": 45
+                }
+              ],
+              "displayRange": false,
+              "range": null,
+              "requiredPotentialRank": 0,
+              "talentEffect": "攻击重量较重（重量等级大于等于3）的敌人时，无视其防御力的60%，并额外造成60%攻击力的物理伤害",
+              "talentIndex": 0,
+              "traitEffect": "攻击重量较重（重量等级大于等于3）的敌人时，攻击力提升至<span class=\"keyword\">115%</span>",
+              "traitEffectType": "update"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "char_4062_totter": [
+    {
+      "moduleId": "uniequip_002_totter",
+      "moduleIcon": "sie-x",
+      "moduleName": "雪花球",
+      "phases": [
+        {
+          "candidates": [
+            {
+              "attributeBlackboard": [
+                {
+                  "key": "atk",
+                  "value": 35
+                },
+                {
+                  "key": "def",
+                  "value": 15
+                }
+              ],
+              "displayRange": false,
+              "range": null,
+              "requiredPotentialRank": 0,
+              "talentEffect": null,
+              "talentIndex": -1,
+              "traitEffect": "攻击重量较重（重量等级大于等于3）的敌人时，攻击力提升至<span class=\"keyword\">115%</span>",
+              "traitEffectType": "update"
+            }
+          ]
+        },
+        {
+          "candidates": [
+            {
+              "attributeBlackboard": [
+                {
+                  "key": "atk",
+                  "value": 47
+                },
+                {
+                  "key": "def",
+                  "value": 25
+                }
+              ],
+              "displayRange": false,
+              "range": null,
+              "requiredPotentialRank": 0,
+              "talentEffect": "可以攻击<span class=\"skill-tooltip\">隐匿</span>敌人，并且攻击范围内存在拥有<span class=\"skill-tooltip\">隐匿</span>敌人时，攻击力+22%",
+              "talentIndex": 0,
+              "traitEffect": "攻击重量较重（重量等级大于等于3）的敌人时，攻击力提升至<span class=\"keyword\">115%</span>",
+              "traitEffectType": "update"
+            },
+            {
+              "attributeBlackboard": [
+                {
+                  "key": "atk",
+                  "value": 47
+                },
+                {
+                  "key": "def",
+                  "value": 25
+                }
+              ],
+              "displayRange": false,
+              "range": null,
+              "requiredPotentialRank": 4,
+              "talentEffect": "可以攻击<span class=\"skill-tooltip\">隐匿</span>敌人，并且攻击范围内存在<span class=\"skill-tooltip\">隐匿</span>敌人时，攻击力+25%<span class=\"potential\">（+3%）</span>",
+              "talentIndex": 0,
+              "traitEffect": "攻击重量较重（重量等级大于等于3）的敌人时，攻击力提升至<span class=\"keyword\">115%</span>",
+              "traitEffectType": "update"
+            }
+          ]
+        },
+        {
+          "candidates": [
+            {
+              "attributeBlackboard": [
+                {
+                  "key": "atk",
+                  "value": 55
+                },
+                {
+                  "key": "def",
+                  "value": 30
+                }
+              ],
+              "displayRange": false,
+              "range": null,
+              "requiredPotentialRank": 0,
+              "talentEffect": "可以攻击<span class=\"skill-tooltip\">隐匿</span>敌人，并且攻击范围内存在拥有<span class=\"skill-tooltip\">隐匿</span>敌人时，攻击力+27%",
+              "talentIndex": 0,
+              "traitEffect": "攻击重量较重（重量等级大于等于3）的敌人时，攻击力提升至<span class=\"keyword\">115%</span>",
+              "traitEffectType": "update"
+            },
+            {
+              "attributeBlackboard": [
+                {
+                  "key": "atk",
+                  "value": 55
+                },
+                {
+                  "key": "def",
+                  "value": 30
+                }
+              ],
+              "displayRange": false,
+              "range": null,
+              "requiredPotentialRank": 4,
+              "talentEffect": "可以攻击<span class=\"skill-tooltip\">隐匿</span>敌人，并且攻击范围内存在<span class=\"skill-tooltip\">隐匿</span>敌人时，攻击力+30%<span class=\"potential\">（+3%）</span>",
+              "talentIndex": 0,
+              "traitEffect": "攻击重量较重（重量等级大于等于3）的敌人时，攻击力提升至<span class=\"keyword\">115%</span>",
+              "traitEffectType": "update"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "char_363_toddi": [
+    {
+      "moduleId": "uniequip_002_toddi",
+      "moduleIcon": "sie-x",
+      "moduleName": "弩箭调试箱",
+      "phases": [
+        {
+          "candidates": [
+            {
+              "attributeBlackboard": [
+                {
+                  "key": "atk",
+                  "value": 50
+                },
+                {
+                  "key": "def",
+                  "value": 20
+                }
+              ],
+              "displayRange": false,
+              "range": null,
+              "requiredPotentialRank": 0,
+              "talentEffect": null,
+              "talentIndex": -1,
+              "traitEffect": "攻击重量较重（重量等级大于等于3）的敌人时，攻击力提升至<span class=\"keyword\">115%</span>",
+              "traitEffectType": "update"
+            }
+          ]
+        },
+        {
+          "candidates": [
+            {
+              "attributeBlackboard": [
+                {
+                  "key": "atk",
+                  "value": 65
+                },
+                {
+                  "key": "def",
+                  "value": 30
+                }
+              ],
+              "displayRange": false,
+              "range": null,
+              "requiredPotentialRank": 0,
+              "talentEffect": "攻击【萨卡兹】敌人时，攻击力提升至155%",
+              "talentIndex": 0,
+              "traitEffect": "攻击重量较重（重量等级大于等于3）的敌人时，攻击力提升至<span class=\"keyword\">115%</span>",
+              "traitEffectType": "update"
+            },
+            {
+              "attributeBlackboard": [
+                {
+                  "key": "atk",
+                  "value": 65
+                },
+                {
+                  "key": "def",
+                  "value": 30
+                }
+              ],
+              "displayRange": false,
+              "range": null,
+              "requiredPotentialRank": 4,
+              "talentEffect": "攻击【萨卡兹】敌人时，攻击力提升至160%<span class=\"potential\">（+5%）</span>",
+              "talentIndex": 0,
+              "traitEffect": "攻击重量较重（重量等级大于等于3）的敌人时，攻击力提升至<span class=\"keyword\">115%</span>",
+              "traitEffectType": "update"
+            }
+          ]
+        },
+        {
+          "candidates": [
+            {
+              "attributeBlackboard": [
+                {
+                  "key": "atk",
+                  "value": 75
+                },
+                {
+                  "key": "def",
+                  "value": 35
+                }
+              ],
+              "displayRange": false,
+              "range": null,
+              "requiredPotentialRank": 0,
+              "talentEffect": "攻击【萨卡兹】敌人时，攻击力提升至165%",
+              "talentIndex": 0,
+              "traitEffect": "攻击重量较重（重量等级大于等于3）的敌人时，攻击力提升至<span class=\"keyword\">115%</span>",
+              "traitEffectType": "update"
+            },
+            {
+              "attributeBlackboard": [
+                {
+                  "key": "atk",
+                  "value": 75
+                },
+                {
+                  "key": "def",
+                  "value": 35
+                }
+              ],
+              "displayRange": false,
+              "range": null,
+              "requiredPotentialRank": 4,
+              "talentEffect": "攻击【萨卡兹】敌人时，攻击力提升至170%<span class=\"potential\">（+5%）</span>",
+              "talentIndex": 0,
+              "traitEffect": "攻击重量较重（重量等级大于等于3）的敌人时，攻击力提升至<span class=\"keyword\">115%</span>",
+              "traitEffectType": "update"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "char_4043_erato": [
+    {
+      "moduleId": "uniequip_002_erato",
+      "moduleIcon": "sie-x",
+      "moduleName": "改弦更张",
+      "phases": [
+        {
+          "candidates": [
+            {
+              "attributeBlackboard": [
+                {
+                  "key": "max_hp",
+                  "value": 90
+                },
+                {
+                  "key": "atk",
+                  "value": 45
+                }
+              ],
+              "displayRange": false,
+              "range": null,
+              "requiredPotentialRank": 0,
+              "talentEffect": null,
+              "talentIndex": -1,
+              "traitEffect": "攻击重量较重（重量等级大于等于3）的敌人时，攻击力提升至<span class=\"keyword\">115%</span>",
+              "traitEffectType": "update"
+            }
+          ]
+        },
+        {
+          "candidates": [
+            {
+              "attributeBlackboard": [
+                {
+                  "key": "max_hp",
+                  "value": 115
+                },
+                {
+                  "key": "atk",
+                  "value": 55
+                }
+              ],
+              "displayRange": false,
+              "range": null,
+              "requiredPotentialRank": 0,
+              "talentEffect": "自身可以攻击<span class=\"skill-tooltip\">沉睡</span>的敌人，并且攻击<span class=\"skill-tooltip\">沉睡</span>敌人时无视其防御力的55%",
+              "talentIndex": 0,
+              "traitEffect": "攻击重量较重（重量等级大于等于3）的敌人时，攻击力提升至<span class=\"keyword\">115%</span>",
+              "traitEffectType": "update"
+            }
+          ]
+        },
+        {
+          "candidates": [
+            {
+              "attributeBlackboard": [
+                {
+                  "key": "max_hp",
+                  "value": 130
+                },
+                {
+                  "key": "atk",
+                  "value": 70
+                }
+              ],
+              "displayRange": false,
+              "range": null,
+              "requiredPotentialRank": 0,
+              "talentEffect": "自身可以攻击<span class=\"skill-tooltip\">沉睡</span>的敌人，并且攻击<span class=\"skill-tooltip\">沉睡</span>敌人时无视其防御力的60%",
+              "talentIndex": 0,
+              "traitEffect": "攻击重量较重（重量等级大于等于3）的敌人时，攻击力提升至<span class=\"keyword\">115%</span>",
+              "traitEffectType": "update"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "char_188_helage": [
+    {
+      "moduleId": "uniequip_002_helage",
+      "moduleIcon": "mus-x",
+      "moduleName": "藏锋",
+      "phases": [
+        {
+          "candidates": [
+            {
+              "attributeBlackboard": [
+                {
+                  "key": "max_hp",
+                  "value": 230
+                },
+                {
+                  "key": "atk",
+                  "value": 55
+                }
+              ],
+              "displayRange": false,
+              "range": null,
+              "requiredPotentialRank": 0,
+              "talentEffect": null,
+              "talentIndex": -1,
+              "traitEffect": "生命值低于50%时，获得25%的<span class=\"skill-tooltip\">庇护</span>",
+              "traitEffectType": "update"
+            }
+          ]
+        },
+        {
+          "candidates": [
+            {
+              "attributeBlackboard": [
+                {
+                  "key": "max_hp",
+                  "value": 300
+                },
+                {
+                  "key": "atk",
+                  "value": 75
+                }
+              ],
+              "displayRange": false,
+              "range": null,
+              "requiredPotentialRank": 0,
+              "talentEffect": "根据已损失的生命值，提高攻击速度（损失60%生命值时达到最大可提升攻击速度120）",
+              "talentIndex": 0,
+              "traitEffect": "生命值低于50%时，获得25%的<span class=\"skill-tooltip\">庇护</span>",
+              "traitEffectType": "update"
+            }
+          ]
+        },
+        {
+          "candidates": [
+            {
+              "attributeBlackboard": [
+                {
+                  "key": "max_hp",
+                  "value": 350
+                },
+                {
+                  "key": "atk",
+                  "value": 90
+                }
+              ],
+              "displayRange": false,
+              "range": null,
+              "requiredPotentialRank": 0,
+              "talentEffect": "根据已损失的生命值，提高攻击速度（损失50%生命值时达到最大可提升攻击速度130）",
+              "talentIndex": 0,
+              "traitEffect": "生命值低于50%时，获得25%的<span class=\"skill-tooltip\">庇护</span>",
+              "traitEffectType": "update"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "char_475_akafyu": [
+    {
+      "moduleId": "uniequip_002_akafyu",
+      "moduleIcon": "mus-x",
+      "moduleName": "武将甲胄",
+      "phases": [
+        {
+          "candidates": [
+            {
+              "attributeBlackboard": [
+                {
+                  "key": "atk",
+                  "value": 55
+                },
+                {
+                  "key": "def",
+                  "value": 30
+                }
+              ],
+              "displayRange": false,
+              "range": null,
+              "requiredPotentialRank": 0,
+              "talentEffect": null,
+              "talentIndex": -1,
+              "traitEffect": "生命值低于50%时，获得25%的<span class=\"skill-tooltip\">庇护</span>",
+              "traitEffectType": "update"
+            }
+          ]
+        },
+        {
+          "candidates": [
+            {
+              "attributeBlackboard": [
+                {
+                  "key": "atk",
+                  "value": 65
+                },
+                {
+                  "key": "def",
+                  "value": 42
+                }
+              ],
+              "displayRange": false,
+              "range": null,
+              "requiredPotentialRank": 0,
+              "talentEffect": "阻挡敌人时防御力+8%",
+              "talentIndex": -1,
+              "traitEffect": "生命值低于50%时，获得25%的<span class=\"skill-tooltip\">庇护</span>",
+              "traitEffectType": "update"
+            }
+          ]
+        },
+        {
+          "candidates": [
+            {
+              "attributeBlackboard": [
+                {
+                  "key": "atk",
+                  "value": 70
+                },
+                {
+                  "key": "def",
+                  "value": 50
+                }
+              ],
+              "displayRange": false,
+              "range": null,
+              "requiredPotentialRank": 0,
+              "talentEffect": "阻挡敌人时防御力+12%",
+              "talentIndex": -1,
+              "traitEffect": "生命值低于50%时，获得25%的<span class=\"skill-tooltip\">庇护</span>",
+              "traitEffectType": "update"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "char_337_utage": [
+    {
+      "moduleId": "uniequip_002_utage",
+      "moduleIcon": "mus-x",
+      "moduleName": "翻盖手机",
+      "phases": [
+        {
+          "candidates": [
+            {
+              "attributeBlackboard": [
+                {
+                  "key": "max_hp",
+                  "value": 160
+                },
+                {
+                  "key": "atk",
+                  "value": 45
+                }
+              ],
+              "displayRange": false,
+              "range": null,
+              "requiredPotentialRank": 0,
+              "talentEffect": null,
+              "talentIndex": -1,
+              "traitEffect": "生命值低于50%时，获得25%的<span class=\"skill-tooltip\">庇护</span>",
+              "traitEffectType": "update"
+            }
+          ]
+        },
+        {
+          "candidates": [
+            {
+              "attributeBlackboard": [
+                {
+                  "key": "max_hp",
+                  "value": 210
+                },
+                {
+                  "key": "atk",
+                  "value": 55
+                }
+              ],
+              "displayRange": false,
+              "range": null,
+              "requiredPotentialRank": 0,
+              "talentEffect": "生命值低于50%时，攻击力+3%，防御力+3%",
+              "talentIndex": -1,
+              "traitEffect": "生命值低于50%时，获得25%的<span class=\"skill-tooltip\">庇护</span>",
+              "traitEffectType": "update"
+            }
+          ]
+        },
+        {
+          "candidates": [
+            {
+              "attributeBlackboard": [
+                {
+                  "key": "max_hp",
+                  "value": 240
+                },
+                {
+                  "key": "atk",
+                  "value": 60
+                }
+              ],
+              "displayRange": false,
+              "range": null,
+              "requiredPotentialRank": 0,
+              "talentEffect": "生命值低于50%时，攻击力+4%，防御力+4%",
+              "talentIndex": -1,
+              "traitEffect": "生命值低于50%时，获得25%的<span class=\"skill-tooltip\">庇护</span>",
+              "traitEffectType": "update"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "char_297_hamoni": [
+    {
+      "moduleId": "uniequip_002_hamoni",
+      "moduleIcon": "msc-x",
+      "moduleName": "情报人员资料夹",
+      "phases": [
+        {
+          "candidates": [
+            {
+              "attributeBlackboard": [
+                {
+                  "key": "atk",
+                  "value": 50
+                },
+                {
+                  "key": "magic_resistance",
+                  "value": 3
+                }
+              ],
+              "displayRange": false,
+              "range": null,
+              "requiredPotentialRank": 0,
+              "talentEffect": null,
+              "talentIndex": -1,
+              "traitEffect": "攻击造成<span class=\"keyword\">法术伤害</span>，在找不到攻击目标时可以将攻击能量<span class=\"keyword\">储存</span>起来之后一齐发射（最多4个）",
+              "traitEffectType": "override"
+            }
+          ]
+        },
+        {
+          "candidates": [
+            {
+              "attributeBlackboard": [
+                {
+                  "key": "atk",
+                  "value": 68
+                },
+                {
+                  "key": "magic_resistance",
+                  "value": 4
+                }
+              ],
+              "displayRange": false,
+              "range": null,
+              "requiredPotentialRank": 0,
+              "talentEffect": "攻击被阻挡的敌人造成伤害提升20%",
+              "talentIndex": 0,
+              "traitEffect": "攻击造成<span class=\"keyword\">法术伤害</span>，在找不到攻击目标时可以将攻击能量<span class=\"keyword\">储存</span>起来之后一齐发射（最多4个）",
+              "traitEffectType": "override"
+            },
+            {
+              "attributeBlackboard": [
+                {
+                  "key": "atk",
+                  "value": 68
+                },
+                {
+                  "key": "magic_resistance",
+                  "value": 4
+                }
+              ],
+              "displayRange": false,
+              "range": null,
+              "requiredPotentialRank": 4,
+              "talentEffect": "攻击被阻挡的敌人造成伤害提升23%<span class=\"potential\">（+3%）</span>",
+              "talentIndex": 0,
+              "traitEffect": "攻击造成<span class=\"keyword\">法术伤害</span>，在找不到攻击目标时可以将攻击能量<span class=\"keyword\">储存</span>起来之后一齐发射（最多4个）",
+              "traitEffectType": "override"
+            }
+          ]
+        },
+        {
+          "candidates": [
+            {
+              "attributeBlackboard": [
+                {
+                  "key": "atk",
+                  "value": 82
+                },
+                {
+                  "key": "magic_resistance",
+                  "value": 4
+                }
+              ],
+              "displayRange": false,
+              "range": null,
+              "requiredPotentialRank": 0,
+              "talentEffect": "攻击被阻挡的敌人造成伤害提升22%",
+              "talentIndex": 0,
+              "traitEffect": "攻击造成<span class=\"keyword\">法术伤害</span>，在找不到攻击目标时可以将攻击能量<span class=\"keyword\">储存</span>起来之后一齐发射（最多4个）",
+              "traitEffectType": "override"
+            },
+            {
+              "attributeBlackboard": [
+                {
+                  "key": "atk",
+                  "value": 82
+                },
+                {
+                  "key": "magic_resistance",
+                  "value": 4
+                }
+              ],
+              "displayRange": false,
+              "range": null,
+              "requiredPotentialRank": 4,
+              "talentEffect": "攻击被阻挡的敌人造成伤害提升25%<span class=\"potential\">（+3%）</span>",
+              "talentIndex": 0,
+              "traitEffect": "攻击造成<span class=\"keyword\">法术伤害</span>，在找不到攻击目标时可以将攻击能量<span class=\"keyword\">储存</span>起来之后一齐发射（最多4个）",
+              "traitEffectType": "override"
             }
           ]
         }

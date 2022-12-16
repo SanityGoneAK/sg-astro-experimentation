@@ -420,7 +420,7 @@
       ],
       "cnName": "医疗探机",
       "isCnOnly": false,
-      "fileIndex": 223,
+      "fileIndex": 228,
       "operatorName": "Silence"
     }
   ],
@@ -848,7 +848,7 @@
       "skillData": [],
       "cnName": "触手",
       "isCnOnly": false,
-      "fileIndex": 224,
+      "fileIndex": 229,
       "operatorName": "Deepcolor"
     }
   ],
@@ -1453,7 +1453,7 @@
       "skillData": [],
       "cnName": "Mon3tr",
       "isCnOnly": false,
-      "fileIndex": 225,
+      "fileIndex": 230,
       "operatorName": "Kal'tsit"
     }
   ],
@@ -1891,7 +1891,7 @@
       "skillData": [],
       "cnName": "幻影",
       "isCnOnly": false,
-      "fileIndex": 226,
+      "fileIndex": 231,
       "operatorName": "Nightingale"
     }
   ],
@@ -3414,7 +3414,7 @@
       ],
       "cnName": "机械水獭",
       "isCnOnly": false,
-      "fileIndex": 227,
+      "fileIndex": 232,
       "operatorName": "Mayer"
     }
   ],
@@ -4653,7 +4653,7 @@
       ],
       "cnName": "龙腾.F",
       "isCnOnly": false,
-      "fileIndex": 228,
+      "fileIndex": 233,
       "operatorName": "Magallan"
     },
     {
@@ -5794,7 +5794,7 @@
       ],
       "cnName": "龙腾.L",
       "isCnOnly": false,
-      "fileIndex": 229,
+      "fileIndex": 234,
       "operatorName": "Magallan"
     },
     {
@@ -7031,7 +7031,7 @@
       ],
       "cnName": "龙腾.A",
       "isCnOnly": false,
-      "fileIndex": 230,
+      "fileIndex": 235,
       "operatorName": "Magallan"
     }
   ],
@@ -7784,7 +7784,7 @@
       ],
       "cnName": "诅咒娃娃",
       "isCnOnly": false,
-      "fileIndex": 231,
+      "fileIndex": 236,
       "operatorName": "Shamare"
     }
   ],
@@ -9740,7 +9740,7 @@
       ],
       "cnName": "镜中虚影",
       "isCnOnly": false,
-      "fileIndex": 232,
+      "fileIndex": 237,
       "operatorName": "Phantom"
     }
   ],
@@ -10455,7 +10455,7 @@
       ],
       "cnName": "此面向敌",
       "isCnOnly": false,
-      "fileIndex": 233,
+      "fileIndex": 238,
       "operatorName": "W"
     }
   ],
@@ -11784,7 +11784,7 @@
       ],
       "cnName": "工程蓄水炮",
       "isCnOnly": false,
-      "fileIndex": 234,
+      "fileIndex": 239,
       "operatorName": "Weedy"
     }
   ],
@@ -13592,7 +13592,7 @@
       ],
       "cnName": "移动摄影器",
       "isCnOnly": false,
-      "fileIndex": 235,
+      "fileIndex": 240,
       "operatorName": "Scene"
     }
   ],
@@ -14737,7 +14737,7 @@
       ],
       "cnName": "沙之碑",
       "isCnOnly": false,
-      "fileIndex": 236,
+      "fileIndex": 241,
       "operatorName": "Beeswax"
     }
   ],
@@ -15671,7 +15671,7 @@
       ],
       "cnName": "迷迭香的战术装备",
       "isCnOnly": false,
-      "fileIndex": 237,
+      "fileIndex": 242,
       "operatorName": "Rosmontis"
     }
   ],
@@ -16695,7 +16695,7 @@
       ],
       "cnName": "\"夹子\"",
       "isCnOnly": false,
-      "fileIndex": 238,
+      "fileIndex": 243,
       "operatorName": "Robin"
     }
   ],
@@ -17097,7 +17097,7 @@
       "skillData": [],
       "cnName": "磐蟹护卫队",
       "isCnOnly": false,
-      "fileIndex": 239,
+      "fileIndex": 244,
       "operatorName": "Beanstalk"
     }
   ],
@@ -17684,7 +17684,7 @@
       "skillData": [],
       "cnName": "\"小自在\"",
       "isCnOnly": false,
-      "fileIndex": 240,
+      "fileIndex": 245,
       "operatorName": "Dusk"
     }
   ],
@@ -18708,7 +18708,7 @@
       ],
       "cnName": "迎宾踏垫",
       "isCnOnly": false,
-      "fileIndex": 241,
+      "fileIndex": 246,
       "operatorName": "Frost"
     }
   ],
@@ -20477,7 +20477,7 @@
       ],
       "cnName": "斯卡蒂的海嗣",
       "isCnOnly": false,
-      "fileIndex": 242,
+      "fileIndex": 247,
       "operatorName": "Skadi the Corrupting Heart"
     }
   ],
@@ -20991,7 +20991,7 @@
       ],
       "cnName": "全自动造型仪",
       "isCnOnly": false,
-      "fileIndex": 243,
+      "fileIndex": 248,
       "operatorName": "Roberta"
     }
   ],
@@ -22006,7 +22006,7 @@
       ],
       "cnName": "“耀阳”",
       "isCnOnly": false,
-      "fileIndex": 244,
+      "fileIndex": 249,
       "operatorName": "Nearl the Radiant Knight"
     }
   ],
@@ -23085,7 +23085,7 @@
       ],
       "cnName": "“清平”",
       "isCnOnly": false,
-      "fileIndex": 245,
+      "fileIndex": 250,
       "operatorName": "Ling"
     },
     {
@@ -24545,7 +24545,7 @@
       ],
       "cnName": "“逍遥”",
       "isCnOnly": false,
-      "fileIndex": 246,
+      "fileIndex": 251,
       "operatorName": "Ling"
     },
     {
@@ -26389,7 +26389,7 @@
       ],
       "cnName": "“弦惊”",
       "isCnOnly": false,
-      "fileIndex": 247,
+      "fileIndex": 252,
       "operatorName": "Ling"
     }
   ],
@@ -26892,7 +26892,7 @@
       ],
       "cnName": "眠兽",
       "isCnOnly": false,
-      "fileIndex": 248,
+      "fileIndex": 253,
       "operatorName": "Blacknight"
     }
   ],
@@ -27525,24 +27525,22 @@
       "skillData": [],
       "cnName": "纸偶",
       "isCnOnly": false,
-      "fileIndex": 249,
+      "fileIndex": 254,
       "operatorName": "Kazemaru"
     }
   ],
   "Windflit": [
     {
       "name": "Reliable Battery",
-      "description": "部署后为前方一名友方术师或辅助干员提供攻击支援（持续数秒）",
+      "description": "After deployment, provides offensive support for an allied Caster or Supporter in front (lasts several seconds)",
       "canUseGeneralPotentialItem": true,
-      "canUseActivityPotentialItem": false,
-      "potentialItemId": null,
-      "activityPotentialItemId": null,
+      "potentialItemId": "",
       "nationId": null,
       "groupId": null,
       "teamId": null,
       "displayNumber": null,
       "tokenKey": null,
-      "appellation": "Reliable Battery",
+      "appellation": " ",
       "position": "ALL",
       "tagList": null,
       "itemUsage": null,
@@ -27563,7 +27561,7 @@
             },
             "requiredPotentialRank": 0,
             "blackboard": [],
-            "overrideDescripton": "部署后为一名友方术师或辅助干员提供攻击支援（持续20秒）",
+            "overrideDescripton": "After deployment, provides offensive support for an allied Caster or Supporter (lasts 20 seconds)",
             "prefabKey": null,
             "rangeId": null
           },
@@ -27574,7 +27572,7 @@
             },
             "requiredPotentialRank": 0,
             "blackboard": [],
-            "overrideDescripton": "部署后为一名友方术师或辅助干员提供攻击支援（持续30秒）",
+            "overrideDescripton": "After deployment, provides offensive support for an allied Caster or Supporter (lasts 30 seconds)",
             "prefabKey": null,
             "rangeId": null
           },
@@ -27585,7 +27583,7 @@
             },
             "requiredPotentialRank": 0,
             "blackboard": [],
-            "overrideDescripton": "部署后为一名友方术师或辅助干员提供攻击支援（持续30秒）",
+            "overrideDescripton": "After deployment, provides offensive support for an allied Caster or Supporter (lasts 30 seconds)",
             "prefabKey": null,
             "rangeId": null
           }
@@ -28109,9 +28107,9 @@
           "hidden": false,
           "levels": [
             {
-              "name": "可靠电池",
+              "name": "Reliable Battery",
               "rangeId": null,
-              "description": "部署后持续数秒，期间为前方一名友方术师或辅助干员提供攻击力提升",
+              "description": "Lasts for several seconds after deployment, increasing the ATK of an allied Caster or Supporter in front",
               "skillType": 0,
               "durationType": 0,
               "spData": {
@@ -28137,9 +28135,9 @@
               "range": null
             },
             {
-              "name": "可靠电池",
+              "name": "Reliable Battery",
               "rangeId": null,
-              "description": "部署后持续数秒，期间为前方一名友方术师或辅助干员提供攻击力提升",
+              "description": "Lasts for several seconds after deployment, increasing the ATK of an allied Caster or Supporter in front",
               "skillType": 0,
               "durationType": 0,
               "spData": {
@@ -28165,9 +28163,9 @@
               "range": null
             },
             {
-              "name": "可靠电池",
+              "name": "Reliable Battery",
               "rangeId": null,
-              "description": "部署后持续数秒，期间为前方一名友方术师或辅助干员提供攻击力提升",
+              "description": "Lasts for several seconds after deployment, increasing the ATK of an allied Caster or Supporter in front",
               "skillType": 0,
               "durationType": 0,
               "spData": {
@@ -28193,9 +28191,9 @@
               "range": null
             },
             {
-              "name": "可靠电池",
+              "name": "Reliable Battery",
               "rangeId": null,
-              "description": "部署后持续数秒，期间为前方一名友方术师或辅助干员提供攻击力提升",
+              "description": "Lasts for several seconds after deployment, increasing the ATK of an allied Caster or Supporter in front",
               "skillType": 0,
               "durationType": 0,
               "spData": {
@@ -28221,9 +28219,9 @@
               "range": null
             },
             {
-              "name": "可靠电池",
+              "name": "Reliable Battery",
               "rangeId": null,
-              "description": "部署后持续数秒，期间为前方一名友方术师或辅助干员提供攻击力提升",
+              "description": "Lasts for several seconds after deployment, increasing the ATK of an allied Caster or Supporter in front",
               "skillType": 0,
               "durationType": 0,
               "spData": {
@@ -28249,9 +28247,9 @@
               "range": null
             },
             {
-              "name": "可靠电池",
+              "name": "Reliable Battery",
               "rangeId": null,
-              "description": "部署后持续数秒，期间为前方一名友方术师或辅助干员提供攻击力提升",
+              "description": "Lasts for several seconds after deployment, increasing the ATK of an allied Caster or Supporter in front",
               "skillType": 0,
               "durationType": 0,
               "spData": {
@@ -28277,9 +28275,9 @@
               "range": null
             },
             {
-              "name": "可靠电池",
+              "name": "Reliable Battery",
               "rangeId": null,
-              "description": "部署后持续数秒，期间为前方一名友方术师或辅助干员提供攻击力提升",
+              "description": "Lasts for several seconds after deployment, increasing the ATK of an allied Caster or Supporter in front",
               "skillType": 0,
               "durationType": 0,
               "spData": {
@@ -28305,9 +28303,9 @@
               "range": null
             },
             {
-              "name": "可靠电池",
+              "name": "Reliable Battery",
               "rangeId": null,
-              "description": "部署后持续数秒，期间为前方一名友方术师或辅助干员提供攻击力提升",
+              "description": "Lasts for several seconds after deployment, increasing the ATK of an allied Caster or Supporter in front",
               "skillType": 0,
               "durationType": 0,
               "spData": {
@@ -28333,9 +28331,9 @@
               "range": null
             },
             {
-              "name": "可靠电池",
+              "name": "Reliable Battery",
               "rangeId": null,
-              "description": "部署后持续数秒，期间为前方一名友方术师或辅助干员提供攻击力提升",
+              "description": "Lasts for several seconds after deployment, increasing the ATK of an allied Caster or Supporter in front",
               "skillType": 0,
               "durationType": 0,
               "spData": {
@@ -28361,9 +28359,9 @@
               "range": null
             },
             {
-              "name": "可靠电池",
+              "name": "Reliable Battery",
               "rangeId": null,
-              "description": "部署后持续数秒，期间为前方一名友方术师或辅助干员提供攻击力提升",
+              "description": "Lasts for several seconds after deployment, increasing the ATK of an allied Caster or Supporter in front",
               "skillType": 0,
               "durationType": 0,
               "spData": {
@@ -28396,9 +28394,9 @@
           "hidden": false,
           "levels": [
             {
-              "name": "可靠电池",
+              "name": "Reliable Battery",
               "rangeId": null,
-              "description": "部署后持续数秒，期间为前方一名友方术师或辅助干员提供攻击力提升",
+              "description": "Lasts for several seconds after deployment, increasing the ATK of an allied Caster or Supporter in front",
               "skillType": 0,
               "durationType": 0,
               "spData": {
@@ -28432,9 +28430,9 @@
               "range": null
             },
             {
-              "name": "可靠电池",
+              "name": "Reliable Battery",
               "rangeId": null,
-              "description": "部署后持续数秒，期间为前方一名友方术师或辅助干员提供攻击力提升",
+              "description": "Lasts for several seconds after deployment, increasing the ATK of an allied Caster or Supporter in front",
               "skillType": 0,
               "durationType": 0,
               "spData": {
@@ -28468,9 +28466,9 @@
               "range": null
             },
             {
-              "name": "可靠电池",
+              "name": "Reliable Battery",
               "rangeId": null,
-              "description": "部署后持续数秒，期间为前方一名友方术师或辅助干员提供攻击力提升",
+              "description": "Lasts for several seconds after deployment, increasing the ATK of an allied Caster or Supporter in front",
               "skillType": 0,
               "durationType": 0,
               "spData": {
@@ -28504,9 +28502,9 @@
               "range": null
             },
             {
-              "name": "可靠电池",
+              "name": "Reliable Battery",
               "rangeId": null,
-              "description": "部署后持续数秒，期间为前方一名友方术师或辅助干员提供攻击力提升",
+              "description": "Lasts for several seconds after deployment, increasing the ATK of an allied Caster or Supporter in front",
               "skillType": 0,
               "durationType": 0,
               "spData": {
@@ -28540,9 +28538,9 @@
               "range": null
             },
             {
-              "name": "可靠电池",
+              "name": "Reliable Battery",
               "rangeId": null,
-              "description": "部署后持续数秒，期间为前方一名友方术师或辅助干员提供攻击力提升",
+              "description": "Lasts for several seconds after deployment, increasing the ATK of an allied Caster or Supporter in front",
               "skillType": 0,
               "durationType": 0,
               "spData": {
@@ -28576,9 +28574,9 @@
               "range": null
             },
             {
-              "name": "可靠电池",
+              "name": "Reliable Battery",
               "rangeId": null,
-              "description": "部署后持续数秒，期间为前方一名友方术师或辅助干员提供攻击力提升",
+              "description": "Lasts for several seconds after deployment, increasing the ATK of an allied Caster or Supporter in front",
               "skillType": 0,
               "durationType": 0,
               "spData": {
@@ -28612,9 +28610,9 @@
               "range": null
             },
             {
-              "name": "可靠电池",
+              "name": "Reliable Battery",
               "rangeId": null,
-              "description": "部署后持续数秒，期间为前方一名友方术师或辅助干员提供攻击力提升",
+              "description": "Lasts for several seconds after deployment, increasing the ATK of an allied Caster or Supporter in front",
               "skillType": 0,
               "durationType": 0,
               "spData": {
@@ -28648,9 +28646,9 @@
               "range": null
             },
             {
-              "name": "可靠电池",
+              "name": "Reliable Battery",
               "rangeId": null,
-              "description": "部署后持续数秒，期间为前方一名友方术师或辅助干员提供攻击力提升",
+              "description": "Lasts for several seconds after deployment, increasing the ATK of an allied Caster or Supporter in front",
               "skillType": 0,
               "durationType": 0,
               "spData": {
@@ -28684,9 +28682,9 @@
               "range": null
             },
             {
-              "name": "可靠电池",
+              "name": "Reliable Battery",
               "rangeId": null,
-              "description": "部署后持续数秒，期间为前方一名友方术师或辅助干员提供攻击力提升",
+              "description": "Lasts for several seconds after deployment, increasing the ATK of an allied Caster or Supporter in front",
               "skillType": 0,
               "durationType": 0,
               "spData": {
@@ -28720,9 +28718,9 @@
               "range": null
             },
             {
-              "name": "可靠电池",
+              "name": "Reliable Battery",
               "rangeId": null,
-              "description": "部署后持续数秒，期间为前方一名友方术师或辅助干员提供攻击力提升",
+              "description": "Lasts for several seconds after deployment, increasing the ATK of an allied Caster or Supporter in front",
               "skillType": 0,
               "durationType": 0,
               "spData": {
@@ -28759,8 +28757,8 @@
         }
       ],
       "cnName": "可靠电池",
-      "isCnOnly": true,
-      "fileIndex": 287,
+      "isCnOnly": false,
+      "fileIndex": 255,
       "operatorName": "Windflit"
     }
   ],
@@ -29477,7 +29475,7 @@
       ],
       "cnName": "旧日残影",
       "isCnOnly": true,
-      "fileIndex": 288,
+      "fileIndex": 291,
       "operatorName": "Ebenholz"
     }
   ],
@@ -31435,7 +31433,7 @@
       ],
       "cnName": "共振装置",
       "isCnOnly": true,
-      "fileIndex": 289,
+      "fileIndex": 292,
       "operatorName": "Dorothy"
     }
   ],
@@ -33199,7 +33197,7 @@
       ],
       "cnName": "“打字机”",
       "isCnOnly": true,
-      "fileIndex": 290,
+      "fileIndex": 293,
       "operatorName": "Позёмка"
     }
   ],
@@ -34452,7 +34450,7 @@
       ],
       "cnName": "白铁™多功能平台",
       "isCnOnly": true,
-      "fileIndex": 291,
+      "fileIndex": 294,
       "operatorName": "Stainless"
     },
     {
@@ -35845,7 +35843,7 @@
       ],
       "cnName": "白铁™多功能平台",
       "isCnOnly": true,
-      "fileIndex": 292,
+      "fileIndex": 295,
       "operatorName": "Stainless"
     },
     {
@@ -38537,7 +38535,7 @@
       ],
       "cnName": "铁钳号·原型机",
       "isCnOnly": true,
-      "fileIndex": 293,
+      "fileIndex": 296,
       "operatorName": "Stainless"
     }
   ],
@@ -39382,7 +39380,7 @@
       ],
       "cnName": "狼群",
       "isCnOnly": true,
-      "fileIndex": 294,
+      "fileIndex": 297,
       "operatorName": "Vigil"
     }
   ],
@@ -39614,7 +39612,7 @@
       ],
       "cnName": "猎潮的骑士",
       "isCnOnly": true,
-      "fileIndex": 295
+      "fileIndex": 298
     }
   ]
 }
