@@ -7,7 +7,10 @@ export interface Props {
 
 const { title, previousLocation, previousLocationLink } = Astro.props;
 
+import DiscordLogo from "../components/icons/DiscordLogo/DiscordLogo.astro";
+import TwitterLogo from "../components/icons/TwitterLogo/TwitterLogo.astro";
 import SanityGoneLogo from "../components/SanityGoneLogo/SanityGoneLogo.astro";
+import NavigationLink from "../components/NavigationLink/NavigationLink.astro";
 import SearchBar from "../components/SearchBar";
 
 import * as classes from "./Layout.css";
@@ -31,15 +34,20 @@ import * as classes from "./Layout.css";
   <body>
     <div class={classes.siteWrapper}>
       <div class={classes.sidebar}>
-        <div class={classes.logoContainer}><SanityGoneLogo /></div>
+        <div class={classes.logoContainer}>
+          <SanityGoneLogo hasIcon={true} />
+        </div>
         <div class={classes.navigation}>
-          <div class={classes.navLink}><a>Something</a></div>
-          <div class={classes.navLink}><a>Something</a></div>
-          <div class={classes.navLink}><a>Something</a></div>
+          <NavigationLink href="/" name="Home" active={false} />
+          <NavigationLink href="/operators" name="Operators" active={true} />
+          <NavigationLink href="/dps" name="DPS Calculator" active={false} />
         </div>
         <div class={classes.sidebarSpacer}></div>
         <div class={classes.footer}>
-          <div class={classes.footerLogos}>logos go here (eventually)</div>
+          <div class={classes.footerLogos}>
+            <DiscordLogo />
+            <TwitterLogo />
+          </div>
           <hr />
           <p>
             Sanity;Gone is a community resource for Arknights players, providing

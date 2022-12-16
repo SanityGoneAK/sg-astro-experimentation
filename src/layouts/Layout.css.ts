@@ -49,11 +49,6 @@ export const searchBarContainer = style({
   marginLeft: spacing(3),
 });
 export const navigation = style({});
-export const navLink = style({
-  alignItems: "center",
-  padding: spacing(2),
-  marginLeft: spacing(2),
-});
 export const sidebarSpacer = style({
   flex: "1 1 0",
 });
@@ -66,10 +61,9 @@ export const footerLogos = style({
   display: "flex",
   alignItems: "center",
   justifyContent: "center",
-  // temporary
-  textAlign: "center",
-  color: vars.colors.neutrals.gray,
-  fontSize: vars.typography.body3.fontSize,
+});
+export const discordLogo = style({
+  marginRight: spacing(3),
 });
 globalStyle(`${footer} > p`, {
   color: vars.colors.neutrals.midtoneBrighterer,

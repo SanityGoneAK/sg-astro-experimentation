@@ -3,11 +3,20 @@ import { spacing } from "../../theme-helpers";
 import { vars } from "../../theme.css";
 
 export const root = style({
-  marginTop: 2,
   padding: spacing(1),
   lineHeight: 1,
+  display: "flex",
+  alignItems: "center",
 });
 
-globalStyle(`${root} > svg > path`, {
+export const icon = style({
+  marginRight: spacing(1.5),
+});
+
+export const text = style({
+  marginTop: 2,
+});
+
+globalStyle(`${text} > path`, {
   fill: vars.colors.neutrals.white,
 });
