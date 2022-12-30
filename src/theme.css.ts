@@ -1,4 +1,4 @@
-import { createGlobalTheme } from "@vanilla-extract/css";
+import { createGlobalTheme, style } from "@vanilla-extract/css";
 import { spacing } from "./theme-helpers";
 
 export const rawColors = {
@@ -30,6 +30,7 @@ export const vars = createGlobalTheme(":root", {
   colors: rawColors,
   typography: {
     fontFamily: "Source Sans Pro, sans-serif",
+    secondaryFontFamily: "font-family: 'Crimson Text', serif;",
     pageHeading: {
       fontSize: "48px",
       fontWeight: "600",
@@ -120,11 +121,33 @@ export const vars = createGlobalTheme(":root", {
       lineHeight: "1.25",
       textTransform: "uppercase",
     },
+    operatorNavigationLink: {
+      fontSize: "16px",
+      fontWeight: "400",
+      lineHeight: "1.5",
+    },
+    operatorNavigationLinkBold: {
+      fontSize: "16px",
+      fontWeight: "700",
+      lineHeight: "1.5",
+    },
+    operatorGuide: {
+      fontSize: "16px",
+      fontWeight: "600",
+      lineHeight: "1.25",
+    },
   },
   shadows: {
     titleShadow: `0 ${spacing(0.25)} ${spacing(1)} rgba(0, 0, 0, 0.5)`,
     baseShadow: `${spacing(0.25)} ${spacing(0.25)} ${spacing(
       1
     )} rgba(0, 0, 0, 0.15)`,
+  },
+});
+
+export const linkStyle = style({
+  color: vars.colors.accents.blue,
+  ":hover": {
+    textDecoration: "underline",
   },
 });

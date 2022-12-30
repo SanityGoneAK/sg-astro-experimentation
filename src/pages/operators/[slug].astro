@@ -8,6 +8,8 @@ import CharacterStats from "../../components/CharacterStats";
 import type * as OutputTypes from "../../output-types";
 
 import * as classes from "./_[slug].css";
+import { linkStyle } from "../../theme.css";
+import { operatorAvatar } from "../../utils/images";
 
 export function getStaticPaths() {
   return Object.entries(operators)
@@ -31,6 +33,64 @@ const { subProfessionId } = char;
 ---
 
 <Layout title={char.title}>
-  <h1 class={classes.heading}>{char.name}</h1>
-  <CharacterStats client:visible characterObject={char} />
+  <div class={classes.container}>
+    <div class={classes.characterNavigation}>
+      <ul class={classes.characterNavigationList}>
+        <li class={classes.characterNavigationItem.default}>
+          <a href="#" class={linkStyle}>Operators</a>
+        </li>
+        /
+        <li class={classes.characterNavigationItem.bold}>{char.name}</li>
+        <span class={classes.characterNavigationDotSpacer}></span>
+        <li class={classes.characterNavigationItem.alter}>
+          <img
+            class={classes.characterNavigationAlterImage}
+            src={operatorAvatar(char.charId)}
+          /><span>{char.name}</span>
+        </li>
+      </ul>
+      <!-- TODO: Make this a component? -->
+      <a class={classes.operatorGuideButton} href="#"
+        ><span class={classes.operatorGuideButtonText}>Operator Guide</span>
+        <svg
+          width="16"
+          height="16"
+          viewBox="0 0 16 16"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M8 0C8 4.41828 4.41828 8 0 8C4.41828 8 8 11.5817 8 16C8 11.5817 11.5817 8 16 8C11.5817 8 8 4.41828 8 0Z"
+            fill="url(#paint0_linear_4270_17189)"></path>
+          <defs>
+            <linearGradient
+              id="paint0_linear_4270_17189"
+              x1="8"
+              y1="0"
+              x2="8"
+              y2="16"
+              gradientUnits="userSpaceOnUse"
+            >
+              <stop stop-color="#FED874"></stop>
+              <stop offset="1" stop-color="#FFC397"></stop>
+            </linearGradient>
+          </defs>
+        </svg>
+      </a>
+    </div>
+    <div class={classes.characterContainer}>
+      <section>Character Image</section>
+      <section>Character Details</section>
+    </div>
+    <div>
+      <a class={classes.dpsCalculatorButton} href=""
+        ><img
+          class={classes.characterNavigationAlterImage}
+          src={operatorAvatar(char.charId)}
+        /><span>View in DPS Calculator</span>
+      </a>
+    </div>
+  </div>
+  <!-- <h1 class={classes.heading}>{char.name}</h1> -->
+  <!-- <CharacterStats client:visible characterObject={char} /> -->
 </Layout>

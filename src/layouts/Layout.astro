@@ -29,6 +29,14 @@ import * as classes from "./Layout.css";
       href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:ital,wght@0,400;0,600;0,700;1,400;1,600;1,700&display=swap"
       rel="stylesheet"
     />
+    <link rel="preconnect" href="https://fonts.googleapis.com" /><link
+      rel="preconnect"
+      href="https://fonts.gstatic.com"
+      crossorigin
+    /><link
+      href="https://fonts.googleapis.com/css2?family=Crimson+Text:ital,wght@0,400;0,600;0,700;1,400;1,600;1,700&display=swap"
+      rel="stylesheet"
+    />
     <title>{title}</title>
   </head>
   <body>
@@ -37,13 +45,13 @@ import * as classes from "./Layout.css";
         <div class={classes.logoContainer}>
           <SanityGoneLogo hasIcon={true} />
         </div>
-        <div class={classes.navigation}>
+        <nav class={classes.navigation}>
           <NavigationLink href="/" name="Home" active={false} />
           <NavigationLink href="/operators" name="Operators" active={true} />
           <NavigationLink href="/dps" name="DPS Calculator" active={false} />
-        </div>
-        <div class={classes.sidebarSpacer}></div>
-        <div class={classes.footer}>
+        </nav>
+        <!-- <div class={classes.sidebarSpacer}></div> -->
+        <footer class={classes.footer}>
           <div class={classes.footerLogos}>
             <DiscordLogo />
             <TwitterLogo />
@@ -57,7 +65,7 @@ import * as classes from "./Layout.css";
           <a>
             Disclaimer&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;About&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Contact
           </a>
-        </div>
+        </footer>
       </div>
       <div class={classes.mainbar}>
         <div class={classes.topbar}>
@@ -65,9 +73,9 @@ import * as classes from "./Layout.css";
             <SearchBar placeholder="Oh yeah, search it good." client:load />
           </div>
         </div>
-        <div class={classes.content}>
+        <main class={classes.content}>
           <slot />
-        </div>
+        </main>
       </div>
     </div>
     <style is:global>

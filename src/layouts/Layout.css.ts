@@ -49,12 +49,10 @@ export const searchBarContainer = style({
   marginLeft: spacing(3),
 });
 export const navigation = style({});
-export const sidebarSpacer = style({
-  flex: "1 1 0",
-});
 export const footer = style({
   flex: "none",
   margin: spacing(3),
+  marginTop: "auto",
 });
 export const footerLogos = style({
   marginBottom: spacing(3),
