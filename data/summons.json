@@ -419,8 +419,44 @@
         }
       ],
       "cnName": "医疗探机",
+      "voices": [],
+      "skins": [
+        {
+          "skinId": "token_10000_silent_healrb#1",
+          "illustId": "illust_token_10000_silent_healrb_1",
+          "avatarId": "token_10000_silent_healrb",
+          "portraitId": "token_10000_silent_healrb_1",
+          "displaySkin": {
+            "skinName": null,
+            "modelName": null,
+            "drawerName": null
+          }
+        },
+        {
+          "skinId": "token_10000_silent_healrb_winter#1",
+          "illustId": null,
+          "avatarId": "token_10000_silent_healrb_winter#1",
+          "portraitId": null,
+          "displaySkin": {
+            "skinName": null,
+            "modelName": null,
+            "drawerName": null
+          }
+        },
+        {
+          "skinId": "token_10000_silent_healrb_sweep#1",
+          "illustId": null,
+          "avatarId": "token_10000_silent_healrb_sweep#1",
+          "portraitId": null,
+          "displaySkin": {
+            "skinName": null,
+            "modelName": null,
+            "drawerName": null
+          }
+        }
+      ],
       "isCnOnly": false,
-      "fileIndex": 228,
+      "fileIndex": 231,
       "operatorName": "Silence"
     }
   ],
@@ -847,8 +883,22 @@
       "charId": "token_10001_deepcl_tentac",
       "skillData": [],
       "cnName": "触手",
+      "voices": [],
+      "skins": [
+        {
+          "skinId": "token_10001_deepcl_tentac#1",
+          "illustId": "illust_token_10001_deepcl_tentac_1",
+          "avatarId": "token_10001_deepcl_tentac",
+          "portraitId": "token_10001_deepcl_tentac_1",
+          "displaySkin": {
+            "skinName": null,
+            "modelName": null,
+            "drawerName": null
+          }
+        }
+      ],
       "isCnOnly": false,
-      "fileIndex": 229,
+      "fileIndex": 232,
       "operatorName": "Deepcolor"
     }
   ],
@@ -1452,8 +1502,22 @@
       "charId": "token_10002_kalts_mon3tr",
       "skillData": [],
       "cnName": "Mon3tr",
+      "voices": [],
+      "skins": [
+        {
+          "skinId": "token_10002_kalts_mon3tr#1",
+          "illustId": "illust_token_10002_kalts_mon3tr_1",
+          "avatarId": "token_10002_kalts_mon3tr",
+          "portraitId": "token_10002_kalts_mon3tr_1",
+          "displaySkin": {
+            "skinName": null,
+            "modelName": null,
+            "drawerName": null
+          }
+        }
+      ],
       "isCnOnly": false,
-      "fileIndex": 230,
+      "fileIndex": 233,
       "operatorName": "Kal'tsit"
     }
   ],
@@ -1819,7 +1883,7 @@
               },
               "requiredPotentialRank": 0,
               "prefabKey": "2",
-              "name": "Fleeting Phantom",
+              "name": null,
               "description": "75 RES; 30% Physical Dodge; Attracts enemy's attack more easily; Loses 3% Max HP per second",
               "rangeId": null,
               "blackboard": [
@@ -1890,8 +1954,33 @@
       "charId": "token_10003_cgbird_bird",
       "skillData": [],
       "cnName": "幻影",
+      "voices": [],
+      "skins": [
+        {
+          "skinId": "token_10003_cgbird_bird#1",
+          "illustId": "illust_token_10003_cgbird_bird_1",
+          "avatarId": "token_10003_cgbird_bird",
+          "portraitId": "token_10003_cgbird_bird_1",
+          "displaySkin": {
+            "skinName": null,
+            "modelName": null,
+            "drawerName": null
+          }
+        },
+        {
+          "skinId": "token_10003_cgbird_bird_witch#1",
+          "illustId": null,
+          "avatarId": "token_10003_cgbird_bird_witch#1",
+          "portraitId": null,
+          "displaySkin": {
+            "skinName": null,
+            "modelName": null,
+            "drawerName": null
+          }
+        }
+      ],
       "isCnOnly": false,
-      "fileIndex": 231,
+      "fileIndex": 234,
       "operatorName": "Nightingale"
     }
   ],
@@ -2219,7 +2308,7 @@
               },
               "requiredPotentialRank": 0,
               "prefabKey": "1",
-              "name": "Robotter - Operation",
+              "name": null,
               "description": "Reduces the ASPD of enemy attackers by 10",
               "rangeId": null,
               "blackboard": [
@@ -2241,7 +2330,7 @@
               },
               "requiredPotentialRank": 0,
               "prefabKey": "1",
-              "name": "Robotter - Improvement",
+              "name": null,
               "description": "Reduces the ASPD of enemy attackers by 25",
               "rangeId": null,
               "blackboard": [
@@ -2263,7 +2352,7 @@
               },
               "requiredPotentialRank": 0,
               "prefabKey": "1",
-              "name": "Robotter - Extension",
+              "name": null,
               "description": "Reduces the ASPD of enemy attackers by 25",
               "rangeId": null,
               "blackboard": [
@@ -3413,8 +3502,33 @@
         }
       ],
       "cnName": "机械水獭",
+      "voices": [],
+      "skins": [
+        {
+          "skinId": "token_10004_otter_motter#1",
+          "illustId": "illust_token_10004_otter_motter_1",
+          "avatarId": "token_10004_otter_motter",
+          "portraitId": "token_10004_otter_motter_1",
+          "displaySkin": {
+            "skinName": null,
+            "modelName": null,
+            "drawerName": null
+          }
+        },
+        {
+          "skinId": "token_10004_otter_motter_ghost#1",
+          "illustId": null,
+          "avatarId": "token_10004_otter_motter_ghost#1",
+          "portraitId": null,
+          "displaySkin": {
+            "skinName": null,
+            "modelName": null,
+            "drawerName": null
+          }
+        }
+      ],
       "isCnOnly": false,
-      "fileIndex": 232,
+      "fileIndex": 235,
       "operatorName": "Mayer"
     }
   ],
@@ -4006,6 +4120,36 @@
                   "value": 22
                 }
               ],
+              "range": null
+            }
+          ]
+        },
+        {
+          "candidates": [
+            {
+              "unlockCondition": {
+                "phase": 2,
+                "level": 1
+              },
+              "requiredPotentialRank": 0,
+              "prefabKey": "10",
+              "name": null,
+              "description": null,
+              "rangeId": null,
+              "blackboard": [],
+              "range": null
+            },
+            {
+              "unlockCondition": {
+                "phase": 2,
+                "level": 1
+              },
+              "requiredPotentialRank": 4,
+              "prefabKey": "10",
+              "name": null,
+              "description": null,
+              "rangeId": null,
+              "blackboard": [],
               "range": null
             }
           ]
@@ -4652,8 +4796,33 @@
         }
       ],
       "cnName": "龙腾.F",
+      "voices": [],
+      "skins": [
+        {
+          "skinId": "token_10005_mgllan_drone1#1",
+          "illustId": "illust_token_10005_mgllan_drone1_1",
+          "avatarId": "token_10005_mgllan_drone1",
+          "portraitId": "token_10005_mgllan_drone1_1",
+          "displaySkin": {
+            "skinName": null,
+            "modelName": null,
+            "drawerName": null
+          }
+        },
+        {
+          "skinId": "token_10005_mgllan_drone1_kitchen#1",
+          "illustId": null,
+          "avatarId": "token_10005_mgllan_drone1_kitchen#1",
+          "portraitId": null,
+          "displaySkin": {
+            "skinName": null,
+            "modelName": null,
+            "drawerName": null
+          }
+        }
+      ],
       "isCnOnly": false,
-      "fileIndex": 233,
+      "fileIndex": 236,
       "operatorName": "Magallan"
     },
     {
@@ -5147,6 +5316,36 @@
                   "value": 22
                 }
               ],
+              "range": null
+            }
+          ]
+        },
+        {
+          "candidates": [
+            {
+              "unlockCondition": {
+                "phase": 2,
+                "level": 1
+              },
+              "requiredPotentialRank": 0,
+              "prefabKey": "10",
+              "name": null,
+              "description": null,
+              "rangeId": null,
+              "blackboard": [],
+              "range": null
+            },
+            {
+              "unlockCondition": {
+                "phase": 2,
+                "level": 1
+              },
+              "requiredPotentialRank": 4,
+              "prefabKey": "10",
+              "name": null,
+              "description": null,
+              "rangeId": null,
+              "blackboard": [],
               "range": null
             }
           ]
@@ -5793,8 +5992,33 @@
         }
       ],
       "cnName": "龙腾.L",
+      "voices": [],
+      "skins": [
+        {
+          "skinId": "token_10005_mgllan_drone2#1",
+          "illustId": "illust_token_10005_mgllan_drone2_1",
+          "avatarId": "token_10005_mgllan_drone2",
+          "portraitId": "token_10005_mgllan_drone2_1",
+          "displaySkin": {
+            "skinName": null,
+            "modelName": null,
+            "drawerName": null
+          }
+        },
+        {
+          "skinId": "token_10005_mgllan_drone2_kitchen#1",
+          "illustId": null,
+          "avatarId": "token_10005_mgllan_drone2_kitchen#1",
+          "portraitId": null,
+          "displaySkin": {
+            "skinName": null,
+            "modelName": null,
+            "drawerName": null
+          }
+        }
+      ],
       "isCnOnly": false,
-      "fileIndex": 234,
+      "fileIndex": 237,
       "operatorName": "Magallan"
     },
     {
@@ -6384,6 +6608,36 @@
                   "value": 22
                 }
               ],
+              "range": null
+            }
+          ]
+        },
+        {
+          "candidates": [
+            {
+              "unlockCondition": {
+                "phase": 2,
+                "level": 1
+              },
+              "requiredPotentialRank": 0,
+              "prefabKey": "10",
+              "name": null,
+              "description": null,
+              "rangeId": null,
+              "blackboard": [],
+              "range": null
+            },
+            {
+              "unlockCondition": {
+                "phase": 2,
+                "level": 1
+              },
+              "requiredPotentialRank": 4,
+              "prefabKey": "10",
+              "name": null,
+              "description": null,
+              "rangeId": null,
+              "blackboard": [],
               "range": null
             }
           ]
@@ -7030,8 +7284,33 @@
         }
       ],
       "cnName": "龙腾.A",
+      "voices": [],
+      "skins": [
+        {
+          "skinId": "token_10005_mgllan_drone3#1",
+          "illustId": "illust_token_10005_mgllan_drone3_1",
+          "avatarId": "token_10005_mgllan_drone3",
+          "portraitId": "token_10005_mgllan_drone3_1",
+          "displaySkin": {
+            "skinName": null,
+            "modelName": null,
+            "drawerName": null
+          }
+        },
+        {
+          "skinId": "token_10005_mgllan_drone3_kitchen#1",
+          "illustId": null,
+          "avatarId": "token_10005_mgllan_drone3_kitchen#1",
+          "portraitId": null,
+          "displaySkin": {
+            "skinName": null,
+            "modelName": null,
+            "drawerName": null
+          }
+        }
+      ],
       "isCnOnly": false,
-      "fileIndex": 235,
+      "fileIndex": 238,
       "operatorName": "Magallan"
     }
   ],
@@ -7783,8 +8062,33 @@
         }
       ],
       "cnName": "诅咒娃娃",
+      "voices": [],
+      "skins": [
+        {
+          "skinId": "token_10006_vodfox_doll#1",
+          "illustId": "illust_token_10006_vodfox_doll_1",
+          "avatarId": "token_10006_vodfox_doll",
+          "portraitId": "token_10006_vodfox_doll_1",
+          "displaySkin": {
+            "skinName": null,
+            "modelName": null,
+            "drawerName": null
+          }
+        },
+        {
+          "skinId": "token_10006_vodfox_doll_witch#2",
+          "illustId": null,
+          "avatarId": "token_10006_vodfox_doll_witch#2",
+          "portraitId": null,
+          "displaySkin": {
+            "skinName": null,
+            "modelName": null,
+            "drawerName": null
+          }
+        }
+      ],
       "isCnOnly": false,
-      "fileIndex": 236,
+      "fileIndex": 239,
       "operatorName": "Shamare"
     }
   ],
@@ -8159,7 +8463,7 @@
               },
               "requiredPotentialRank": 0,
               "prefabKey": "#",
-              "name": "Phantom in the Mirror",
+              "name": null,
               "description": "Can summon a clone with the same abilities as Phantom, but has its own redeployment time",
               "rangeId": null,
               "blackboard": [],
@@ -8172,7 +8476,7 @@
               },
               "requiredPotentialRank": 0,
               "prefabKey": "#",
-              "name": "Phantom in the Mirror",
+              "name": null,
               "description": "Can summon a clone with the same abilities as Phantom, but has its own redeployment time",
               "rangeId": null,
               "blackboard": [],
@@ -8189,7 +8493,7 @@
               },
               "requiredPotentialRank": 0,
               "prefabKey": "2",
-              "name": "Phantom Mastery",
+              "name": null,
               "description": "Redeployment time of clone is reduced by 10 seconds",
               "rangeId": null,
               "blackboard": [
@@ -9739,8 +10043,44 @@
         }
       ],
       "cnName": "镜中虚影",
+      "voices": [],
+      "skins": [
+        {
+          "skinId": "token_10007_phatom_twin#1",
+          "illustId": "illust_token_10007_phatom_twin_1",
+          "avatarId": "token_10007_phatom_twin",
+          "portraitId": "token_10007_phatom_twin_1",
+          "displaySkin": {
+            "skinName": null,
+            "modelName": null,
+            "drawerName": null
+          }
+        },
+        {
+          "skinId": "token_10007_phatom_twin_sale#4",
+          "illustId": null,
+          "avatarId": "token_10007_phatom_twin_sale#4",
+          "portraitId": null,
+          "displaySkin": {
+            "skinName": null,
+            "modelName": null,
+            "drawerName": null
+          }
+        },
+        {
+          "skinId": "token_10007_phatom_twin_ghost#1",
+          "illustId": null,
+          "avatarId": "token_10007_phatom_twin_ghost#1",
+          "portraitId": null,
+          "displaySkin": {
+            "skinName": null,
+            "modelName": null,
+            "drawerName": null
+          }
+        }
+      ],
       "isCnOnly": false,
-      "fileIndex": 237,
+      "fileIndex": 240,
       "operatorName": "Phantom"
     }
   ],
@@ -10454,8 +10794,33 @@
         }
       ],
       "cnName": "此面向敌",
+      "voices": [],
+      "skins": [
+        {
+          "skinId": "token_10008_cqbw_box#1",
+          "illustId": "illust_token_10008_cqbw_box_1",
+          "avatarId": "token_10008_cqbw_box",
+          "portraitId": "token_10008_cqbw_box_1",
+          "displaySkin": {
+            "skinName": null,
+            "modelName": null,
+            "drawerName": null
+          }
+        },
+        {
+          "skinId": "token_10008_cqbw_box_epoque#7",
+          "illustId": null,
+          "avatarId": "token_10008_cqbw_box_epoque#7",
+          "portraitId": null,
+          "displaySkin": {
+            "skinName": null,
+            "modelName": null,
+            "drawerName": null
+          }
+        }
+      ],
       "isCnOnly": false,
-      "fileIndex": 238,
+      "fileIndex": 241,
       "operatorName": "W"
     }
   ],
@@ -11783,8 +12148,33 @@
         }
       ],
       "cnName": "工程蓄水炮",
+      "voices": [],
+      "skins": [
+        {
+          "skinId": "token_10009_weedy_cannon#1",
+          "illustId": "illust_token_10009_weedy_cannon_1",
+          "avatarId": "token_10009_weedy_cannon",
+          "portraitId": "token_10009_weedy_cannon_1",
+          "displaySkin": {
+            "skinName": null,
+            "modelName": null,
+            "drawerName": null
+          }
+        },
+        {
+          "skinId": "token_10009_weedy_cannon_snow#2",
+          "illustId": null,
+          "avatarId": "token_10009_weedy_cannon_snow#2",
+          "portraitId": null,
+          "displaySkin": {
+            "skinName": null,
+            "modelName": null,
+            "drawerName": null
+          }
+        }
+      ],
       "isCnOnly": false,
-      "fileIndex": 239,
+      "fileIndex": 242,
       "operatorName": "Weedy"
     }
   ],
@@ -12135,6 +12525,10 @@
                 {
                   "key": "max_deck_stack_cnt",
                   "value": 3
+                },
+                {
+                  "key": "move_speed",
+                  "value": 1
                 }
               ],
               "range": {
@@ -12198,6 +12592,10 @@
                 {
                   "key": "max_deck_stack_cnt",
                   "value": 4
+                },
+                {
+                  "key": "move_speed",
+                  "value": 1
                 }
               ],
               "range": {
@@ -12261,6 +12659,10 @@
                 {
                   "key": "max_deck_stack_cnt",
                   "value": 5
+                },
+                {
+                  "key": "move_speed",
+                  "value": 1
                 }
               ],
               "range": {
@@ -13591,8 +13993,22 @@
         }
       ],
       "cnName": "移动摄影器",
+      "voices": [],
+      "skins": [
+        {
+          "skinId": "token_10010_folivo_car#1",
+          "illustId": "illust_token_10010_folivo_car_1",
+          "avatarId": "token_10010_folivo_car",
+          "portraitId": "token_10010_folivo_car_1",
+          "displaySkin": {
+            "skinName": null,
+            "modelName": null,
+            "drawerName": null
+          }
+        }
+      ],
       "isCnOnly": false,
-      "fileIndex": 240,
+      "fileIndex": 243,
       "operatorName": "Scene"
     }
   ],
@@ -14736,8 +15152,33 @@
         }
       ],
       "cnName": "沙之碑",
+      "voices": [],
+      "skins": [
+        {
+          "skinId": "token_10011_beewax_oblisk#1",
+          "illustId": "illust_token_10011_beewax_oblisk_1",
+          "avatarId": "token_10011_beewax_oblisk",
+          "portraitId": "token_10011_beewax_oblisk_1",
+          "displaySkin": {
+            "skinName": null,
+            "modelName": null,
+            "drawerName": null
+          }
+        },
+        {
+          "skinId": "token_10011_beewax_oblisk_epoque#9",
+          "illustId": null,
+          "avatarId": "token_10011_beewax_oblisk_epoque#9",
+          "portraitId": null,
+          "displaySkin": {
+            "skinName": null,
+            "modelName": null,
+            "drawerName": null
+          }
+        }
+      ],
       "isCnOnly": false,
-      "fileIndex": 241,
+      "fileIndex": 244,
       "operatorName": "Beeswax"
     }
   ],
@@ -15670,8 +16111,44 @@
         }
       ],
       "cnName": "迷迭香的战术装备",
+      "voices": [],
+      "skins": [
+        {
+          "skinId": "token_10012_rosmon_shield#1",
+          "illustId": "illust_token_10012_rosmon_shield_1",
+          "avatarId": "token_10012_rosmon_shield",
+          "portraitId": "token_10012_rosmon_shield_1",
+          "displaySkin": {
+            "skinName": null,
+            "modelName": null,
+            "drawerName": null
+          }
+        },
+        {
+          "skinId": "token_10012_rosmon_shield#2",
+          "illustId": "illust_token_10012_rosmon_shield_2",
+          "avatarId": "token_10012_rosmon_shield_2",
+          "portraitId": "token_10012_rosmon_shield_2",
+          "displaySkin": {
+            "skinName": null,
+            "modelName": null,
+            "drawerName": null
+          }
+        },
+        {
+          "skinId": "token_10012_rosmon_shield_epoque#17",
+          "illustId": null,
+          "avatarId": "token_10012_rosmon_shield_epoque#17",
+          "portraitId": null,
+          "displaySkin": {
+            "skinName": null,
+            "modelName": null,
+            "drawerName": null
+          }
+        }
+      ],
       "isCnOnly": false,
-      "fileIndex": 242,
+      "fileIndex": 245,
       "operatorName": "Rosmontis"
     }
   ],
@@ -16694,8 +17171,33 @@
         }
       ],
       "cnName": "\"夹子\"",
+      "voices": [],
+      "skins": [
+        {
+          "skinId": "token_10013_robin_mine#1",
+          "illustId": "illust_token_10013_robin_mine_1",
+          "avatarId": "token_10013_robin_mine",
+          "portraitId": "token_10013_robin_mine_1",
+          "displaySkin": {
+            "skinName": null,
+            "modelName": null,
+            "drawerName": null
+          }
+        },
+        {
+          "skinId": "token_10013_robin_mine_epoque#13",
+          "illustId": null,
+          "avatarId": "token_10013_robin_mine_epoque#13",
+          "portraitId": null,
+          "displaySkin": {
+            "skinName": null,
+            "modelName": null,
+            "drawerName": null
+          }
+        }
+      ],
       "isCnOnly": false,
-      "fileIndex": 243,
+      "fileIndex": 246,
       "operatorName": "Robin"
     }
   ],
@@ -17096,8 +17598,33 @@
       "charId": "token_10014_bstalk_crab",
       "skillData": [],
       "cnName": "磐蟹护卫队",
+      "voices": [],
+      "skins": [
+        {
+          "skinId": "token_10014_bstalk_crab#1",
+          "illustId": "illust_token_10014_bstalk_crab_1",
+          "avatarId": "token_10014_bstalk_crab",
+          "portraitId": "token_10014_bstalk_crab_1",
+          "displaySkin": {
+            "skinName": null,
+            "modelName": null,
+            "drawerName": null
+          }
+        },
+        {
+          "skinId": "token_10014_bstalk_crab_snow#4",
+          "illustId": null,
+          "avatarId": "token_10014_bstalk_crab_snow#4",
+          "portraitId": null,
+          "displaySkin": {
+            "skinName": null,
+            "modelName": null,
+            "drawerName": null
+          }
+        }
+      ],
       "isCnOnly": false,
-      "fileIndex": 244,
+      "fileIndex": 247,
       "operatorName": "Beanstalk"
     }
   ],
@@ -17683,8 +18210,44 @@
       "charId": "token_10015_dusk_drgn",
       "skillData": [],
       "cnName": "\"小自在\"",
+      "voices": [],
+      "skins": [
+        {
+          "skinId": "token_10015_dusk_drgn#1",
+          "illustId": "illust_token_10015_dusk_drgn_1",
+          "avatarId": "token_10015_dusk_drgn",
+          "portraitId": "token_10015_dusk_drgn_1",
+          "displaySkin": {
+            "skinName": null,
+            "modelName": null,
+            "drawerName": null
+          }
+        },
+        {
+          "skinId": "token_10015_dusk_drgn#2",
+          "illustId": "illust_token_10015_dusk_drgn_2",
+          "avatarId": "token_10015_dusk_drgn_2",
+          "portraitId": "token_10015_dusk_drgn_2",
+          "displaySkin": {
+            "skinName": null,
+            "modelName": null,
+            "drawerName": null
+          }
+        },
+        {
+          "skinId": "token_10015_dusk_drgn_nian#7",
+          "illustId": null,
+          "avatarId": "token_10015_dusk_drgn_nian#7",
+          "portraitId": null,
+          "displaySkin": {
+            "skinName": null,
+            "modelName": null,
+            "drawerName": null
+          }
+        }
+      ],
       "isCnOnly": false,
-      "fileIndex": 245,
+      "fileIndex": 248,
       "operatorName": "Dusk"
     }
   ],
@@ -18707,8 +19270,22 @@
         }
       ],
       "cnName": "迎宾踏垫",
+      "voices": [],
+      "skins": [
+        {
+          "skinId": "token_10016_rfrost_mine#1",
+          "illustId": "illust_token_10016_rfrost_mine_1",
+          "avatarId": "token_10016_rfrost_mine",
+          "portraitId": "token_10016_rfrost_mine_1",
+          "displaySkin": {
+            "skinName": null,
+            "modelName": null,
+            "drawerName": null
+          }
+        }
+      ],
       "isCnOnly": false,
-      "fileIndex": 246,
+      "fileIndex": 249,
       "operatorName": "Frost"
     }
   ],
@@ -20476,8 +21053,33 @@
         }
       ],
       "cnName": "斯卡蒂的海嗣",
+      "voices": [],
+      "skins": [
+        {
+          "skinId": "token_10017_skadi2_dedant#1",
+          "illustId": "illust_token_10017_skadi2_dedant_1",
+          "avatarId": "token_10017_skadi2_dedant",
+          "portraitId": "token_10017_skadi2_dedant_1",
+          "displaySkin": {
+            "skinName": null,
+            "modelName": null,
+            "drawerName": null
+          }
+        },
+        {
+          "skinId": "token_10017_skadi2_dedant_boc#4",
+          "illustId": null,
+          "avatarId": "token_10017_skadi2_dedant_boc#4",
+          "portraitId": null,
+          "displaySkin": {
+            "skinName": null,
+            "modelName": null,
+            "drawerName": null
+          }
+        }
+      ],
       "isCnOnly": false,
-      "fileIndex": 247,
+      "fileIndex": 250,
       "operatorName": "Skadi the Corrupting Heart"
     }
   ],
@@ -20990,8 +21592,33 @@
         }
       ],
       "cnName": "全自动造型仪",
+      "voices": [],
+      "skins": [
+        {
+          "skinId": "token_10018_robrta_mach#1",
+          "illustId": "illust_token_10018_robrta_mach_1",
+          "avatarId": "token_10018_robrta_mach",
+          "portraitId": "token_10018_robrta_mach_1",
+          "displaySkin": {
+            "skinName": null,
+            "modelName": null,
+            "drawerName": null
+          }
+        },
+        {
+          "skinId": "token_10018_robrta_mach_summer#10",
+          "illustId": null,
+          "avatarId": "token_10018_robrta_mach_summer#10",
+          "portraitId": null,
+          "displaySkin": {
+            "skinName": null,
+            "modelName": null,
+            "drawerName": null
+          }
+        }
+      ],
       "isCnOnly": false,
-      "fileIndex": 248,
+      "fileIndex": 251,
       "operatorName": "Roberta"
     }
   ],
@@ -22005,8 +22632,44 @@
         }
       ],
       "cnName": "“耀阳”",
+      "voices": [],
+      "skins": [
+        {
+          "skinId": "token_10019_nearl2_sword#1",
+          "illustId": "illust_token_10019_nearl2_sword_1",
+          "avatarId": "token_10019_nearl2_sword",
+          "portraitId": "token_10019_nearl2_sword_1",
+          "displaySkin": {
+            "skinName": null,
+            "modelName": null,
+            "drawerName": null
+          }
+        },
+        {
+          "skinId": "token_10019_nearl2_sword#2",
+          "illustId": "illust_token_10019_nearl2_sword_2",
+          "avatarId": "token_10019_nearl2_sword_2",
+          "portraitId": "token_10019_nearl2_sword_2",
+          "displaySkin": {
+            "skinName": null,
+            "modelName": null,
+            "drawerName": null
+          }
+        },
+        {
+          "skinId": "token_10019_nearl2_sword_epoque#17",
+          "illustId": null,
+          "avatarId": "token_10019_nearl2_sword_epoque#17",
+          "portraitId": null,
+          "displaySkin": {
+            "skinName": null,
+            "modelName": null,
+            "drawerName": null
+          }
+        }
+      ],
       "isCnOnly": false,
-      "fileIndex": 249,
+      "fileIndex": 252,
       "operatorName": "Nearl the Radiant Knight"
     }
   ],
@@ -23084,8 +23747,22 @@
         }
       ],
       "cnName": "“清平”",
+      "voices": [],
+      "skins": [
+        {
+          "skinId": "token_10020_ling_soul1#1",
+          "illustId": "illust_token_10020_ling_soul1_1",
+          "avatarId": "token_10020_ling_soul1",
+          "portraitId": "token_10020_ling_soul1_1",
+          "displaySkin": {
+            "skinName": null,
+            "modelName": null,
+            "drawerName": null
+          }
+        }
+      ],
       "isCnOnly": false,
-      "fileIndex": 250,
+      "fileIndex": 253,
       "operatorName": "Ling"
     },
     {
@@ -24544,8 +25221,22 @@
         }
       ],
       "cnName": "“逍遥”",
+      "voices": [],
+      "skins": [
+        {
+          "skinId": "token_10020_ling_soul2#1",
+          "illustId": "illust_token_10020_ling_soul2_1",
+          "avatarId": "token_10020_ling_soul2",
+          "portraitId": "token_10020_ling_soul2_1",
+          "displaySkin": {
+            "skinName": null,
+            "modelName": null,
+            "drawerName": null
+          }
+        }
+      ],
       "isCnOnly": false,
-      "fileIndex": 251,
+      "fileIndex": 254,
       "operatorName": "Ling"
     },
     {
@@ -26388,8 +27079,22 @@
         }
       ],
       "cnName": "“弦惊”",
+      "voices": [],
+      "skins": [
+        {
+          "skinId": "token_10020_ling_soul3#1",
+          "illustId": "illust_token_10020_ling_soul3_1",
+          "avatarId": "token_10020_ling_soul3",
+          "portraitId": "token_10020_ling_soul3_1",
+          "displaySkin": {
+            "skinName": null,
+            "modelName": null,
+            "drawerName": null
+          }
+        }
+      ],
       "isCnOnly": false,
-      "fileIndex": 252,
+      "fileIndex": 255,
       "operatorName": "Ling"
     }
   ],
@@ -26891,8 +27596,33 @@
         }
       ],
       "cnName": "眠兽",
+      "voices": [],
+      "skins": [
+        {
+          "skinId": "token_10021_blkngt_hypnos#1",
+          "illustId": "illust_token_10021_blkngt_hypnos_1",
+          "avatarId": "token_10021_blkngt_hypnos",
+          "portraitId": "token_10021_blkngt_hypnos_1",
+          "displaySkin": {
+            "skinName": null,
+            "modelName": null,
+            "drawerName": null
+          }
+        },
+        {
+          "skinId": "token_10021_blkngt_hypnos_summer#8",
+          "illustId": null,
+          "avatarId": "token_10021_blkngt_hypnos_summer#8",
+          "portraitId": null,
+          "displaySkin": {
+            "skinName": null,
+            "modelName": null,
+            "drawerName": null
+          }
+        }
+      ],
       "isCnOnly": false,
-      "fileIndex": 253,
+      "fileIndex": 256,
       "operatorName": "Blacknight"
     }
   ],
@@ -27524,8 +28254,44 @@
       "charId": "token_10022_kazema_shadow",
       "skillData": [],
       "cnName": "纸偶",
+      "voices": [],
+      "skins": [
+        {
+          "skinId": "token_10022_kazema_shadow#1",
+          "illustId": "illust_token_10022_kazema_shadow_1",
+          "avatarId": "token_10022_kazema_shadow",
+          "portraitId": "token_10022_kazema_shadow_1",
+          "displaySkin": {
+            "skinName": null,
+            "modelName": null,
+            "drawerName": null
+          }
+        },
+        {
+          "skinId": "token_10022_kazema_shadow#2",
+          "illustId": "illust_token_10022_kazema_shadow_2",
+          "avatarId": "token_10022_kazema_shadow_2",
+          "portraitId": "token_10022_kazema_shadow_2",
+          "displaySkin": {
+            "skinName": null,
+            "modelName": null,
+            "drawerName": null
+          }
+        },
+        {
+          "skinId": "token_10022_kazema_shadow_witch#3",
+          "illustId": null,
+          "avatarId": "token_10022_kazema_shadow_witch#3",
+          "portraitId": null,
+          "displaySkin": {
+            "skinName": null,
+            "modelName": null,
+            "drawerName": null
+          }
+        }
+      ],
       "isCnOnly": false,
-      "fileIndex": 254,
+      "fileIndex": 257,
       "operatorName": "Kazemaru"
     }
   ],
@@ -28757,25 +29523,37 @@
         }
       ],
       "cnName": "可靠电池",
+      "voices": [],
+      "skins": [
+        {
+          "skinId": "token_10023_windft_wrench#1",
+          "illustId": "illust_token_10023_windft_wrench_1",
+          "avatarId": "token_10023_windft_wrench",
+          "portraitId": "token_10023_windft_wrench_1",
+          "displaySkin": {
+            "skinName": null,
+            "modelName": null,
+            "drawerName": null
+          }
+        }
+      ],
       "isCnOnly": false,
-      "fileIndex": 255,
+      "fileIndex": 258,
       "operatorName": "Windflit"
     }
   ],
   "Ebenholz": [
     {
-      "name": "Old Day Remnants",
+      "name": "Remnants of Days Past",
       "description": null,
       "canUseGeneralPotentialItem": true,
-      "canUseActivityPotentialItem": false,
-      "potentialItemId": null,
-      "activityPotentialItemId": null,
+      "potentialItemId": "",
       "nationId": null,
       "groupId": null,
       "teamId": null,
       "displayNumber": null,
       "tokenKey": null,
-      "appellation": "Old Day Remnants",
+      "appellation": " ",
       "position": "ALL",
       "tagList": null,
       "itemUsage": null,
@@ -29191,9 +29969,9 @@
           "hidden": false,
           "levels": [
             {
-              "name": "闪回",
+              "name": "Flashback",
               "rangeId": null,
-              "description": "敌人接近时会激活，激活后对周围所有敌人造成法术伤害并令以<@ba.vup>中等力度</>拖拽敌人至自身中心",
+              "description": "Activates when enemies approach. On activation, deals Arts damage to all nearby enemies and drags them towards itself <@ba.vup>moderately</>",
               "skillType": 2,
               "durationType": 0,
               "spData": {
@@ -29219,9 +29997,9 @@
               "range": null
             },
             {
-              "name": "闪回",
+              "name": "Flashback",
               "rangeId": null,
-              "description": "敌人接近时会激活，激活后对周围所有敌人造成法术伤害并令以<@ba.vup>中等力度</>拖拽敌人至自身中心",
+              "description": "Activates when enemies approach. On activation, deals Arts damage to all nearby enemies and drags them towards itself <@ba.vup>moderately</>",
               "skillType": 2,
               "durationType": 0,
               "spData": {
@@ -29247,9 +30025,9 @@
               "range": null
             },
             {
-              "name": "闪回",
+              "name": "Flashback",
               "rangeId": null,
-              "description": "敌人接近时会激活，激活后对周围所有敌人造成法术伤害并令以<@ba.vup>中等力度</>拖拽敌人至自身中心",
+              "description": "Activates when enemies approach. On activation, deals Arts damage to all nearby enemies and drags them towards itself <@ba.vup>moderately</>",
               "skillType": 2,
               "durationType": 0,
               "spData": {
@@ -29275,9 +30053,9 @@
               "range": null
             },
             {
-              "name": "闪回",
+              "name": "Flashback",
               "rangeId": null,
-              "description": "敌人接近时会激活，激活后对周围所有敌人造成法术伤害并令以<@ba.vup>中等力度</>拖拽敌人至自身中心",
+              "description": "Activates when enemies approach. On activation, deals Arts damage to all nearby enemies and drags them towards itself <@ba.vup>moderately</>",
               "skillType": 2,
               "durationType": 0,
               "spData": {
@@ -29303,9 +30081,9 @@
               "range": null
             },
             {
-              "name": "闪回",
+              "name": "Flashback",
               "rangeId": null,
-              "description": "敌人接近时会激活，激活后对周围所有敌人造成法术伤害并令以<@ba.vup>中等力度</>拖拽敌人至自身中心",
+              "description": "Activates when enemies approach. On activation, deals Arts damage to all nearby enemies and drags them towards itself <@ba.vup>moderately</>",
               "skillType": 2,
               "durationType": 0,
               "spData": {
@@ -29331,9 +30109,9 @@
               "range": null
             },
             {
-              "name": "闪回",
+              "name": "Flashback",
               "rangeId": null,
-              "description": "敌人接近时会激活，激活后对周围所有敌人造成法术伤害并令以<@ba.vup>中等力度</>拖拽敌人至自身中心",
+              "description": "Activates when enemies approach. On activation, deals Arts damage to all nearby enemies and drags them towards itself <@ba.vup>moderately</>",
               "skillType": 2,
               "durationType": 0,
               "spData": {
@@ -29359,9 +30137,9 @@
               "range": null
             },
             {
-              "name": "闪回",
+              "name": "Flashback",
               "rangeId": null,
-              "description": "敌人接近时会激活，激活后对周围所有敌人造成法术伤害并令以<@ba.vup>中等力度</>拖拽敌人至自身中心",
+              "description": "Activates when enemies approach. On activation, deals Arts damage to all nearby enemies and drags them towards itself <@ba.vup>moderately</>",
               "skillType": 2,
               "durationType": 0,
               "spData": {
@@ -29387,9 +30165,9 @@
               "range": null
             },
             {
-              "name": "闪回",
+              "name": "Flashback",
               "rangeId": null,
-              "description": "敌人接近时会激活，激活后对周围所有敌人造成法术伤害并令以<@ba.vup>中等力度</>拖拽敌人至自身中心",
+              "description": "Activates when enemies approach. On activation, deals Arts damage to all nearby enemies and drags them towards itself <@ba.vup>moderately</>",
               "skillType": 2,
               "durationType": 0,
               "spData": {
@@ -29415,9 +30193,9 @@
               "range": null
             },
             {
-              "name": "闪回",
+              "name": "Flashback",
               "rangeId": null,
-              "description": "敌人接近时会激活，激活后对周围所有敌人造成法术伤害并令以<@ba.vup>中等力度</>拖拽敌人至自身中心",
+              "description": "Activates when enemies approach. On activation, deals Arts damage to all nearby enemies and drags them towards itself <@ba.vup>moderately</>",
               "skillType": 2,
               "durationType": 0,
               "spData": {
@@ -29443,9 +30221,9 @@
               "range": null
             },
             {
-              "name": "闪回",
+              "name": "Flashback",
               "rangeId": null,
-              "description": "敌人接近时会激活，激活后对周围所有敌人造成法术伤害并令以<@ba.vup>中等力度</>拖拽敌人至自身中心",
+              "description": "Activates when enemies approach. On activation, deals Arts damage to all nearby enemies and drags them towards itself <@ba.vup>moderately</>",
               "skillType": 2,
               "durationType": 0,
               "spData": {
@@ -29474,8 +30252,22 @@
         }
       ],
       "cnName": "旧日残影",
-      "isCnOnly": true,
-      "fileIndex": 291,
+      "voices": [],
+      "skins": [
+        {
+          "skinId": "token_10024_ebnhlz_rcube#1",
+          "illustId": "illust_token_10024_ebnhlz_rcube_1",
+          "avatarId": "token_10024_ebnhlz_rcube",
+          "portraitId": "token_10024_ebnhlz_rcube_1",
+          "displaySkin": {
+            "skinName": null,
+            "modelName": null,
+            "drawerName": null
+          }
+        }
+      ],
+      "isCnOnly": false,
+      "fileIndex": 259,
       "operatorName": "Ebenholz"
     }
   ],
@@ -31432,6 +32224,20 @@
         }
       ],
       "cnName": "共振装置",
+      "voices": [],
+      "skins": [
+        {
+          "skinId": "token_10025_doroth_recttp#1",
+          "illustId": "illust_token_10025_doroth_recttp_1",
+          "avatarId": "token_10025_doroth_recttp",
+          "portraitId": "token_10025_doroth_recttp_1",
+          "displaySkin": {
+            "skinName": null,
+            "modelName": null,
+            "drawerName": null
+          }
+        }
+      ],
       "isCnOnly": true,
       "fileIndex": 292,
       "operatorName": "Dorothy"
@@ -33196,6 +34002,20 @@
         }
       ],
       "cnName": "“打字机”",
+      "voices": [],
+      "skins": [
+        {
+          "skinId": "token_10026_bgsnow_subbow#1",
+          "illustId": "illust_token_10026_bgsnow_subbow_1",
+          "avatarId": "token_10026_bgsnow_subbow",
+          "portraitId": "token_10026_bgsnow_subbow_1",
+          "displaySkin": {
+            "skinName": null,
+            "modelName": null,
+            "drawerName": null
+          }
+        }
+      ],
       "isCnOnly": true,
       "fileIndex": 293,
       "operatorName": "Позёмка"
@@ -34449,6 +35269,20 @@
         }
       ],
       "cnName": "白铁™多功能平台",
+      "voices": [],
+      "skins": [
+        {
+          "skinId": "token_10027_ironmn_pile1#1",
+          "illustId": "illust_token_10027_ironmn_pile1_1",
+          "avatarId": "token_10027_ironmn_pile1",
+          "portraitId": "token_10027_ironmn_pile1_1",
+          "displaySkin": {
+            "skinName": null,
+            "modelName": null,
+            "drawerName": null
+          }
+        }
+      ],
       "isCnOnly": true,
       "fileIndex": 294,
       "operatorName": "Stainless"
@@ -35842,6 +36676,20 @@
         }
       ],
       "cnName": "白铁™多功能平台",
+      "voices": [],
+      "skins": [
+        {
+          "skinId": "token_10027_ironmn_pile2#1",
+          "illustId": "illust_token_10027_ironmn_pile2_1",
+          "avatarId": "token_10027_ironmn_pile2",
+          "portraitId": "token_10027_ironmn_pile2_1",
+          "displaySkin": {
+            "skinName": null,
+            "modelName": null,
+            "drawerName": null
+          }
+        }
+      ],
       "isCnOnly": true,
       "fileIndex": 295,
       "operatorName": "Stainless"
@@ -38534,6 +39382,20 @@
         }
       ],
       "cnName": "铁钳号·原型机",
+      "voices": [],
+      "skins": [
+        {
+          "skinId": "token_10027_ironmn_pile3#1",
+          "illustId": "illust_token_10027_ironmn_pile3_1",
+          "avatarId": "token_10027_ironmn_pile3",
+          "portraitId": "token_10027_ironmn_pile3_1",
+          "displaySkin": {
+            "skinName": null,
+            "modelName": null,
+            "drawerName": null
+          }
+        }
+      ],
       "isCnOnly": true,
       "fileIndex": 296,
       "operatorName": "Stainless"
@@ -39379,6 +40241,20 @@
         }
       ],
       "cnName": "狼群",
+      "voices": [],
+      "skins": [
+        {
+          "skinId": "token_10028_vigil_wolf#1",
+          "illustId": "illust_token_10028_vigil_wolf_1",
+          "avatarId": "token_10028_vigil_wolf",
+          "portraitId": "token_10028_vigil_wolf_1",
+          "displaySkin": {
+            "skinName": null,
+            "modelName": null,
+            "drawerName": null
+          }
+        }
+      ],
       "isCnOnly": true,
       "fileIndex": 297,
       "operatorName": "Vigil"
@@ -39611,6 +40487,20 @@
         }
       ],
       "cnName": "猎潮的骑士",
+      "voices": [],
+      "skins": [
+        {
+          "skinId": "trap_079_allydonq#1",
+          "illustId": "illust_trap_079_allydonq_1",
+          "avatarId": "trap_079_allydonq",
+          "portraitId": "trap_079_allydonq_1",
+          "displaySkin": {
+            "skinName": null,
+            "modelName": null,
+            "drawerName": null
+          }
+        }
+      ],
       "isCnOnly": true,
       "fileIndex": 298
     }

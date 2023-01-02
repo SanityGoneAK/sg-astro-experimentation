@@ -8,6 +8,7 @@
     "build": "astro build",
     "preview": "astro preview",
     "astro": "astro",
+    "update-operators": "sucrase-node scripts/copy-operators.ts",
     "update-game-data": "git submodule update --init --recursive --remote && sucrase-node ./scripts/copy-branches.ts && sucrase-node scripts/copy-operators.ts && sucrase-node ./scripts/copy-modules.ts && sucrase-node ./scripts/build-search-index.ts"
   },
   "dependencies": {

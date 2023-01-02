@@ -21,6 +21,7 @@ export interface Character {
   potentialRanks: PotentialRanks[];
   talents: Talent[];
   skillData: Skill[];
+  voices: Voice[];
   [otherProperties: string]: unknown;
 }
 
@@ -192,4 +193,10 @@ export interface ModulePhase {
   range: Range | null;
   attributeBlackboard: InterpolatedValue[];
   requiredPotentialRank: number; // 0-indexed
+}
+
+interface Voice {
+  wordkey: string;
+  voiceLangType: string;
+  cvName: string;
 }

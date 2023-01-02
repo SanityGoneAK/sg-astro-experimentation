@@ -6,6 +6,8 @@ import cnCharacterTable from "../ArknightsGameData/zh_CN/gamedata/excel/characte
 import enSkillTable from "../ArknightsGameData/en_US/gamedata/excel/skill_table.json";
 import cnSkillTable from "../ArknightsGameData/zh_CN/gamedata/excel/skill_table.json";
 import rangeTable from "../ArknightsGameData/zh_CN/gamedata/excel/range_table.json";
+import voiceTable from "../ArknightsGameData/zh_CN/gamedata/excel/charword_table.json";
+import skinTable from "../ArknightsGameData/zh_CN/gamedata/excel/skin_table.json";
 import jetSkillTranslations from "./translations/jet/skills.json";
 import jetTalentTranslations from "./translations/jet/talents.json";
 import { fixJetSkillDescriptionTags } from "./fix-jet-skill-descs";
@@ -175,6 +177,30 @@ void (async () => {
         })
         .filter((skillData) => !!skillData);
 
+      const voiceLang = voiceTable["voiceLangDict" as keyof typeof voiceTable];
+      const voiceActorObject = voiceLang[charId as keyof typeof voiceLang];
+      const voices = voiceActorObject
+        ? // @ts-expect-error STINGGY WHY??
+          Object.values(voiceActorObject.dict)
+        : [];
+
+      const charSkins = skinTable["charSkins" as keyof typeof skinTable];
+      const skins = Object.values(charSkins)
+        .filter((skin) => skin.charId == charId)
+        .map((skin) => {
+          return {
+            skinId: skin.skinId,
+            illustId: skin.illustId,
+            avatarId: skin.avatarId,
+            portraitId: skin.portraitId,
+            displaySkin: {
+              skinName: skin.displaySkin.skinName,
+              modelName: skin.displaySkin.modelName,
+              drawerName: skin.displaySkin.drawerName,
+            },
+          };
+        });
+
       const mostRecentCharData =
         cnCharacterTable[charId as keyof typeof cnCharacterTable] ??
         enPatchChars[charId as keyof typeof enPatchChars];
@@ -191,6 +217,8 @@ void (async () => {
         talents,
         skillData,
         cnName,
+        voices,
+        skins,
         subProfessionId,
         name: characterName,
         isCnOnly,
@@ -236,3 +264,5 @@ void (async () => {
     JSON.stringify(summonsJson, null, 2)
   );
 })();
+
+// voiceLangDict
