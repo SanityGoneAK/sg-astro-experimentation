@@ -1,3 +1,6 @@
 [submodule "ArknightsGameData"]
 	path = ArknightsGameData
 	url = https://github.com/Kengxxiao/ArknightsGameData.git
+[submodule "viktorlab-fork"]
+	path = viktorlab-fork
+	url = https://github.com/iansjk/viktorlab-fork.git
