@@ -1,0 +1,365 @@
+<script lang="ts">
+  import { calculateDps } from "../../viktorlab-fork/resources/attributes.js";
+  // @ts-expect-error idk why ts-inside-svelte-inside-astro hates json imports
+  import dpsOptions from "../../viktorlab-fork/resources/customdata/dps_options.json";
+
+  interface Skill {
+    skillId: string;
+    skillName: string;
+  }
+
+  interface Module {
+    moduleId: string;
+    moduleName: string;
+    phases: number[];
+  }
+
+  interface Operator {
+    id: string;
+    name: string;
+    rarity: number;
+    skills: Skill[];
+    modules: Module[];
+  }
+
+  export let operators: { [operatorId: string]: Operator } = {};
+
+  let operatorId: string | null = null;
+  let operator: Operator | null = null;
+
+  let maxElite = 0;
+  let elite: number | null = 0;
+  let maxLevel = 30;
+  let level: number | null = 30;
+  let potential: number | null = 1;
+  let trust: number | null = 100;
+  let skill: Skill | null = null;
+  let skillLevel: number | null = 7;
+  let module: Module | null = null;
+  let moduleLevel: number | null = 1;
+  let buffsEnabled = true;
+  let operatorDpsOptionsTagList: Array<keyof typeof dpsOptions.tags> = [];
+  let operatorDpsOptions: Partial<
+    Record<keyof typeof dpsOptions.tags, boolean>
+  >;
+
+  $: handleOperatorIdChanged(operatorId);
+
+  function handleOperatorIdChanged(operatorId: string | null) {
+    operator = operatorId ? operators[operatorId] : null;
+    if (!operator) {
+      return;
+    }
+
+    skillLevel = operator.rarity >= 4 ? 10 : 7;
+
+    if (operator.rarity >= 4) {
+      maxElite = 2;
+    } else if (operator.rarity > 2) {
+      maxElite = 1;
+    } else {
+      maxElite = 0;
+    }
+    elite = maxElite;
+
+    maxLevel = (() => {
+      if (elite === 2) {
+        switch (operator.rarity) {
+          case 6:
+            return 90;
+          case 5:
+            return 80;
+          case 4:
+            return 70;
+        }
+      } else if (elite === 1) {
+        switch (operator.rarity) {
+          case 6:
+            return 80;
+          case 5:
+            return 70;
+          case 4:
+            return 60;
+          case 3:
+            return 55;
+        }
+      }
+      // elite 0
+      switch (operator.rarity) {
+        case 6:
+        case 5:
+          return 50;
+        case 4:
+          return 45;
+        case 3:
+          return 40;
+      }
+      return 30;
+    })();
+
+    level = maxLevel;
+
+    skill = operator.skills.at(-1);
+
+    module = operator.modules[0];
+    moduleLevel = module?.phases?.length ?? 0;
+
+    operatorDpsOptionsTagList = dpsOptions.char[
+      operatorId as keyof typeof dpsOptions.char
+    ] as Array<keyof typeof dpsOptions.tags>;
+
+    operatorDpsOptions = operatorDpsOptionsTagList.reduce<
+      Partial<Record<keyof typeof dpsOptions.tags, boolean>>
+    >((acc, tag) => {
+      acc[tag] = !dpsOptions.tags[tag].off;
+      return acc;
+    }, {});
+  }
+
+  let enemyConfig: Exclude<Parameters<typeof calculateDps>[1], undefined> = {
+    def: 0,
+    magicResistance: 0,
+    count: 1,
+  };
+
+  let raidBuff: Exclude<Parameters<typeof calculateDps>[2], undefined> = {
+    atk: 0,
+    atkpct: 0,
+    ats: 0,
+    base_atk: 0,
+    cdr: 0,
+    damage_scale: 0,
+  };
+
+  $: calculateDpsResult = operatorId
+    ? calculateDps(
+        {
+          charId: operatorId,
+          phase: elite,
+          level: level ?? 1,
+          potentialRank: (potential ?? 1) - 1,
+          favor: trust ?? 100,
+          skillId: skill?.skillId ?? "",
+          skillLevel: (skillLevel ?? 1) - 1,
+          equipId: module?.moduleId ?? "",
+          equipLevel: moduleLevel ?? 1,
+          options: {
+            ...operatorDpsOptions,
+            buff: buffsEnabled,
+          },
+        },
+        enemyConfig,
+        raidBuff
+      )
+    : null;
+</script>
+
+<div id="calc">
+  <div>
+    <section>
+      <h2>Operator config</h2>
+      <label>
+        Operator
+        <select bind:value={operatorId}>
+          {#each Object.values(operators) as op (op.id)}
+            <option value={op.id}>{op.name}</option>
+          {/each}
+        </select>
+      </label>
+
+      {#if operator}
+        <label>
+          Elite
+          <input bind:value={elite} type="number" min="0" max={maxElite} />
+        </label>
+        <label>
+          Level
+          <input bind:value={level} type="number" min="1" max={maxLevel} />
+        </label>
+        <label>
+          Potential
+          <input bind:value={potential} type="number" min="0" max="6" />
+        </label>
+        <label>
+          Trust
+          <input bind:value={trust} type="number" min="0" max="200" />
+        </label>
+
+        {#if operator.skills.length > 0}
+          <label>
+            Skill
+            <select bind:value={skill}>
+              {#each operator.skills as skill (skill.skillId)}
+                <option value={skill}>{skill.skillName}</option>
+              {/each}
+            </select>
+          </label>
+
+          <label>
+            Skill Level
+            <select bind:value={skillLevel}>
+              {#each [...Array(operator.rarity === 3 ? 7 : 10).keys()].map((i) => i + 1) as skLevel (skLevel)}
+                <option value={skLevel}
+                  >{skLevel > 7 ? `M${skLevel - 7}` : skLevel}</option
+                >
+              {/each}
+            </select>
+          </label>
+        {/if}
+
+        {#if operator.modules.length > 0}
+          <label>
+            Module
+            <select bind:value={module}>
+              {#each operator.modules as module (module.moduleId)}
+                <option value={module}>{module.moduleName}</option>
+              {/each}
+            </select>
+          </label>
+
+          <label>
+            Module Level
+            <input
+              type="number"
+              bind:value={moduleLevel}
+              min="1"
+              max={module.phases.length}
+            />
+          </label>
+        {/if}
+
+        {#if operatorDpsOptionsTagList.length > 0}
+          <h3>Other options</h3>
+          {#each operatorDpsOptionsTagList as tag (tag)}
+            <label>
+              <input type="checkbox" bind:checked={operatorDpsOptions[tag]} />
+              {tag}
+            </label>
+          {/each}
+        {/if}
+      {/if}
+    </section>
+
+    <section>
+      <h2>Enemy config</h2>
+      <label>
+        Defense
+        <input type="number" bind:value={enemyConfig.def} min="0" />
+      </label>
+
+      <label>
+        Arts Resistance
+        <input
+          type="number"
+          bind:value={enemyConfig.magicResistance}
+          min="0"
+          max="100"
+        />
+      </label>
+
+      <label>
+        Enemy count
+        <input type="number" bind:value={enemyConfig.count} min="0" max="100" />
+      </label>
+    </section>
+
+    <section>
+      <h2>Buffs</h2>
+      <label>
+        Buffs enabled?
+        <input type="checkbox" bind:checked={buffsEnabled} />
+      </label>
+
+      <label>
+        &#177;Attack (flat increase/decrease)
+        <input type="number" bind:value={raidBuff.atk} />
+      </label>
+
+      <label>
+        &#177;Attack % (percent increase/decrease)
+        <input type="number" bind:value={raidBuff.atkpct} />
+      </label>
+
+      <label>
+        &#177;ASPD
+        <input type="number" bind:value={raidBuff.ats} />
+      </label>
+
+      <label>
+        Base Attack &#177;% (percentage increase/decrease, e.g. Contingency
+        Contract)
+        <input type="number" bind:value={raidBuff.base_atk} />
+      </label>
+
+      <label>
+        Skill Recovery &#177;%
+        <input type="number" bind:value={raidBuff.cdr} />
+      </label>
+
+      <label>
+        Attack scale &#177;%
+        <input type="number" bind:value={raidBuff.damage_scale} />
+      </label>
+    </section>
+  </div>
+
+  {#if calculateDpsResult}
+    <section>
+      <h2>Results</h2>
+
+      <dl>
+        <div>
+          <dt>Average DPS</dt>
+          <dd>{calculateDpsResult.globalDps}</dd>
+        </div>
+
+        <div>
+          <dt>Skill DPS</dt>
+          <dd>{calculateDpsResult.skill.dps}</dd>
+        </div>
+
+        <div>
+          <dt>Skill Attack Damage</dt>
+          <dd>{calculateDpsResult.skill.atk}</dd>
+        </div>
+
+        <div>
+          <dt>Basic Attack DPS</dt>
+          <dd>{calculateDpsResult.normal.dps}</dd>
+        </div>
+
+        <div>
+          <dt>Basic Attack Damage</dt>
+          <dd>{calculateDpsResult.normal.atk}</dd>
+        </div>
+      </dl>
+
+      <pre>
+				{JSON.stringify(calculateDpsResult, null, 2)}
+			</pre>
+    </section>
+  {/if}
+</div>
+
+<style>
+  #calc {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    column-gap: 2rem;
+  }
+
+  #calc section {
+    display: flex;
+    flex-direction: column;
+  }
+
+  #calc label {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+  }
+
+  dl > div {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
+</style>
