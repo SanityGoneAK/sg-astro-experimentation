@@ -13,24 +13,22 @@ const operators = Object.values(characterTable).filter(
 ---
 
 <Layout title="Welcome to Astro.">
-  <main>
-    <h1>Welcome to <span class="text-gradient">Astro</span></h1>
-    <p class="instructions">
-      Check out the <code>src/pages</code> directory to get started.<br />
-      <strong>Code Challenge:</strong> Tweak the "Welcome to Astro" message above.
-    </p>
-    <ul role="list" class="link-card-grid">
-      {
-        operators.map((op) => (
-          <Card
-            href={`/operators/${slugify(op.name)}`}
-            title={op.name}
-            body={op.itemUsage ?? ""}
-          />
-        ))
-      }
-    </ul>
-  </main>
+  <h1>Welcome to <span class="text-gradient">Astro</span></h1>
+  <p class="instructions">
+    Check out the <code>src/pages</code> directory to get started.<br />
+    <strong>Code Challenge:</strong> Tweak the "Welcome to Astro" message above.
+  </p>
+  <ul role="list" class="link-card-grid">
+    {
+      operators.map((op) => (
+        <Card
+          href={`/operators/${slugify(op.name)}`}
+          title={op.name}
+          body={op.itemUsage ?? ""}
+        />
+      ))
+    }
+  </ul>
 </Layout>
 
 <style>
