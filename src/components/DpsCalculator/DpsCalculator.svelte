@@ -1,7 +1,6 @@
 <script lang="ts">
   import { calculateDps } from "../../../../viktorlab-fork/resources/attributes.js
-  // @ts-expect-error idk why ts-inside-svelte-inside-astro hates json imports
-  import dpsOptions from "../../viktorlab-fork/resources/customdata/dps_options.json";
+  import dpsOptions from "../../../../viktorlab-fork/resources/customdata/dps_options.json";
 
   interface Skill {
     skillId: string;
