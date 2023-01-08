@@ -2,6 +2,11 @@
 import InterpunctSpacer from "../InterpunctSpacer/InterpunctSpacer.astro";
 import TraitInfo from "../TraitInfo";
 import {
+  operatorAvatar,
+  operatorBranchIcon,
+  operatorClassIcon,
+} from "../../utils/images";
+import {
   professionToClass,
   subProfessionIdToSubclass,
 } from "../../utils/classes";
@@ -16,6 +21,7 @@ interface Props {
 
 const { character } = Astro.props;
 const [baseName, alterName] = character.name.split(/ the /i);
+const operatorClass = professionToClass(character.profession);
 ---
 
 <script>
@@ -36,24 +42,52 @@ const [baseName, alterName] = character.name.split(/ the /i);
 </script>
 
 <div class={classes.root}>
-  <div class={classes.name}>
-    <h2 class={classes.baseName}>{baseName}</h2>
-    {alterName && <h3 class={classes.alterName}>The {alterName}</h3>}
+  <div class={classes.portraitNameRarity}>
+    <img
+      class={classes.portrait}
+      src={operatorAvatar(character.charId)}
+      alt=""
+    />
+    <div class={classes.name}>
+      <h2 class={classes.baseName}>{baseName}</h2>
+      {alterName && <h3 class={classes.alterName}>The {alterName}</h3>}
+    </div>
+    <!-- TODO rarity -->
   </div>
 
-  <div class={classes.classBranch}>
-    {professionToClass(character.profession)}
-    {subProfessionIdToSubclass(character.subProfessionId)}
-    <InterpunctSpacer />
-    {getMeleeOrRangedOrBoth(character.position, character.description)}
-  </div>
+  <div class={classes.classBranchTraitToggle}>
+    <div class={classes.classBranch}>
+      <span class={classes.classBranchNameAndIconWrapper}>
+        <img
+          class={classes.classBranchIcon}
+          src={operatorClassIcon(operatorClass.toLowerCase())}
+          alt=""
+        />
+        {operatorClass}
+      </span>
+      <span class={classes.branchNameAndIconWrapper}>
+        <img
+          class={classes.classBranchIcon}
+          src={operatorBranchIcon(character.subProfessionId)}
+          alt=""
+        />
+        {subProfessionIdToSubclass(character.subProfessionId)}
+      </span>
+      <InterpunctSpacer class={classes.spacer} />
+      <span class={classes.position}
+        >{
+          getMeleeOrRangedOrBoth(character.position, character.description)
+        }</span
+      >
+    </div>
 
-  <button
-    id="trait-toggle"
-    class={classes.traitToggle}
-    aria-pressed="false"
-    aria-controls="trait-info-container">Trait</button
-  >
+    <button
+      id="trait-toggle"
+      class={classes.traitToggle}
+      aria-pressed="false"
+      aria-controls="trait-info-container">Trait</button
+    >
+  </div>
 
   <div hidden id="trait-info-container" class={classes.traitInfo}>
     <TraitInfo
