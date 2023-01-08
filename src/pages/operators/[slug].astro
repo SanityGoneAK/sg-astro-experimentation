@@ -10,6 +10,7 @@ import type * as OutputTypes from "../../output-types";
 import * as classes from "./_[slug].css";
 import { linkStyle } from "../../theme.css";
 import { operatorAvatar } from "../../utils/images";
+import CharacterSplash from "../../components/CharacterSplash";
 
 export function getStaticPaths() {
   return Object.entries(operators)
@@ -79,7 +80,9 @@ const { subProfessionId } = char;
       </a>
     </div>
     <div class={classes.characterContainer}>
-      <section>Character Image</section>
+      <section>
+        <CharacterSplash client:visible characterObject={char} />
+      </section>
       <section>Character Details</section>
     </div>
     <div>

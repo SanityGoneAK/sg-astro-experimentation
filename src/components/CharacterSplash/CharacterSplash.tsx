@@ -1,25 +1,59 @@
-import React from "react";
+import React, { useState } from "react";
 import { Tab } from "@headlessui/react";
 import * as classes from "./styles.css";
 
 import type * as OutputTypes from "../../output-types";
-
+import { operatorSplash, operatorSplashAvatar } from "../../utils/images";
 export interface CharacterSplashProps {
   characterObject: OutputTypes.Character;
 }
 
-const CharacterSplash: React.FC<CharacterSplashProps> = ({}) => {
+const CharacterSplash: React.FC<CharacterSplashProps> = ({
+  characterObject,
+}) => {
+  const { skins, voices } = characterObject;
+
   return (
-    <Tab.Group>
-      <Tab.List>
-        <Tab>Tab 1</Tab>
-        <Tab>Tab 2</Tab>
-        <Tab>Tab 3</Tab>
+    <Tab.Group as={"div"} className={classes.container}>
+      <Tab.List className={classes.tabList}>
+        {skins.map((skin) => {
+          return (
+            <Tab className={classes.tabIcon} key={skin.skinId}>
+              <img
+                className={classes.tabIconImage}
+                src={operatorSplashAvatar(skin.avatarId)}
+                alt=""
+              />
+            </Tab>
+          );
+        })}
       </Tab.List>
       <Tab.Panels>
-        <Tab.Panel>Content 1</Tab.Panel>
-        <Tab.Panel>Content 2</Tab.Panel>
-        <Tab.Panel>Content 3</Tab.Panel>
+        {skins.map((skin) => {
+          return (
+            <Tab.Panel className={classes.tabPanel} key={skin.skinId}>
+              <img
+                className={classes.tabPanelImage}
+                src={operatorSplash(skin.portraitId)}
+                alt=""
+              />
+              <div className={classes.operatorInfo}>
+                <div className={classes.operatorInfoLabelContainer}>
+                  <span className={classes.operatorInfoLabelTitle}>Artist</span>
+                  {skin.displaySkin.drawerName}
+                </div>
+                <div className={classes.operatorInfoLabelContainer}>
+                  <span className={classes.operatorInfoLabelTitle}>VA</span>
+                  <ul className={classes.operatorInfoVoiceList}>
+                    {voices.map((voice) => (
+                      <li key={voice.voiceLangType}>{voice.cvName}</li>
+                    ))}
+                  </ul>
+                </div>
+              </div>
+            </Tab.Panel>
+          );
+        })}
       </Tab.Panels>
     </Tab.Group>
   );

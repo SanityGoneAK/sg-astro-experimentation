@@ -1,4 +1,4 @@
-const baseURL = "http://penguacestergonenemypresslabdbdare.stinggy.com/";
+const baseURL = "http://penguacestergonenemypresslabdbdare.stinggy.com";
 
 export const operatorAvatar = (charId: string, elite?: number): string => {
   const basePath = `${baseURL}/avatars/${charId}`;
@@ -8,6 +8,13 @@ export const operatorAvatar = (charId: string, elite?: number): string => {
     return `${basePath}_2.png`;
   }
   return `${basePath}.png`;
+};
+export const operatorSplash = (portraitId: string): string => {
+  return `${baseURL}/characters/${portraitId}.png`;
+};
+
+export const operatorSplashAvatar = (avatarId: string): string => {
+  return `${baseURL}/avatars/${avatarId}.png`;
 };
 
 export const summonImage = (id: string): string => `/images/avatars/${id}.png`;

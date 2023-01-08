@@ -22,6 +22,7 @@ export interface Character {
   talents: Talent[];
   skillData: Skill[];
   voices: Voice[];
+  skins: Skin[];
   [otherProperties: string]: unknown;
 }
 
@@ -199,4 +200,16 @@ interface Voice {
   wordkey: string;
   voiceLangType: string;
   cvName: string;
+}
+
+interface Skin {
+  skinId: string;
+  illustId: string;
+  avatarId: string;
+  portraitId: string;
+  displaySkin: {
+    skinName: string;
+    modelName: string;
+    drawerName: string;
+  };
 }
