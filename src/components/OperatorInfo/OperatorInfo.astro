@@ -6,6 +6,7 @@ import {
   subProfessionIdToSubclass,
 } from "../../utils/classes";
 import { getMeleeOrRangedOrBoth } from "./helpers";
+import * as classes from "./styles.css";
 
 import type * as OutputTypes from "../../output-types";
 
@@ -34,23 +35,30 @@ const [baseName, alterName] = character.name.split(/ the /i);
   });
 </script>
 
-<h2>{baseName}</h2>
-{alterName && <h3>The {alterName}</h3>}
+<div class={classes.root}>
+  <div class={classes.name}>
+    <h2 class={classes.baseName}>{baseName}</h2>
+    {alterName && <h3 class={classes.alterName}>The {alterName}</h3>}
+  </div>
 
-{professionToClass(character.profession)}
-{subProfessionIdToSubclass(character.subProfessionId)}
-<InterpunctSpacer />
-{getMeleeOrRangedOrBoth(character.position, character.description)}
+  <div class={classes.classBranch}>
+    {professionToClass(character.profession)}
+    {subProfessionIdToSubclass(character.subProfessionId)}
+    <InterpunctSpacer />
+    {getMeleeOrRangedOrBoth(character.position, character.description)}
+  </div>
 
-<button
-  aria-pressed="false"
-  id="trait-toggle"
-  aria-controls="trait-info-container">Trait</button
->
+  <button
+    id="trait-toggle"
+    class={classes.traitToggle}
+    aria-pressed="false"
+    aria-controls="trait-info-container">Trait</button
+  >
 
-<div hidden id="trait-info-container">
-  <TraitInfo
-    subProfessionId={character.subProfessionId}
-    showSubclassIcon={true}
-  />
+  <div hidden id="trait-info-container" class={classes.traitInfo}>
+    <TraitInfo
+      subProfessionId={character.subProfessionId}
+      showSubclassIcon={true}
+    />
+  </div>
 </div>
