@@ -21,6 +21,14 @@
     modules: Module[];
   }
 
+  type OperatorDpsOptionsMap = { [tag: string]: OperatorDpsOption };
+
+  interface OperatorDpsOption {
+    text: string;
+    tooltip?: string;
+    enabled: boolean;
+  }
+
   export let operators: { [operatorId: string]: Operator } = {};
 
   let operatorId: string | null = null;
@@ -37,10 +45,8 @@
   let module: Module | null = null;
   let moduleLevel: number | null = 1;
   let buffsEnabled = true;
-  let operatorDpsOptionsTagList: Array<keyof typeof dpsOptions.tags> = [];
-  let operatorDpsOptions: Partial<
-    Record<keyof typeof dpsOptions.tags, boolean>
-  >;
+  let operatorDpsOptionsTagList: string[] = [];
+  let operatorDpsOptions: OperatorDpsOptionsMap = {};
 
   $: handleOperatorIdChanged(operatorId);
 
@@ -98,7 +104,7 @@
 
     level = maxLevel;
 
-    skill = operator.skills.at(-1);
+    skill = operator.skills.at(-1) ?? null;
 
     module = operator.modules[0];
     moduleLevel = module?.phases?.length ?? 0;
@@ -107,12 +113,70 @@
       operatorId as keyof typeof dpsOptions.char
     ] as Array<keyof typeof dpsOptions.tags>;
 
-    operatorDpsOptions = operatorDpsOptionsTagList.reduce<
-      Partial<Record<keyof typeof dpsOptions.tags, boolean>>
-    >((acc, tag) => {
-      acc[tag] = !dpsOptions.tags[tag].off;
-      return acc;
-    }, {});
+    operatorDpsOptions =
+      operatorDpsOptionsTagList.reduce<OperatorDpsOptionsMap>((acc, tag) => {
+        const option: OperatorDpsOption = {
+          text: "",
+          enabled: false,
+        };
+
+        if (tag.startsWith("cond")) {
+          // these are in dps_options.cond_info but come in two formats:
+          // - `cond`: plain condition, located at dps_options.cond_info[operatorId].
+          // - `cond_somestring`: complex condition, located at dps_options.cond_info[`${operatorId}_somestring].
+          let lookupKey =
+            tag === "cond"
+              ? operatorId
+              : `${operatorId}${tag.replace(/^cond/, "")}`;
+          const tagData =
+            dpsOptions.cond_info[
+              lookupKey as keyof typeof dpsOptions.cond_info
+            ];
+          if (tagData == null) {
+            console.error(`Could not find tagData, lookupKey: ${lookupKey}`);
+            return acc;
+          }
+
+          if (typeof tagData === "number") {
+            // e.g. "char_4045_heidi":  2
+            // these are 1-indexed talent numbers (yes that is entirely unintuitive)
+            // TODO this should be improved by actually including the talent name
+            option.text = `Talent ${tagData} active?`;
+          } else if (typeof tagData === "string" && tagData === "trait") {
+            // e.g. "char_476_blkngt":  "trait"
+            // so far all of the string-type values in dps_options.cond_info are "trait"
+            // TODO this should be improved by actually including the trait name
+            option.text = "Trait active?";
+          } else if (typeof tagData === "object") {
+            // e.g. "char_322_lmlee":   { "text": "[t1]单挑", "tooltip": "周围八格内仅存在一个敌人" }
+            // here "t1" means talent 1
+            option.text = tagData.text;
+            option.tooltip = tagData.tooltip;
+          } else {
+            console.error(
+              `Unknown conditional tag data format, tagData: ${tagData}`
+            );
+            return acc;
+          }
+        } else {
+          // plain old tag: check dps_options.tags
+          const tagData = dpsOptions.tags[tag as keyof typeof dpsOptions.tags];
+          if (!tagData) {
+            console.error(`Could not find tag in dpsOptions.tags, tag: ${tag}`);
+            return acc;
+          }
+
+          option.text = tagData.displaytext;
+          option.tooltip = tagData.explain;
+          if ("off" in tagData) {
+            option.enabled = !tagData.off;
+          } else {
+            option.enabled = true;
+          }
+        }
+        acc[tag] = option;
+        return acc;
+      }, {});
   }
 
   let enemyConfig: Exclude<Parameters<typeof calculateDps>[1], undefined> = {
@@ -143,7 +207,12 @@
           equipId: module?.moduleId ?? "",
           equipLevel: moduleLevel ?? 1,
           options: {
-            ...operatorDpsOptions,
+            ...Object.fromEntries(
+              Object.entries(operatorDpsOptions).map(([tag, tagSettings]) => [
+                tag,
+                tagSettings.enabled,
+              ])
+            ),
             buff: buffsEnabled,
           },
         },
@@ -222,7 +291,7 @@
               type="number"
               bind:value={moduleLevel}
               min="1"
-              max={module.phases.length}
+              max={module?.phases?.length ?? 1}
             />
           </label>
         {/if}
@@ -230,9 +299,16 @@
         {#if operatorDpsOptionsTagList.length > 0}
           <h3>Other options</h3>
           {#each operatorDpsOptionsTagList as tag (tag)}
-            <label>
-              <input type="checkbox" bind:checked={operatorDpsOptions[tag]} />
-              {tag}
+            <label class="other-option">
+              <input
+                type="checkbox"
+                bind:checked={operatorDpsOptions[tag].enabled}
+              />
+              {`${operatorDpsOptions[tag].text}${
+                operatorDpsOptions[tag].tooltip
+                  ? ` (${operatorDpsOptions[tag].tooltip})`
+                  : ""
+              }`}
             </label>
           {/each}
         {/if}
@@ -352,7 +428,7 @@
     flex-direction: column;
   }
 
-  #calc label {
+  #calc label:not(.other-option) {
     display: grid;
     grid-template-columns: 2fr 1fr;
   }
