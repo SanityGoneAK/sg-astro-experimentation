@@ -1,6 +1,6 @@
 ---
 import InterpunctSpacer from "../InterpunctSpacer/InterpunctSpacer.astro";
-import TraitInfo from "../TraitInfo";
+import TraitInfo from "../TraitInfo/TraitInfo.astro";
 import {
   operatorAvatar,
   operatorBranchIcon,
@@ -89,10 +89,10 @@ const operatorClass = professionToClass(character.profession);
     >
   </div>
 
-  <div hidden id="trait-info-container" class={classes.traitInfo}>
-    <TraitInfo
-      subProfessionId={character.subProfessionId}
-      showSubclassIcon={true}
-    />
-  </div>
+  <TraitInfo
+    hidden
+    id="trait-info-container"
+    class={classes.traitInfo}
+    subProfessionId={character.subProfessionId}
+  />
 </div>
