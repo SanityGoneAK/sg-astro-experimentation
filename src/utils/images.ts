@@ -10,11 +10,11 @@ export const operatorAvatar = (charId: string, elite?: number): string => {
   return `${basePath}.png`;
 };
 export const operatorSplash = (portraitId: string): string => {
-  return `${baseURL}/characters/${portraitId}.png`;
+  return `${baseURL}/characters/${encodeURIComponent(portraitId)}.png`;
 };
 
 export const operatorSplashAvatar = (avatarId: string): string => {
-  return `${baseURL}/avatars/${avatarId}.png`;
+  return `${baseURL}/avatars/${encodeURIComponent(avatarId)}.png`;
 };
 
 export const summonImage = (id: string): string => `/images/avatars/${id}.png`;
