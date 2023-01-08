@@ -102,5 +102,3 @@ export const traitToggle = style({
     },
   },
 });
-
-export const traitInfo = style({});
