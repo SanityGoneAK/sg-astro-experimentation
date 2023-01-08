@@ -109,9 +109,9 @@
     module = operator.modules[0];
     moduleLevel = module?.phases?.length ?? 0;
 
-    operatorDpsOptionsTagList = dpsOptions.char[
+    operatorDpsOptionsTagList = (dpsOptions.char[
       operatorId as keyof typeof dpsOptions.char
-    ] as Array<keyof typeof dpsOptions.tags>;
+    ] ?? []) as Array<keyof typeof dpsOptions.tags>;
 
     operatorDpsOptions =
       operatorDpsOptionsTagList.reduce<OperatorDpsOptionsMap>((acc, tag) => {
