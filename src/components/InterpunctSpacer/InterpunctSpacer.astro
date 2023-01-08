@@ -1,5 +1,9 @@
 ---
 import * as classes from "./styles.css";
+
+interface Props {
+  class?: string;
+}
 ---
 
-<span class={classes.spacer}></span>
+<span class={`${classes.spacer} ${Astro.props.class ?? ""}`}></span>
