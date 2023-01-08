@@ -30,7 +30,7 @@ export const vars = createGlobalTheme(":root", {
   colors: rawColors,
   typography: {
     fontFamily: "Source Sans Pro, sans-serif",
-    secondaryFontFamily: "font-family: 'Crimson Text', serif;",
+    secondaryFontFamily: "'Crimson Text', serif",
     pageHeading: {
       fontSize: "48px",
       fontWeight: "600",
