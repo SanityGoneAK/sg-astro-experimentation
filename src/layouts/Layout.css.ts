@@ -80,7 +80,12 @@ globalStyle(`${footer} hr`, {
   borderBottom: `1px solid ${vars.colors.neutrals.midtone}`,
 });
 
-// temporary
+globalStyle(":root", {
+  // @ts-expect-error vanilla-extract doesn't like -webkit-font-smoothing
+  "-webkit-font-smoothing": "antialiased",
+});
+
+// FIXME temporary
 globalStyle("body", {
   margin: 0,
 });
