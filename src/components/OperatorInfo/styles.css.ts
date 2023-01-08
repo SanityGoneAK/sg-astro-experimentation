@@ -88,15 +88,15 @@ export const traitToggle = style({
   fontFamily: "inherit",
   fontSize: "inherit",
   fontWeight: vars.typography.body1Bold.fontWeight,
+  border: "none",
   borderRadius: 18,
   selectors: {
     "&[aria-pressed='false']": {
       opacity: 0.8,
       color: vars.colors.neutrals.white,
-      border: `1px solid ${rgba(rawColors.neutrals.white, 0.2)}`,
+      outline: `1px solid ${rgba(rawColors.neutrals.white, 0.2)}`,
     },
     "&[aria-pressed='true']": {
-      border: "none",
       background: vars.colors.neutrals.white,
       color: vars.colors.neutrals.black,
     },
