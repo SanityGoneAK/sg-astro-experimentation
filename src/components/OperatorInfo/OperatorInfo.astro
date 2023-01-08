@@ -4,6 +4,7 @@ import {
   professionToClass,
   subProfessionIdToSubclass,
 } from "../../utils/classes";
+import { getMeleeOrRangedOrBoth } from "./helpers";
 
 import type * as OutputTypes from "../../output-types";
 
@@ -48,3 +49,4 @@ const [baseName, alterName] = character.name.split(/ the /i);
     showSubclassIcon={true}
   />
 </div>
+{getMeleeOrRangedOrBoth(character.position, character.description)}
