@@ -329,6 +329,16 @@ void (() => {
       // a very different format from the module data file).
       if (moduleId in MODULE_TRANSLATIONS) {
         for (let j = 0; j < MODULE_TRANSLATIONS[moduleId].phases.length; j++) {
+          // Check if official EN translation exists. If it does, ignore the translation.
+          if (moduleId in enBattleEquipTable) {
+            // amount of phases is more than the current phase
+            if (
+              enBattleEquipTable[moduleId as keyof typeof enBattleEquipTable]
+                .phases.length > j
+            ) {
+              continue;
+            }
+          }
           if (
             candidates[
               MODULE_TRANSLATIONS[moduleId].phases[j].requiredPotentialRank
