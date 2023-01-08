@@ -1,0 +1,50 @@
+---
+import TraitInfo from "../TraitInfo";
+import {
+  professionToClass,
+  subProfessionIdToSubclass,
+} from "../../utils/classes";
+
+import type * as OutputTypes from "../../output-types";
+
+interface Props {
+  character: OutputTypes.Character;
+}
+
+const { character } = Astro.props;
+const [baseName, alterName] = character.name.split(/ the /i);
+---
+
+<script>
+  const toggleButton = document.getElementById(
+    "trait-toggle"
+  ) as HTMLButtonElement;
+  const traitInfoContainer = document.getElementById(
+    "trait-info-container"
+  ) as HTMLDivElement;
+  toggleButton.addEventListener("click", () => {
+    traitInfoContainer.hasAttribute("hidden")
+      ? traitInfoContainer.removeAttribute("hidden")
+      : traitInfoContainer.setAttribute("hidden", "");
+    toggleButton.getAttribute("aria-pressed") === "true"
+      ? toggleButton.setAttribute("aria-pressed", "false")
+      : toggleButton.setAttribute("aria-pressed", "true");
+  });
+</script>
+
+<h2>{baseName}</h2>
+{alterName && <h3>The {alterName}</h3>}
+
+{professionToClass(character.profession)}
+{subProfessionIdToSubclass(character.subProfessionId)}
+<button
+  aria-pressed="false"
+  id="trait-toggle"
+  aria-controls="trait-info-container">Trait</button
+>
+<div hidden id="trait-info-container">
+  <TraitInfo
+    subProfessionId={character.subProfessionId}
+    showSubclassIcon={true}
+  />
+</div>

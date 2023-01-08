@@ -1,7 +1,6 @@
 ---
 import slugify from "../../slugify";
 import operators from "../../../data/operators.json";
-import TraitInfo from "../../components/TraitInfo";
 import Layout from "../../layouts/Layout.astro";
 import CharacterStats from "../../components/CharacterStats";
 
@@ -11,6 +10,7 @@ import * as classes from "./_[slug].css";
 import { linkStyle } from "../../theme.css";
 import { operatorAvatar } from "../../utils/images";
 import CharacterSplash from "../../components/CharacterSplash";
+import OperatorInfo from "../../components/OperatorInfo/OperatorInfo.astro";
 
 export function getStaticPaths() {
   return Object.entries(operators)
@@ -83,7 +83,9 @@ const { subProfessionId } = char;
       <section>
         <CharacterSplash client:visible characterObject={char} />
       </section>
-      <section>Character Details</section>
+      <section>
+        <OperatorInfo character={char} />
+      </section>
     </div>
     <div>
       <a class={classes.dpsCalculatorButton} href=""
