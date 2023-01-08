@@ -1,4 +1,5 @@
 ---
+import InterpunctSpacer from "../InterpunctSpacer/InterpunctSpacer.astro";
 import TraitInfo from "../TraitInfo";
 import {
   professionToClass,
@@ -38,15 +39,18 @@ const [baseName, alterName] = character.name.split(/ the /i);
 
 {professionToClass(character.profession)}
 {subProfessionIdToSubclass(character.subProfessionId)}
+<InterpunctSpacer />
+{getMeleeOrRangedOrBoth(character.position, character.description)}
+
 <button
   aria-pressed="false"
   id="trait-toggle"
   aria-controls="trait-info-container">Trait</button
 >
+
 <div hidden id="trait-info-container">
   <TraitInfo
     subProfessionId={character.subProfessionId}
     showSubclassIcon={true}
   />
 </div>
-{getMeleeOrRangedOrBoth(character.position, character.description)}

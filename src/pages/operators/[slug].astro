@@ -2,15 +2,14 @@
 import slugify from "../../slugify";
 import operators from "../../../data/operators.json";
 import Layout from "../../layouts/Layout.astro";
-import CharacterStats from "../../components/CharacterStats";
-
-import type * as OutputTypes from "../../output-types";
-
 import * as classes from "./_[slug].css";
 import { linkStyle } from "../../theme.css";
 import { operatorAvatar } from "../../utils/images";
 import CharacterSplash from "../../components/CharacterSplash";
 import OperatorInfo from "../../components/OperatorInfo/OperatorInfo.astro";
+import InterpunctSpacer from "../../components/InterpunctSpacer/InterpunctSpacer.astro";
+
+import type * as OutputTypes from "../../output-types";
 
 export function getStaticPaths() {
   return Object.entries(operators)
@@ -42,7 +41,7 @@ const { subProfessionId } = char;
         </li>
         /
         <li class={classes.characterNavigationItem.bold}>{char.name}</li>
-        <span class={classes.characterNavigationDotSpacer}></span>
+        <InterpunctSpacer />
         <li class={classes.characterNavigationItem.alter}>
           <img
             class={classes.characterNavigationAlterImage}

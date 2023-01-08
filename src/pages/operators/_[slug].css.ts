@@ -73,13 +73,6 @@ export const characterNavigationItem = styleVariants({
   ],
 });
 
-export const characterNavigationDotSpacer = style({
-  backgroundColor: vars.colors.neutrals.midtoneBrighterer,
-  height: spacing(0.5),
-  width: spacing(0.5),
-  borderRadius: "100%",
-});
-
 export const characterNavigationAlterImage = style({
   width: spacing(4),
   height: spacing(4),
