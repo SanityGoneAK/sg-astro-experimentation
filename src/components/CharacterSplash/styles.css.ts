@@ -25,6 +25,7 @@ export const tabIcon = style({
   border: "none",
   margin: "0px",
   overflow: "hidden",
+  cursor: "pointer",
 
   ":focus-visible": {
     // outline: "1px solid black",
