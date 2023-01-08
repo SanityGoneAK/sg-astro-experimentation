@@ -105,7 +105,7 @@ globalStyle("html", {
   },
 });
 
-globalStyle("html, body, #__next", {
+globalStyle("html, body", {
   height: "100%",
 });
 
