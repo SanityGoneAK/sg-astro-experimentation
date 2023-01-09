@@ -82,3 +82,8 @@ export const spacer = style({
 export const position = style({
   color: vars.colors.neutrals.gray,
 });
+
+export const rarity = style({
+  padding: spacing(0.5, 0),
+  alignSelf: "start",
+});

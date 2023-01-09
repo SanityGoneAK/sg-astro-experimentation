@@ -2,6 +2,7 @@
 import InterpunctSpacer from "../InterpunctSpacer/InterpunctSpacer.astro";
 import TraitInfo from "../TraitInfo/TraitInfo.astro";
 import ToggleButton from "../ToggleButton/ToggleButton.astro";
+import StarIcon from "../StarIcon/StarIcon.astro";
 import {
   operatorAvatar,
   operatorBranchIcon,
@@ -36,7 +37,13 @@ const operatorClass = professionToClass(character.profession);
       <h2 class={classes.baseName}>{baseName}</h2>
       {alterName && <h3 class={classes.alterName}>The {alterName}</h3>}
     </div>
-    <!-- TODO rarity -->
+    <div class={classes.rarity}>
+      {
+        Array(character.rarity + 1)
+          .fill(null)
+          .map(() => <StarIcon />)
+      }
+    </div>
   </div>
 
   <div class={classes.classBranchTraitToggle}>
