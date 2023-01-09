@@ -66,16 +66,15 @@ const operatorClass = professionToClass(character.profession);
     </div>
 
     <ToggleButton
-      id="trait-toggle"
-      aria-pressed="false"
-      aria-controls="trait-info-container"
+      buttonId="trait-toggle"
+      containerId="trait-info-container"
+      initiallyVisible={false}
     >
       Trait
     </ToggleButton>
   </div>
 
   <TraitInfo
-    hidden
     id="trait-info-container"
     subProfessionId={character.subProfessionId}
   />

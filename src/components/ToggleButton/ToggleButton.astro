@@ -2,39 +2,48 @@
 import * as classes from "./styles.css";
 
 interface Props {
-  id: string;
-  "aria-pressed": string;
-  "aria-controls": string;
+  buttonId: string;
+  containerId: string;
+  initiallyVisible: boolean;
   class?: string;
 }
-const { class: className, ...rest } = Astro.props;
+const {
+  buttonId,
+  containerId,
+  initiallyVisible,
+  class: className,
+  ...rest
+} = Astro.props;
 ---
 
 <button
-  id={Astro.props.id}
-  {...rest as any}
+  id={buttonId}
+  aria-controls={containerId}
+  aria-pressed={initiallyVisible}
   class={`${classes.root} ${className ?? ""}`}
+  {...rest as any}
   ><slot />
 </button>
 
-<script
-  define:vars={{
-    id: Astro.props.id,
-    containerId: Astro.props["aria-controls"],
-    initiallyVisible: Boolean(Astro.props["aria-pressed"]),
-  }}
->
-  const toggleButton = document.getElementById(id);
-  const container = document.getElementById(containerId);
-  if (initiallyVisible) {
-    container.removeAttribute("hidden");
-  }
-  toggleButton.addEventListener("click", () => {
-    container.hasAttribute("hidden")
-      ? container.removeAttribute("hidden")
-      : container.setAttribute("hidden", "");
-    toggleButton.getAttribute("aria-pressed") === "true"
-      ? toggleButton.setAttribute("aria-pressed", "false")
-      : toggleButton.setAttribute("aria-pressed", "true");
+<script define:vars={{ buttonId, containerId, initiallyVisible }}>
+  document.addEventListener("DOMContentLoaded", () => {
+    const toggleButton = document.getElementById(buttonId);
+    const container = document.getElementById(containerId);
+    if (initiallyVisible) {
+      toggleButton.setAttribute("aria-pressed", "true");
+      container.removeAttribute("hidden");
+    } else {
+      toggleButton.setAttribute("aria-pressed", "false");
+      container.setAttribute("hidden", "");
+    }
+
+    toggleButton.addEventListener("click", () => {
+      container.hasAttribute("hidden")
+        ? container.removeAttribute("hidden")
+        : container.setAttribute("hidden", "");
+      toggleButton.getAttribute("aria-pressed") === "true"
+        ? toggleButton.setAttribute("aria-pressed", "false")
+        : toggleButton.setAttribute("aria-pressed", "true");
+    });
   });
 </script>
