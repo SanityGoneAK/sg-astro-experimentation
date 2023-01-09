@@ -2,10 +2,14 @@
   "version": "0.2.0",
   "configurations": [
     {
-      "command": "./node_modules/.bin/astro dev",
-      "name": "Development server",
+      "name": "Launch Program",
       "request": "launch",
-      "type": "node-terminal"
+      "type": "node",
+      "runtimeExecutable": "node",
+      "runtimeArgs": ["-r", "sucrase/register"],
+      "args": ["${file}"],
+      "internalConsoleOptions": "openOnSessionStart",
+      "skipFiles": ["<node_internals>/**"]
     }
   ]
 }
