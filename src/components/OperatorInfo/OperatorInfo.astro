@@ -25,23 +25,6 @@ const [baseName, alterName] = character.name.split(/ the /i);
 const operatorClass = professionToClass(character.profession);
 ---
 
-<script>
-  const toggleButton = document.getElementById(
-    "trait-toggle"
-  ) as HTMLButtonElement;
-  const traitInfoContainer = document.getElementById(
-    "trait-info-container"
-  ) as HTMLDivElement;
-  toggleButton.addEventListener("click", () => {
-    traitInfoContainer.hasAttribute("hidden")
-      ? traitInfoContainer.removeAttribute("hidden")
-      : traitInfoContainer.setAttribute("hidden", "");
-    toggleButton.getAttribute("aria-pressed") === "true"
-      ? toggleButton.setAttribute("aria-pressed", "false")
-      : toggleButton.setAttribute("aria-pressed", "true");
-  });
-</script>
-
 <div class={classes.root}>
   <div class={classes.portraitNameRarity}>
     <img
