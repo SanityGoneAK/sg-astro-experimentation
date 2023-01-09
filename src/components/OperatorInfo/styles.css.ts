@@ -50,6 +50,13 @@ export const classBranchTraitToggle = style({
   alignItems: "end",
 });
 
+export const classBranch = style({
+  display: "flex",
+  alignItems: "center",
+  lineHeight: 1,
+  whiteSpace: "nowrap",
+});
+
 export const classBranchNameAndIconWrapper = style({
   display: "flex",
   alignItems: "center",
@@ -62,12 +69,6 @@ export const branchNameAndIconWrapper = style([
     paddingLeft: spacing(1),
   },
 ]);
-
-export const classBranch = style({
-  display: "flex",
-  alignItems: "center",
-  lineHeight: 1,
-});
 
 export const classBranchIcon = style({
   height: 16,
