@@ -1,6 +1,7 @@
 ---
 import InterpunctSpacer from "../InterpunctSpacer/InterpunctSpacer.astro";
 import TraitInfo from "../TraitInfo/TraitInfo.astro";
+import ToggleButton from "../ToggleButton/ToggleButton.astro";
 import {
   operatorAvatar,
   operatorBranchIcon,
@@ -81,12 +82,13 @@ const operatorClass = professionToClass(character.profession);
       >
     </div>
 
-    <button
+    <ToggleButton
       id="trait-toggle"
-      class={classes.traitToggle}
       aria-pressed="false"
-      aria-controls="trait-info-container">Trait</button
+      aria-controls="trait-info-container"
     >
+      Trait
+    </ToggleButton>
   </div>
 
   <TraitInfo

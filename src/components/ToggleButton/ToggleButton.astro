@@ -2,26 +2,30 @@
 import * as classes from "./styles.css";
 
 interface Props {
-  buttonId: string;
+  id: string;
   "aria-pressed": string;
   "aria-controls": string;
   class?: string;
 }
-const { buttonId, class: className, ...rest } = Astro.props;
+const { class: className, ...rest } = Astro.props;
 ---
 
 <button
-  id={buttonId}
+  id={Astro.props.id}
   {...rest as any}
-  class={`${classes.root}${className ?? ""}`}
+  class={`${classes.root} ${className ?? ""}`}
   ><slot />
 </button>
 
-<pre>{JSON.stringify(Astro.props, null, 2)}</pre>
-<script is:inline>
-  const toggleButton = document.getElementById(Astro.props.buttonId);
-  const container = document.getElementById(Astro.props["aria-controls"]);
-  const initiallyVisible = Boolean(Astro.props["aria-pressed"]);
+<script
+  define:vars={{
+    id: Astro.props.id,
+    containerId: Astro.props["aria-controls"],
+    initiallyVisible: Boolean(Astro.props["aria-pressed"]),
+  }}
+>
+  const toggleButton = document.getElementById(id);
+  const container = document.getElementById(containerId);
   if (initiallyVisible) {
     container.removeAttribute("hidden");
   }
