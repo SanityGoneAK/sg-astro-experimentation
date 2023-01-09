@@ -21,7 +21,7 @@
     "@vanilla-extract/css": "^1.9.2",
     "@vanilla-extract/vite-plugin": "^3.7.0",
     "astro": "^1.6.15",
-    "axios": "^1.2.1",
+    "axios": "^1.2.2",
     "clsx": "^1.2.1",
     "dotenv": "^16.0.3",
     "flexsearch": "<0.7.0",
@@ -36,6 +36,7 @@
   "devDependencies": {
     "@types/node": "^18.11.15",
     "@types/react": "^18.0.26",
+    "cheerio": "^1.0.0-rc.12",
     "sucrase": "^3.29.0"
   }
 }
