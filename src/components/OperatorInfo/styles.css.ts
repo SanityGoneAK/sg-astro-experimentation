@@ -71,6 +71,7 @@ export const classBranch = style({
 
 export const classBranchIcon = style({
   height: 16,
+  width: "100%",
 });
 
 export const spacer = style({
