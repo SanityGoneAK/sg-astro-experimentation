@@ -11,6 +11,7 @@ import skinTable from "../ArknightsGameData/zh_CN/gamedata/excel/skin_table.json
 import jetSkillTranslations from "./translations/jet/skills.json";
 import jetTalentTranslations from "./translations/jet/talents.json";
 import { fixJetSkillDescriptionTags } from "./fix-jet-skill-descs";
+import { getReleaseOrderAndLimitedLookup } from "./scrape-prts";
 
 import type * as GameData from "../src/gamedata-types";
 import type { InterpolatedValue } from "../src/description-parser";
@@ -41,7 +42,9 @@ interface DenormalizedCharacter extends GameData.SharedProperties {
         }[];
       }[]
     | null;
-  fileIndex: number;
+  cnName: string;
+  isLimited: boolean;
+  releaseOrder: number;
 }
 
 interface SkillAtLevel {
@@ -54,6 +57,8 @@ interface SkillAtLevel {
 
 void (async () => {
   console.log("Updating operators and summons...");
+  const releaseOrderAndLimitedLookup = await getReleaseOrderAndLimitedLookup();
+
   const enCharacterIds = new Set(Object.keys(enCharacterTable));
   const cnOnlyCharacters = Object.entries(cnCharacterTable).filter(
     ([charId]) => !enCharacterIds.has(charId)
@@ -69,8 +74,10 @@ void (async () => {
     ] as [string, GameData.Character][]
   )
     .filter(
-      ([_, character]) =>
-        character.profession !== "TRAP" && !character.isNotObtainable
+      ([charId, character]) =>
+        character.profession !== "TRAP" &&
+        !charId.startsWith("trap_") &&
+        !character.isNotObtainable
     )
     .map(([charId, character], i) => {
       const isCnOnly = !enCharacterIds.has(charId);
@@ -211,35 +218,39 @@ void (async () => {
       }
 
       return {
-        ...character,
         charId,
+        ...character,
+        cnName,
+        isCnOnly,
+        name: characterName,
+        subProfessionId,
+        skillData,
         phases,
         talents,
-        skillData,
-        cnName,
         voices,
         skins,
-        subProfessionId,
-        name: characterName,
-        isCnOnly,
-        fileIndex: i,
       };
     });
 
-  const denormalizedOperators = denormalizedCharacters.filter(
-    (character) => character.profession !== "TOKEN"
-  );
-  const operatorsJson = Object.fromEntries(
-    denormalizedOperators
-      .map(
-        (character) =>
-          [character.name, character] as [string, DenormalizedCharacter]
-      )
-      .sort(([_, charA], [__, charB]) => {
-        // sort by descending rarity and descending fileIndex
-        return charB.rarity - charA.rarity || charB.fileIndex - charA.fileIndex;
-      })
-  );
+  const denormalizedOperators = denormalizedCharacters
+    .filter((character) => character.profession !== "TOKEN")
+    .map(
+      (character) =>
+        [
+          character.name,
+          {
+            ...character,
+            ...releaseOrderAndLimitedLookup[character.cnName],
+          },
+        ] as [string, DenormalizedCharacter]
+    );
+  denormalizedOperators.sort(([_, charA], [__, charB]) => {
+    // sort by descending rarity and descending release order
+    return (
+      charB.rarity - charA.rarity || charB.releaseOrder - charA.releaseOrder
+    );
+  });
+  const operatorsJson = Object.fromEntries(denormalizedOperators);
   fs.writeFileSync(
     path.join(dataDir, "operators.json"),
     JSON.stringify(operatorsJson, null, 2)
@@ -264,5 +275,3 @@ void (async () => {
     JSON.stringify(summonsJson, null, 2)
   );
 })();
-
-// voiceLangDict

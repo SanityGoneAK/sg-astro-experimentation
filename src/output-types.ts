@@ -23,6 +23,8 @@ export interface Character {
   skillData: Skill[];
   voices: Voice[];
   skins: Skin[];
+  isLimited: boolean;
+  releaseOrder: number;
   [otherProperties: string]: unknown;
 }
 

@@ -1,6 +1,7 @@
 {
   "Silence": [
     {
+      "charId": "token_10000_silent_healrb",
       "name": "Medic Drone",
       "description": null,
       "canUseGeneralPotentialItem": true,
@@ -363,7 +364,8 @@
       "potentialRanks": [],
       "favorKeyFrames": null,
       "allSkillLvlup": [],
-      "charId": "token_10000_silent_healrb",
+      "cnName": "医疗探机",
+      "isCnOnly": false,
       "skillData": [
         {
           "skillId": "skcom_withdraw",
@@ -418,7 +420,6 @@
           ]
         }
       ],
-      "cnName": "医疗探机",
       "voices": [],
       "skins": [
         {
@@ -455,13 +456,12 @@
           }
         }
       ],
-      "isCnOnly": false,
-      "fileIndex": 231,
       "operatorName": "Silence"
     }
   ],
   "Deepcolor": [
     {
+      "charId": "token_10001_deepcl_tentac",
       "name": "Tentacle",
       "description": null,
       "canUseGeneralPotentialItem": true,
@@ -880,9 +880,9 @@
           "lvlUpCost": null
         }
       ],
-      "charId": "token_10001_deepcl_tentac",
-      "skillData": [],
       "cnName": "触手",
+      "isCnOnly": false,
+      "skillData": [],
       "voices": [],
       "skins": [
         {
@@ -897,13 +897,12 @@
           }
         }
       ],
-      "isCnOnly": false,
-      "fileIndex": 232,
       "operatorName": "Deepcolor"
     }
   ],
   "Kal'tsit": [
     {
+      "charId": "token_10002_kalts_mon3tr",
       "name": "Mon3tr",
       "description": null,
       "canUseGeneralPotentialItem": true,
@@ -1499,9 +1498,9 @@
           "lvlUpCost": null
         }
       ],
-      "charId": "token_10002_kalts_mon3tr",
-      "skillData": [],
       "cnName": "Mon3tr",
+      "isCnOnly": false,
+      "skillData": [],
       "voices": [],
       "skins": [
         {
@@ -1516,13 +1515,12 @@
           }
         }
       ],
-      "isCnOnly": false,
-      "fileIndex": 233,
       "operatorName": "Kal'tsit"
     }
   ],
   "Nightingale": [
     {
+      "charId": "token_10003_cgbird_bird",
       "name": "Mirage",
       "description": null,
       "canUseGeneralPotentialItem": true,
@@ -1951,9 +1949,9 @@
           "lvlUpCost": null
         }
       ],
-      "charId": "token_10003_cgbird_bird",
-      "skillData": [],
       "cnName": "幻影",
+      "isCnOnly": false,
+      "skillData": [],
       "voices": [],
       "skins": [
         {
@@ -1979,13 +1977,12 @@
           }
         }
       ],
-      "isCnOnly": false,
-      "fileIndex": 234,
       "operatorName": "Nightingale"
     }
   ],
   "Mayer": [
     {
+      "charId": "token_10004_otter_motter",
       "name": "Robotter",
       "description": null,
       "canUseGeneralPotentialItem": true,
@@ -2416,7 +2413,8 @@
           "lvlUpCost": null
         }
       ],
-      "charId": "token_10004_otter_motter",
+      "cnName": "机械水獭",
+      "isCnOnly": false,
       "skillData": [
         {
           "skillId": "sktok_motter_1",
@@ -3501,7 +3499,6 @@
           ]
         }
       ],
-      "cnName": "机械水獭",
       "voices": [],
       "skins": [
         {
@@ -3527,13 +3524,12 @@
           }
         }
       ],
-      "isCnOnly": false,
-      "fileIndex": 235,
       "operatorName": "Mayer"
     }
   ],
   "Magallan": [
     {
+      "charId": "token_10005_mgllan_drone1",
       "name": "Soaring Dragon F",
       "description": null,
       "canUseGeneralPotentialItem": true,
@@ -4201,7 +4197,8 @@
           "lvlUpCost": null
         }
       ],
-      "charId": "token_10005_mgllan_drone1",
+      "cnName": "龙腾.F",
+      "isCnOnly": false,
       "skillData": [
         {
           "skillId": "sktok_mgllan_drone1",
@@ -4795,7 +4792,6 @@
           ]
         }
       ],
-      "cnName": "龙腾.F",
       "voices": [],
       "skins": [
         {
@@ -4821,11 +4817,10 @@
           }
         }
       ],
-      "isCnOnly": false,
-      "fileIndex": 236,
       "operatorName": "Magallan"
     },
     {
+      "charId": "token_10005_mgllan_drone2",
       "name": "Soaring Dragon L",
       "description": null,
       "canUseGeneralPotentialItem": true,
@@ -5397,7 +5392,8 @@
           "lvlUpCost": null
         }
       ],
-      "charId": "token_10005_mgllan_drone2",
+      "cnName": "龙腾.L",
+      "isCnOnly": false,
       "skillData": [
         {
           "skillId": "sktok_mgllan_drone2",
@@ -5991,7 +5987,6 @@
           ]
         }
       ],
-      "cnName": "龙腾.L",
       "voices": [],
       "skins": [
         {
@@ -6017,11 +6012,10 @@
           }
         }
       ],
-      "isCnOnly": false,
-      "fileIndex": 237,
       "operatorName": "Magallan"
     },
     {
+      "charId": "token_10005_mgllan_drone3",
       "name": "Soaring Dragon A",
       "description": null,
       "canUseGeneralPotentialItem": true,
@@ -6689,7 +6683,8 @@
           "lvlUpCost": null
         }
       ],
-      "charId": "token_10005_mgllan_drone3",
+      "cnName": "龙腾.A",
+      "isCnOnly": false,
       "skillData": [
         {
           "skillId": "sktok_mgllan_drone3",
@@ -7283,7 +7278,6 @@
           ]
         }
       ],
-      "cnName": "龙腾.A",
       "voices": [],
       "skins": [
         {
@@ -7309,13 +7303,12 @@
           }
         }
       ],
-      "isCnOnly": false,
-      "fileIndex": 238,
       "operatorName": "Magallan"
     }
   ],
   "Shamare": [
     {
+      "charId": "token_10006_vodfox_doll",
       "name": "Cursed Doll",
       "description": null,
       "canUseGeneralPotentialItem": true,
@@ -7771,7 +7764,8 @@
           "lvlUpCost": null
         }
       ],
-      "charId": "token_10006_vodfox_doll",
+      "cnName": "诅咒娃娃",
+      "isCnOnly": false,
       "skillData": [
         {
           "skillId": "sktok_vodfox_token",
@@ -8061,7 +8055,6 @@
           ]
         }
       ],
-      "cnName": "诅咒娃娃",
       "voices": [],
       "skins": [
         {
@@ -8087,13 +8080,12 @@
           }
         }
       ],
-      "isCnOnly": false,
-      "fileIndex": 239,
       "operatorName": "Shamare"
     }
   ],
   "Phantom": [
     {
+      "charId": "token_10007_phatom_twin",
       "name": "Phantom in the Mirror",
       "description": null,
       "canUseGeneralPotentialItem": true,
@@ -8608,7 +8600,8 @@
           "lvlUpCost": null
         }
       ],
-      "charId": "token_10007_phatom_twin",
+      "cnName": "镜中虚影",
+      "isCnOnly": false,
       "skillData": [
         {
           "skillId": "sktok_phatom_1",
@@ -10042,7 +10035,6 @@
           ]
         }
       ],
-      "cnName": "镜中虚影",
       "voices": [],
       "skins": [
         {
@@ -10079,13 +10071,12 @@
           }
         }
       ],
-      "isCnOnly": false,
-      "fileIndex": 240,
       "operatorName": "Phantom"
     }
   ],
   "W": [
     {
+      "charId": "token_10008_cqbw_box",
       "name": "Front Toward Enemy",
       "description": null,
       "canUseGeneralPotentialItem": true,
@@ -10503,7 +10494,8 @@
           "lvlUpCost": null
         }
       ],
-      "charId": "token_10008_cqbw_box",
+      "cnName": "此面向敌",
+      "isCnOnly": false,
       "skillData": [
         {
           "skillId": "sktok_cqbw_token",
@@ -10793,7 +10785,6 @@
           ]
         }
       ],
-      "cnName": "此面向敌",
       "voices": [],
       "skins": [
         {
@@ -10819,13 +10810,12 @@
           }
         }
       ],
-      "isCnOnly": false,
-      "fileIndex": 241,
       "operatorName": "W"
     }
   ],
   "Weedy": [
     {
+      "charId": "token_10009_weedy_cannon",
       "name": "Industrial Water Cannon",
       "description": null,
       "canUseGeneralPotentialItem": true,
@@ -11407,7 +11397,8 @@
           "lvlUpCost": null
         }
       ],
-      "charId": "token_10009_weedy_cannon",
+      "cnName": "工程蓄水炮",
+      "isCnOnly": false,
       "skillData": [
         {
           "skillId": "sktok_weedy_token",
@@ -12147,7 +12138,6 @@
           ]
         }
       ],
-      "cnName": "工程蓄水炮",
       "voices": [],
       "skins": [
         {
@@ -12173,13 +12163,12 @@
           }
         }
       ],
-      "isCnOnly": false,
-      "fileIndex": 242,
       "operatorName": "Weedy"
     }
   ],
   "Scene": [
     {
+      "charId": "token_10010_folivo_car",
       "name": "Mobile Buggy Cam",
       "description": null,
       "canUseGeneralPotentialItem": true,
@@ -12812,7 +12801,8 @@
           "lvlUpCost": null
         }
       ],
-      "charId": "token_10010_folivo_car",
+      "cnName": "移动摄影器",
+      "isCnOnly": false,
       "skillData": [
         {
           "skillId": "sktok_folivo_2",
@@ -13992,7 +13982,6 @@
           ]
         }
       ],
-      "cnName": "移动摄影器",
       "voices": [],
       "skins": [
         {
@@ -14007,13 +13996,12 @@
           }
         }
       ],
-      "isCnOnly": false,
-      "fileIndex": 243,
       "operatorName": "Scene"
     }
   ],
   "Beeswax": [
     {
+      "charId": "token_10011_beewax_oblisk",
       "name": "Sand Obelisk",
       "description": null,
       "canUseGeneralPotentialItem": true,
@@ -14451,7 +14439,8 @@
           "lvlUpCost": null
         }
       ],
-      "charId": "token_10011_beewax_oblisk",
+      "cnName": "沙之碑",
+      "isCnOnly": false,
       "skillData": [
         {
           "skillId": "sktok_beewax",
@@ -15151,7 +15140,6 @@
           ]
         }
       ],
-      "cnName": "沙之碑",
       "voices": [],
       "skins": [
         {
@@ -15177,13 +15165,12 @@
           }
         }
       ],
-      "isCnOnly": false,
-      "fileIndex": 244,
       "operatorName": "Beeswax"
     }
   ],
   "Rosmontis": [
     {
+      "charId": "token_10012_rosmon_shield",
       "name": "Rosmontis's Tactical Equipment",
       "description": "Decreases the DEF of blocked units",
       "canUseGeneralPotentialItem": true,
@@ -15660,7 +15647,8 @@
           "lvlUpCost": null
         }
       ],
-      "charId": "token_10012_rosmon_shield",
+      "cnName": "迷迭香的战术装备",
+      "isCnOnly": false,
       "skillData": [
         {
           "skillId": "sktok_rosmon",
@@ -16110,7 +16098,6 @@
           ]
         }
       ],
-      "cnName": "迷迭香的战术装备",
       "voices": [],
       "skins": [
         {
@@ -16147,13 +16134,12 @@
           }
         }
       ],
-      "isCnOnly": false,
-      "fileIndex": 245,
       "operatorName": "Rosmontis"
     }
   ],
   "Robin": [
     {
+      "charId": "token_10013_robin_mine",
       "name": "'Clip'",
       "description": null,
       "canUseGeneralPotentialItem": true,
@@ -16513,7 +16499,8 @@
           "lvlUpCost": null
         }
       ],
-      "charId": "token_10013_robin_mine",
+      "cnName": "\"夹子\"",
+      "isCnOnly": false,
       "skillData": [
         {
           "skillId": "sktok_robin_1",
@@ -17170,7 +17157,6 @@
           ]
         }
       ],
-      "cnName": "\"夹子\"",
       "voices": [],
       "skins": [
         {
@@ -17196,13 +17182,12 @@
           }
         }
       ],
-      "isCnOnly": false,
-      "fileIndex": 246,
       "operatorName": "Robin"
     }
   ],
   "Beanstalk": [
     {
+      "charId": "token_10014_bstalk_crab",
       "name": "Metal Crab Guard Team",
       "description": null,
       "canUseGeneralPotentialItem": true,
@@ -17595,9 +17580,9 @@
         }
       ],
       "allSkillLvlup": [],
-      "charId": "token_10014_bstalk_crab",
-      "skillData": [],
       "cnName": "磐蟹护卫队",
+      "isCnOnly": false,
+      "skillData": [],
       "voices": [],
       "skins": [
         {
@@ -17623,13 +17608,12 @@
           }
         }
       ],
-      "isCnOnly": false,
-      "fileIndex": 247,
       "operatorName": "Beanstalk"
     }
   ],
   "Dusk": [
     {
+      "charId": "token_10015_dusk_drgn",
       "name": "'Freeling'",
       "description": "Deals <@ba.kw>Arts damage</>",
       "canUseGeneralPotentialItem": true,
@@ -18207,9 +18191,9 @@
           "lvlUpCost": null
         }
       ],
-      "charId": "token_10015_dusk_drgn",
-      "skillData": [],
       "cnName": "\"小自在\"",
+      "isCnOnly": false,
+      "skillData": [],
       "voices": [],
       "skins": [
         {
@@ -18246,13 +18230,12 @@
           }
         }
       ],
-      "isCnOnly": false,
-      "fileIndex": 248,
       "operatorName": "Dusk"
     }
   ],
   "Frost": [
     {
+      "charId": "token_10016_rfrost_mine",
       "name": "Welcome Mat",
       "description": null,
       "canUseGeneralPotentialItem": true,
@@ -18612,7 +18595,8 @@
           "lvlUpCost": null
         }
       ],
-      "charId": "token_10016_rfrost_mine",
+      "cnName": "迎宾踏垫",
+      "isCnOnly": false,
       "skillData": [
         {
           "skillId": "sktok_rfrost_1",
@@ -19269,7 +19253,6 @@
           ]
         }
       ],
-      "cnName": "迎宾踏垫",
       "voices": [],
       "skins": [
         {
@@ -19284,13 +19267,12 @@
           }
         }
       ],
-      "isCnOnly": false,
-      "fileIndex": 249,
       "operatorName": "Frost"
     }
   ],
   "Skadi the Corrupting Heart": [
     {
+      "charId": "token_10017_skadi2_dedant",
       "name": "Skadi's Seaborn",
       "description": "Attack Range is regarded as an extension of Skadi the Corrupting Heart's Attack Range",
       "canUseGeneralPotentialItem": true,
@@ -20108,7 +20090,8 @@
           "lvlUpCost": null
         }
       ],
-      "charId": "token_10017_skadi2_dedant",
+      "cnName": "斯卡蒂的海嗣",
+      "isCnOnly": false,
       "skillData": [
         {
           "skillId": "sktok_skadi2_1",
@@ -21052,7 +21035,6 @@
           ]
         }
       ],
-      "cnName": "斯卡蒂的海嗣",
       "voices": [],
       "skins": [
         {
@@ -21078,13 +21060,12 @@
           }
         }
       ],
-      "isCnOnly": false,
-      "fileIndex": 250,
       "operatorName": "Skadi the Corrupting Heart"
     }
   ],
   "Roberta": [
     {
+      "charId": "token_10018_robrta_mach",
       "name": "Full Auto Modeler",
       "description": "After deployment, provides defensive support for the melee allied unit ahead (lasts for several seconds)",
       "canUseGeneralPotentialItem": true,
@@ -21536,7 +21517,8 @@
       "potentialRanks": [],
       "favorKeyFrames": null,
       "allSkillLvlup": [],
-      "charId": "token_10018_robrta_mach",
+      "cnName": "全自动造型仪",
+      "isCnOnly": false,
       "skillData": [
         {
           "skillId": "sktok_robrta",
@@ -21591,7 +21573,6 @@
           ]
         }
       ],
-      "cnName": "全自动造型仪",
       "voices": [],
       "skins": [
         {
@@ -21617,13 +21598,12 @@
           }
         }
       ],
-      "isCnOnly": false,
-      "fileIndex": 251,
       "operatorName": "Roberta"
     }
   ],
   "Nearl the Radiant Knight": [
     {
+      "charId": "token_10019_nearl2_sword",
       "name": "'Blazing Sun'",
       "description": "Blocks 2 enemies",
       "canUseGeneralPotentialItem": true,
@@ -22091,7 +22071,8 @@
           "lvlUpCost": null
         }
       ],
-      "charId": "token_10019_nearl2_sword",
+      "cnName": "“耀阳”",
+      "isCnOnly": false,
       "skillData": [
         {
           "skillId": "sktok_nearl2_3",
@@ -22631,7 +22612,6 @@
           ]
         }
       ],
-      "cnName": "“耀阳”",
       "voices": [],
       "skins": [
         {
@@ -22668,13 +22648,12 @@
           }
         }
       ],
-      "isCnOnly": false,
-      "fileIndex": 252,
       "operatorName": "Nearl the Radiant Knight"
     }
   ],
   "Ling": [
     {
+      "charId": "token_10020_ling_soul1",
       "name": "'Tranquility'",
       "description": "Blocks 1 enemy",
       "canUseGeneralPotentialItem": true,
@@ -23152,7 +23131,8 @@
           "lvlUpCost": null
         }
       ],
-      "charId": "token_10020_ling_soul1",
+      "cnName": "“清平”",
+      "isCnOnly": false,
       "skillData": [
         {
           "skillId": "sktok_ling_soul1",
@@ -23746,7 +23726,6 @@
           ]
         }
       ],
-      "cnName": "“清平”",
       "voices": [],
       "skins": [
         {
@@ -23761,11 +23740,10 @@
           }
         }
       ],
-      "isCnOnly": false,
-      "fileIndex": 253,
       "operatorName": "Ling"
     },
     {
+      "charId": "token_10020_ling_soul2",
       "name": "'Peripateticism'",
       "description": "Deals Arts damage",
       "canUseGeneralPotentialItem": true,
@@ -24356,7 +24334,8 @@
           "lvlUpCost": null
         }
       ],
-      "charId": "token_10020_ling_soul2",
+      "cnName": "“逍遥”",
+      "isCnOnly": false,
       "skillData": [
         {
           "skillId": "sktok_ling_soul2",
@@ -25220,7 +25199,6 @@
           ]
         }
       ],
-      "cnName": "“逍遥”",
       "voices": [],
       "skins": [
         {
@@ -25235,11 +25213,10 @@
           }
         }
       ],
-      "isCnOnly": false,
-      "fileIndex": 254,
       "operatorName": "Ling"
     },
     {
+      "charId": "token_10020_ling_soul3",
       "name": "'Thunderer'",
       "description": "Attacks all blocked enemies",
       "canUseGeneralPotentialItem": true,
@@ -25734,7 +25711,8 @@
           "lvlUpCost": null
         }
       ],
-      "charId": "token_10020_ling_soul3",
+      "cnName": "“弦惊”",
+      "isCnOnly": false,
       "skillData": [
         {
           "skillId": "sktok_ling_soul3",
@@ -27078,7 +27056,6 @@
           ]
         }
       ],
-      "cnName": "“弦惊”",
       "voices": [],
       "skins": [
         {
@@ -27093,13 +27070,12 @@
           }
         }
       ],
-      "isCnOnly": false,
-      "fileIndex": 255,
       "operatorName": "Ling"
     }
   ],
   "Blacknight": [
     {
+      "charId": "token_10021_blkngt_hypnos",
       "name": "Slumberfoot",
       "description": null,
       "canUseGeneralPotentialItem": true,
@@ -27540,7 +27516,8 @@
         }
       ],
       "allSkillLvlup": [],
-      "charId": "token_10021_blkngt_hypnos",
+      "cnName": "眠兽",
+      "isCnOnly": false,
       "skillData": [
         {
           "skillId": "sktok_blkngt_hypnos_s_1",
@@ -27595,7 +27572,6 @@
           ]
         }
       ],
-      "cnName": "眠兽",
       "voices": [],
       "skins": [
         {
@@ -27621,13 +27597,12 @@
           }
         }
       ],
-      "isCnOnly": false,
-      "fileIndex": 256,
       "operatorName": "Blacknight"
     }
   ],
   "Kazemaru": [
     {
+      "charId": "token_10022_kazema_shadow",
       "name": "Kaminingyo",
       "description": null,
       "canUseGeneralPotentialItem": true,
@@ -28251,9 +28226,9 @@
           "lvlUpCost": null
         }
       ],
-      "charId": "token_10022_kazema_shadow",
-      "skillData": [],
       "cnName": "纸偶",
+      "isCnOnly": false,
+      "skillData": [],
       "voices": [],
       "skins": [
         {
@@ -28290,13 +28265,12 @@
           }
         }
       ],
-      "isCnOnly": false,
-      "fileIndex": 257,
       "operatorName": "Kazemaru"
     }
   ],
   "Windflit": [
     {
+      "charId": "token_10023_windft_wrench",
       "name": "Reliable Battery",
       "description": "After deployment, provides offensive support for an allied Caster or Supporter in front (lasts several seconds)",
       "canUseGeneralPotentialItem": true,
@@ -28865,7 +28839,8 @@
           "lvlUpCost": null
         }
       ],
-      "charId": "token_10023_windft_wrench",
+      "cnName": "可靠电池",
+      "isCnOnly": false,
       "skillData": [
         {
           "skillId": "sktok_windft_wrench_1",
@@ -29522,7 +29497,6 @@
           ]
         }
       ],
-      "cnName": "可靠电池",
       "voices": [],
       "skins": [
         {
@@ -29537,13 +29511,12 @@
           }
         }
       ],
-      "isCnOnly": false,
-      "fileIndex": 258,
       "operatorName": "Windflit"
     }
   ],
   "Ebenholz": [
     {
+      "charId": "token_10024_ebnhlz_rcube",
       "name": "Remnants of Days Past",
       "description": null,
       "canUseGeneralPotentialItem": true,
@@ -29961,7 +29934,8 @@
           "lvlUpCost": null
         }
       ],
-      "charId": "token_10024_ebnhlz_rcube",
+      "cnName": "旧日残影",
+      "isCnOnly": false,
       "skillData": [
         {
           "skillId": "sktok_ebnhlz_token",
@@ -30251,7 +30225,6 @@
           ]
         }
       ],
-      "cnName": "旧日残影",
       "voices": [],
       "skins": [
         {
@@ -30266,13 +30239,12 @@
           }
         }
       ],
-      "isCnOnly": false,
-      "fileIndex": 259,
       "operatorName": "Ebenholz"
     }
   ],
   "Dorothy": [
     {
+      "charId": "token_10025_doroth_recttp",
       "name": "Resonator",
       "description": null,
       "canUseGeneralPotentialItem": true,
@@ -30669,7 +30641,8 @@
           "lvlUpCost": null
         }
       ],
-      "charId": "token_10025_doroth_recttp",
+      "cnName": "共振装置",
+      "isCnOnly": true,
       "skillData": [
         {
           "skillId": "sktok_doroth_1",
@@ -32223,7 +32196,6 @@
           ]
         }
       ],
-      "cnName": "共振装置",
       "voices": [],
       "skins": [
         {
@@ -32238,13 +32210,12 @@
           }
         }
       ],
-      "isCnOnly": true,
-      "fileIndex": 292,
       "operatorName": "Dorothy"
     }
   ],
   "Позёмка": [
     {
+      "charId": "token_10026_bgsnow_subbow",
       "name": "Typewriters",
       "description": null,
       "canUseGeneralPotentialItem": true,
@@ -32847,7 +32818,8 @@
           "lvlUpCost": null
         }
       ],
-      "charId": "token_10026_bgsnow_subbow",
+      "cnName": "“打字机”",
+      "isCnOnly": true,
       "skillData": [
         {
           "skillId": "sktok_bgsnow_1",
@@ -34001,7 +33973,6 @@
           ]
         }
       ],
-      "cnName": "“打字机”",
       "voices": [],
       "skins": [
         {
@@ -34016,13 +33987,12 @@
           }
         }
       ],
-      "isCnOnly": true,
-      "fileIndex": 293,
       "operatorName": "Позёмка"
     }
   ],
   "Stainless": [
     {
+      "charId": "token_10027_ironmn_pile1",
       "name": "Stainless™ Multifunctional platform",
       "description": null,
       "canUseGeneralPotentialItem": true,
@@ -34524,7 +34494,8 @@
           "lvlUpCost": null
         }
       ],
-      "charId": "token_10027_ironmn_pile1",
+      "cnName": "白铁™多功能平台",
+      "isCnOnly": true,
       "skillData": [
         {
           "skillId": "sktok_ironmn_pile1",
@@ -35268,7 +35239,6 @@
           ]
         }
       ],
-      "cnName": "白铁™多功能平台",
       "voices": [],
       "skins": [
         {
@@ -35283,11 +35253,10 @@
           }
         }
       ],
-      "isCnOnly": true,
-      "fileIndex": 294,
       "operatorName": "Stainless"
     },
     {
+      "charId": "token_10027_ironmn_pile2",
       "name": "Stainless™ Multifunctional platform",
       "description": null,
       "canUseGeneralPotentialItem": true,
@@ -35811,7 +35780,8 @@
           "lvlUpCost": null
         }
       ],
-      "charId": "token_10027_ironmn_pile2",
+      "cnName": "白铁™多功能平台",
+      "isCnOnly": true,
       "skillData": [
         {
           "skillId": "sktok_ironmn_pile2",
@@ -36675,7 +36645,6 @@
           ]
         }
       ],
-      "cnName": "白铁™多功能平台",
       "voices": [],
       "skins": [
         {
@@ -36690,11 +36659,10 @@
           }
         }
       ],
-      "isCnOnly": true,
-      "fileIndex": 295,
       "operatorName": "Stainless"
     },
     {
+      "charId": "token_10027_ironmn_pile3",
       "name": "Prototype of Feist's Metal Crab",
       "description": null,
       "canUseGeneralPotentialItem": true,
@@ -37287,7 +37255,8 @@
           "lvlUpCost": null
         }
       ],
-      "charId": "token_10027_ironmn_pile3",
+      "cnName": "铁钳号·原型机",
+      "isCnOnly": true,
       "skillData": [
         {
           "skillId": "sktok_ironmn_pile3",
@@ -39381,7 +39350,6 @@
           ]
         }
       ],
-      "cnName": "铁钳号·原型机",
       "voices": [],
       "skins": [
         {
@@ -39396,13 +39364,12 @@
           }
         }
       ],
-      "isCnOnly": true,
-      "fileIndex": 296,
       "operatorName": "Stainless"
     }
   ],
   "Vigil": [
     {
+      "charId": "token_10028_vigil_wolf",
       "name": "Vigil",
       "description": null,
       "canUseGeneralPotentialItem": true,
@@ -39938,7 +39905,8 @@
         }
       ],
       "allSkillLvlup": [],
-      "charId": "token_10028_vigil_wolf",
+      "cnName": "狼群",
+      "isCnOnly": true,
       "skillData": [
         {
           "skillId": "sktok_vigil_wolf_1",
@@ -40240,7 +40208,6 @@
           ]
         }
       ],
-      "cnName": "狼群",
       "voices": [],
       "skins": [
         {
@@ -40255,254 +40222,7 @@
           }
         }
       ],
-      "isCnOnly": true,
-      "fileIndex": 297,
       "operatorName": "Vigil"
-    }
-  ],
-  "undefined": [
-    {
-      "name": "The Tide-hunt Knight",
-      "description": null,
-      "canUseGeneralPotentialItem": true,
-      "canUseActivityPotentialItem": false,
-      "potentialItemId": null,
-      "activityPotentialItemId": null,
-      "nationId": null,
-      "groupId": null,
-      "teamId": null,
-      "displayNumber": null,
-      "tokenKey": null,
-      "appellation": "The Tide-hunt Knight",
-      "position": "MELEE",
-      "tagList": null,
-      "itemUsage": null,
-      "itemDesc": null,
-      "itemObtainApproach": null,
-      "isNotObtainable": false,
-      "isSpChar": false,
-      "maxPotentialLevel": 0,
-      "rarity": 0,
-      "profession": "TOKEN",
-      "subProfessionId": "pioneer",
-      "trait": null,
-      "phases": [
-        {
-          "characterPrefabKey": "trap_079_allydonq",
-          "rangeId": "1-1",
-          "maxLevel": 30,
-          "attributesKeyFrames": [
-            {
-              "level": 1,
-              "data": {
-                "maxHp": 3000,
-                "atk": 400,
-                "def": 1000,
-                "magicResistance": 50,
-                "cost": 5,
-                "blockCnt": 2,
-                "moveSpeed": 1,
-                "attackSpeed": 100,
-                "baseAttackTime": 2,
-                "respawnTime": 70,
-                "hpRecoveryPerSec": 0,
-                "spRecoveryPerSec": 1,
-                "maxDeployCount": 1,
-                "maxDeckStackCnt": 0,
-                "tauntLevel": 0,
-                "massLevel": 0,
-                "baseForceLevel": 0,
-                "stunImmune": false,
-                "silenceImmune": false,
-                "sleepImmune": false,
-                "frozenImmune": false,
-                "levitateImmune": false
-              }
-            },
-            {
-              "level": 30,
-              "data": {
-                "maxHp": 3000,
-                "atk": 400,
-                "def": 1000,
-                "magicResistance": 50,
-                "cost": 5,
-                "blockCnt": 2,
-                "moveSpeed": 1,
-                "attackSpeed": 100,
-                "baseAttackTime": 2,
-                "respawnTime": 70,
-                "hpRecoveryPerSec": 0,
-                "spRecoveryPerSec": 1,
-                "maxDeployCount": 1,
-                "maxDeckStackCnt": 0,
-                "tauntLevel": 0,
-                "massLevel": 0,
-                "baseForceLevel": 0,
-                "stunImmune": false,
-                "silenceImmune": false,
-                "sleepImmune": false,
-                "frozenImmune": false,
-                "levitateImmune": false
-              }
-            }
-          ],
-          "evolveCost": null,
-          "range": {
-            "id": "1-1",
-            "direction": 1,
-            "grids": [
-              {
-                "row": 0,
-                "col": 0
-              },
-              {
-                "row": 0,
-                "col": 1
-              }
-            ]
-          }
-        }
-      ],
-      "skills": [
-        {
-          "skillId": "sktok_allydonq",
-          "overridePrefabKey": null,
-          "overrideTokenKey": null,
-          "levelUpCostCond": [],
-          "unlockCond": {
-            "phase": 0,
-            "level": 1
-          }
-        }
-      ],
-      "talents": [],
-      "potentialRanks": [],
-      "favorKeyFrames": [
-        {
-          "level": 0,
-          "data": {
-            "maxHp": 0,
-            "atk": 0,
-            "def": 0,
-            "magicResistance": 0,
-            "cost": 0,
-            "blockCnt": 0,
-            "moveSpeed": 0,
-            "attackSpeed": 0,
-            "baseAttackTime": 0,
-            "respawnTime": 0,
-            "hpRecoveryPerSec": 0,
-            "spRecoveryPerSec": 0,
-            "maxDeployCount": 0,
-            "maxDeckStackCnt": 0,
-            "tauntLevel": 0,
-            "massLevel": 0,
-            "baseForceLevel": 0,
-            "stunImmune": false,
-            "silenceImmune": false,
-            "sleepImmune": false,
-            "frozenImmune": false,
-            "levitateImmune": false
-          }
-        },
-        {
-          "level": 50,
-          "data": {
-            "maxHp": 0,
-            "atk": 0,
-            "def": 0,
-            "magicResistance": 0,
-            "cost": 0,
-            "blockCnt": 0,
-            "moveSpeed": 0,
-            "attackSpeed": 0,
-            "baseAttackTime": 0,
-            "respawnTime": 0,
-            "hpRecoveryPerSec": 0,
-            "spRecoveryPerSec": 0,
-            "maxDeployCount": 0,
-            "maxDeckStackCnt": 0,
-            "tauntLevel": 0,
-            "massLevel": 0,
-            "baseForceLevel": 0,
-            "stunImmune": false,
-            "silenceImmune": false,
-            "sleepImmune": false,
-            "frozenImmune": false,
-            "levitateImmune": false
-          }
-        }
-      ],
-      "allSkillLvlup": [],
-      "charId": "trap_079_allydonq",
-      "skillData": [
-        {
-          "skillId": "sktok_allydonq",
-          "iconId": null,
-          "hidden": false,
-          "levels": [
-            {
-              "name": "冲锋",
-              "rangeId": "1-1",
-              "description": "下次攻击造成相当于攻击力<@ba.vup>200%</>的物理伤害，并大力地弹开目标",
-              "skillType": 2,
-              "durationType": 0,
-              "spData": {
-                "spType": 2,
-                "levelUpCost": null,
-                "maxChargeTime": 1,
-                "spCost": 4,
-                "initSp": 0,
-                "increment": 1
-              },
-              "prefabId": "sktok_allydonq",
-              "duration": 0,
-              "blackboard": [
-                {
-                  "key": "atk_scale",
-                  "value": 2
-                },
-                {
-                  "key": "force",
-                  "value": 2
-                }
-              ],
-              "range": {
-                "id": "1-1",
-                "direction": 1,
-                "grids": [
-                  {
-                    "row": 0,
-                    "col": 0
-                  },
-                  {
-                    "row": 0,
-                    "col": 1
-                  }
-                ]
-              }
-            }
-          ]
-        }
-      ],
-      "cnName": "猎潮的骑士",
-      "voices": [],
-      "skins": [
-        {
-          "skinId": "trap_079_allydonq#1",
-          "illustId": "illust_trap_079_allydonq_1",
-          "avatarId": "trap_079_allydonq",
-          "portraitId": "trap_079_allydonq_1",
-          "displaySkin": {
-            "skinName": null,
-            "modelName": null,
-            "drawerName": null
-          }
-        }
-      ],
-      "isCnOnly": true,
-      "fileIndex": 298
     }
   ]
 }
