@@ -1,5 +1,5 @@
 {
-  "Silence": [
+  "char_108_silent": [
     {
       "charId": "token_10000_silent_healrb",
       "name": "Medic Drone",
@@ -456,10 +456,10 @@
           }
         }
       ],
-      "operatorName": "Silence"
+      "operatorId": "char_108_silent"
     }
   ],
-  "Deepcolor": [
+  "char_110_deepcl": [
     {
       "charId": "token_10001_deepcl_tentac",
       "name": "Tentacle",
@@ -897,10 +897,10 @@
           }
         }
       ],
-      "operatorName": "Deepcolor"
+      "operatorId": "char_110_deepcl"
     }
   ],
-  "Kal'tsit": [
+  "char_003_kalts": [
     {
       "charId": "token_10002_kalts_mon3tr",
       "name": "Mon3tr",
@@ -1515,10 +1515,10 @@
           }
         }
       ],
-      "operatorName": "Kal'tsit"
+      "operatorId": "char_003_kalts"
     }
   ],
-  "Nightingale": [
+  "char_179_cgbird": [
     {
       "charId": "token_10003_cgbird_bird",
       "name": "Mirage",
@@ -1977,10 +1977,10 @@
           }
         }
       ],
-      "operatorName": "Nightingale"
+      "operatorId": "char_179_cgbird"
     }
   ],
-  "Mayer": [
+  "char_242_otter": [
     {
       "charId": "token_10004_otter_motter",
       "name": "Robotter",
@@ -3524,10 +3524,10 @@
           }
         }
       ],
-      "operatorName": "Mayer"
+      "operatorId": "char_242_otter"
     }
   ],
-  "Magallan": [
+  "char_248_mgllan": [
     {
       "charId": "token_10005_mgllan_drone1",
       "name": "Soaring Dragon F",
@@ -4817,7 +4817,7 @@
           }
         }
       ],
-      "operatorName": "Magallan"
+      "operatorId": "char_248_mgllan"
     },
     {
       "charId": "token_10005_mgllan_drone2",
@@ -6012,7 +6012,7 @@
           }
         }
       ],
-      "operatorName": "Magallan"
+      "operatorId": "char_248_mgllan"
     },
     {
       "charId": "token_10005_mgllan_drone3",
@@ -7303,10 +7303,10 @@
           }
         }
       ],
-      "operatorName": "Magallan"
+      "operatorId": "char_248_mgllan"
     }
   ],
-  "Shamare": [
+  "char_254_vodfox": [
     {
       "charId": "token_10006_vodfox_doll",
       "name": "Cursed Doll",
@@ -8080,10 +8080,10 @@
           }
         }
       ],
-      "operatorName": "Shamare"
+      "operatorId": "char_254_vodfox"
     }
   ],
-  "Phantom": [
+  "char_250_phatom": [
     {
       "charId": "token_10007_phatom_twin",
       "name": "Phantom in the Mirror",
@@ -10071,10 +10071,10 @@
           }
         }
       ],
-      "operatorName": "Phantom"
+      "operatorId": "char_250_phatom"
     }
   ],
-  "W": [
+  "char_113_cqbw": [
     {
       "charId": "token_10008_cqbw_box",
       "name": "Front Toward Enemy",
@@ -10810,10 +10810,10 @@
           }
         }
       ],
-      "operatorName": "W"
+      "operatorId": "char_113_cqbw"
     }
   ],
-  "Weedy": [
+  "char_400_weedy": [
     {
       "charId": "token_10009_weedy_cannon",
       "name": "Industrial Water Cannon",
@@ -12163,10 +12163,10 @@
           }
         }
       ],
-      "operatorName": "Weedy"
+      "operatorId": "char_400_weedy"
     }
   ],
-  "Scene": [
+  "char_336_folivo": [
     {
       "charId": "token_10010_folivo_car",
       "name": "Mobile Buggy Cam",
@@ -13996,10 +13996,10 @@
           }
         }
       ],
-      "operatorName": "Scene"
+      "operatorId": "char_336_folivo"
     }
   ],
-  "Beeswax": [
+  "char_344_beewax": [
     {
       "charId": "token_10011_beewax_oblisk",
       "name": "Sand Obelisk",
@@ -15165,10 +15165,10 @@
           }
         }
       ],
-      "operatorName": "Beeswax"
+      "operatorId": "char_344_beewax"
     }
   ],
-  "Rosmontis": [
+  "char_391_rosmon": [
     {
       "charId": "token_10012_rosmon_shield",
       "name": "Rosmontis's Tactical Equipment",
@@ -16134,10 +16134,10 @@
           }
         }
       ],
-      "operatorName": "Rosmontis"
+      "operatorId": "char_391_rosmon"
     }
   ],
-  "Robin": [
+  "char_451_robin": [
     {
       "charId": "token_10013_robin_mine",
       "name": "'Clip'",
@@ -17182,10 +17182,10 @@
           }
         }
       ],
-      "operatorName": "Robin"
+      "operatorId": "char_451_robin"
     }
   ],
-  "Beanstalk": [
+  "char_452_bstalk": [
     {
       "charId": "token_10014_bstalk_crab",
       "name": "Metal Crab Guard Team",
@@ -17608,10 +17608,10 @@
           }
         }
       ],
-      "operatorName": "Beanstalk"
+      "operatorId": "char_452_bstalk"
     }
   ],
-  "Dusk": [
+  "char_2015_dusk": [
     {
       "charId": "token_10015_dusk_drgn",
       "name": "'Freeling'",
@@ -18230,10 +18230,10 @@
           }
         }
       ],
-      "operatorName": "Dusk"
+      "operatorId": "char_2015_dusk"
     }
   ],
-  "Frost": [
+  "char_458_rfrost": [
     {
       "charId": "token_10016_rfrost_mine",
       "name": "Welcome Mat",
@@ -19267,10 +19267,10 @@
           }
         }
       ],
-      "operatorName": "Frost"
+      "operatorId": "char_458_rfrost"
     }
   ],
-  "Skadi the Corrupting Heart": [
+  "char_1012_skadi2": [
     {
       "charId": "token_10017_skadi2_dedant",
       "name": "Skadi's Seaborn",
@@ -21060,10 +21060,10 @@
           }
         }
       ],
-      "operatorName": "Skadi the Corrupting Heart"
+      "operatorId": "char_1012_skadi2"
     }
   ],
-  "Roberta": [
+  "char_484_robrta": [
     {
       "charId": "token_10018_robrta_mach",
       "name": "Full Auto Modeler",
@@ -21598,10 +21598,10 @@
           }
         }
       ],
-      "operatorName": "Roberta"
+      "operatorId": "char_484_robrta"
     }
   ],
-  "Nearl the Radiant Knight": [
+  "char_1014_nearl2": [
     {
       "charId": "token_10019_nearl2_sword",
       "name": "'Blazing Sun'",
@@ -22648,10 +22648,10 @@
           }
         }
       ],
-      "operatorName": "Nearl the Radiant Knight"
+      "operatorId": "char_1014_nearl2"
     }
   ],
-  "Ling": [
+  "char_2023_ling": [
     {
       "charId": "token_10020_ling_soul1",
       "name": "'Tranquility'",
@@ -23740,7 +23740,7 @@
           }
         }
       ],
-      "operatorName": "Ling"
+      "operatorId": "char_2023_ling"
     },
     {
       "charId": "token_10020_ling_soul2",
@@ -25213,7 +25213,7 @@
           }
         }
       ],
-      "operatorName": "Ling"
+      "operatorId": "char_2023_ling"
     },
     {
       "charId": "token_10020_ling_soul3",
@@ -27070,10 +27070,10 @@
           }
         }
       ],
-      "operatorName": "Ling"
+      "operatorId": "char_2023_ling"
     }
   ],
-  "Blacknight": [
+  "char_476_blkngt": [
     {
       "charId": "token_10021_blkngt_hypnos",
       "name": "Slumberfoot",
@@ -27597,10 +27597,10 @@
           }
         }
       ],
-      "operatorName": "Blacknight"
+      "operatorId": "char_476_blkngt"
     }
   ],
-  "Kazemaru": [
+  "char_4016_kazema": [
     {
       "charId": "token_10022_kazema_shadow",
       "name": "Kaminingyo",
@@ -28265,10 +28265,10 @@
           }
         }
       ],
-      "operatorName": "Kazemaru"
+      "operatorId": "char_4016_kazema"
     }
   ],
-  "Windflit": [
+  "char_433_windft": [
     {
       "charId": "token_10023_windft_wrench",
       "name": "Reliable Battery",
@@ -29511,10 +29511,10 @@
           }
         }
       ],
-      "operatorName": "Windflit"
+      "operatorId": "char_433_windft"
     }
   ],
-  "Ebenholz": [
+  "char_4046_ebnhlz": [
     {
       "charId": "token_10024_ebnhlz_rcube",
       "name": "Remnants of Days Past",
@@ -30239,10 +30239,10 @@
           }
         }
       ],
-      "operatorName": "Ebenholz"
+      "operatorId": "char_4046_ebnhlz"
     }
   ],
-  "Dorothy": [
+  "char_4048_doroth": [
     {
       "charId": "token_10025_doroth_recttp",
       "name": "Resonator",
@@ -32210,10 +32210,10 @@
           }
         }
       ],
-      "operatorName": "Dorothy"
+      "operatorId": "char_4048_doroth"
     }
   ],
-  "Позёмка": [
+  "char_4055_bgsnow": [
     {
       "charId": "token_10026_bgsnow_subbow",
       "name": "Typewriters",
@@ -33987,10 +33987,10 @@
           }
         }
       ],
-      "operatorName": "Позёмка"
+      "operatorId": "char_4055_bgsnow"
     }
   ],
-  "Stainless": [
+  "char_4072_ironmn": [
     {
       "charId": "token_10027_ironmn_pile1",
       "name": "Stainless™ Multifunctional platform",
@@ -35253,7 +35253,7 @@
           }
         }
       ],
-      "operatorName": "Stainless"
+      "operatorId": "char_4072_ironmn"
     },
     {
       "charId": "token_10027_ironmn_pile2",
@@ -36659,7 +36659,7 @@
           }
         }
       ],
-      "operatorName": "Stainless"
+      "operatorId": "char_4072_ironmn"
     },
     {
       "charId": "token_10027_ironmn_pile3",
@@ -39364,10 +39364,10 @@
           }
         }
       ],
-      "operatorName": "Stainless"
+      "operatorId": "char_4072_ironmn"
     }
   ],
-  "Vigil": [
+  "char_427_vigil": [
     {
       "charId": "token_10028_vigil_wolf",
       "name": "Vigil",
@@ -40222,7 +40222,7 @@
           }
         }
       ],
-      "operatorName": "Vigil"
+      "operatorId": "char_427_vigil"
     }
   ]
 }

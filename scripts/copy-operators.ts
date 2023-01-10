@@ -64,7 +64,7 @@ void (async () => {
     ([charId]) => !enCharacterIds.has(charId)
   );
 
-  const summonIdToOperatorName: Record<string, string> = {};
+  const summonIdToOperatorId: Record<string, string> = {};
   // @ts-expect-error bro
   const denormalizedCharacters: DenormalizedCharacter[] = (
     [
@@ -89,7 +89,7 @@ void (async () => {
         .filter((skill) => skill.overrideTokenKey != null)
         .forEach((skill) => {
           // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-          summonIdToOperatorName[skill.overrideTokenKey!] = characterName;
+          summonIdToOperatorId[skill.overrideTokenKey!] = charId;
         });
 
       const phases = character.phases.map((phase) => ({
@@ -214,7 +214,7 @@ void (async () => {
       const { name: cnName, subProfessionId } = mostRecentCharData;
 
       if (character.tokenKey) {
-        summonIdToOperatorName[character.tokenKey] = characterName;
+        summonIdToOperatorId[character.tokenKey] = charId;
       }
 
       return {
@@ -237,7 +237,7 @@ void (async () => {
     .map(
       (character) =>
         [
-          character.name,
+          character.charId,
           {
             ...character,
             ...releaseOrderAndLimitedLookup[character.cnName],
@@ -260,13 +260,13 @@ void (async () => {
     .filter((character) => character.profession === "TOKEN")
     .map((summon) => ({
       ...summon,
-      operatorName: summonIdToOperatorName[summon.charId],
+      operatorId: summonIdToOperatorId[summon.charId],
     }));
   const summonsJson = denormalizedSummons.reduce((allSummons, summon) => {
-    if (allSummons[summon.operatorName] != null) {
-      allSummons[summon.operatorName].push(summon);
+    if (allSummons[summon.operatorId] != null) {
+      allSummons[summon.operatorId].push(summon);
     } else {
-      allSummons[summon.operatorName] = [summon];
+      allSummons[summon.operatorId] = [summon];
     }
     return allSummons;
   }, {} as Record<string, DenormalizedCharacter[]>);
