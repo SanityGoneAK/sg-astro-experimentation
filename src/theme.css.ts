@@ -8,10 +8,12 @@ const accentColors = {
   orangeLight: "#FFC397",
   yellow: "#FED874",
   yellowLight: "#FFEBB8",
-  sky: "#49B3FF",
-  skyLight: "#83CBFF",
   purple: "#7F7DEA",
   purpleLight: "#B1AFFF",
+  sky: "#49B3FF",
+  skyLight: "#83CBFF",
+  green: "#A7E855",
+  greenLight: "#D3FF9B",
 };
 
 export const rawColors = {
@@ -34,6 +36,7 @@ export const rawColors = {
     sky: `linear-gradient(to bottom, ${accentColors.skyLight}, ${accentColors.sky})`,
     purple: `linear-gradient(to bottom, ${accentColors.purpleLight}, ${accentColors.purple})`,
     red: `linear-gradient(to bottom, ${accentColors.redLight}, ${accentColors.red})`,
+    green: `linear-gradient(to bottom, ${accentColors.greenLight}, ${accentColors.green})`,
   },
 };
 
