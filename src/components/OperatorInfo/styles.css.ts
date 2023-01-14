@@ -1,4 +1,5 @@
 import { style, styleVariants } from "@vanilla-extract/css";
+import { rgba } from "polished";
 
 import { spacing } from "../../theme-helpers";
 import { rawColors, vars } from "../../theme.css";
@@ -7,6 +8,7 @@ export const root = style({
   display: "flex",
   flexDirection: "column",
   padding: spacing(3, 3, 2),
+  background: `${rgba(rawColors.neutrals.midtone, 0.66)}`,
 });
 
 export const portraitNameRarity = style({

@@ -1,12 +1,14 @@
 import { style } from "@vanilla-extract/css";
+import { rgba } from "polished";
 import { spacing } from "../../theme-helpers";
-import { vars } from "../../theme.css";
+import { rawColors, vars } from "../../theme.css";
 
 export const tabList = style({
   display: "grid",
   padding: spacing(0, 2, 1),
   gridTemplateColumns: "repeat(5, auto) 1fr",
   columnGap: spacing(1),
+  background: rgba(rawColors.neutrals.midtone, 0.66),
 });
 
 export const tabListButton = style({
