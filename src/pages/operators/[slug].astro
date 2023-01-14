@@ -8,6 +8,7 @@ import { operatorAvatar } from "../../utils/images";
 import CharacterSplash from "../../components/CharacterSplash";
 import OperatorInfo from "../../components/OperatorInfo/OperatorInfo.astro";
 import InterpunctSpacer from "../../components/InterpunctSpacer/InterpunctSpacer.astro";
+import OperatorTabs from "../../components/OperatorTabs/OperatorTabs";
 
 import type * as OutputTypes from "../../output-types";
 
@@ -84,6 +85,7 @@ const { subProfessionId } = char;
       </section>
       <section>
         <OperatorInfo character={char} />
+        <OperatorTabs client:visible />
       </section>
     </div>
     <div>
