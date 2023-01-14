@@ -1,6 +1,19 @@
 import { createGlobalTheme, style } from "@vanilla-extract/css";
 import { spacing } from "./theme-helpers";
 
+const accentColors = {
+  red: "#F45C5C",
+  redLight: "#FF9B9B",
+  orange: "#FF994F",
+  orangeLight: "#FFC397",
+  yellow: "#FED874",
+  yellowLight: "#FFEBB8",
+  sky: "#49B3FF",
+  skyLight: "#83CBFF",
+  purple: "#7F7DEA",
+  purpleLight: "#B1AFFF",
+};
+
 export const rawColors = {
   neutrals: {
     white: "#e8e8f2",
@@ -14,15 +27,13 @@ export const rawColors = {
     midtoneBrighterer: "#484858",
     midtoneExtra: "#1f1f27",
   },
-  accents: {
-    red: "#fb4040",
-    orange: "#f98d3f",
-    yellow: "#ffcf53",
-    lime: "#a7e855",
-    blue: "#49b3ff",
-    softBlue: "#7f7dea",
-    purple: "7F7DEA",
-    magenta: "#e85593",
+  accents: accentColors,
+  gradients: {
+    orange: `linear-gradient(to bottom, ${accentColors.orangeLight}, ${accentColors.orange})`,
+    yellow: `linear-gradient(to bottom, ${accentColors.yellowLight}, ${accentColors.yellow})`,
+    sky: `linear-gradient(to bottom, ${accentColors.skyLight}, ${accentColors.sky})`,
+    purple: `linear-gradient(to bottom, ${accentColors.purpleLight}, ${accentColors.purple})`,
+    red: `linear-gradient(to bottom, ${accentColors.redLight}, ${accentColors.red})`,
   },
 };
 
@@ -146,7 +157,7 @@ export const vars = createGlobalTheme(":root", {
 });
 
 export const linkStyle = style({
-  color: vars.colors.accents.blue,
+  color: vars.colors.accents.sky,
   ":hover": {
     textDecoration: "underline",
   },

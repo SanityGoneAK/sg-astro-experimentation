@@ -122,13 +122,13 @@ globalStyle(".emphasized-link", {
   padding: spacing(0, 0.5),
   borderRadius: spacing(0.25),
   transition: "all 50ms ease-out",
-  color: rgba(tint(0.27, rawColors.accents.blue), 0.66),
-  backgroundColor: rgba(rawColors.accents.blue, 0.08),
+  color: rgba(tint(0.27, rawColors.accents.sky), 0.66),
+  backgroundColor: rgba(rawColors.accents.sky, 0.08),
 });
 
 globalStyle(".emphasized-link:hover", {
-  color: tint(0.27, rawColors.accents.blue),
-  backgroundColor: rgba(rawColors.accents.blue, 0.4),
+  color: tint(0.27, rawColors.accents.sky),
+  backgroundColor: rgba(rawColors.accents.sky, 0.4),
 });
 
 globalStyle(".visually-hidden:not(:focus):not(:active)", {
