@@ -10,6 +10,7 @@ export const root = style({
   fontFamily: "inherit",
   fontSize: "inherit",
   fontWeight: vars.typography.body1Bold.fontWeight,
+  lineHeight: "20px",
   margin: "-2px", // to compensate for 1px transparent border
   border: "1px solid transparent",
   borderRadius: 18,
