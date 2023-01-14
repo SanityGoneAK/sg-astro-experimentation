@@ -90,19 +90,25 @@ export const rarityAndLimitedness = style({
 });
 
 const baseLimitedText = style({
+  position: "relative",
   display: "inline-block",
-  paddingRight: "6px",
+  marginRight: "6px",
   fontSize: "16px",
   fontWeight: 900,
   lineHeight: 1.5,
   fontStyle: "italic",
   textTransform: "uppercase",
-  textDecoration: "underline",
-  textDecorationStyle: "dashed",
-  // @ts-expect-error webkit specific property for gradient text; !important is required here
-  // (it must override `background`, and vanilla-extract wants to put `background` after)
+  // @ts-expect-error webkit specific property for gradient text; !important is required here to work correctly when preceding `background`
   "-webkit-background-clip": "text !important",
   "-webkit-text-fill-color": "transparent",
+  "::after": {
+    content: "",
+    position: "absolute",
+    left: 0,
+    bottom: 0,
+    right: 0,
+    borderBottom: `1px dashed ${rawColors.neutrals.gray}`,
+  },
 });
 
 export const limitedText = styleVariants({
