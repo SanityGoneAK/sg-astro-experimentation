@@ -19,6 +19,7 @@ export const tabListButton = style({
   border: "none",
   textTransform: "uppercase",
   cursor: "pointer",
+  fontFamily: "inherit",
   fontSize: "18px",
   fontWeight: 600,
   lineHeight: "23px",
