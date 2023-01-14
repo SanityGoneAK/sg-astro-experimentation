@@ -24,6 +24,7 @@ interface Props {
 const { character } = Astro.props;
 const [baseName, alterName] = character.name.split(/ the /i);
 const operatorClass = professionToClass(character.profession);
+const rarity = (character.rarity + 1) as 1 | 2 | 3 | 4 | 5 | 6;
 ---
 
 <div class={classes.root}>
@@ -37,11 +38,17 @@ const operatorClass = professionToClass(character.profession);
       <h2 class={classes.baseName}>{baseName}</h2>
       {alterName && <h3 class={classes.alterName}>The {alterName}</h3>}
     </div>
-    <div class={classes.rarity}>
+    <div class={classes.rarityAndLimitedness}>
+      {
+        character.isLimited && (
+          <span class={classes.limitedText[rarity]}>Limited</span>
+        )
+      }
+      <span class="visually-hidden">Rarity: {rarity}</span>
       {
         Array(character.rarity + 1)
           .fill(null)
-          .map(() => <StarIcon />)
+          .map(() => <StarIcon rarity={rarity} />)
       }
     </div>
   </div>

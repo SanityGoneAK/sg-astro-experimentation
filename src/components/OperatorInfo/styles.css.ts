@@ -1,5 +1,4 @@
-import { style } from "@vanilla-extract/css";
-import { rgba } from "polished";
+import { style, styleVariants } from "@vanilla-extract/css";
 
 import { spacing } from "../../theme-helpers";
 import { rawColors, vars } from "../../theme.css";
@@ -83,7 +82,47 @@ export const position = style({
   color: vars.colors.neutrals.gray,
 });
 
-export const rarity = style({
+export const rarityAndLimitedness = style({
+  display: "flex",
   padding: spacing(0.5, 0),
   alignSelf: "start",
+  alignItems: "center",
+});
+
+const baseLimitedText = style({
+  display: "inline-block",
+  paddingRight: "6px",
+  fontSize: "16px",
+  fontWeight: 900,
+  lineHeight: 1.5,
+  fontStyle: "italic",
+  textTransform: "uppercase",
+  textDecoration: "underline",
+  textDecorationStyle: "dashed",
+  // @ts-expect-error webkit specific property for gradient text; !important is required here
+  // (it must override `background`, and vanilla-extract wants to put `background` after)
+  "-webkit-background-clip": "text !important",
+  "-webkit-text-fill-color": "transparent",
+});
+
+export const limitedText = styleVariants({
+  6: [baseLimitedText, { background: rawColors.gradients.orange }],
+  5: [baseLimitedText, { background: rawColors.gradients.yellow }],
+  4: [baseLimitedText],
+  3: [baseLimitedText],
+  2: [baseLimitedText],
+  1: [baseLimitedText],
+});
+
+export const starIconPath = styleVariants({
+  6: {
+    fill: rawColors.gradients.orange,
+  },
+  5: {
+    fill: rawColors.gradients.yellow,
+  },
+  4: {},
+  3: {},
+  2: {},
+  1: {},
 });
