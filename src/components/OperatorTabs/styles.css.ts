@@ -41,8 +41,9 @@ export const tabListButton = style({
       right: spacing(1),
       bottom: spacing(-1),
       height: 0,
-      outline: "0",
-      boxShadow: `0 0 0 1px ${vars.colors.neutrals.white}`, // renders as 2px thick
+      outline: "none",
+      border: `1px solid ${vars.colors.neutrals.white}`, // renders as a 2px solid line
+      boxShadow: `0px -4px 16px ${vars.colors.neutrals.white}`, // halo effect
     },
   },
 });
