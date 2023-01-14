@@ -6,7 +6,7 @@ import { rawColors, vars } from "../../theme.css";
 export const root = style({
   display: "flex",
   flexDirection: "column",
-  padding: spacing(3),
+  padding: spacing(3, 3, 2),
 });
 
 export const portraitNameRarity = style({

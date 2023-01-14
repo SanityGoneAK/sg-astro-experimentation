@@ -3,7 +3,7 @@ import { vars } from "../../theme.css";
 import { spacing } from "../../theme-helpers";
 
 export const root = style({
-  padding: spacing(3, 0),
+  padding: spacing(3, 0, 0),
   gridTemplateColumns: "auto 1fr",
   columnGap: spacing(2),
   alignItems: "center",
