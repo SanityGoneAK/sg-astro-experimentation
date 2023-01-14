@@ -46,7 +46,7 @@ const rarity = (character.rarity + 1) as 1 | 2 | 3 | 4 | 5 | 6;
       }
       <span class="visually-hidden">Rarity: {rarity}</span>
       {
-        Array(character.rarity + 1)
+        Array(rarity)
           .fill(null)
           .map(() => <StarIcon rarity={rarity} />)
       }
