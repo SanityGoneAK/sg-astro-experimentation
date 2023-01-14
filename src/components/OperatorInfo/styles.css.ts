@@ -62,6 +62,7 @@ export const classBranchNameAndIconWrapper = style({
   display: "flex",
   alignItems: "center",
   columnGap: spacing(1),
+  fontWeight: 600,
 });
 
 export const branchNameAndIconWrapper = style([
