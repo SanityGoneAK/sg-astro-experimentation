@@ -117,21 +117,8 @@ const baseLimitedText = style({
 export const limitedText = styleVariants({
   6: [baseLimitedText, { background: rawColors.gradients.orange }],
   5: [baseLimitedText, { background: rawColors.gradients.yellow }],
-  4: [baseLimitedText],
-  3: [baseLimitedText],
-  2: [baseLimitedText],
-  1: [baseLimitedText],
-});
-
-export const starIconPath = styleVariants({
-  6: {
-    fill: rawColors.gradients.orange,
-  },
-  5: {
-    fill: rawColors.gradients.yellow,
-  },
-  4: {},
-  3: {},
-  2: {},
-  1: {},
+  4: [baseLimitedText, { background: rawColors.gradients.purple }],
+  3: [baseLimitedText, { background: rawColors.gradients.sky }],
+  2: [baseLimitedText, { background: rawColors.gradients.green }],
+  1: [baseLimitedText, { background: rawColors.neutrals.white }],
 });
