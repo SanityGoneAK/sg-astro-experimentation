@@ -1,5 +1,5 @@
 import { styleVariants } from "@vanilla-extract/css";
-import { vars } from "../../../theme.css";
+import { vars } from "../../theme.css";
 
 export const eliteIconPath = styleVariants({
   inactive: { fill: vars.colors.neutrals.midtoneBrighterer },

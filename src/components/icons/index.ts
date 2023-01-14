@@ -14,7 +14,8 @@ import PotentialFourIcon from "./PotentialFourIcon";
 import PotentialFiveIcon from "./PotentialFiveIcon";
 import PotentialSixIcon from "./PotentialSixIcon";
 import HealthIcon from "./HealthIcon";
-import HourglassIcon from "../HourglassIcon";
+import HourglassIcon from "./HourglassIcon";
+import SearchIcon from "./SearchIcon";
 
 export {
   ArtsResistanceIcon,
@@ -33,5 +34,6 @@ export {
   PotentialFiveIcon,
   PotentialSixIcon,
   HealthIcon,
-  HourglassIcon as RedeployTimeIcon,
+  HourglassIcon,
+  SearchIcon,
 };
