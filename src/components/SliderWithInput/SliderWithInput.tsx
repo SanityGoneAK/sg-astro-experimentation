@@ -1,4 +1,4 @@
-import React from "react";
+import { useId } from "react";
 import { SliderUnstyled, SliderUnstyledProps } from "@mui/base";
 import cx from "clsx";
 
@@ -6,13 +6,13 @@ import * as classes from "./styles.css";
 
 type SliderWithInputProps = React.HTMLAttributes<HTMLInputElement> &
   React.InputHTMLAttributes<HTMLInputElement> & {
-    id: string;
     label: string;
     sliderProps?: SliderUnstyledProps;
   };
 
-const SliderWithInput: React.VFC<SliderWithInputProps> = (props) => {
-  const { label, sliderProps, id, className, ...rest } = props;
+const SliderWithInput: React.FC<SliderWithInputProps> = (props) => {
+  const { label, sliderProps, className, ...rest } = props;
+  const id = useId();
 
   return (
     <div className={cx(className, classes.root)}>
@@ -26,7 +26,7 @@ const SliderWithInput: React.VFC<SliderWithInputProps> = (props) => {
       />
       <div className={classes.sliderBorder}>
         <SliderUnstyled
-          aria-label={`${id} slider`}
+          aria-label={`${label} slider`}
           className={classes.slider}
           {...sliderProps}
         />

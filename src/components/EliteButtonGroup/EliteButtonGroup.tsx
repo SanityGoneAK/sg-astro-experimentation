@@ -9,7 +9,11 @@ interface Props {
   onChange: (newElite: number) => void;
 }
 
-const EliteSelect: React.FC<Props> = ({ maxElite, currentElite, onChange }) => {
+const EliteButtonGroup: React.FC<Props> = ({
+  maxElite,
+  currentElite,
+  onChange,
+}) => {
   return (
     <div className={classes.root}>
       <span className={classes.label}>Promotion</span>
@@ -28,7 +32,7 @@ const EliteSelect: React.FC<Props> = ({ maxElite, currentElite, onChange }) => {
     </div>
   );
 };
-export default EliteSelect;
+export default EliteButtonGroup;
 
 const EliteButton: React.FC<{
   elite: number;

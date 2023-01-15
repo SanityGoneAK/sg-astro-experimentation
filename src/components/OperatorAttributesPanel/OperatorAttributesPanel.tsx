@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-import EliteSelect from "../EliteSelect";
+import EliteButtonGroup from "../EliteButtonGroup";
 import * as classes from "./styles.css";
 
 import type * as OutputTypes from "../../output-types";
@@ -16,7 +16,7 @@ const OperatorAttributesPanel: React.FC<Props> = ({ character }) => {
   return (
     <>
       <div className={classes.knobsContainer}>
-        <EliteSelect
+        <EliteButtonGroup
           currentElite={elite}
           maxElite={maxElite}
           onChange={setElite}
