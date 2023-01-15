@@ -1,4 +1,5 @@
 import { style } from "@vanilla-extract/css";
+import { rgba } from "polished";
 import { spacing } from "../../theme-helpers";
 import { rawColors, vars } from "../../theme.css";
 
@@ -32,8 +33,12 @@ export const button = style({
   color: vars.colors.neutrals.midtoneBrighterer,
   background: "none",
   cursor: "pointer",
-  transition: "color 200ms",
+  transition: "color 200ms, background-color 200ms",
   selectors: {
+    '&:not([aria-pressed="true"]):hover': {
+      color: vars.colors.accents.purple,
+      background: `${rgba(rawColors.accents.purple, 0.1)}`,
+    },
     '&[aria-pressed="true"]': {
       color: vars.colors.neutrals.blackest,
     },
