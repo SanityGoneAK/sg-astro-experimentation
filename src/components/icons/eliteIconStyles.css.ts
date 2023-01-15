@@ -2,8 +2,10 @@ import { styleVariants } from "@vanilla-extract/css";
 import { vars } from "../../theme.css";
 
 export const eliteIconPath = styleVariants({
-  inactive: { fill: vars.colors.neutrals.midtoneBrighterer },
-  active: { fill: vars.colors.neutrals.white },
+  inactive: {},
+  active: {
+    fill: "url(#rarity5)",
+  },
 });
 
 export const eliteZeroIconPath = styleVariants({

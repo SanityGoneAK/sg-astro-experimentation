@@ -1,5 +1,6 @@
-import { style } from "@vanilla-extract/css";
+import { globalStyle, style, styleVariants } from "@vanilla-extract/css";
 import { spacing } from "../../theme-helpers";
+import { vars } from "../../theme.css";
 
 export const root = style({
   display: "flex",
@@ -13,9 +14,22 @@ export const buttonGroup = style({
   columnGap: spacing(1),
 });
 
-export const eliteButton = style({
+const baseEliteButton = style({
   padding: spacing(0.5),
   border: "none",
   background: "none",
   cursor: "pointer",
+});
+
+export const eliteButton = styleVariants({
+  zero: [baseEliteButton, {}],
+  oneTwo: [baseEliteButton, {}],
+});
+
+globalStyle(`${eliteButton.zero}[aria-pressed="false"]:hover svg path`, {
+  stroke: vars.colors.neutrals.gray,
+});
+
+globalStyle(`${eliteButton.oneTwo}[aria-pressed="false"]:hover svg path`, {
+  fill: vars.colors.neutrals.gray,
 });

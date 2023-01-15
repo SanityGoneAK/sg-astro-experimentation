@@ -14,7 +14,7 @@ const EliteSelect: React.FC<Props> = ({ maxElite, currentElite, onChange }) => {
     <div className={classes.root}>
       Promotion
       <div role="group" className={classes.buttonGroup}>
-        {Array(maxElite)
+        {Array(maxElite + 1)
           .fill(0)
           .map((_, i) => (
             <EliteButton
@@ -53,8 +53,8 @@ const EliteButton: React.FC<{
 
   return (
     <button
-      className={classes.eliteButton}
-      onClick={() => onClick}
+      className={classes.eliteButton[elite === 0 ? "zero" : "oneTwo"]}
+      onClick={() => onClick(elite)}
       aria-pressed={active}
       aria-label={`Elite ${elite}`}
     >
