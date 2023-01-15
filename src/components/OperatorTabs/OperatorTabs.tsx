@@ -27,11 +27,9 @@ const OperatorTabs: React.FC<Props> = ({ character }) => {
         <Tab.Panel>
           <OperatorAttributesPanel character={character} />
         </Tab.Panel>
-        {["Attributes", "Talents", "Skills", "Modules", "RIIC", "Misc"].map(
-          (label) => {
-            return <Tab.Panel key={label}>{label} panel</Tab.Panel>;
-          }
-        )}
+        {["Talents", "Skills", "Modules", "RIIC", "Misc"].map((label) => {
+          return <Tab.Panel key={label}>{label} panel</Tab.Panel>;
+        })}
       </Tab.Panels>
     </Tab.Group>
   );
