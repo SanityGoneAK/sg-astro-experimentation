@@ -22,7 +22,9 @@ const SliderWithInput: React.FC<SliderWithInputProps> = (props) => {
     const newValue = Number(e.target.value);
     if (1 <= newValue && newValue <= max) {
       onChange(newValue);
+      return;
     }
+    onChange(max);
   };
 
   const shortLabel = type === "level" ? "Lv" : "Rank";
