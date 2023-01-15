@@ -1,18 +1,17 @@
 const { mergeConfig } = require("vite");
-const path = require("path");
 module.exports = {
-  stories: ["../src/**/*.mdx", "../src/**/*.stories.@(js|jsx|ts|tsx)"],
+  stories: ["../src/**/*.stories.mdx", "../src/**/*.stories.@(js|jsx|ts|tsx)"],
   addons: [
     "@storybook/addon-links",
     "@storybook/addon-essentials",
     "@storybook/addon-interactions",
   ],
-  framework: {
-    name: "@storybook/react-vite",
-    options: {},
+  framework: "@storybook/react",
+  core: {
+    builder: "@storybook/builder-vite",
   },
-  docs: {
-    autodocs: "tag",
+  features: {
+    storyStoreV7: true,
   },
   async viteFinal(config) {
     return mergeConfig(config, {

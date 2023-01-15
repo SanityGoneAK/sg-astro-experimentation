@@ -10,8 +10,8 @@
     "astro": "astro",
     "update-operators": "sucrase-node scripts/copy-operators.ts",
     "update-game-data": "git submodule update --init --recursive --remote && sucrase-node ./scripts/copy-branches.ts && sucrase-node scripts/copy-operators.ts && sucrase-node ./scripts/copy-modules.ts && sucrase-node ./scripts/build-search-index.ts",
-    "storybook": "storybook dev -p 6006",
-    "build-storybook": "storybook build"
+    "storybook": "start-storybook -p 6006",
+    "build-storybook": "build-storybook"
   },
   "dependencies": {
     "@astrojs/react": "^1.2.2",
@@ -36,18 +36,19 @@
     "xregexp": "^5.1.1"
   },
   "devDependencies": {
-    "@storybook/addon-essentials": "^7.0.0-beta.27",
-    "@storybook/addon-interactions": "^7.0.0-beta.27",
-    "@storybook/addon-links": "^7.0.0-beta.27",
-    "@storybook/blocks": "^7.0.0-beta.27",
-    "@storybook/react": "^7.0.0-beta.27",
-    "@storybook/react-vite": "^7.0.0-beta.27",
+    "@babel/core": "^7.20.12",
+    "@storybook/addon-actions": "^6.5.15",
+    "@storybook/addon-essentials": "^6.5.15",
+    "@storybook/addon-interactions": "^6.5.15",
+    "@storybook/addon-links": "^6.5.15",
+    "@storybook/builder-vite": "^0.2.7",
+    "@storybook/react": "^6.5.15",
     "@storybook/testing-library": "^0.0.13",
     "@types/node": "^18.11.15",
     "@types/react": "^18.0.26",
+    "babel-loader": "^8.3.0",
     "cheerio": "^1.0.0-rc.12",
     "prop-types": "^15.8.1",
-    "storybook": "^7.0.0-beta.27",
     "sucrase": "^3.29.0"
   }
 }
