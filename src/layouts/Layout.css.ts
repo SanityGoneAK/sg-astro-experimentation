@@ -91,9 +91,7 @@ globalStyle("body", {
 });
 
 globalStyle("html", {
-  ...vars.typography.body1,
-  fontFamily: `${vars.typography.fontFamily}, Arial, sans-serif`,
-  color: vars.colors.neutrals.white,
+  ...vars.newTypography.body,
   backgroundColor: vars.colors.neutrals.darktone,
   overflowY: "scroll",
   scrollbarWidth: "auto",

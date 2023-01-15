@@ -40,6 +40,22 @@ export const rawColors = {
   },
 };
 
+const primaryFontFamily = "'Source Sans Pro', sans-serif";
+const secondaryFontFamily = "'Crimson Text', serif";
+const bodyTypography = {
+  fontFamily: primaryFontFamily,
+  fontSize: "16px",
+  lineHeight: "24px",
+  fontWeight: "400",
+  color: rawColors.neutrals.white,
+};
+const headerTypography = {
+  fontFamily: primaryFontFamily,
+  fontSize: "16px",
+  lineHeight: "20px",
+  fontWeight: "400",
+};
+
 export const vars = createGlobalTheme(":root", {
   colors: rawColors,
   typography: {
@@ -156,6 +172,47 @@ export const vars = createGlobalTheme(":root", {
     baseShadow: `${spacing(0.25)} ${spacing(0.25)} ${spacing(
       1
     )} rgba(0, 0, 0, 0.15)`,
+  },
+  newTypography: {
+    title: {
+      fontFamily: secondaryFontFamily,
+      fontSize: "40px",
+      lineHeight: "40px",
+      fontWeight: "600",
+    },
+    subTitle: {
+      fontFamily: secondaryFontFamily,
+      fontSize: "20px",
+      lineHeight: "20px",
+      fontWeight: "400",
+    },
+    header: headerTypography,
+    headerSemibold: {
+      ...headerTypography,
+      fontWeight: "600",
+    },
+    body: bodyTypography,
+    bodySemibold: {
+      ...bodyTypography,
+      fontWeight: "600",
+    },
+    bodyBold: {
+      ...bodyTypography,
+      fontWeight: "700",
+    },
+    header2: {
+      fontFamily: primaryFontFamily,
+      fontSize: "18px",
+      lineHeight: "23px",
+      fontWeight: "600",
+    },
+    label: {
+      fontFamily: primaryFontFamily,
+      fontSize: "16px",
+      lineHeight: "24px",
+      fontWeight: "900",
+      fontStyle: "italic",
+    },
   },
 });
 

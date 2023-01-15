@@ -192,13 +192,13 @@ export const rarity = styleVariants({
   4: [
     baseRarity,
     {
-      color: vars.colors.accents.softBlue,
+      color: vars.colors.accents.purple,
     },
   ],
   3: [
     baseRarity,
     {
-      color: vars.colors.accents.blue,
+      color: vars.colors.accents.sky,
     },
   ],
   2: [baseRarity],
