@@ -15,13 +15,18 @@ const OperatorAttributesPanel: React.FC<Props> = ({ character }) => {
   const [elite, setElite] = useState(maxElite);
   const [level, setLevel] = useState(character.phases.at(-1)!.maxLevel);
 
+  const handleEliteChange = (newElite: number) => {
+    setElite(newElite);
+    setLevel(Math.min(character.phases[newElite].maxLevel, level));
+  };
+
   return (
     <>
       <div className={classes.knobsContainer}>
         <EliteButtonGroup
           currentElite={elite}
           maxElite={maxElite}
-          onChange={setElite}
+          onChange={handleEliteChange}
         />
         <SliderWithInput
           type="level"
