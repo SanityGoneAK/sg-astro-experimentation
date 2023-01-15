@@ -12,7 +12,7 @@ interface Props {
 const EliteSelect: React.FC<Props> = ({ maxElite, currentElite, onChange }) => {
   return (
     <div className={classes.root}>
-      Promotion
+      <span className={classes.label}>Promotion</span>
       <div role="group" className={classes.buttonGroup}>
         {Array(maxElite + 1)
           .fill(0)

@@ -8,6 +8,10 @@ export const root = style({
   columnGap: spacing(1.5),
 });
 
+export const label = style({
+  color: vars.colors.neutrals.gray,
+});
+
 export const buttonGroup = style({
   display: "flex",
   alignItems: "center",
@@ -19,6 +23,7 @@ const baseEliteButton = style({
   border: "none",
   background: "none",
   cursor: "pointer",
+  lineHeight: 0,
 });
 
 export const eliteButton = styleVariants({
@@ -26,6 +31,8 @@ export const eliteButton = styleVariants({
   oneTwo: [baseEliteButton, {}],
 });
 
+// n.b. we put hover styles here and not in eliteIcon
+// because we want the hover target to be the entire button, not just the svg/path
 globalStyle(`${eliteButton.zero}[aria-pressed="false"]:hover svg path`, {
   stroke: vars.colors.neutrals.gray,
 });
