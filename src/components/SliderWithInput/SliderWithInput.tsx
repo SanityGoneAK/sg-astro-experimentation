@@ -1,4 +1,3 @@
-import { useId } from "react";
 import { SliderUnstyled, SliderUnstyledProps } from "@mui/base";
 import cx from "clsx";
 
@@ -6,31 +5,25 @@ import * as classes from "./styles.css";
 
 type SliderWithInputProps = React.HTMLAttributes<HTMLInputElement> &
   React.InputHTMLAttributes<HTMLInputElement> & {
-    label: string;
+    type: "level" | "skill";
     sliderProps?: SliderUnstyledProps;
   };
 
 const SliderWithInput: React.FC<SliderWithInputProps> = (props) => {
-  const { label, sliderProps, className, ...rest } = props;
-  const id = useId();
-
+  const { type, sliderProps, className, ...rest } = props;
+  const shortLabel = type === "level" ? "Lv" : "Rank";
+  const label = type === "level" ? "Operator Level" : "Skill Rank";
   return (
     <div className={cx(className, classes.root)}>
-      <label htmlFor={`slider-input-${id}`} className={classes.label}>
-        {label}
-      </label>
-      <input
-        id={`slider-input-${id}`}
-        className={classes.sliderInput}
-        {...rest}
+      <SliderUnstyled
+        aria-label={`${label} slider`}
+        className={classes.slider[type]}
+        {...sliderProps}
       />
-      <div className={classes.sliderBorder}>
-        <SliderUnstyled
-          aria-label={`${label} slider`}
-          className={classes.slider}
-          {...sliderProps}
-        />
-      </div>
+      <span className={classes.label}>
+        {shortLabel ?? label}
+        <input aria-label={label} className={classes.sliderInput} {...rest} />
+      </span>
     </div>
   );
 };
