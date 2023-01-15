@@ -67,7 +67,7 @@ export const thumb = style({
   height: "100%",
   width: "1px",
   background: rawColors.gradients.purple,
-  transition: "transform 200ms",
+  transition: "all 0", // this will be overriden by js later
   transformOrigin: "center left",
   ...buttonTypography,
 });

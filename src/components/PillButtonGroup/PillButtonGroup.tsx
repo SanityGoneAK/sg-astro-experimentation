@@ -1,4 +1,4 @@
-import { useEffect, useRef } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import * as classes from "./styles.css";
 
 interface Props {
@@ -7,7 +7,10 @@ interface Props {
   onChange: (newValue: string | number) => void;
 }
 
+const eventsToStartAnimatingOn = ["click", "touchstart", "hover"];
+
 const PillButtonGroup: React.FC<Props> = ({ labels, value, onChange }) => {
+  const [isAnimating, setIsAnimating] = useState(false);
   const buttonWidths = useRef(Array(labels.length));
 
   // we have to split the thumb (the active button indicator) into 3 parts
@@ -18,13 +21,7 @@ const PillButtonGroup: React.FC<Props> = ({ labels, value, onChange }) => {
   const thumbRef = useRef<HTMLSpanElement>(null);
   const thumbRightRef = useRef<HTMLSpanElement>(null);
 
-  useEffect(() => {
-    // now that we've mounted, show the thumb
-    // (otherwise it distractingly animates as the page loads)
-    thumbLeftRef.current!.removeAttribute("hidden");
-    thumbRef.current!.removeAttribute("hidden");
-    thumbRightRef.current!.removeAttribute("hidden");
-  }, []);
+  const rootRef = useRef<HTMLDivElement>(null);
 
   // translate the thumb to the correct position when index changes
   useEffect(() => {
@@ -46,8 +43,32 @@ const PillButtonGroup: React.FC<Props> = ({ labels, value, onChange }) => {
     }px)`;
   }, [labels, value]);
 
+  const beginAnimating = useCallback(() => {
+    thumbLeftRef.current!.style.transition = "transform 200ms";
+    thumbRef.current!.style.transition = "transform 200ms";
+    thumbRightRef.current!.style.transition = "transform 200ms";
+    setIsAnimating(true);
+  }, []);
+
+  useEffect(() => {
+    if (!isAnimating) {
+      eventsToStartAnimatingOn.forEach((type) => {
+        rootRef.current?.addEventListener(type, beginAnimating);
+      });
+      return () => {
+        eventsToStartAnimatingOn.forEach((type) => {
+          rootRef.current?.removeEventListener(type, beginAnimating);
+        });
+      };
+    } else {
+      eventsToStartAnimatingOn.forEach((type) => {
+        rootRef.current?.removeEventListener(type, beginAnimating);
+      });
+    }
+  }, [isAnimating]);
+
   return (
-    <div className={classes.root}>
+    <div className={classes.root} ref={rootRef}>
       <div className={classes.buttonWrapper} role="group">
         {labels.map((label, i) => (
           <button

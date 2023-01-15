@@ -1,5 +1,5 @@
 import { SliderUnstyled } from "@mui/base";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 import * as classes from "./styles.css";
 
@@ -16,15 +16,14 @@ const SliderWithInput: React.FC<SliderWithInputProps> = (props) => {
   useEffect(() => {
     setRawInput(`${value}`);
   }, [value]);
+  const inputRef = useRef<HTMLInputElement>(null);
 
   const handleInputChange: React.ChangeEventHandler<HTMLInputElement> = (e) => {
     setRawInput(e.target.value);
     const newValue = Number(e.target.value);
     if (1 <= newValue && newValue <= max) {
       onChange(newValue);
-      return;
     }
-    onChange(max);
   };
 
   const shortLabel = type === "level" ? "Lv" : "Rank";
@@ -58,6 +57,7 @@ const SliderWithInput: React.FC<SliderWithInputProps> = (props) => {
           min={1}
           max={max}
           value={rawInput}
+          ref={inputRef}
         />
         <span>/</span>
         <span>{max}</span>
