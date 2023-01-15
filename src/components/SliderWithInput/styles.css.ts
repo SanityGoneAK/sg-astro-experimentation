@@ -88,11 +88,17 @@ export const thumbFocusVisible = style({
   boxShadow: `0 0 0 0.05em #fff, 0 0 0.15em 0.1em ${vars.colors.accents.sky}`,
 });
 
-export const sliderInput = style({
+export const inputContainer = style({
+  display: "grid",
+  gridTemplateColumns: "repeat(4, auto)",
+  columnGap: spacing(1),
+  alignItems: "center",
+});
+
+export const input = style({
   boxSizing: "border-box",
   display: "inline-flex",
   width: spacing(6),
-  margin: spacing(0, 0, 0, 1),
   padding: spacing(1, 2),
   background: vars.colors.neutrals.black,
   ...vars.newTypography.body,
