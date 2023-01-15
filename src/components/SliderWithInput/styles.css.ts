@@ -5,6 +5,8 @@ import { rgba } from "polished";
 import { breakpoints, spacing } from "../../theme-helpers";
 import { rawColors, vars } from "../../theme.css";
 
+const thumbWidth = spacing(3);
+
 export const root = style({
   display: "grid",
   gridTemplateColumns: "1fr auto",
@@ -16,9 +18,9 @@ export const label = style({
   color: vars.colors.neutrals.gray,
 });
 
-const baseSlider = style({
+export const slider = style({
   display: "inline-flex",
-  marginRight: spacing(3), // ensures space for the slider thumb
+  marginRight: thumbWidth,
   alignItems: "center",
   height: spacing(1),
   position: "relative",
@@ -31,61 +33,60 @@ const baseSlider = style({
   },
 });
 
-export const slider = styleVariants({
-  level: [baseSlider, {}],
-  skill: [baseSlider, {}],
-});
-
-globalStyle(`${baseSlider} .${sliderUnstyledClasses.track}`, {
+const baseTrack = style({
   display: "block",
   position: "absolute",
   height: "2px",
   borderRadius: spacing(0.25),
 });
 
-globalStyle(`${slider.level} .${sliderUnstyledClasses.track}`, {
-  background: `linear-gradient(to right, ${rawColors.accents.yellow}, ${rawColors.accents.yellowLight})`,
+export const track = styleVariants({
+  level: [
+    baseTrack,
+    {
+      background: `linear-gradient(to right, ${rawColors.accents.yellow}, ${rawColors.accents.yellowLight})`,
+    },
+  ],
+  skill: [
+    baseTrack,
+    {
+      background: `linear-gradient(to right, ${rawColors.accents.sky}, ${rawColors.accents.skyLight})`,
+    },
+  ],
 });
 
-globalStyle(`${slider.skill} .${sliderUnstyledClasses.track}`, {
-  background: `linear-gradient(to right, ${rawColors.accents.sky}, ${rawColors.accents.skyLight})`,
-});
-
-globalStyle(`${baseSlider} .${sliderUnstyledClasses.rail}`, {
+export const rail = style({
   display: "block",
   position: "absolute",
-  width: "100%",
+  width: `calc(100% + ${thumbWidth})`,
   height: "2px",
   background: vars.colors.neutrals.midtoneBrighter,
 });
 
-globalStyle(`${baseSlider} .${sliderUnstyledClasses.thumb}`, {
+export const thumb = style({
   position: "absolute",
   display: "grid",
   marginTop: 0,
   borderRadius: spacing(0.25),
   height: spacing(1),
-  width: spacing(3),
+  width: thumbWidth,
   background: vars.colors.neutrals.gray,
 });
 
-globalStyle(`${baseSlider}:hover .${sliderUnstyledClasses.thumb}`, {
-  outline: `12px solid ${rgba(rawColors.neutrals.white, 0.05)}`,
+globalStyle(
+  `${slider}:hover .${sliderUnstyledClasses.thumb}:not(.${sliderUnstyledClasses.active})`,
+  {
+    outline: `12px solid ${rgba(rawColors.neutrals.white, 0.05)}`,
+  }
+);
+
+export const thumbActive = style({
+  outline: `12px solid ${rgba(rawColors.neutrals.white, 0.1)}`,
 });
 
-globalStyle(
-  `${baseSlider} .${sliderUnstyledClasses.thumb}.${sliderUnstyledClasses.active}`,
-  {
-    outline: `12px solid ${rgba(rawColors.neutrals.white, 0.1)}`,
-  }
-);
-
-globalStyle(
-  `${baseSlider} .${sliderUnstyledClasses.thumb}.${sliderUnstyledClasses.focusVisible}`,
-  {
-    boxShadow: `0 0 0 0.05em #fff, 0 0 0.15em 0.1em ${vars.colors.accents.sky}`,
-  }
-);
+export const thumbFocusVisible = style({
+  boxShadow: `0 0 0 0.05em #fff, 0 0 0.15em 0.1em ${vars.colors.accents.sky}`,
+});
 
 export const sliderInput = style({
   boxSizing: "border-box",

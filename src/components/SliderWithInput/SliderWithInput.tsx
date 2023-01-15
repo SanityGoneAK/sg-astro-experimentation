@@ -17,7 +17,15 @@ const SliderWithInput: React.FC<SliderWithInputProps> = (props) => {
     <div className={cx(className, classes.root)}>
       <SliderUnstyled
         aria-label={`${label} slider`}
-        className={classes.slider[type]}
+        classes={{
+          root: classes.slider,
+          track: classes.track[type],
+          rail: classes.rail,
+          thumb: classes.thumb,
+          active: classes.thumbActive,
+          focusVisible: classes.thumbFocusVisible,
+        }}
+        min={1}
         {...sliderProps}
       />
       <span className={classes.label}>
