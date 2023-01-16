@@ -4,6 +4,7 @@ import EliteButtonGroup from "../EliteButtonGroup";
 import SliderWithInput from "../SliderWithInput";
 import PillButtonGroup from "../PillButtonGroup";
 import modulesJson from "../../../data/modules.json";
+import CustomCheckbox from "../CustomCheckbox";
 import * as classes from "./styles.css";
 
 import type * as OutputTypes from "../../output-types";
@@ -29,6 +30,8 @@ const OperatorAttributesPanel: React.FC<Props> = ({ character }) => {
   }, []);
   const [moduleType, setModuleType] = useState(moduleTypes.at(-1)!);
   const [moduleLevel, setModuleLevel] = useState<1 | 2 | 3>(3);
+  const [isTrustBonusChecked, setTrustBonusChecked] = useState(false);
+  const [isPotentialBonusChecked, setPotentialBonusChecked] = useState(false);
 
   const handleEliteChange = (newElite: number) => {
     setElite(newElite);
@@ -52,8 +55,22 @@ const OperatorAttributesPanel: React.FC<Props> = ({ character }) => {
           />
         </div>
         <div className={classes.trustPotentialModule}>
-          <div>trust</div>
-          <div>potential</div>
+          <div>
+            <CustomCheckbox
+              className={classes.label}
+              label="Trust Bonus"
+              checked={isTrustBonusChecked}
+              onChange={setTrustBonusChecked}
+            />
+          </div>
+          <div>
+            <CustomCheckbox
+              className={classes.label}
+              label="Potential Bonus"
+              checked={isPotentialBonusChecked}
+              onChange={setPotentialBonusChecked}
+            />
+          </div>
           {moduleTypes.length > 1 && (
             <div className={classes.moduleKnobs}>
               <span className={classes.label}>Module</span>

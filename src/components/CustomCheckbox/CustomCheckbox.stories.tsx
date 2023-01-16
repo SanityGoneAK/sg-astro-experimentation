@@ -15,7 +15,7 @@ const Template: ComponentStoryObj<typeof CustomCheckbox> = {
       <CustomCheckbox
         {...args}
         checked={checked}
-        onChange={(e) => setChecked(e.target.checked)}
+        onChange={setChecked}
         label="Trust Bonus"
       />
     );
