@@ -49,7 +49,8 @@ const SliderWithInput: React.FC<SliderWithInputProps> = (props) => {
           rail: classes.rail,
           thumb: classes.thumb,
           active: classes.thumbActive,
-          focusVisible: classes.thumbFocusVisible,
+          // TODO needs proper focusVisible style using a focus-visible polyfill
+          // focusVisible: classes.thumbFocusVisible,
         }}
         onChange={(_, value) => onChange(value as number)}
         min={1}

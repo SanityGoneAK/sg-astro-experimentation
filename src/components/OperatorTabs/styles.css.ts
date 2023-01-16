@@ -24,10 +24,13 @@ export const tabListButton = style({
   fontWeight: 600,
   lineHeight: "23px",
   color: vars.colors.neutrals.midtoneBrighterer,
+  // FIXME remove this when the focus-visible issue is fixed
+  outline: "none",
   selectors: {
-    "&:focus:not(:focus-visible)": {
-      outline: "none",
-    },
+    // FIXME does not work, need to use a focus-visible polyfill instead
+    // "&:focus:not(:focus-visible)": {
+    //   outline: "none",
+    // },
     "&:last-child": {
       justifySelf: "end",
     },
