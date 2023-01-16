@@ -54,22 +54,22 @@ const OperatorAttributesPanel: React.FC<Props> = ({ character }) => {
         <div className={classes.trustPotentialModule}>
           <div>trust</div>
           <div>potential</div>
-          <div className={classes.moduleKnobs}>
-            <span className={classes.label}>Module</span>
-            {moduleTypes.length > 1 && (
+          {moduleTypes.length > 1 && (
+            <div className={classes.moduleKnobs}>
+              <span className={classes.label}>Module</span>
               <PillButtonGroup
                 labels={moduleTypes}
                 value={moduleType}
                 onChange={setModuleType}
               />
-            )}
-            <PillButtonGroup
-              labels={[1, 2, 3]}
-              value={moduleLevel}
-              onChange={setModuleLevel}
-              disabled={moduleType === "None"}
-            />
-          </div>
+              <PillButtonGroup
+                labels={[1, 2, 3]}
+                value={moduleLevel}
+                onChange={setModuleLevel}
+                disabled={moduleType === "None"}
+              />
+            </div>
+          )}
         </div>
       </div>
     </>
