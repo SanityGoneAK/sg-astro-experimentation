@@ -1,6 +1,6 @@
 import { globalStyle, style, styleVariants } from "@vanilla-extract/css";
 import { spacing } from "../../theme-helpers";
-import { vars } from "../../theme.css";
+import { rawColors, vars } from "../../theme.css";
 
 const base = style({
   display: "inline-grid",
@@ -27,10 +27,12 @@ export const label = styleVariants({
 
 export const checkboxContainer = style({
   display: "grid",
-  gridTemplateColumns: "20px",
-  gridTemplateRows: "20px",
+  gridTemplateColumns: spacing(2),
+  gridTemplateRows: spacing(2),
   alignItems: "center",
   justifyItems: "center",
+  background: vars.colors.neutrals.black,
+  borderRadius: spacing(0.5),
 });
 
 globalStyle(`${checkboxContainer} > *`, {
@@ -39,9 +41,10 @@ globalStyle(`${checkboxContainer} > *`, {
 });
 
 export const checkboxInput = style({
+  margin: 0,
   opacity: 0,
-  width: 20,
-  height: 20,
+  width: spacing(2),
+  height: spacing(2),
   selectors: {
     [`${label.enabled} &`]: {
       cursor: "pointer",
@@ -53,19 +56,15 @@ export const checkboxInput = style({
 });
 
 export const checkboxControl = style({
-  width: 14,
-  height: 14,
-  padding: 2,
-  backgroundClip: "content-box",
+  width: "10px",
+  height: "10px",
   display: "flex",
   alignItems: "center",
   justifyContent: "center",
-  border: `1px solid ${vars.colors.neutrals.white}`,
-  borderRadius: spacing(0.5),
+  borderRadius: "3px",
   selectors: {
     [`${checkboxInput}:checked + &`]: {
-      borderColor: vars.colors.accents.sky,
-      backgroundColor: vars.colors.accents.sky,
+      background: rawColors.gradients.sky,
     },
     [`${checkboxInput}:focus-visible + &`]: {
       boxShadow: `0 0 0 0.05em #fff, 0 0 0.15em 0.1em ${vars.colors.accents.sky}`,
