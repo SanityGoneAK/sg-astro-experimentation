@@ -22,6 +22,7 @@ const PillButtonGroup = <T extends number | string>({
   const [isAnimating, setIsAnimating] = useState(false);
   const buttonWidths = useRef(Array(labels.length));
 
+  const thumbContainerRef = useRef<HTMLDivElement>(null);
   // we have to split the thumb (the active button indicator) into 3 parts
   // so that when we use scaleX, we only scale the rectangular center part;
   // otherwise the border radii get squished
@@ -87,6 +88,11 @@ const PillButtonGroup = <T extends number | string>({
     }
   }, [isAnimating]);
 
+  useEffect(() => {
+    // once thumb parts have been translated, show the thumb
+    thumbContainerRef.current!.style.display = "";
+  }, []);
+
   return (
     <div className={classes.root} ref={rootRef}>
       <div className={classes.buttonWrapper} role="group">
@@ -105,7 +111,12 @@ const PillButtonGroup = <T extends number | string>({
           </button>
         ))}
       </div>
-      <div className={classes.thumbContainer} aria-hidden="true">
+      <div
+        ref={thumbContainerRef}
+        className={classes.thumbContainer}
+        aria-hidden="true"
+        style={{ display: "none" }}
+      >
         <span className={classes.thumbLeft} ref={thumbLeftRef} />
         <span className={classes.thumb} ref={thumbRef} />
         <span className={classes.thumbRight} ref={thumbRightRef} />
