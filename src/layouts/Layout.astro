@@ -7,13 +7,14 @@ export interface Props {
 
 const { title, previousLocation, previousLocationLink } = Astro.props;
 
-import DiscordLogo from "../components/icons/DiscordLogo/DiscordLogo.astro";
-import TwitterLogo from "../components/icons/TwitterLogo/TwitterLogo.astro";
+import DiscordLogo from "../components/icons/DiscordLogo.astro";
+import TwitterLogo from "../components/icons/TwitterLogo.astro";
 import SanityGoneLogo from "../components/SanityGoneLogo/SanityGoneLogo.astro";
 import NavigationLink from "../components/NavigationLink/NavigationLink.astro";
 import SearchBar from "../components/SearchBar";
 
 import * as classes from "./Layout.css";
+import "../global-styles.css";
 
 const sidebarLinks = [
   {
@@ -77,13 +78,13 @@ const sidebarLinks = [
             <DiscordLogo />
             <TwitterLogo />
           </div>
-          <hr />
-          <p>
+          <hr class={classes.hr} />
+          <p class={classes.footerParagraph}>
             Sanity;Gone is a community resource for Arknights players, providing
             quick guides, reviews, and detailed information about the game.
           </p>
           <!-- Shut up, I'm prototyping -->
-          <a>
+          <a class={classes.footerLink}>
             Disclaimer&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;About&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Contact
           </a>
         </footer>

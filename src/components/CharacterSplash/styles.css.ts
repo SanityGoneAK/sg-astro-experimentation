@@ -1,4 +1,4 @@
-import { style, styleVariants } from "@vanilla-extract/css";
+import { style } from "@vanilla-extract/css";
 import { spacing } from "../../theme-helpers";
 import { vars } from "../../theme.css";
 
@@ -23,13 +23,14 @@ export const tabIcon = style({
   background: vars.colors.neutrals.midtoneBrighter,
   justifyContent: "center",
   border: "none",
-  margin: "0px",
+  margin: 0,
+  padding: 0,
   overflow: "hidden",
   cursor: "pointer",
 
   ":focus-visible": {
     // outline: "1px solid black",
-    outlineColor: vars.colors.accents.blue,
+    outlineColor: vars.colors.accents.sky,
     outlineStyle: "solid",
   },
 

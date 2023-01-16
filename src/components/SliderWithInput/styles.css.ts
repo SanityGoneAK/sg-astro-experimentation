@@ -64,6 +64,7 @@ export const rail = style({
 });
 
 export const thumb = style({
+  boxSizing: "content-box",
   position: "absolute",
   display: "grid",
   margin: "0 -12px",
