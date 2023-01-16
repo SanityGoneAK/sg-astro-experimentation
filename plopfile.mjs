@@ -12,6 +12,7 @@ export default function (/** @type {import('plop').NodePlopAPI} */ plop) {
       {
         type: "addMany",
         templateFiles: ["plop-templates/Component/*.hbs"],
+        base: "plop-templates/Component",
         destination: "src/components/{{ pascalCase name }}",
       },
     ],
