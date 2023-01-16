@@ -1,6 +1,6 @@
 <script lang="ts">
-  import { calculateDps } from "../../../../viktorlab-fork/resources/attributes.js";
-  import dpsOptions from "../../../../viktorlab-fork/resources/customdata/dps_options.json";
+  import { calculateDps } from "../../../viktorlab-fork/resources/attributes.js";
+  import dpsOptions from "../../../viktorlab-fork/resources/customdata/dps_options.json";
 
   interface Skill {
     skillId: string;
