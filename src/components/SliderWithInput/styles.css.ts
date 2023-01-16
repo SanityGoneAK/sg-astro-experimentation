@@ -66,11 +66,17 @@ export const rail = style({
 export const thumb = style({
   position: "absolute",
   display: "grid",
-  marginTop: 0,
-  borderRadius: spacing(0.25),
+  margin: "0 -12px",
+  padding: "12px",
   height: spacing(1),
   width: thumbWidth,
-  background: vars.colors.neutrals.gray,
+  borderRadius: "12px",
+  outlineOffset: "-12px",
+  "::after": {
+    content: "",
+    borderRadius: spacing(0.25),
+    background: vars.colors.neutrals.gray,
+  },
 });
 
 globalStyle(
@@ -82,10 +88,6 @@ globalStyle(
 
 export const thumbActive = style({
   outline: `12px solid ${rgba(rawColors.neutrals.white, 0.1)}`,
-});
-
-export const thumbFocusVisible = style({
-  boxShadow: `0 0 0 0.05em #fff, 0 0 0.15em 0.1em ${vars.colors.accents.sky}`,
 });
 
 export const inputContainer = style({
