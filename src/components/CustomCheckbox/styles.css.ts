@@ -14,6 +14,7 @@ export const label = styleVariants({
     base,
     {
       opacity: 0.3,
+      cursor: "not-allowed",
     },
   ],
   enabled: [
@@ -45,6 +46,9 @@ export const checkboxInput = style({
     [`${label.enabled} &`]: {
       cursor: "pointer",
     },
+    [`${label.disabled} &`]: {
+      cursor: "not-allowed",
+    },
   },
 });
 
@@ -60,11 +64,11 @@ export const checkboxControl = style({
   borderRadius: spacing(0.5),
   selectors: {
     [`${checkboxInput}:checked + &`]: {
-      borderColor: vars.colors.accents.blue,
-      backgroundColor: vars.colors.accents.blue,
+      borderColor: vars.colors.accents.sky,
+      backgroundColor: vars.colors.accents.sky,
     },
     [`${checkboxInput}:focus-visible + &`]: {
-      boxShadow: `0 0 0 0.05em #fff, 0 0 0.15em 0.1em ${vars.colors.accents.blue}`,
+      boxShadow: `0 0 0 0.05em #fff, 0 0 0.15em 0.1em ${vars.colors.accents.sky}`,
     },
   },
 });
