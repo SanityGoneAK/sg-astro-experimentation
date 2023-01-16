@@ -19,10 +19,20 @@ const SliderWithInput: React.FC<SliderWithInputProps> = (props) => {
   const inputRef = useRef<HTMLInputElement>(null);
 
   const handleInputChange: React.ChangeEventHandler<HTMLInputElement> = (e) => {
+    if (e.target.value.length > `${max}`.length) {
+      return;
+    }
+
     setRawInput(e.target.value);
     const newValue = Number(e.target.value);
     if (1 <= newValue && newValue <= max) {
       onChange(newValue);
+    }
+  };
+
+  const handleBlur: React.FocusEventHandler<HTMLInputElement> = (e) => {
+    if (!inputRef.current?.validity.valid || e.target.value === "") {
+      setRawInput(`${value}`);
     }
   };
 
@@ -53,6 +63,7 @@ const SliderWithInput: React.FC<SliderWithInputProps> = (props) => {
           aria-label={label}
           className={classes.input}
           onFocus={(e) => e.target.select()}
+          onBlur={handleBlur}
           onChange={handleInputChange}
           min={1}
           max={max}
