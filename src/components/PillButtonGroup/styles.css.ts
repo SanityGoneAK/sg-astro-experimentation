@@ -32,23 +32,29 @@ export const button = style({
   ...buttonTypography,
   color: vars.colors.neutrals.midtoneBrighterer,
   background: "none",
-  cursor: "pointer",
   transition: "color 200ms, background-color 200ms",
+  cursor: "pointer",
+  ":disabled": {
+    cursor: "not-allowed",
+  },
+  ":first-of-type": {
+    borderTopLeftRadius: spacing(4),
+    borderBottomLeftRadius: spacing(4),
+  },
+  ":last-of-type": {
+    borderTopRightRadius: spacing(4),
+    borderBottomRightRadius: spacing(4),
+  },
   selectors: {
-    '&:not([aria-pressed="true"]):hover': {
+    '&:disabled[aria-pressed="true"]': {
+      background: vars.colors.neutrals.gray,
+    },
+    '&:not([aria-pressed="true"], :disabled):hover': {
       color: vars.colors.accents.purple,
       background: `${rgba(rawColors.accents.purple, 0.1)}`,
     },
     '&[aria-pressed="true"]': {
       color: vars.colors.neutrals.blackest,
-    },
-    "&:first-of-type": {
-      borderTopLeftRadius: spacing(4),
-      borderBottomLeftRadius: spacing(4),
-    },
-    "&:last-of-type": {
-      borderTopRightRadius: spacing(4),
-      borderBottomRightRadius: spacing(4),
     },
   },
 });
@@ -66,13 +72,14 @@ export const thumbContainer = style({
 });
 
 export const thumb = style({
+  boxSizing: "border-box",
   position: "absolute",
   left: 0,
   display: "inline-block",
   height: "100%",
   width: "1px",
+  padding: "4.5px 0",
   background: rawColors.gradients.purple,
-  transition: "all 0", // this will be overriden by js later
   transformOrigin: "center left",
   ...buttonTypography,
 });
@@ -81,7 +88,7 @@ export const thumbLeft = style([
   thumb,
   {
     borderRadius: spacing(1, 0, 0, 1),
-    width: spacing(1),
+    width: spacing(3),
   },
 ]);
 
@@ -89,6 +96,6 @@ export const thumbRight = style([
   thumb,
   {
     borderRadius: spacing(0, 1, 1, 0),
-    width: spacing(1),
+    width: spacing(3),
   },
 ]);

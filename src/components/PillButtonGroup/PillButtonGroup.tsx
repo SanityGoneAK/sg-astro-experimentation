@@ -1,15 +1,24 @@
 import { useCallback, useEffect, useRef, useState } from "react";
-import * as classes from "./styles.css";
+import cx from "clsx";
 
-interface Props {
-  labels: Array<string | number>;
-  value: string | number;
-  onChange: (newValue: string | number) => void;
+import * as classes from "./styles.css";
+import { spacing } from "../../theme-helpers";
+
+interface Props<T> {
+  labels: Array<T>;
+  value: T;
+  onChange: (newValue: T) => void;
+  disabled?: boolean;
 }
 
 const eventsToStartAnimatingOn = ["click", "touchstart", "hover"];
 
-const PillButtonGroup: React.FC<Props> = ({ labels, value, onChange }) => {
+const PillButtonGroup = <T extends number | string>({
+  labels,
+  value,
+  onChange,
+  disabled,
+}: Props<T>) => {
   const [isAnimating, setIsAnimating] = useState(false);
   const buttonWidths = useRef(Array(labels.length));
 
@@ -36,17 +45,28 @@ const PillButtonGroup: React.FC<Props> = ({ labels, value, onChange }) => {
     thumbLeftRef.current!.style.transform = `translateX(${distance}px)`;
     const scaleFactor = buttonWidths.current[index] - 16;
     thumbRef.current!.style.transform = `translateX(${
-      distance + 8 - 1
-    }px) scaleX(${scaleFactor + 2})`;
+      distance + 8
+    }px) scaleX(${scaleFactor})`;
     thumbRightRef.current!.style.transform = `translateX(${
-      scaleFactor + distance + 8
+      scaleFactor + distance - 8
     }px)`;
+
+    let thumbSideBorderRadius: string;
+    if (index === 0) {
+      thumbSideBorderRadius = spacing(4, 1, 1, 4);
+    } else if (index === labels.length - 1) {
+      thumbSideBorderRadius = spacing(1, 4, 4, 1);
+    } else {
+      thumbSideBorderRadius = spacing(1);
+    }
+    thumbLeftRef.current!.style.borderRadius = thumbSideBorderRadius;
+    thumbRightRef.current!.style.borderRadius = thumbSideBorderRadius;
   }, [labels, value]);
 
   const beginAnimating = useCallback(() => {
-    thumbLeftRef.current!.style.transition = "transform 200ms";
-    thumbRef.current!.style.transition = "transform 200ms";
-    thumbRightRef.current!.style.transition = "transform 200ms";
+    thumbLeftRef.current!.style.transition = "all 200ms";
+    thumbRef.current!.style.transition = "all 200ms";
+    thumbRightRef.current!.style.transition = "all 200ms";
     setIsAnimating(true);
   }, []);
 
@@ -79,15 +99,16 @@ const PillButtonGroup: React.FC<Props> = ({ labels, value, onChange }) => {
             ref={(el) => {
               buttonWidths.current[i] = el?.getBoundingClientRect().width;
             }}
+            disabled={disabled}
           >
             {label}
           </button>
         ))}
       </div>
       <div className={classes.thumbContainer} aria-hidden="true">
-        <span className={classes.thumbLeft} ref={thumbLeftRef} hidden />
-        <span className={classes.thumb} ref={thumbRef} hidden />
-        <span className={classes.thumbRight} ref={thumbRightRef} hidden />
+        <span className={classes.thumbLeft} ref={thumbLeftRef} />
+        <span className={classes.thumb} ref={thumbRef} />
+        <span className={classes.thumbRight} ref={thumbRightRef} />
       </div>
     </div>
   );
