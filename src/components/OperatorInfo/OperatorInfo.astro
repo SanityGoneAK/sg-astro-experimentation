@@ -13,25 +13,26 @@ import {
   subProfessionIdToSubclass,
 } from "../../utils/classes";
 import { getMeleeOrRangedOrBoth } from "./helpers";
+
 import * as classes from "./styles.css";
 
 import type * as OutputTypes from "../../output-types";
 
 interface Props {
-  character: OutputTypes.Character;
+  operator: OutputTypes.Character;
 }
 
-const { character } = Astro.props;
-const [baseName, alterName] = character.name.split(/ the /i);
-const operatorClass = professionToClass(character.profession);
-const rarity = (character.rarity + 1) as 1 | 2 | 3 | 4 | 5 | 6;
+const { operator } = Astro.props;
+const [baseName, alterName] = operator.name.split(/ the /i);
+const operatorClass = professionToClass(operator.profession);
+const rarity = (operator.rarity + 1) as 1 | 2 | 3 | 4 | 5 | 6;
 ---
 
 <div class={classes.root}>
   <div class={classes.portraitNameRarity}>
     <img
       class={classes.portrait}
-      src={operatorAvatar(character.charId)}
+      src={operatorAvatar(operator.charId)}
       alt=""
     />
     <div class={classes.name}>
@@ -40,7 +41,7 @@ const rarity = (character.rarity + 1) as 1 | 2 | 3 | 4 | 5 | 6;
     </div>
     <div class={classes.rarityAndLimitedness}>
       {
-        character.isLimited && (
+        operator.isLimited && (
           <span class={classes.limitedText[rarity]}>Limited</span>
         )
       }
@@ -66,16 +67,14 @@ const rarity = (character.rarity + 1) as 1 | 2 | 3 | 4 | 5 | 6;
       <span class={classes.branchNameAndIconWrapper}>
         <img
           class={classes.classBranchIcon}
-          src={operatorBranchIcon(character.subProfessionId)}
+          src={operatorBranchIcon(operator.subProfessionId)}
           alt=""
         />
-        {subProfessionIdToSubclass(character.subProfessionId)}
+        {subProfessionIdToSubclass(operator.subProfessionId)}
       </span>
       <InterpunctSpacer class={classes.spacer} />
       <span class={classes.position}
-        >{
-          getMeleeOrRangedOrBoth(character.position, character.description)
-        }</span
+        >{getMeleeOrRangedOrBoth(operator.position, operator.description)}</span
       >
     </div>
 
@@ -90,6 +89,6 @@ const rarity = (character.rarity + 1) as 1 | 2 | 3 | 4 | 5 | 6;
 
   <TraitInfo
     id="trait-info-container"
-    subProfessionId={character.subProfessionId}
+    subProfessionId={operator.subProfessionId}
   />
 </div>

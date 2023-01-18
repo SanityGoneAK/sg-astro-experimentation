@@ -1,16 +1,13 @@
 import { Tab } from "@headlessui/react";
+import { useStore } from "@nanostores/react";
+
+import { operatorSplash, operatorSplashAvatar } from "../../utils/images";
+import { operatorStore } from "../../pages/operators/_store";
+
 import * as classes from "./styles.css";
 
-import type * as OutputTypes from "../../output-types";
-import { operatorSplash, operatorSplashAvatar } from "../../utils/images";
-export interface CharacterSplashProps {
-  characterObject: OutputTypes.Character;
-}
-
-const CharacterSplash: React.FC<CharacterSplashProps> = ({
-  characterObject,
-}) => {
-  const { skins, voices } = characterObject;
+const CharacterSplash: React.FC = () => {
+  const { skins, voices } = useStore(operatorStore);
 
   return (
     <Tab.Group as={"div"} className={classes.container}>

@@ -1,26 +1,25 @@
 import { useMemo, useState } from "react";
+import { useStore } from "@nanostores/react";
 
 import EliteButtonGroup from "../EliteButtonGroup";
 import SliderWithInput from "../SliderWithInput";
 import PillButtonGroup from "../PillButtonGroup";
 import modulesJson from "../../../data/modules.json";
 import CustomCheckbox from "../CustomCheckbox";
+import { operatorStore } from "../../pages/operators/_store";
+
 import * as classes from "./styles.css";
 
 import type * as OutputTypes from "../../output-types";
 
-interface Props {
-  character: OutputTypes.Character;
-}
-
-const OperatorAttributesPanel: React.FC<Props> = ({ character }) => {
-  const maxElite = character.phases.length - 1;
+const OperatorAttributesPanel: React.FC = () => {
+  const operator = useStore(operatorStore);
+  const maxElite = operator.phases.length - 1;
   const [elite, setElite] = useState(maxElite);
-  const [level, setLevel] = useState(character.phases.at(-1)!.maxLevel);
+  const [level, setLevel] = useState(operator.phases.at(-1)!.maxLevel);
   const moduleTypes = useMemo(() => {
-    const modules = (modulesJson[
-      character.charId as keyof typeof modulesJson
-    ] ?? []) as OutputTypes.Module[];
+    const modules = (modulesJson[operator.charId as keyof typeof modulesJson] ??
+      []) as OutputTypes.Module[];
     return [
       "None",
       ...modules
@@ -35,7 +34,7 @@ const OperatorAttributesPanel: React.FC<Props> = ({ character }) => {
 
   const handleEliteChange = (newElite: number) => {
     setElite(newElite);
-    setLevel(Math.min(character.phases[newElite].maxLevel, level));
+    setLevel(Math.min(operator.phases[newElite].maxLevel, level));
   };
 
   return (
@@ -49,7 +48,7 @@ const OperatorAttributesPanel: React.FC<Props> = ({ character }) => {
           />
           <SliderWithInput
             type="level"
-            max={character.phases[elite].maxLevel}
+            max={operator.phases[elite].maxLevel}
             value={level}
             onChange={setLevel}
           />

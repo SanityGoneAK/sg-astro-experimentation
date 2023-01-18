@@ -1,6 +1,7 @@
 ---
 import slugify from "../../slugify";
-import operators from "../../../data/operators.json";
+import operatorsJson from "../../../data/operators.json";
+import summonsJson from "../../../data/summons.json";
 import Layout from "../../layouts/Layout.astro";
 import * as classes from "./_[slug].css";
 import { linkStyle } from "../../theme.css";
@@ -10,31 +11,38 @@ import OperatorInfo from "../../components/OperatorInfo/OperatorInfo.astro";
 import InterpunctSpacer from "../../components/InterpunctSpacer/InterpunctSpacer.astro";
 import OperatorTabs from "../../components/OperatorTabs/OperatorTabs";
 import SvgRarityGradientDefs from "../../components/SvgRarityGradientDefs";
+import { operatorIdStore, summonsStore } from "./_store";
 
 import type * as OutputTypes from "../../output-types";
 
 export function getStaticPaths() {
-  return Object.entries(operators)
-    .filter(
-      ([_, char]) =>
-        char.profession !== "TOKEN" &&
-        char.profession !== "TRAP" &&
-        !char.isNotObtainable
-    )
-    .map(([charId, char]) => ({
+  return Object.entries(operatorsJson).map(([operatorId, operator]) => {
+    return {
       params: {
-        slug: slugify(char.name),
+        slug: slugify(operator.name),
       },
-      props: { charId },
-    }));
+      props: { operatorId },
+    };
+  });
 }
-const { slug } = Astro.params;
-const { charId } = Astro.props;
-const char: OutputTypes.Character = operators[charId as keyof typeof operators];
-const { subProfessionId } = char;
+
+const { operatorId } = Astro.props;
+const operator = operatorsJson[
+  operatorId as keyof typeof operatorsJson
+] as OutputTypes.Character;
+const summons = summonsJson[
+  operatorId as keyof typeof summonsJson
+] as unknown as OutputTypes.Character[] | undefined;
+operatorIdStore.set(operatorId);
+summonsStore.set(summons);
 ---
 
-<Layout title={char.name}>
+<script define:vars={{ operatorId, summons }}>
+  window.operatorId = operatorId;
+  window.summons = summons;
+</script>
+
+<Layout title={operator.name}>
   <div class={classes.container}>
     <div class={classes.characterNavigation}>
       <ul class={classes.characterNavigationList}>
@@ -42,13 +50,13 @@ const { subProfessionId } = char;
           <a href="#" class={linkStyle}>Operators</a>
         </li>
         /
-        <li class={classes.characterNavigationItem.bold}>{char.name}</li>
+        <li class={classes.characterNavigationItem.bold}>{operator.name}</li>
         <InterpunctSpacer />
         <li class={classes.characterNavigationItem.alter}>
           <img
             class={classes.characterNavigationAlterImage}
-            src={operatorAvatar(char.charId)}
-          /><span>{char.name}</span>
+            src={operatorAvatar(operatorId)}
+          /><span>{operator.name}</span>
         </li>
       </ul>
       <!-- TODO: Make this a component? -->
@@ -82,23 +90,23 @@ const { subProfessionId } = char;
     </div>
     <div class={classes.characterContainer}>
       <section>
-        <CharacterSplash client:visible characterObject={char} />
+        <CharacterSplash client:visible />
       </section>
       <section>
-        <OperatorInfo character={char} />
-        <OperatorTabs client:visible character={char} />
+        <OperatorInfo operator={operator} />
+        <OperatorTabs client:visible />
       </section>
     </div>
     <div>
       <a class={classes.dpsCalculatorButton} href=""
         ><img
           class={classes.characterNavigationAlterImage}
-          src={operatorAvatar(char.charId)}
+          src={operatorAvatar(operatorId)}
         /><span>View in DPS Calculator</span>
       </a>
     </div>
   </div>
-  <!-- <h1 class={classes.heading}>{char.name}</h1> -->
-  <!-- <CharacterStats client:visible characterObject={char} /> -->
+  <!-- <h1 class={classes.heading}>{operator.name}</h1> -->
+  <!-- <CharacterStats client:visible characterObject={operator} /> -->
   <SvgRarityGradientDefs />
 </Layout>

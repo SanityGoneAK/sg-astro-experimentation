@@ -1,22 +1,16 @@
-import { useMemo, useState } from "react";
+import { useState } from "react";
+import { useStore } from "@nanostores/react";
 
 import EliteButtonGroup from "../EliteButtonGroup";
-import SliderWithInput from "../SliderWithInput";
-import PillButtonGroup from "../PillButtonGroup";
-import modulesJson from "../../../data/modules.json";
-import CustomCheckbox from "../CustomCheckbox";
-import * as classes from "./styles.css";
-
-import type * as OutputTypes from "../../output-types";
 import OperatorTalent from "../OperatorTalent/OperatorTalent";
 import PotentialsDropdown from "../PotentialsDropdown";
+import { operatorStore } from "../../pages/operators/_store";
 
-interface Props {
-  character: OutputTypes.Character;
-}
+import * as classes from "./styles.css";
 
-const OperatorTalentsPanel: React.FC<Props> = ({ character }) => {
-  const maxElite = character.phases.length - 1;
+const OperatorTalentsPanel: React.FC = () => {
+  const operator = useStore(operatorStore);
+  const maxElite = operator.phases.length - 1;
   const [elite, setElite] = useState(maxElite);
   const handleEliteChange = (newElite: number) => {
     setElite(newElite);
@@ -24,7 +18,7 @@ const OperatorTalentsPanel: React.FC<Props> = ({ character }) => {
   };
 
   const potentialsMap: { [eliteLevel: number]: number[] } = {};
-  character.talents.forEach((talent) => {
+  operator.talents.forEach((talent) => {
     talent.candidates.forEach((talentPhase) => {
       const { phase: eliteLevel } = talentPhase.unlockCondition;
       const { requiredPotentialRank: potential } = talentPhase;
@@ -37,7 +31,7 @@ const OperatorTalentsPanel: React.FC<Props> = ({ character }) => {
   });
   const [potential, setPotential] = useState(potentialsMap[maxElite][0]);
 
-  console.log(character.talents);
+  console.log(operator.talents);
   return (
     <>
       <div className={classes.knobsContainer}>
@@ -56,7 +50,7 @@ const OperatorTalentsPanel: React.FC<Props> = ({ character }) => {
       </div>
 
       <div>
-        {character.talents.map((talent, index) => (
+        {operator.talents.map((talent, index) => (
           <OperatorTalent
             key={index}
             talentNumber={index + 1}
