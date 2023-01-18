@@ -20,7 +20,7 @@ const OperatorTalentsPanel: React.FC<Props> = ({ character }) => {
   const [elite, setElite] = useState(maxElite);
   const handleEliteChange = (newElite: number) => {
     setElite(newElite);
-    setPotential(potentialsMap[newElite][0]);
+    setPotential(potentialsMap[maxElite][0]);
   };
 
   const potentialsMap: { [eliteLevel: number]: number[] } = {};
@@ -35,7 +35,7 @@ const OperatorTalentsPanel: React.FC<Props> = ({ character }) => {
       ].sort();
     });
   });
-  const [potential, setPotential] = useState(potentialsMap[elite][0]);
+  const [potential, setPotential] = useState(potentialsMap[maxElite][0]);
 
   console.log(character.talents);
   return (
