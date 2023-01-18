@@ -46,7 +46,7 @@ interface CharacterPhase {
 /**
  * A given talent at a specific potential level.
  */
-interface TalentPhase {
+export interface TalentPhase {
   unlockCondition: {
     phase: number;
     level: number;

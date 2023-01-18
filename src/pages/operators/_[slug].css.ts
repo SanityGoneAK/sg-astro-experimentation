@@ -14,7 +14,7 @@ export const container = style({
 });
 
 export const characterContainer = style({
-  backgroundColor: vars.colors.neutrals.midtoneDarker,
+  backgroundColor: vars.colors.neutrals.darktone,
   display: "grid",
   gridTemplateColumns: "1fr 1fr",
   margin: spacing(3, 0),

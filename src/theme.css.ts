@@ -16,21 +16,24 @@ const accentColors = {
   greenLight: "#D3FF9B",
 };
 
+const neutralColors = {
+  white: "#e8e8f2",
+  gray: "#87879b",
+  black: "#101014",
+  blackest: "#050507",
+  darktone: "#14141b",
+  midtoneDarker: "#191920",
+  midtone: "#24242e",
+  midtoneBrighter: "#363643",
+  midtoneBrighterer: "#484858",
+  midtoneExtra: "#1f1f27",
+};
+
 export const rawColors = {
-  neutrals: {
-    white: "#e8e8f2",
-    gray: "#87879b",
-    black: "#101014",
-    blackest: "#050507",
-    darktone: "#14141b",
-    midtoneDarker: "#191920",
-    midtone: "#24242e",
-    midtoneBrighter: "#363643",
-    midtoneBrighterer: "#484858",
-    midtoneExtra: "#1f1f27",
-  },
+  neutrals: neutralColors,
   accents: accentColors,
   gradients: {
+    dark: `linear-gradient(to bottom, ${neutralColors.darktone}, ${neutralColors.midtoneDarker})`,
     orange: `linear-gradient(to bottom, ${accentColors.orangeLight}, ${accentColors.orange})`,
     yellow: `linear-gradient(to bottom, ${accentColors.yellowLight}, ${accentColors.yellow})`,
     sky: `linear-gradient(to bottom, ${accentColors.skyLight}, ${accentColors.sky})`,
@@ -166,6 +169,11 @@ export const vars = createGlobalTheme(":root", {
       fontWeight: "600",
       lineHeight: "1.25",
     },
+    dropdownOption: {
+      fontSize: "16px",
+      fontWeight: "600",
+      lineHeight: "1.25",
+    },
   },
   shadows: {
     titleShadow: `0 ${spacing(0.25)} ${spacing(1)} rgba(0, 0, 0, 0.5)`,
@@ -204,6 +212,12 @@ export const vars = createGlobalTheme(":root", {
       fontFamily: primaryFontFamily,
       fontSize: "18px",
       lineHeight: "23px",
+      fontWeight: "600",
+    },
+    header3: {
+      fontFamily: secondaryFontFamily,
+      fontSize: "24px",
+      lineHeight: "31px",
       fontWeight: "600",
     },
     label: {
