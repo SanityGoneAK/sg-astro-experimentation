@@ -37,7 +37,7 @@ operatorIdStore.set(operatorId);
 summonsStore.set(summons);
 ---
 
-<script define:vars={{ operatorId, summons }}>
+<script slot="head" define:vars={{ operatorId, summons }}>
   window.operatorId = operatorId;
   window.summons = summons;
 </script>
