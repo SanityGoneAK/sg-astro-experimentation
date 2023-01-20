@@ -6,8 +6,8 @@ import { professionToClass } from "../src/utils/classes";
 import { subProfessionIdToBranch } from "../src/utils/branches";
 import { fetchContentfulGraphQl } from "../src/utils/fetch";
 
-import operators from "../data/operators.json";
-import branches from "../data/branches.json";
+import operatorsJson from "../data/operators.json";
+import branchesJson from "../data/branches.json";
 
 /** @typedef {import("../src/output-types").SearchResult} SearchResult */
 
@@ -22,7 +22,7 @@ export async function buildSearchIndex(dataDir) {
   /** @type {Record<string, SearchResult>} */
   const searchStore = {};
 
-  Object.values(operators)
+  Object.values(operatorsJson)
     .filter((e) => !e.isNotObtainable)
     .forEach((op) => {
       searchArray.push({
@@ -31,7 +31,7 @@ export async function buildSearchIndex(dataDir) {
         name: op.name,
         class: professionToClass(op.profession),
         subclass: subProfessionIdToBranch(op.subProfessionId),
-        rarity: `${op.rarity + 1}`,
+        rarity: op.rarity,
       });
     });
   [
@@ -50,7 +50,7 @@ export async function buildSearchIndex(dataDir) {
       class: className,
     });
   });
-  Object.entries(branches).forEach(([branchName, branch]) => {
+  Object.entries(branchesJson).forEach(([branchName, branch]) => {
     searchArray.push({
       type: "branch",
       name: branch.branchName,

@@ -98,10 +98,10 @@ export async function createBranchesJson(dataDir) {
       .map((subprof) => {
         const firstOp =
           Object.values(enCharacterTable).find(
-            (op) => op.subProfessionId === subprof && op.rarity > 0 // no robots
+            (op) => op.subProfessionId === subprof && op.rarity > 1 // no robots
           ) ??
           Object.values(cnCharacterTable).find(
-            (op) => op.subProfessionId === subprof && op.rarity > 0
+            (op) => op.subProfessionId === subprof && op.rarity > 1
           );
 
         let description = firstOp.description;

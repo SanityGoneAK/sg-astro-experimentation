@@ -16,7 +16,7 @@ export interface Character {
   position: string;
   description: string | null;
   phases: CharacterPhase[];
-  rarity: number; // 0-indexed, so a 1* op has value 0
+  rarity: number; // 1-indexed
   favorKeyFrames: FavorKeyFrame[] | null;
   potentialRanks: PotentialRanks[];
   talents: Talent[];
@@ -242,7 +242,7 @@ interface OperatorSearchResult {
   name: string;
   class: string;
   subclass: string;
-  rarity: string;
+  rarity: number;
 }
 
 interface ClassSearchResult {

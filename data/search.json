@@ -7,7 +7,7 @@
       "name": "Chongyue",
       "class": "Guard",
       "subclass": "Fighter",
-      "rarity": "6"
+      "rarity": 6
     },
     "1": {
       "type": "operator",
@@ -15,7 +15,7 @@
       "name": "Lin",
       "class": "Caster",
       "subclass": "Phalanx",
-      "rarity": "6"
+      "rarity": 6
     },
     "2": {
       "type": "operator",
@@ -23,7 +23,7 @@
       "name": "Reed The Flame Shadow",
       "class": "Medic",
       "subclass": "Incantation",
-      "rarity": "6"
+      "rarity": 6
     },
     "3": {
       "type": "operator",
@@ -31,7 +31,7 @@
       "name": "Texas the Omertosa",
       "class": "Specialist",
       "subclass": "Executor",
-      "rarity": "6"
+      "rarity": 6
     },
     "4": {
       "type": "operator",
@@ -39,7 +39,7 @@
       "name": "Penance",
       "class": "Defender",
       "subclass": "Juggernaut",
-      "rarity": "6"
+      "rarity": 6
     },
     "5": {
       "type": "operator",
@@ -47,7 +47,7 @@
       "name": "Vigil",
       "class": "Vanguard",
       "subclass": "Tactician",
-      "rarity": "6"
+      "rarity": 6
     },
     "6": {
       "type": "operator",
@@ -55,7 +55,7 @@
       "name": "Stainless",
       "class": "Supporter",
       "subclass": "Artificer",
-      "rarity": "6"
+      "rarity": 6
     },
     "7": {
       "type": "operator",
@@ -63,7 +63,7 @@
       "name": "Młynar",
       "class": "Guard",
       "subclass": "Liberator",
-      "rarity": "6"
+      "rarity": 6
     },
     "8": {
       "type": "operator",
@@ -71,7 +71,7 @@
       "name": "Gavial the Invincible",
       "class": "Guard",
       "subclass": "Centurion",
-      "rarity": "6"
+      "rarity": 6
     },
     "9": {
       "type": "operator",
@@ -79,7 +79,7 @@
       "name": "Pozёmka",
       "class": "Sniper",
       "subclass": "Heavyshooter",
-      "rarity": "6"
+      "rarity": 6
     },
     "10": {
       "type": "operator",
@@ -87,7 +87,7 @@
       "name": "Dorothy",
       "class": "Specialist",
       "subclass": "Trapmaster",
-      "rarity": "6"
+      "rarity": 6
     },
     "11": {
       "type": "operator",
@@ -95,7 +95,7 @@
       "name": "Ebenholz",
       "class": "Caster",
       "subclass": "Mystic",
-      "rarity": "6"
+      "rarity": 6
     },
     "12": {
       "type": "operator",
@@ -103,7 +103,7 @@
       "name": "Specter the Unchained",
       "class": "Specialist",
       "subclass": "Dollkeeper",
-      "rarity": "6"
+      "rarity": 6
     },
     "13": {
       "type": "operator",
@@ -111,7 +111,7 @@
       "name": "Irene",
       "class": "Guard",
       "subclass": "Swordmaster",
-      "rarity": "6"
+      "rarity": 6
     },
     "14": {
       "type": "operator",
@@ -119,7 +119,7 @@
       "name": "Lumen",
       "class": "Medic",
       "subclass": "Therapist",
-      "rarity": "6"
+      "rarity": 6
     },
     "15": {
       "type": "operator",
@@ -127,7 +127,7 @@
       "name": "Horn",
       "class": "Defender",
       "subclass": "Fortress",
-      "rarity": "6"
+      "rarity": 6
     },
     "16": {
       "type": "operator",
@@ -135,7 +135,7 @@
       "name": "Fiammetta",
       "class": "Sniper",
       "subclass": "Artilleryman",
-      "rarity": "6"
+      "rarity": 6
     },
     "17": {
       "type": "operator",
@@ -143,7 +143,7 @@
       "name": "Goldenglow",
       "class": "Caster",
       "subclass": "Mech-accord",
-      "rarity": "6"
+      "rarity": 6
     },
     "18": {
       "type": "operator",
@@ -151,7 +151,7 @@
       "name": "Ling",
       "class": "Supporter",
       "subclass": "Summoner",
-      "rarity": "6"
+      "rarity": 6
     },
     "19": {
       "type": "operator",
@@ -159,7 +159,7 @@
       "name": "Lee",
       "class": "Specialist",
       "subclass": "Merchant",
-      "rarity": "6"
+      "rarity": 6
     },
     "20": {
       "type": "operator",
@@ -167,7 +167,7 @@
       "name": "Gnosis",
       "class": "Supporter",
       "subclass": "Hexer",
-      "rarity": "6"
+      "rarity": 6
     },
     "21": {
       "type": "operator",
@@ -175,7 +175,7 @@
       "name": "Nearl the Radiant Knight",
       "class": "Guard",
       "subclass": "Dreadnought",
-      "rarity": "6"
+      "rarity": 6
     },
     "22": {
       "type": "operator",
@@ -183,7 +183,7 @@
       "name": "Flametail",
       "class": "Vanguard",
       "subclass": "Pioneer",
-      "rarity": "6"
+      "rarity": 6
     },
     "23": {
       "type": "operator",
@@ -191,7 +191,7 @@
       "name": "Fartooth",
       "class": "Sniper",
       "subclass": "Deadeye",
-      "rarity": "6"
+      "rarity": 6
     },
     "24": {
       "type": "operator",
@@ -199,7 +199,7 @@
       "name": "Saileach",
       "class": "Vanguard",
       "subclass": "Standard Bearer",
-      "rarity": "6"
+      "rarity": 6
     },
     "25": {
       "type": "operator",
@@ -207,7 +207,7 @@
       "name": "Ch'en the Holungday",
       "class": "Sniper",
       "subclass": "Spreadshooter",
-      "rarity": "6"
+      "rarity": 6
     },
     "26": {
       "type": "operator",
@@ -215,7 +215,7 @@
       "name": "Mizuki",
       "class": "Specialist",
       "subclass": "Ambusher",
-      "rarity": "6"
+      "rarity": 6
     },
     "27": {
       "type": "operator",
@@ -223,7 +223,7 @@
       "name": "Pallas",
       "class": "Guard",
       "subclass": "Instructor",
-      "rarity": "6"
+      "rarity": 6
     },
     "28": {
       "type": "operator",
@@ -231,7 +231,7 @@
       "name": "Carnelian",
       "class": "Caster",
       "subclass": "Phalanx",
-      "rarity": "6"
+      "rarity": 6
     },
     "29": {
       "type": "operator",
@@ -239,7 +239,7 @@
       "name": "Skadi the Corrupting Heart",
       "class": "Supporter",
       "subclass": "Bard",
-      "rarity": "6"
+      "rarity": 6
     },
     "30": {
       "type": "operator",
@@ -247,7 +247,7 @@
       "name": "Kal'tsit",
       "class": "Medic",
       "subclass": "Single-target",
-      "rarity": "6"
+      "rarity": 6
     },
     "31": {
       "type": "operator",
@@ -255,7 +255,7 @@
       "name": "Gladiia",
       "class": "Specialist",
       "subclass": "Hookmaster",
-      "rarity": "6"
+      "rarity": 6
     },
     "32": {
       "type": "operator",
@@ -263,7 +263,7 @@
       "name": "Passenger",
       "class": "Caster",
       "subclass": "Chain",
-      "rarity": "6"
+      "rarity": 6
     },
     "33": {
       "type": "operator",
@@ -271,7 +271,7 @@
       "name": "Ash",
       "class": "Sniper",
       "subclass": "Marksman",
-      "rarity": "6"
+      "rarity": 6
     },
     "34": {
       "type": "operator",
@@ -279,7 +279,7 @@
       "name": "Dusk",
       "class": "Caster",
       "subclass": "Splash",
-      "rarity": "6"
+      "rarity": 6
     },
     "35": {
       "type": "operator",
@@ -287,7 +287,7 @@
       "name": "Saga",
       "class": "Vanguard",
       "subclass": "Pioneer",
-      "rarity": "6"
+      "rarity": 6
     },
     "36": {
       "type": "operator",
@@ -295,7 +295,7 @@
       "name": "Archetto",
       "class": "Sniper",
       "subclass": "Marksman",
-      "rarity": "6"
+      "rarity": 6
     },
     "37": {
       "type": "operator",
@@ -303,7 +303,7 @@
       "name": "Mountain",
       "class": "Guard",
       "subclass": "Fighter",
-      "rarity": "6"
+      "rarity": 6
     },
     "38": {
       "type": "operator",
@@ -311,7 +311,7 @@
       "name": "Rosmontis",
       "class": "Sniper",
       "subclass": "Flinger",
-      "rarity": "6"
+      "rarity": 6
     },
     "39": {
       "type": "operator",
@@ -319,7 +319,7 @@
       "name": "Mudrock",
       "class": "Defender",
       "subclass": "Juggernaut",
-      "rarity": "6"
+      "rarity": 6
     },
     "40": {
       "type": "operator",
@@ -327,7 +327,7 @@
       "name": "Blemishine",
       "class": "Defender",
       "subclass": "Guardian",
-      "rarity": "6"
+      "rarity": 6
     },
     "41": {
       "type": "operator",
@@ -335,7 +335,7 @@
       "name": "Surtr",
       "class": "Guard",
       "subclass": "Arts Fighter",
-      "rarity": "6"
+      "rarity": 6
     },
     "42": {
       "type": "operator",
@@ -343,7 +343,7 @@
       "name": "Eunectes",
       "class": "Defender",
       "subclass": "Duelist",
-      "rarity": "6"
+      "rarity": 6
     },
     "43": {
       "type": "operator",
@@ -351,7 +351,7 @@
       "name": "Thorns",
       "class": "Guard",
       "subclass": "Lord",
-      "rarity": "6"
+      "rarity": 6
     },
     "44": {
       "type": "operator",
@@ -359,7 +359,7 @@
       "name": "Suzuran",
       "class": "Supporter",
       "subclass": "Decel Binder",
-      "rarity": "6"
+      "rarity": 6
     },
     "45": {
       "type": "operator",
@@ -367,7 +367,7 @@
       "name": "Rosa",
       "class": "Sniper",
       "subclass": "Besieger",
-      "rarity": "6"
+      "rarity": 6
     },
     "46": {
       "type": "operator",
@@ -375,7 +375,7 @@
       "name": "W",
       "class": "Sniper",
       "subclass": "Artilleryman",
-      "rarity": "6"
+      "rarity": 6
     },
     "47": {
       "type": "operator",
@@ -383,7 +383,7 @@
       "name": "Weedy",
       "class": "Specialist",
       "subclass": "Push Stroker",
-      "rarity": "6"
+      "rarity": 6
     },
     "48": {
       "type": "operator",
@@ -391,7 +391,7 @@
       "name": "Phantom",
       "class": "Specialist",
       "subclass": "Executor",
-      "rarity": "6"
+      "rarity": 6
     },
     "49": {
       "type": "operator",
@@ -399,7 +399,7 @@
       "name": "Bagpipe",
       "class": "Vanguard",
       "subclass": "Charger",
-      "rarity": "6"
+      "rarity": 6
     },
     "50": {
       "type": "operator",
@@ -407,7 +407,7 @@
       "name": "Ceobe",
       "class": "Caster",
       "subclass": "Core",
-      "rarity": "6"
+      "rarity": 6
     },
     "51": {
       "type": "operator",
@@ -415,7 +415,7 @@
       "name": "Nian",
       "class": "Defender",
       "subclass": "Protector",
-      "rarity": "6"
+      "rarity": 6
     },
     "52": {
       "type": "operator",
@@ -423,7 +423,7 @@
       "name": "Aak",
       "class": "Specialist",
       "subclass": "Geek",
-      "rarity": "6"
+      "rarity": 6
     },
     "53": {
       "type": "operator",
@@ -431,7 +431,7 @@
       "name": "Blaze",
       "class": "Guard",
       "subclass": "Centurion",
-      "rarity": "6"
+      "rarity": 6
     },
     "54": {
       "type": "operator",
@@ -439,7 +439,7 @@
       "name": "Mostima",
       "class": "Caster",
       "subclass": "Splash",
-      "rarity": "6"
+      "rarity": 6
     },
     "55": {
       "type": "operator",
@@ -447,7 +447,7 @@
       "name": "Magallan",
       "class": "Supporter",
       "subclass": "Summoner",
-      "rarity": "6"
+      "rarity": 6
     },
     "56": {
       "type": "operator",
@@ -455,7 +455,7 @@
       "name": "Hellagur",
       "class": "Guard",
       "subclass": "Musha",
-      "rarity": "6"
+      "rarity": 6
     },
     "57": {
       "type": "operator",
@@ -463,7 +463,7 @@
       "name": "Schwarz",
       "class": "Sniper",
       "subclass": "Heavyshooter",
-      "rarity": "6"
+      "rarity": 6
     },
     "58": {
       "type": "operator",
@@ -471,7 +471,7 @@
       "name": "Ch'en",
       "class": "Guard",
       "subclass": "Swordmaster",
-      "rarity": "6"
+      "rarity": 6
     },
     "59": {
       "type": "operator",
@@ -479,7 +479,7 @@
       "name": "Skadi",
       "class": "Guard",
       "subclass": "Dreadnought",
-      "rarity": "6"
+      "rarity": 6
     },
     "60": {
       "type": "operator",
@@ -487,7 +487,7 @@
       "name": "SilverAsh",
       "class": "Guard",
       "subclass": "Lord",
-      "rarity": "6"
+      "rarity": 6
     },
     "61": {
       "type": "operator",
@@ -495,7 +495,7 @@
       "name": "Saria",
       "class": "Defender",
       "subclass": "Guardian",
-      "rarity": "6"
+      "rarity": 6
     },
     "62": {
       "type": "operator",
@@ -503,7 +503,7 @@
       "name": "Hoshiguma",
       "class": "Defender",
       "subclass": "Protector",
-      "rarity": "6"
+      "rarity": 6
     },
     "63": {
       "type": "operator",
@@ -511,7 +511,7 @@
       "name": "Nightingale",
       "class": "Medic",
       "subclass": "Multi-target",
-      "rarity": "6"
+      "rarity": 6
     },
     "64": {
       "type": "operator",
@@ -519,7 +519,7 @@
       "name": "Shining",
       "class": "Medic",
       "subclass": "Single-target",
-      "rarity": "6"
+      "rarity": 6
     },
     "65": {
       "type": "operator",
@@ -527,7 +527,7 @@
       "name": "Angelina",
       "class": "Supporter",
       "subclass": "Decel Binder",
-      "rarity": "6"
+      "rarity": 6
     },
     "66": {
       "type": "operator",
@@ -535,7 +535,7 @@
       "name": "Eyjafjalla",
       "class": "Caster",
       "subclass": "Core",
-      "rarity": "6"
+      "rarity": 6
     },
     "67": {
       "type": "operator",
@@ -543,7 +543,7 @@
       "name": "Ifrit",
       "class": "Caster",
       "subclass": "Blast",
-      "rarity": "6"
+      "rarity": 6
     },
     "68": {
       "type": "operator",
@@ -551,7 +551,7 @@
       "name": "Siege",
       "class": "Vanguard",
       "subclass": "Pioneer",
-      "rarity": "6"
+      "rarity": 6
     },
     "69": {
       "type": "operator",
@@ -559,7 +559,7 @@
       "name": "Exusiai",
       "class": "Sniper",
       "subclass": "Marksman",
-      "rarity": "6"
+      "rarity": 6
     },
     "70": {
       "type": "operator",
@@ -567,7 +567,7 @@
       "name": "Firewhistle",
       "class": "Defender",
       "subclass": "Fortress",
-      "rarity": "5"
+      "rarity": 5
     },
     "71": {
       "type": "operator",
@@ -575,7 +575,7 @@
       "name": "Jieyun",
       "class": "Sniper",
       "subclass": "Artilleryman",
-      "rarity": "5"
+      "rarity": 5
     },
     "72": {
       "type": "operator",
@@ -583,7 +583,7 @@
       "name": "Harmonie",
       "class": "Caster",
       "subclass": "Mystic",
-      "rarity": "5"
+      "rarity": 5
     },
     "73": {
       "type": "operator",
@@ -591,7 +591,7 @@
       "name": "Puzzle",
       "class": "Vanguard",
       "subclass": "Agent",
-      "rarity": "5"
+      "rarity": 5
     },
     "74": {
       "type": "operator",
@@ -599,7 +599,7 @@
       "name": "Lunacub",
       "class": "Sniper",
       "subclass": "Deadeye",
-      "rarity": "5"
+      "rarity": 5
     },
     "75": {
       "type": "operator",
@@ -607,7 +607,7 @@
       "name": "Qanipalaat",
       "class": "Caster",
       "subclass": "Core",
-      "rarity": "5"
+      "rarity": 5
     },
     "76": {
       "type": "operator",
@@ -615,7 +615,7 @@
       "name": "Paprika",
       "class": "Medic",
       "subclass": "Chain",
-      "rarity": "5"
+      "rarity": 5
     },
     "77": {
       "type": "operator",
@@ -623,7 +623,7 @@
       "name": "Dagda",
       "class": "Guard",
       "subclass": "Fighter",
-      "rarity": "5"
+      "rarity": 5
     },
     "78": {
       "type": "operator",
@@ -631,7 +631,7 @@
       "name": "Highmore",
       "class": "Guard",
       "subclass": "Reaper",
-      "rarity": "5"
+      "rarity": 5
     },
     "79": {
       "type": "operator",
@@ -639,7 +639,7 @@
       "name": "Proviso",
       "class": "Supporter",
       "subclass": "Decel Binder",
-      "rarity": "5"
+      "rarity": 5
     },
     "80": {
       "type": "operator",
@@ -647,7 +647,7 @@
       "name": "Cantabile",
       "class": "Vanguard",
       "subclass": "Agent",
-      "rarity": "5"
+      "rarity": 5
     },
     "81": {
       "type": "operator",
@@ -655,7 +655,7 @@
       "name": "Minimalist",
       "class": "Caster",
       "subclass": "Mech-accord",
-      "rarity": "5"
+      "rarity": 5
     },
     "82": {
       "type": "operator",
@@ -663,7 +663,7 @@
       "name": "Greyy the Lightningbearer",
       "class": "Sniper",
       "subclass": "Flinger",
-      "rarity": "5"
+      "rarity": 5
     },
     "83": {
       "type": "operator",
@@ -671,7 +671,7 @@
       "name": "Astgenne",
       "class": "Caster",
       "subclass": "Chain",
-      "rarity": "5"
+      "rarity": 5
     },
     "84": {
       "type": "operator",
@@ -679,7 +679,7 @@
       "name": "Hibiscus the Purifier",
       "class": "Medic",
       "subclass": "Incantation",
-      "rarity": "5"
+      "rarity": 5
     },
     "85": {
       "type": "operator",
@@ -687,7 +687,7 @@
       "name": "Czerny",
       "class": "Defender",
       "subclass": "Arts Protector",
-      "rarity": "5"
+      "rarity": 5
     },
     "86": {
       "type": "operator",
@@ -695,7 +695,7 @@
       "name": "Erato",
       "class": "Sniper",
       "subclass": "Besieger",
-      "rarity": "5"
+      "rarity": 5
     },
     "87": {
       "type": "operator",
@@ -703,7 +703,7 @@
       "name": "Windflit",
       "class": "Supporter",
       "subclass": "Artificer",
-      "rarity": "5"
+      "rarity": 5
     },
     "88": {
       "type": "operator",
@@ -711,7 +711,7 @@
       "name": "Rockrock",
       "class": "Caster",
       "subclass": "Mech-accord",
-      "rarity": "5"
+      "rarity": 5
     },
     "89": {
       "type": "operator",
@@ -719,7 +719,7 @@
       "name": "Heidi",
       "class": "Supporter",
       "subclass": "Bard",
-      "rarity": "5"
+      "rarity": 5
     },
     "90": {
       "type": "operator",
@@ -727,7 +727,7 @@
       "name": "Kazemaru",
       "class": "Specialist",
       "subclass": "Dollkeeper",
-      "rarity": "5"
+      "rarity": 5
     },
     "91": {
       "type": "operator",
@@ -735,7 +735,7 @@
       "name": "Enforcer",
       "class": "Specialist",
       "subclass": "Push Stroker",
-      "rarity": "5"
+      "rarity": 5
     },
     "92": {
       "type": "operator",
@@ -743,7 +743,7 @@
       "name": "Quercus",
       "class": "Supporter",
       "subclass": "Abjurer",
-      "rarity": "5"
+      "rarity": 5
     },
     "93": {
       "type": "operator",
@@ -751,7 +751,7 @@
       "name": "Blacknight",
       "class": "Vanguard",
       "subclass": "Tactician",
-      "rarity": "5"
+      "rarity": 5
     },
     "94": {
       "type": "operator",
@@ -759,7 +759,7 @@
       "name": "Kroos the Keen Glint",
       "class": "Sniper",
       "subclass": "Marksman",
-      "rarity": "5"
+      "rarity": 5
     },
     "95": {
       "type": "operator",
@@ -767,7 +767,7 @@
       "name": "Nine-Colored Deer",
       "class": "Supporter",
       "subclass": "Abjurer",
-      "rarity": "5"
+      "rarity": 5
     },
     "96": {
       "type": "operator",
@@ -775,7 +775,7 @@
       "name": "Shalem",
       "class": "Defender",
       "subclass": "Arts Protector",
-      "rarity": "5"
+      "rarity": 5
     },
     "97": {
       "type": "operator",
@@ -783,7 +783,7 @@
       "name": "Aurora",
       "class": "Defender",
       "subclass": "Duelist",
-      "rarity": "5"
+      "rarity": 5
     },
     "98": {
       "type": "operator",
@@ -791,7 +791,7 @@
       "name": "Kjera",
       "class": "Caster",
       "subclass": "Mech-accord",
-      "rarity": "5"
+      "rarity": 5
     },
     "99": {
       "type": "operator",
@@ -799,7 +799,7 @@
       "name": "Corroserum",
       "class": "Caster",
       "subclass": "Blast",
-      "rarity": "5"
+      "rarity": 5
     },
     "100": {
       "type": "operator",
@@ -807,7 +807,7 @@
       "name": "Wild Mane",
       "class": "Vanguard",
       "subclass": "Charger",
-      "rarity": "5"
+      "rarity": 5
     },
     "101": {
       "type": "operator",
@@ -815,7 +815,7 @@
       "name": "Honeyberry",
       "class": "Medic",
       "subclass": "Wandering",
-      "rarity": "5"
+      "rarity": 5
     },
     "102": {
       "type": "operator",
@@ -823,7 +823,7 @@
       "name": "Ashlock",
       "class": "Defender",
       "subclass": "Fortress",
-      "rarity": "5"
+      "rarity": 5
     },
     "103": {
       "type": "operator",
@@ -831,7 +831,7 @@
       "name": "Mulberry",
       "class": "Medic",
       "subclass": "Wandering",
-      "rarity": "5"
+      "rarity": 5
     },
     "104": {
       "type": "operator",
@@ -839,7 +839,7 @@
       "name": "La Pluma",
       "class": "Guard",
       "subclass": "Reaper",
-      "rarity": "5"
+      "rarity": 5
     },
     "105": {
       "type": "operator",
@@ -847,7 +847,7 @@
       "name": "Tequila",
       "class": "Guard",
       "subclass": "Liberator",
-      "rarity": "5"
+      "rarity": 5
     },
     "106": {
       "type": "operator",
@@ -855,7 +855,7 @@
       "name": "Kirara",
       "class": "Specialist",
       "subclass": "Ambusher",
-      "rarity": "5"
+      "rarity": 5
     },
     "107": {
       "type": "operator",
@@ -863,7 +863,7 @@
       "name": "Bena",
       "class": "Specialist",
       "subclass": "Dollkeeper",
-      "rarity": "5"
+      "rarity": 5
     },
     "108": {
       "type": "operator",
@@ -871,7 +871,7 @@
       "name": "Akafuyu",
       "class": "Guard",
       "subclass": "Musha",
-      "rarity": "5"
+      "rarity": 5
     },
     "109": {
       "type": "operator",
@@ -879,7 +879,7 @@
       "name": "Toddifons",
       "class": "Sniper",
       "subclass": "Besieger",
-      "rarity": "5"
+      "rarity": 5
     },
     "110": {
       "type": "operator",
@@ -887,7 +887,7 @@
       "name": "Heavyrain",
       "class": "Defender",
       "subclass": "Protector",
-      "rarity": "5"
+      "rarity": 5
     },
     "111": {
       "type": "operator",
@@ -895,7 +895,7 @@
       "name": "Frost",
       "class": "Specialist",
       "subclass": "Trapmaster",
-      "rarity": "5"
+      "rarity": 5
     },
     "112": {
       "type": "operator",
@@ -903,7 +903,7 @@
       "name": "Blitz",
       "class": "Defender",
       "subclass": "Longstrike",
-      "rarity": "5"
+      "rarity": 5
     },
     "113": {
       "type": "operator",
@@ -911,7 +911,7 @@
       "name": "Tachanka",
       "class": "Guard",
       "subclass": "Swordmaster",
-      "rarity": "5"
+      "rarity": 5
     },
     "114": {
       "type": "operator",
@@ -919,7 +919,7 @@
       "name": "Mr. Nothing",
       "class": "Specialist",
       "subclass": "Merchant",
-      "rarity": "5"
+      "rarity": 5
     },
     "115": {
       "type": "operator",
@@ -927,7 +927,7 @@
       "name": "Lava the Purgatory",
       "class": "Caster",
       "subclass": "Splash",
-      "rarity": "5"
+      "rarity": 5
     },
     "116": {
       "type": "operator",
@@ -935,7 +935,7 @@
       "name": "Tuye",
       "class": "Medic",
       "subclass": "Single-target",
-      "rarity": "5"
+      "rarity": 5
     },
     "117": {
       "type": "operator",
@@ -943,7 +943,7 @@
       "name": "Iris",
       "class": "Caster",
       "subclass": "Mystic",
-      "rarity": "5"
+      "rarity": 5
     },
     "118": {
       "type": "operator",
@@ -951,7 +951,7 @@
       "name": "Kafka",
       "class": "Specialist",
       "subclass": "Executor",
-      "rarity": "5"
+      "rarity": 5
     },
     "119": {
       "type": "operator",
@@ -959,7 +959,7 @@
       "name": "Robin",
       "class": "Specialist",
       "subclass": "Trapmaster",
-      "rarity": "5"
+      "rarity": 5
     },
     "120": {
       "type": "operator",
@@ -967,7 +967,7 @@
       "name": "Whisperain",
       "class": "Medic",
       "subclass": "Therapist",
-      "rarity": "5"
+      "rarity": 5
     },
     "121": {
       "type": "operator",
@@ -975,7 +975,7 @@
       "name": "Aosta",
       "class": "Sniper",
       "subclass": "Spreadshooter",
-      "rarity": "5"
+      "rarity": 5
     },
     "122": {
       "type": "operator",
@@ -983,7 +983,7 @@
       "name": "Whislash",
       "class": "Guard",
       "subclass": "Instructor",
-      "rarity": "5"
+      "rarity": 5
     },
     "123": {
       "type": "operator",
@@ -991,7 +991,7 @@
       "name": "April",
       "class": "Sniper",
       "subclass": "Marksman",
-      "rarity": "5"
+      "rarity": 5
     },
     "124": {
       "type": "operator",
@@ -999,7 +999,7 @@
       "name": "Mint",
       "class": "Caster",
       "subclass": "Phalanx",
-      "rarity": "5"
+      "rarity": 5
     },
     "125": {
       "type": "operator",
@@ -1007,7 +1007,7 @@
       "name": "Flint",
       "class": "Guard",
       "subclass": "Fighter",
-      "rarity": "5"
+      "rarity": 5
     },
     "126": {
       "type": "operator",
@@ -1015,7 +1015,7 @@
       "name": "Tomimi",
       "class": "Caster",
       "subclass": "Core",
-      "rarity": "5"
+      "rarity": 5
     },
     "127": {
       "type": "operator",
@@ -1023,7 +1023,7 @@
       "name": "Andreana",
       "class": "Sniper",
       "subclass": "Deadeye",
-      "rarity": "5"
+      "rarity": 5
     },
     "128": {
       "type": "operator",
@@ -1031,7 +1031,7 @@
       "name": "Chiave",
       "class": "Vanguard",
       "subclass": "Pioneer",
-      "rarity": "5"
+      "rarity": 5
     },
     "129": {
       "type": "operator",
@@ -1039,7 +1039,7 @@
       "name": "Beeswax",
       "class": "Caster",
       "subclass": "Phalanx",
-      "rarity": "5"
+      "rarity": 5
     },
     "130": {
       "type": "operator",
@@ -1047,7 +1047,7 @@
       "name": "Scene",
       "class": "Supporter",
       "subclass": "Summoner",
-      "rarity": "5"
+      "rarity": 5
     },
     "131": {
       "type": "operator",
@@ -1055,7 +1055,7 @@
       "name": "Ayerscarpe",
       "class": "Guard",
       "subclass": "Lord",
-      "rarity": "5"
+      "rarity": 5
     },
     "132": {
       "type": "operator",
@@ -1063,7 +1063,7 @@
       "name": "Folinic",
       "class": "Medic",
       "subclass": "Single-target",
-      "rarity": "5"
+      "rarity": 5
     },
     "133": {
       "type": "operator",
@@ -1071,7 +1071,7 @@
       "name": "Leonhardt",
       "class": "Caster",
       "subclass": "Splash",
-      "rarity": "5"
+      "rarity": 5
     },
     "134": {
       "type": "operator",
@@ -1079,7 +1079,7 @@
       "name": "Absinthe",
       "class": "Caster",
       "subclass": "Core",
-      "rarity": "5"
+      "rarity": 5
     },
     "135": {
       "type": "operator",
@@ -1087,7 +1087,7 @@
       "name": "Tsukinogi",
       "class": "Supporter",
       "subclass": "Abjurer",
-      "rarity": "5"
+      "rarity": 5
     },
     "136": {
       "type": "operator",
@@ -1095,7 +1095,7 @@
       "name": "Asbestos",
       "class": "Defender",
       "subclass": "Arts Protector",
-      "rarity": "5"
+      "rarity": 5
     },
     "137": {
       "type": "operator",
@@ -1103,7 +1103,7 @@
       "name": "Elysium",
       "class": "Vanguard",
       "subclass": "Standard Bearer",
-      "rarity": "5"
+      "rarity": 5
     },
     "138": {
       "type": "operator",
@@ -1111,7 +1111,7 @@
       "name": "Shamare",
       "class": "Supporter",
       "subclass": "Hexer",
-      "rarity": "5"
+      "rarity": 5
     },
     "139": {
       "type": "operator",
@@ -1119,7 +1119,7 @@
       "name": "Sideroca",
       "class": "Guard",
       "subclass": "Arts Fighter",
-      "rarity": "5"
+      "rarity": 5
     },
     "140": {
       "type": "operator",
@@ -1127,7 +1127,7 @@
       "name": "Sesa",
       "class": "Sniper",
       "subclass": "Artilleryman",
-      "rarity": "5"
+      "rarity": 5
     },
     "141": {
       "type": "operator",
@@ -1135,7 +1135,7 @@
       "name": "Bibeak",
       "class": "Guard",
       "subclass": "Swordmaster",
-      "rarity": "5"
+      "rarity": 5
     },
     "142": {
       "type": "operator",
@@ -1143,7 +1143,7 @@
       "name": "Leizi",
       "class": "Caster",
       "subclass": "Chain",
-      "rarity": "5"
+      "rarity": 5
     },
     "143": {
       "type": "operator",
@@ -1151,7 +1151,7 @@
       "name": "Hung",
       "class": "Defender",
       "subclass": "Guardian",
-      "rarity": "5"
+      "rarity": 5
     },
     "144": {
       "type": "operator",
@@ -1159,7 +1159,7 @@
       "name": "Snowsant",
       "class": "Specialist",
       "subclass": "Hookmaster",
-      "rarity": "5"
+      "rarity": 5
     },
     "145": {
       "type": "operator",
@@ -1167,7 +1167,7 @@
       "name": "GreyThroat",
       "class": "Sniper",
       "subclass": "Marksman",
-      "rarity": "5"
+      "rarity": 5
     },
     "146": {
       "type": "operator",
@@ -1175,7 +1175,7 @@
       "name": "Broca",
       "class": "Guard",
       "subclass": "Centurion",
-      "rarity": "5"
+      "rarity": 5
     },
     "147": {
       "type": "operator",
@@ -1183,7 +1183,7 @@
       "name": "Reed",
       "class": "Vanguard",
       "subclass": "Charger",
-      "rarity": "5"
+      "rarity": 5
     },
     "148": {
       "type": "operator",
@@ -1191,7 +1191,7 @@
       "name": "Waai Fu",
       "class": "Specialist",
       "subclass": "Executor",
-      "rarity": "5"
+      "rarity": 5
     },
     "149": {
       "type": "operator",
@@ -1199,7 +1199,7 @@
       "name": "Bison",
       "class": "Defender",
       "subclass": "Protector",
-      "rarity": "5"
+      "rarity": 5
     },
     "150": {
       "type": "operator",
@@ -1207,7 +1207,7 @@
       "name": "Breeze",
       "class": "Medic",
       "subclass": "Multi-target",
-      "rarity": "5"
+      "rarity": 5
     },
     "151": {
       "type": "operator",
@@ -1215,7 +1215,7 @@
       "name": "Executor",
       "class": "Sniper",
       "subclass": "Spreadshooter",
-      "rarity": "5"
+      "rarity": 5
     },
     "152": {
       "type": "operator",
@@ -1223,7 +1223,7 @@
       "name": "Flamebringer",
       "class": "Guard",
       "subclass": "Dreadnought",
-      "rarity": "5"
+      "rarity": 5
     },
     "153": {
       "type": "operator",
@@ -1231,7 +1231,7 @@
       "name": "Astesia",
       "class": "Guard",
       "subclass": "Arts Fighter",
-      "rarity": "5"
+      "rarity": 5
     },
     "154": {
       "type": "operator",
@@ -1239,7 +1239,7 @@
       "name": "Glaucus",
       "class": "Supporter",
       "subclass": "Decel Binder",
-      "rarity": "5"
+      "rarity": 5
     },
     "155": {
       "type": "operator",
@@ -1247,7 +1247,7 @@
       "name": "Ceylon",
       "class": "Medic",
       "subclass": "Therapist",
-      "rarity": "5"
+      "rarity": 5
     },
     "156": {
       "type": "operator",
@@ -1255,7 +1255,7 @@
       "name": "Swire",
       "class": "Guard",
       "subclass": "Instructor",
-      "rarity": "5"
+      "rarity": 5
     },
     "157": {
       "type": "operator",
@@ -1263,7 +1263,7 @@
       "name": "Grani",
       "class": "Vanguard",
       "subclass": "Charger",
-      "rarity": "5"
+      "rarity": 5
     },
     "158": {
       "type": "operator",
@@ -1271,7 +1271,7 @@
       "name": "Nightmare",
       "class": "Caster",
       "subclass": "Core",
-      "rarity": "5"
+      "rarity": 5
     },
     "159": {
       "type": "operator",
@@ -1279,7 +1279,7 @@
       "name": "Savage",
       "class": "Guard",
       "subclass": "Centurion",
-      "rarity": "5"
+      "rarity": 5
     },
     "160": {
       "type": "operator",
@@ -1287,7 +1287,7 @@
       "name": "FEater",
       "class": "Specialist",
       "subclass": "Push Stroker",
-      "rarity": "5"
+      "rarity": 5
     },
     "161": {
       "type": "operator",
@@ -1295,7 +1295,7 @@
       "name": "Manticore",
       "class": "Specialist",
       "subclass": "Ambusher",
-      "rarity": "5"
+      "rarity": 5
     },
     "162": {
       "type": "operator",
@@ -1303,7 +1303,7 @@
       "name": "Sora",
       "class": "Supporter",
       "subclass": "Bard",
-      "rarity": "5"
+      "rarity": 5
     },
     "163": {
       "type": "operator",
@@ -1311,7 +1311,7 @@
       "name": "Istina",
       "class": "Supporter",
       "subclass": "Decel Binder",
-      "rarity": "5"
+      "rarity": 5
     },
     "164": {
       "type": "operator",
@@ -1319,7 +1319,7 @@
       "name": "Pramanix",
       "class": "Supporter",
       "subclass": "Hexer",
-      "rarity": "5"
+      "rarity": 5
     },
     "165": {
       "type": "operator",
@@ -1327,7 +1327,7 @@
       "name": "Cliffheart",
       "class": "Specialist",
       "subclass": "Hookmaster",
-      "rarity": "5"
+      "rarity": 5
     },
     "166": {
       "type": "operator",
@@ -1335,7 +1335,7 @@
       "name": "Firewatch",
       "class": "Sniper",
       "subclass": "Deadeye",
-      "rarity": "5"
+      "rarity": 5
     },
     "167": {
       "type": "operator",
@@ -1343,7 +1343,7 @@
       "name": "Provence",
       "class": "Sniper",
       "subclass": "Heavyshooter",
-      "rarity": "5"
+      "rarity": 5
     },
     "168": {
       "type": "operator",
@@ -1351,7 +1351,7 @@
       "name": "Vulcan",
       "class": "Defender",
       "subclass": "Juggernaut",
-      "rarity": "5"
+      "rarity": 5
     },
     "169": {
       "type": "operator",
@@ -1359,7 +1359,7 @@
       "name": "Croissant",
       "class": "Defender",
       "subclass": "Protector",
-      "rarity": "5"
+      "rarity": 5
     },
     "170": {
       "type": "operator",
@@ -1367,7 +1367,7 @@
       "name": "Liskarm",
       "class": "Defender",
       "subclass": "Longstrike",
-      "rarity": "5"
+      "rarity": 5
     },
     "171": {
       "type": "operator",
@@ -1375,7 +1375,7 @@
       "name": "Projekt Red",
       "class": "Specialist",
       "subclass": "Executor",
-      "rarity": "5"
+      "rarity": 5
     },
     "172": {
       "type": "operator",
@@ -1383,7 +1383,7 @@
       "name": "Nearl",
       "class": "Defender",
       "subclass": "Guardian",
-      "rarity": "5"
+      "rarity": 5
     },
     "173": {
       "type": "operator",
@@ -1391,7 +1391,7 @@
       "name": "Warfarin",
       "class": "Medic",
       "subclass": "Single-target",
-      "rarity": "5"
+      "rarity": 5
     },
     "174": {
       "type": "operator",
@@ -1399,7 +1399,7 @@
       "name": "Silence",
       "class": "Medic",
       "subclass": "Single-target",
-      "rarity": "5"
+      "rarity": 5
     },
     "175": {
       "type": "operator",
@@ -1407,7 +1407,7 @@
       "name": "Mayer",
       "class": "Supporter",
       "subclass": "Summoner",
-      "rarity": "5"
+      "rarity": 5
     },
     "176": {
       "type": "operator",
@@ -1415,7 +1415,7 @@
       "name": "Skyfire",
       "class": "Caster",
       "subclass": "Splash",
-      "rarity": "5"
+      "rarity": 5
     },
     "177": {
       "type": "operator",
@@ -1423,7 +1423,7 @@
       "name": "Amiya",
       "class": "Caster",
       "subclass": "Core",
-      "rarity": "5"
+      "rarity": 5
     },
     "178": {
       "type": "operator",
@@ -1431,7 +1431,7 @@
       "name": "Meteorite",
       "class": "Sniper",
       "subclass": "Artilleryman",
-      "rarity": "5"
+      "rarity": 5
     },
     "179": {
       "type": "operator",
@@ -1439,7 +1439,7 @@
       "name": "Platinum",
       "class": "Sniper",
       "subclass": "Marksman",
-      "rarity": "5"
+      "rarity": 5
     },
     "180": {
       "type": "operator",
@@ -1447,7 +1447,7 @@
       "name": "Blue Poison",
       "class": "Sniper",
       "subclass": "Marksman",
-      "rarity": "5"
+      "rarity": 5
     },
     "181": {
       "type": "operator",
@@ -1455,7 +1455,7 @@
       "name": "Specter",
       "class": "Guard",
       "subclass": "Centurion",
-      "rarity": "5"
+      "rarity": 5
     },
     "182": {
       "type": "operator",
@@ -1463,7 +1463,7 @@
       "name": "Lappland",
       "class": "Guard",
       "subclass": "Lord",
-      "rarity": "5"
+      "rarity": 5
     },
     "183": {
       "type": "operator",
@@ -1471,7 +1471,7 @@
       "name": "Indra",
       "class": "Guard",
       "subclass": "Fighter",
-      "rarity": "5"
+      "rarity": 5
     },
     "184": {
       "type": "operator",
@@ -1479,7 +1479,7 @@
       "name": "Franka",
       "class": "Guard",
       "subclass": "Dreadnought",
-      "rarity": "5"
+      "rarity": 5
     },
     "185": {
       "type": "operator",
@@ -1487,7 +1487,7 @@
       "name": "Texas",
       "class": "Vanguard",
       "subclass": "Pioneer",
-      "rarity": "5"
+      "rarity": 5
     },
     "186": {
       "type": "operator",
@@ -1495,7 +1495,7 @@
       "name": "Zima",
       "class": "Vanguard",
       "subclass": "Pioneer",
-      "rarity": "5"
+      "rarity": 5
     },
     "187": {
       "type": "operator",
@@ -1503,7 +1503,7 @@
       "name": "Ptilopsis",
       "class": "Medic",
       "subclass": "Multi-target",
-      "rarity": "5"
+      "rarity": 5
     },
     "188": {
       "type": "operator",
@@ -1511,7 +1511,7 @@
       "name": "Amiya (Guard)",
       "class": "Guard",
       "subclass": "Arts Fighter",
-      "rarity": "5"
+      "rarity": 5
     },
     "189": {
       "type": "operator",
@@ -1519,7 +1519,7 @@
       "name": "Quartz",
       "class": "Guard",
       "subclass": "Crusher",
-      "rarity": "4"
+      "rarity": 4
     },
     "190": {
       "type": "operator",
@@ -1527,7 +1527,7 @@
       "name": "Totter",
       "class": "Sniper",
       "subclass": "Besieger",
-      "rarity": "4"
+      "rarity": 4
     },
     "191": {
       "type": "operator",
@@ -1535,7 +1535,7 @@
       "name": "Luo Xiaohei",
       "class": "Guard",
       "subclass": "Lord",
-      "rarity": "4"
+      "rarity": 4
     },
     "192": {
       "type": "operator",
@@ -1543,7 +1543,7 @@
       "name": "Chestnut",
       "class": "Medic",
       "subclass": "Wandering",
-      "rarity": "4"
+      "rarity": 4
     },
     "193": {
       "type": "operator",
@@ -1551,7 +1551,7 @@
       "name": "Pudding",
       "class": "Caster",
       "subclass": "Chain",
-      "rarity": "4"
+      "rarity": 4
     },
     "194": {
       "type": "operator",
@@ -1559,7 +1559,7 @@
       "name": "Roberta",
       "class": "Supporter",
       "subclass": "Artificer",
-      "rarity": "4"
+      "rarity": 4
     },
     "195": {
       "type": "operator",
@@ -1567,7 +1567,7 @@
       "name": "Indigo",
       "class": "Caster",
       "subclass": "Mystic",
-      "rarity": "4"
+      "rarity": 4
     },
     "196": {
       "type": "operator",
@@ -1575,7 +1575,7 @@
       "name": "Beanstalk",
       "class": "Vanguard",
       "subclass": "Tactician",
-      "rarity": "4"
+      "rarity": 4
     },
     "197": {
       "type": "operator",
@@ -1583,7 +1583,7 @@
       "name": "Pinecone",
       "class": "Sniper",
       "subclass": "Spreadshooter",
-      "rarity": "4"
+      "rarity": 4
     },
     "198": {
       "type": "operator",
@@ -1591,7 +1591,7 @@
       "name": "Jackie",
       "class": "Guard",
       "subclass": "Fighter",
-      "rarity": "4"
+      "rarity": 4
     },
     "199": {
       "type": "operator",
@@ -1599,7 +1599,7 @@
       "name": "Bubble",
       "class": "Defender",
       "subclass": "Protector",
-      "rarity": "4"
+      "rarity": 4
     },
     "200": {
       "type": "operator",
@@ -1607,7 +1607,7 @@
       "name": "Arene",
       "class": "Guard",
       "subclass": "Lord",
-      "rarity": "4"
+      "rarity": 4
     },
     "201": {
       "type": "operator",
@@ -1615,7 +1615,7 @@
       "name": "Aciddrop",
       "class": "Sniper",
       "subclass": "Heavyshooter",
-      "rarity": "4"
+      "rarity": 4
     },
     "202": {
       "type": "operator",
@@ -1623,7 +1623,7 @@
       "name": "Jaye",
       "class": "Specialist",
       "subclass": "Merchant",
-      "rarity": "4"
+      "rarity": 4
     },
     "203": {
       "type": "operator",
@@ -1631,7 +1631,7 @@
       "name": "Click",
       "class": "Caster",
       "subclass": "Mech-accord",
-      "rarity": "4"
+      "rarity": 4
     },
     "204": {
       "type": "operator",
@@ -1639,7 +1639,7 @@
       "name": "Podenco",
       "class": "Supporter",
       "subclass": "Decel Binder",
-      "rarity": "4"
+      "rarity": 4
     },
     "205": {
       "type": "operator",
@@ -1647,7 +1647,7 @@
       "name": "Cutter",
       "class": "Guard",
       "subclass": "Swordmaster",
-      "rarity": "4"
+      "rarity": 4
     },
     "206": {
       "type": "operator",
@@ -1655,7 +1655,7 @@
       "name": "Conviction",
       "class": "Guard",
       "subclass": "Dreadnought",
-      "rarity": "4"
+      "rarity": 4
     },
     "207": {
       "type": "operator",
@@ -1663,7 +1663,7 @@
       "name": "Utage",
       "class": "Guard",
       "subclass": "Musha",
-      "rarity": "4"
+      "rarity": 4
     },
     "208": {
       "type": "operator",
@@ -1671,7 +1671,7 @@
       "name": "Purestream",
       "class": "Medic",
       "subclass": "Therapist",
-      "rarity": "4"
+      "rarity": 4
     },
     "209": {
       "type": "operator",
@@ -1679,7 +1679,7 @@
       "name": "Ambriel",
       "class": "Sniper",
       "subclass": "Deadeye",
-      "rarity": "4"
+      "rarity": 4
     },
     "210": {
       "type": "operator",
@@ -1687,7 +1687,7 @@
       "name": "May",
       "class": "Sniper",
       "subclass": "Marksman",
-      "rarity": "4"
+      "rarity": 4
     },
     "211": {
       "type": "operator",
@@ -1695,7 +1695,7 @@
       "name": "Ethan",
       "class": "Specialist",
       "subclass": "Ambusher",
-      "rarity": "4"
+      "rarity": 4
     },
     "212": {
       "type": "operator",
@@ -1703,7 +1703,7 @@
       "name": "Vermeil",
       "class": "Sniper",
       "subclass": "Marksman",
-      "rarity": "4"
+      "rarity": 4
     },
     "213": {
       "type": "operator",
@@ -1711,7 +1711,7 @@
       "name": "Dur-nar",
       "class": "Defender",
       "subclass": "Arts Protector",
-      "rarity": "4"
+      "rarity": 4
     },
     "214": {
       "type": "operator",
@@ -1719,7 +1719,7 @@
       "name": "Myrtle",
       "class": "Vanguard",
       "subclass": "Standard Bearer",
-      "rarity": "4"
+      "rarity": 4
     },
     "215": {
       "type": "operator",
@@ -1727,7 +1727,7 @@
       "name": "Sussurro",
       "class": "Medic",
       "subclass": "Single-target",
-      "rarity": "4"
+      "rarity": 4
     },
     "216": {
       "type": "operator",
@@ -1735,7 +1735,7 @@
       "name": "Greyy",
       "class": "Caster",
       "subclass": "Splash",
-      "rarity": "4"
+      "rarity": 4
     },
     "217": {
       "type": "operator",
@@ -1743,7 +1743,7 @@
       "name": "Beehunter",
       "class": "Guard",
       "subclass": "Fighter",
-      "rarity": "4"
+      "rarity": 4
     },
     "218": {
       "type": "operator",
@@ -1751,7 +1751,7 @@
       "name": "Shaw",
       "class": "Specialist",
       "subclass": "Push Stroker",
-      "rarity": "4"
+      "rarity": 4
     },
     "219": {
       "type": "operator",
@@ -1759,7 +1759,7 @@
       "name": "Earthspirit",
       "class": "Supporter",
       "subclass": "Decel Binder",
-      "rarity": "4"
+      "rarity": 4
     },
     "220": {
       "type": "operator",
@@ -1767,7 +1767,7 @@
       "name": "Deepcolor",
       "class": "Supporter",
       "subclass": "Summoner",
-      "rarity": "4"
+      "rarity": 4
     },
     "221": {
       "type": "operator",
@@ -1775,7 +1775,7 @@
       "name": "Gummy",
       "class": "Defender",
       "subclass": "Guardian",
-      "rarity": "4"
+      "rarity": 4
     },
     "222": {
       "type": "operator",
@@ -1783,7 +1783,7 @@
       "name": "Cuora",
       "class": "Defender",
       "subclass": "Protector",
-      "rarity": "4"
+      "rarity": 4
     },
     "223": {
       "type": "operator",
@@ -1791,7 +1791,7 @@
       "name": "Matterhorn",
       "class": "Defender",
       "subclass": "Protector",
-      "rarity": "4"
+      "rarity": 4
     },
     "224": {
       "type": "operator",
@@ -1799,7 +1799,7 @@
       "name": "Perfumer",
       "class": "Medic",
       "subclass": "Multi-target",
-      "rarity": "4"
+      "rarity": 4
     },
     "225": {
       "type": "operator",
@@ -1807,7 +1807,7 @@
       "name": "Gavial",
       "class": "Medic",
       "subclass": "Single-target",
-      "rarity": "4"
+      "rarity": 4
     },
     "226": {
       "type": "operator",
@@ -1815,7 +1815,7 @@
       "name": "Myrrh",
       "class": "Medic",
       "subclass": "Single-target",
-      "rarity": "4"
+      "rarity": 4
     },
     "227": {
       "type": "operator",
@@ -1823,7 +1823,7 @@
       "name": "Rope",
       "class": "Specialist",
       "subclass": "Hookmaster",
-      "rarity": "4"
+      "rarity": 4
     },
     "228": {
       "type": "operator",
@@ -1831,7 +1831,7 @@
       "name": "Gravel",
       "class": "Specialist",
       "subclass": "Executor",
-      "rarity": "4"
+      "rarity": 4
     },
     "229": {
       "type": "operator",
@@ -1839,7 +1839,7 @@
       "name": "Mousse",
       "class": "Guard",
       "subclass": "Arts Fighter",
-      "rarity": "4"
+      "rarity": 4
     },
     "230": {
       "type": "operator",
@@ -1847,7 +1847,7 @@
       "name": "Estelle",
       "class": "Guard",
       "subclass": "Centurion",
-      "rarity": "4"
+      "rarity": 4
     },
     "231": {
       "type": "operator",
@@ -1855,7 +1855,7 @@
       "name": "Frostleaf",
       "class": "Guard",
       "subclass": "Lord",
-      "rarity": "4"
+      "rarity": 4
     },
     "232": {
       "type": "operator",
@@ -1863,7 +1863,7 @@
       "name": "Matoimaru",
       "class": "Guard",
       "subclass": "Dreadnought",
-      "rarity": "4"
+      "rarity": 4
     },
     "233": {
       "type": "operator",
@@ -1871,7 +1871,7 @@
       "name": "Dobermann",
       "class": "Guard",
       "subclass": "Instructor",
-      "rarity": "4"
+      "rarity": 4
     },
     "234": {
       "type": "operator",
@@ -1879,7 +1879,7 @@
       "name": "Vigna",
       "class": "Vanguard",
       "subclass": "Charger",
-      "rarity": "4"
+      "rarity": 4
     },
     "235": {
       "type": "operator",
@@ -1887,7 +1887,7 @@
       "name": "Scavenger",
       "class": "Vanguard",
       "subclass": "Pioneer",
-      "rarity": "4"
+      "rarity": 4
     },
     "236": {
       "type": "operator",
@@ -1895,7 +1895,7 @@
       "name": "Courier",
       "class": "Vanguard",
       "subclass": "Pioneer",
-      "rarity": "4"
+      "rarity": 4
     },
     "237": {
       "type": "operator",
@@ -1903,7 +1903,7 @@
       "name": "Shirayuki",
       "class": "Sniper",
       "subclass": "Artilleryman",
-      "rarity": "4"
+      "rarity": 4
     },
     "238": {
       "type": "operator",
@@ -1911,7 +1911,7 @@
       "name": "Meteor",
       "class": "Sniper",
       "subclass": "Marksman",
-      "rarity": "4"
+      "rarity": 4
     },
     "239": {
       "type": "operator",
@@ -1919,7 +1919,7 @@
       "name": "Jessica",
       "class": "Sniper",
       "subclass": "Marksman",
-      "rarity": "4"
+      "rarity": 4
     },
     "240": {
       "type": "operator",
@@ -1927,7 +1927,7 @@
       "name": "Gitano",
       "class": "Caster",
       "subclass": "Splash",
-      "rarity": "4"
+      "rarity": 4
     },
     "241": {
       "type": "operator",
@@ -1935,7 +1935,7 @@
       "name": "Haze",
       "class": "Caster",
       "subclass": "Core",
-      "rarity": "4"
+      "rarity": 4
     },
     "242": {
       "type": "operator",
@@ -1943,7 +1943,7 @@
       "name": "Spot",
       "class": "Defender",
       "subclass": "Guardian",
-      "rarity": "3"
+      "rarity": 3
     },
     "243": {
       "type": "operator",
@@ -1951,7 +1951,7 @@
       "name": "Popukar",
       "class": "Guard",
       "subclass": "Centurion",
-      "rarity": "3"
+      "rarity": 3
     },
     "244": {
       "type": "operator",
@@ -1959,7 +1959,7 @@
       "name": "Midnight",
       "class": "Guard",
       "subclass": "Lord",
-      "rarity": "3"
+      "rarity": 3
     },
     "245": {
       "type": "operator",
@@ -1967,7 +1967,7 @@
       "name": "Catapult",
       "class": "Sniper",
       "subclass": "Artilleryman",
-      "rarity": "3"
+      "rarity": 3
     },
     "246": {
       "type": "operator",
@@ -1975,7 +1975,7 @@
       "name": "Orchid",
       "class": "Supporter",
       "subclass": "Decel Binder",
-      "rarity": "3"
+      "rarity": 3
     },
     "247": {
       "type": "operator",
@@ -1983,7 +1983,7 @@
       "name": "Steward",
       "class": "Caster",
       "subclass": "Core",
-      "rarity": "3"
+      "rarity": 3
     },
     "248": {
       "type": "operator",
@@ -1991,7 +1991,7 @@
       "name": "Ansel",
       "class": "Medic",
       "subclass": "Single-target",
-      "rarity": "3"
+      "rarity": 3
     },
     "249": {
       "type": "operator",
@@ -1999,7 +1999,7 @@
       "name": "Hibiscus",
       "class": "Medic",
       "subclass": "Single-target",
-      "rarity": "3"
+      "rarity": 3
     },
     "250": {
       "type": "operator",
@@ -2007,7 +2007,7 @@
       "name": "Lava",
       "class": "Caster",
       "subclass": "Splash",
-      "rarity": "3"
+      "rarity": 3
     },
     "251": {
       "type": "operator",
@@ -2015,7 +2015,7 @@
       "name": "Adnachiel",
       "class": "Sniper",
       "subclass": "Marksman",
-      "rarity": "3"
+      "rarity": 3
     },
     "252": {
       "type": "operator",
@@ -2023,7 +2023,7 @@
       "name": "Kroos",
       "class": "Sniper",
       "subclass": "Marksman",
-      "rarity": "3"
+      "rarity": 3
     },
     "253": {
       "type": "operator",
@@ -2031,7 +2031,7 @@
       "name": "Beagle",
       "class": "Defender",
       "subclass": "Protector",
-      "rarity": "3"
+      "rarity": 3
     },
     "254": {
       "type": "operator",
@@ -2039,7 +2039,7 @@
       "name": "Cardigan",
       "class": "Defender",
       "subclass": "Protector",
-      "rarity": "3"
+      "rarity": 3
     },
     "255": {
       "type": "operator",
@@ -2047,7 +2047,7 @@
       "name": "Melantha",
       "class": "Guard",
       "subclass": "Dreadnought",
-      "rarity": "3"
+      "rarity": 3
     },
     "256": {
       "type": "operator",
@@ -2055,7 +2055,7 @@
       "name": "Plume",
       "class": "Vanguard",
       "subclass": "Charger",
-      "rarity": "3"
+      "rarity": 3
     },
     "257": {
       "type": "operator",
@@ -2063,7 +2063,7 @@
       "name": "Vanilla",
       "class": "Vanguard",
       "subclass": "Pioneer",
-      "rarity": "3"
+      "rarity": 3
     },
     "258": {
       "type": "operator",
@@ -2071,7 +2071,7 @@
       "name": "Fang",
       "class": "Vanguard",
       "subclass": "Pioneer",
-      "rarity": "3"
+      "rarity": 3
     },
     "259": {
       "type": "operator",
@@ -2079,7 +2079,7 @@
       "name": "12F",
       "class": "Caster",
       "subclass": "Splash",
-      "rarity": "2"
+      "rarity": 2
     },
     "260": {
       "type": "operator",
@@ -2087,7 +2087,7 @@
       "name": "Durin",
       "class": "Caster",
       "subclass": "Core",
-      "rarity": "2"
+      "rarity": 2
     },
     "261": {
       "type": "operator",
@@ -2095,7 +2095,7 @@
       "name": "Rangers",
       "class": "Sniper",
       "subclass": "Marksman",
-      "rarity": "2"
+      "rarity": 2
     },
     "262": {
       "type": "operator",
@@ -2103,7 +2103,7 @@
       "name": "Noir Corne",
       "class": "Defender",
       "subclass": "Protector",
-      "rarity": "2"
+      "rarity": 2
     },
     "263": {
       "type": "operator",
@@ -2111,7 +2111,7 @@
       "name": "Yato",
       "class": "Vanguard",
       "subclass": "Pioneer",
-      "rarity": "2"
+      "rarity": 2
     },
     "264": {
       "type": "operator",
@@ -2119,7 +2119,7 @@
       "name": "'Justice Knight'",
       "class": "Sniper",
       "subclass": "Marksman",
-      "rarity": "1"
+      "rarity": 1
     },
     "265": {
       "type": "operator",
@@ -2127,7 +2127,7 @@
       "name": "Thermal-EX",
       "class": "Specialist",
       "subclass": "Executor",
-      "rarity": "1"
+      "rarity": 1
     },
     "266": {
       "type": "operator",
@@ -2135,7 +2135,7 @@
       "name": "Castle-3",
       "class": "Guard",
       "subclass": "Dreadnought",
-      "rarity": "1"
+      "rarity": 1
     },
     "267": {
       "type": "operator",
@@ -2143,7 +2143,7 @@
       "name": "Lancet-2",
       "class": "Medic",
       "subclass": "Single-target",
-      "rarity": "1"
+      "rarity": 1
     },
     "268": {
       "type": "class",

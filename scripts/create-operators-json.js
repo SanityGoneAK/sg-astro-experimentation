@@ -178,6 +178,7 @@ export async function createOperatorsJson(dataDir) {
       return {
         charId,
         ...character,
+        rarity: character.rarity + 1, // convert gamedata's 0-index to a 1-index
         cnName,
         isCnOnly,
         name: characterName,
