@@ -108,6 +108,9 @@ export const descriptionToHtml = (
       } else if (formatString === "0.0") {
         // return as-is to one-decimal place
         interpolated = `${value.toFixed(1)}`;
+      } else if (formatString === "0") {
+        // return as an integer
+        interpolated = `${value.toFixed(0)}`;
       } else {
         console.warn(
           `Unrecognized format string: ${match.groups.formatString}`
