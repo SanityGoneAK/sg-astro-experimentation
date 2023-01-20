@@ -227,7 +227,7 @@ interface Skin {
   displaySkin: {
     skinName: string;
     modelName: string;
-    drawerName: string;
+    drawerList: string[];
   };
 }
 

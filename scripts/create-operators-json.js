@@ -153,7 +153,7 @@ export async function createOperatorsJson(dataDir) {
 
       const charSkins = skinTable["charSkins"];
       const skins = Object.values(charSkins)
-        .filter((skin) => skin.charId == charId)
+        .filter((skin) => skin.charId === charId)
         .map((skin) => {
           return {
             skinId: skin.skinId,
@@ -163,7 +163,7 @@ export async function createOperatorsJson(dataDir) {
             displaySkin: {
               skinName: skin.displaySkin.skinName,
               modelName: skin.displaySkin.modelName,
-              drawerName: skin.displaySkin.drawerName,
+              drawerList: skin.displaySkin.drawerList,
             },
           };
         });
