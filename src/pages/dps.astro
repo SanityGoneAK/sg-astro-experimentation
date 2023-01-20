@@ -1,40 +1,8 @@
 ---
 import Layout from "../layouts/Layout.astro";
 import DpsCalculator from "../components/DpsCalculator";
-import operatorsJson from "../../data/operators.json";
-
-const modules = Object.fromEntries(
-  Object.entries(modulesJson).map(([id, opModule]) => {
-    return [
-      id,
-      opModule.map((opModule) => ({
-        moduleId: opModule.moduleId,
-        moduleName: opModule.moduleName,
-        phases: [...Array(opModule.phases.length).keys()].map((i) => i + 1),
-      })),
-    ];
-  })
-);
-
-const operators = Object.fromEntries(
-  Object.values(operatorsJson)
-    .filter((op) => op.rarity + 1 >= 3)
-    .sort((a, b) => b.rarity - a.rarity || a.name.localeCompare(b.name))
-    .map((op) => [
-      op.charId,
-      {
-        id: op.charId,
-        name: op.name,
-        rarity: op.rarity + 1,
-        skills: op.skillData.map((sk) => ({
-          skillId: sk.skillId,
-          skillName: sk.levels[0].name,
-        })),
-      },
-    ])
-);
 ---
 
 <Layout title="DPS Calculator">
-  <DpsCalculator client:load operators={operators} />
+  <DpsCalculator client:load />
 </Layout>

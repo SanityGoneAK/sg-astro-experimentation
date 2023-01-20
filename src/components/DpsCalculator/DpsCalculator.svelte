@@ -1,6 +1,7 @@
 <script lang="ts">
   import { calculateDps } from "../../../viktorlab-fork/resources/attributes.js";
   import dpsOptions from "../../../viktorlab-fork/resources/customdata/dps_options.json";
+  import operatorsJson from "../../../data/operators.json";
 
   interface Skill {
     skillId: string;
@@ -29,8 +30,6 @@
     enabled: boolean;
   }
 
-  export let operators: { [operatorId: string]: Operator } = {};
-
   let operatorId: string | null = null;
   let operator: Operator | null = null;
 
@@ -51,7 +50,9 @@
   $: handleOperatorIdChanged(operatorId);
 
   function handleOperatorIdChanged(operatorId: string | null) {
-    operator = operatorId ? operators[operatorId] : null;
+    operator = operatorId
+      ? operatorsJson[operatorId as keyof typeof operatorsJson]
+      : null;
     if (!operator) {
       return;
     }
@@ -229,8 +230,8 @@
       <label>
         Operator
         <select bind:value={operatorId}>
-          {#each Object.values(operators) as op (op.id)}
-            <option value={op.id}>{op.name}</option>
+          {#each Object.values(operatorsJson) as op (op.charId)}
+            <option value={op.charId}>{op.name}</option>
           {/each}
         </select>
       </label>
