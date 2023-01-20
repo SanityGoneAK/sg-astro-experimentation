@@ -1,12 +1,12 @@
 {
   "shotprotector": {
     "branchName": "Longstrike",
-    "trait": "能够阻挡三个敌人，可以进行远程攻击",
+    "trait": "Can block three enemies; can use ranged attacks",
     "class": "Defender"
   },
   "chainhealer": {
     "branchName": "Chain",
-    "trait": "恢复友方单位生命，且会在<span class=\"keyword\">3</span>个友方单位间跳跃，每次跳跃治疗量降低25%",
+    "trait": "Can restore allies' HP; heals will bounce between up to <span class=\"keyword\">3</span> allies, with the healing amount decreasing by 25% with each bounce",
     "class": "Medic"
   },
   "crusher": {
@@ -126,7 +126,7 @@
   },
   "aoesniper": {
     "branchName": "Artilleryman",
-    "trait": "Deals <span class=\"keyword\">AOE Physical damage</span> with a splash radius of <span class=\"keyword\">1.0</span> tiles",
+    "trait": "Deals <span class=\"keyword\">AOE Physical damage</span> with a splash radius of <span class=\"keyword\">1.0</span> tile",
     "class": "Sniper"
   },
   "longrange": {
@@ -276,7 +276,7 @@
   },
   "incantationmedic": {
     "branchName": "Incantation",
-    "trait": "Attacks deal <span class=\"keyword\">Arts damage</span>. When attacking an enemy, heal a friendly operator within attack range for <span class=\"keyword\">50%</span> of the damage dealt.",
+    "trait": "Attacks deal Arts damage and heal the HP of an ally within Attack Range for 50% of the damage dealt",
     "class": "Medic"
   },
   "agent": {

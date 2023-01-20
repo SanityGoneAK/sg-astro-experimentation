@@ -28,12 +28,23 @@ const CN_BRANCH_TLS = {
 // Separate EN overrides.
 // Kept separate from the above overrides for the sake of clarity.
 // Notably, these overrides are SUBPROFESSION IDs (to stay consistent with the above).
-const BRANCH_OVERRIDES = {
+const BRANCH_NAME_OVERRIDES = {
   physician: "Single-target",
 };
 
 /**
+ * Unofficial translations of CN traits. These are only used if the official translation is missing
+ * (because an operator with that trait hasn't been released on EN yet).
+ */
+const CN_TRAIT_TLS = {
+  shotprotector: "Can block three enemies; can use ranged attacks",
+  chainhealer:
+    "Can restore allies' HP; heals will bounce between up to <@ba.kw>3</> allies, with the healing amount decreasing by 25% with each bounce",
+};
+
+/**
  * Trait description overrides (usually because we include some additional information).
+ * These are always used, regardless of EN availability.
  */
 const TRAIT_OVERRIDES = {
   musha:
@@ -52,18 +63,16 @@ const TRAIT_OVERRIDES = {
   bombarder:
     "Attacks deal <@ba.kw>two instances</> of Physical damage to <@ba.kw>ground</> enemies in a <@ba.kw>0.9</> tile area (The second instance is a shockwave that has half the normal ATK)",
   aoesniper:
-    "Deals <@ba.kw>AOE Physical damage</> with a splash radius of <@ba.kw>1.0</> tiles",
+    "Deals <@ba.kw>AOE Physical damage</> with a splash radius of <@ba.kw>1.0</> tile",
   fortress:
     "Prioritize <@ba.kw>Long range splash attack</> (splash radius of <@ba.kw>1.0</> tiles) when not blocking",
   funnel:
     "Controls a <@ba.kw>Drone</> that deals <@ba.kw>Arts damage</>; When the Drone continuously attacks the same enemy, its damage will increase (from 20% up to 110% of the operator's ATK, linearly)",
-  incantationmedic:
-    "Attacks deal <@ba.kw>Arts damage</>. When attacking an enemy, heal a friendly operator within attack range for <@ba.kw>50%</> of the damage dealt.",
 };
 
 const useBranchOverride = (subProfessionId) =>
   (
-    BRANCH_OVERRIDES[subProfessionId] ??
+    BRANCH_NAME_OVERRIDES[subProfessionId] ??
     enUniequipTable.subProfDict[subProfessionId].subProfessionName
   )
     .replace(" Medic", "")
@@ -99,15 +108,21 @@ export async function createBranchesJson(dataDir) {
         const trait = firstOp.trait;
         const className = professionToClass(firstOp.profession);
 
-        // left in console.log comments - useful for debugging bad trait descriptions
-        // console.log(description);
         if (subprof in TRAIT_OVERRIDES) {
           description = TRAIT_OVERRIDES[subprof];
-        } else if (description in jetTraitTranslations.full) {
-          // console.log("in descs");
-          description = fixJetSkillDescriptionTags(
-            jetTraitTranslations.full[description].en
-          );
+        } else if (cnOnlySubProfessions.has(subprof)) {
+          if (subprof in CN_TRAIT_TLS) {
+            description = CN_TRAIT_TLS[subprof];
+          } else if (description in jetTraitTranslations.full) {
+            description = fixJetSkillDescriptionTags(
+              jetTraitTranslations.full[description].en
+            );
+          } else {
+            console.warn(
+              "No trait translation found for subProfessionId:",
+              subprof
+            );
+          }
         }
 
         const blackboard = trait
