@@ -58,7 +58,7 @@ export const tabIconImage = style({
 
 export const tabPanel = style({
   background:
-    "linear-gradient(270deg, rgba(0, 0, 0, 0.33) 0%, rgba(0, 0, 0, 0.1) 12.34%, rgba(0, 0, 0, 0) 32.5%),",
+    "linear-gradient(270deg, rgba(0, 0, 0, 0.33) 0%, rgba(0, 0, 0, 0.1) 12.34%, rgba(0, 0, 0, 0) 32.5%)",
   position: "relative",
 });
 
