@@ -10,9 +10,7 @@ import rangeTable from "../ArknightsGameData/zh_CN/gamedata/excel/range_table.js
 import voiceTable from "../ArknightsGameData/zh_CN/gamedata/excel/charword_table.json";
 import skinTable from "../ArknightsGameData/zh_CN/gamedata/excel/skin_table.json";
 
-import jetSkillTranslations from "./translations/jet/skills.json";
-import jetTalentTranslations from "./translations/jet/talents.json";
-import { fixJetSkillDescriptionTags } from "./fix-jet-skill-descs";
+import { fetchJetroyzSkillTalentTranslations } from "./fetch-jetroyz-translations";
 import { getReleaseOrderAndLimitedLookup } from "./scrape-prts";
 import { aggregateModuleData } from "./aggregate-module-data.js";
 
@@ -40,6 +38,9 @@ export async function createOperatorsJson(dataDir) {
   const cnOnlyCharacters = Object.entries(cnCharacterTable).filter(
     ([charId]) => !enCharacterIds.has(charId)
   );
+
+  const { jetSkillTranslations, jetTalentTranslations } =
+    await fetchJetroyzSkillTalentTranslations();
 
   const summonIdToOperatorId = {};
   const denormalizedCharacters = [
@@ -126,9 +127,7 @@ export async function createOperatorsJson(dataDir) {
                 try {
                   const skillTL = jetSkillTranslations[skillId];
                   baseSkillLevelObject.name = skillTL.name;
-                  baseSkillLevelObject.description = fixJetSkillDescriptionTags(
-                    skillTL.desc[levelIndex]
-                  );
+                  baseSkillLevelObject.description = skillTL.desc[levelIndex];
                 } catch {
                   console.warn(
                     `No translation found for: skill ${skillId}, level index ${levelIndex}`

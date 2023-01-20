@@ -1,5 +1,14 @@
 const jetSkillDescriptionRegex =
   /{{(?<tagName>[^}]+)}(:(?<formatString>[0-9.%f]+))?}/;
+
+/**
+ * Jetroyz's skill translations use a strange description syntax that doesn't match
+ * what is used in gamedata/excel/skill_table.json. This function converts Jetroyz's
+ * ad-hoc description syntax to one that matches the gamedata.
+ *
+ * @param description - the original description
+ * @returns a description that conforms to gamedata description syntax
+ */
 export function fixJetSkillDescriptionTags(description: string) {
   let newDescription = description;
   // need to convert tag formatting used in Jet's TL json data
