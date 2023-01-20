@@ -152,7 +152,12 @@ export async function createOperatorsJson(dataDir) {
 
       const charSkins = skinTable["charSkins"];
       const skins = Object.values(charSkins)
-        .filter((skin) => skin.charId === charId)
+        .filter((skin) => {
+          // special case:
+          // amiya's guard form shows up as a skin, so we should filter that out
+          if (skin.skinId === "char_1001_amiya2#2") return false;
+          return skin.charId === charId;
+        })
         .map((skin) => {
           return {
             skinId: skin.skinId,
