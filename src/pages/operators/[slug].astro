@@ -1,7 +1,6 @@
 ---
 import slugify from "../../slugify";
 import operatorsJson from "../../../data/operators.json";
-import summonsJson from "../../../data/summons.json";
 import Layout from "../../layouts/Layout.astro";
 import * as classes from "./_[slug].css";
 import { linkStyle } from "../../theme.css";
@@ -11,7 +10,7 @@ import OperatorInfo from "../../components/OperatorInfo/OperatorInfo.astro";
 import InterpunctSpacer from "../../components/InterpunctSpacer/InterpunctSpacer.astro";
 import OperatorTabs from "../../components/OperatorTabs/OperatorTabs";
 import SvgRarityGradientDefs from "../../components/SvgRarityGradientDefs";
-import { operatorIdStore, summonsStore } from "./_store";
+import { operatorIdStore } from "./_store";
 
 import type * as OutputTypes from "../../output-types";
 
@@ -29,17 +28,12 @@ export function getStaticPaths() {
 const { operatorId } = Astro.props;
 const operator = operatorsJson[
   operatorId as keyof typeof operatorsJson
-] as OutputTypes.Character;
-const summons = summonsJson[
-  operatorId as keyof typeof summonsJson
-] as unknown as OutputTypes.Character[] | undefined;
+] as OutputTypes.Operator;
 operatorIdStore.set(operatorId);
-summonsStore.set(summons);
 ---
 
-<script slot="head" define:vars={{ operatorId, summons }}>
+<script slot="head" define:vars={{ operatorId }}>
   window.operatorId = operatorId;
-  window.summons = summons;
 </script>
 
 <Layout title={operator.name}>

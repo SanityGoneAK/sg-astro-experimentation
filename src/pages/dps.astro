@@ -2,7 +2,6 @@
 import Layout from "../layouts/Layout.astro";
 import DpsCalculator from "../components/DpsCalculator";
 import operatorsJson from "../../data/operators.json";
-import modulesJson from "../../data/modules.json";
 
 const modules = Object.fromEntries(
   Object.entries(modulesJson).map(([id, opModule]) => {
@@ -31,7 +30,6 @@ const operators = Object.fromEntries(
           skillId: sk.skillId,
           skillName: sk.levels[0].name,
         })),
-        modules: modules[op.charId] ?? [],
       },
     ])
 );

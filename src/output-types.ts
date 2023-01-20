@@ -21,11 +21,26 @@ export interface Character {
   potentialRanks: PotentialRanks[];
   talents: Talent[];
   skillData: Skill[];
+  [otherProperties: string]: unknown;
+}
+
+/**
+ * Represents a single Arknights operator, which has some extra properties compared to a `Character`.
+ */
+export interface Operator extends Character {
   voices: Voice[];
   skins: Skin[];
   isLimited: boolean;
-  releaseOrder: number;
-  [otherProperties: string]: unknown;
+  releaseOrder: number; // lower value means released earlier
+  summons: Character[];
+  modules: Module[];
+}
+
+/**
+ * Represents an Arknights summon. Currently only has a single extra property: the operatorId of the operator that summons it.
+ */
+export interface Summon extends Character {
+  operatorId: string;
 }
 
 /**

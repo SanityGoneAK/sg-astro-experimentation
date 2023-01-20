@@ -13,9 +13,5 @@ export const operatorStore = computed(
   (operatorId) =>
     operatorsJson[
       operatorId as keyof typeof operatorsJson
-    ] as OutputTypes.Character
-);
-
-export const summonsStore = atom<OutputTypes.Character[] | undefined>(
-  typeof window !== "undefined" ? (window as any).summons : undefined
+    ] as OutputTypes.Operator
 );

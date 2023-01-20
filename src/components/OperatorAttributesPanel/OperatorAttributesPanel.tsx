@@ -4,13 +4,10 @@ import { useStore } from "@nanostores/react";
 import EliteButtonGroup from "../EliteButtonGroup";
 import SliderWithInput from "../SliderWithInput";
 import PillButtonGroup from "../PillButtonGroup";
-import modulesJson from "../../../data/modules.json";
 import CustomCheckbox from "../CustomCheckbox";
 import { operatorStore } from "../../pages/operators/_store";
 
 import * as classes from "./styles.css";
-
-import type * as OutputTypes from "../../output-types";
 
 const OperatorAttributesPanel: React.FC = () => {
   const operator = useStore(operatorStore);
@@ -18,15 +15,13 @@ const OperatorAttributesPanel: React.FC = () => {
   const [elite, setElite] = useState(maxElite);
   const [level, setLevel] = useState(operator.phases.at(-1)!.maxLevel);
   const moduleTypes = useMemo(() => {
-    const modules = (modulesJson[operator.charId as keyof typeof modulesJson] ??
-      []) as OutputTypes.Module[];
     return [
       "None",
-      ...modules
+      ...operator.modules
         .map((module) => module.moduleIcon.at(-1)!.toUpperCase())
         .sort((a, b) => a.localeCompare(b)),
     ];
-  }, []);
+  }, [operator.modules]);
   const [moduleType, setModuleType] = useState(moduleTypes.at(-1)!);
   const [moduleLevel, setModuleLevel] = useState<1 | 2 | 3>(3);
   const [isTrustBonusChecked, setTrustBonusChecked] = useState(false);

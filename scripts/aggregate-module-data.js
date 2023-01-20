@@ -31,7 +31,7 @@ import { descriptionToHtml } from "../src/description-parser";
  *
  * @returns {{ [operatorId: string]: Module[] }}
  */
-export const aggregateModuleData = () => {
+export function aggregateModuleData() {
   /** @type {{ [operatorId: string]: Module[] }} */
   const moduleData = {};
 
@@ -341,4 +341,4 @@ export const aggregateModuleData = () => {
   });
 
   return moduleData;
-};
+}

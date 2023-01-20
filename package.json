@@ -9,7 +9,7 @@
     "preview": "astro preview",
     "astro": "astro",
     "update-operators": "sucrase-node scripts/copy-operators.ts",
-    "update-game-data": "git submodule update --init --recursive --remote && sucrase-node ./scripts/copy-branches.ts && sucrase-node scripts/copy-operators.ts && sucrase-node ./scripts/copy-modules.ts && sucrase-node ./scripts/build-search-index.ts",
+    "update-game-data": "git submodule update --init --recursive --remote && sucrase-node ./scripts/all.js",
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook"
   },
