@@ -36,7 +36,7 @@ const CharacterSplash: React.FC = () => {
               <div className={classes.operatorInfo}>
                 <div className={classes.operatorInfoLabelContainer}>
                   <span className={classes.operatorInfoLabelTitle}>Artist</span>
-                  {skin.displaySkin.drawerName}
+                  {skin.displaySkin.drawerList.join(", ")}
                 </div>
                 <div className={classes.operatorInfoLabelContainer}>
                   <span className={classes.operatorInfoLabelTitle}>VA</span>
