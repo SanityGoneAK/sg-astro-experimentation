@@ -42,7 +42,9 @@ const CharacterSplash: React.FC = () => {
                   <span className={classes.operatorInfoLabelTitle}>VA</span>
                   <ul className={classes.operatorInfoVoiceList}>
                     {voices.map((voice) => (
-                      <li key={voice.voiceLangType}>{voice.cvName}</li>
+                      <li key={voice.voiceLangType}>
+                        {voice.cvName.join(", ")}
+                      </li>
                     ))}
                   </ul>
                 </div>

@@ -201,7 +201,7 @@ export interface ModulePhase {
 interface Voice {
   wordkey: string;
   voiceLangType: string;
-  cvName: string;
+  cvName: string[];
 }
 
 interface Skin {
