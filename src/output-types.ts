@@ -215,3 +215,30 @@ interface Skin {
     drawerName: string;
   };
 }
+
+export type SearchResult =
+  | OperatorSearchResult
+  | ClassSearchResult
+  | BranchSearchResult;
+
+interface OperatorSearchResult {
+  type: "operator";
+  charId: string;
+  name: string;
+  class: string;
+  subclass: string;
+  rarity: string;
+}
+
+interface ClassSearchResult {
+  type: "class";
+  name: string;
+  class: string;
+}
+
+interface BranchSearchResult {
+  type: "branch";
+  name: string;
+  class: string;
+  subProfession: string;
+}

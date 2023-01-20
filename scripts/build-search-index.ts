@@ -1,4 +1,3 @@
-import type { SearchResult } from "./types";
 import {
   professionToClass,
   subProfessionIdToSubclass,
@@ -9,6 +8,8 @@ import fs from "fs";
 import path from "path";
 import operators from "../data/operators.json";
 import branches from "../data/branches.json";
+
+import type { SearchResult } from "../src/output-types";
 
 const dataDir = path.join(__dirname, "../data");
 
