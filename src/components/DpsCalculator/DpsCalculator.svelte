@@ -3,24 +3,7 @@
   import dpsOptions from "../../../viktorlab-fork/resources/customdata/dps_options.json";
   import operatorsJson from "../../../data/operators.json";
 
-  interface Skill {
-    skillId: string;
-    skillName: string;
-  }
-
-  interface Module {
-    moduleId: string;
-    moduleName: string;
-    phases: number[];
-  }
-
-  interface Operator {
-    id: string;
-    name: string;
-    rarity: number;
-    skills: Skill[];
-    modules: Module[];
-  }
+  import type * as OutputTypes from "../../output-types";
 
   type OperatorDpsOptionsMap = { [tag: string]: OperatorDpsOption };
 
@@ -31,7 +14,7 @@
   }
 
   let operatorId: string | null = null;
-  let operator: Operator | null = null;
+  let operator: OutputTypes.Operator | null = null;
 
   let maxElite = 0;
   let elite: number | null = 0;
@@ -39,9 +22,9 @@
   let level: number | null = 30;
   let potential: number | null = 1;
   let trust: number | null = 100;
-  let skill: Skill | null = null;
+  let skill: OutputTypes.Skill | null = null;
   let skillLevel: number | null = 7;
-  let module: Module | null = null;
+  let module: OutputTypes.Module | null = null;
   let moduleLevel: number | null = 1;
   let buffsEnabled = true;
   let operatorDpsOptionsTagList: string[] = [];
@@ -51,7 +34,9 @@
 
   function handleOperatorIdChanged(operatorId: string | null) {
     operator = operatorId
-      ? operatorsJson[operatorId as keyof typeof operatorsJson]
+      ? (operatorsJson[
+          operatorId as keyof typeof operatorsJson
+        ] as OutputTypes.Operator)
       : null;
     if (!operator) {
       return;
@@ -105,9 +90,9 @@
 
     level = maxLevel;
 
-    skill = operator.skills.at(-1) ?? null;
+    skill = operator.skillData.at(-1) ?? null;
 
-    module = operator.modules[0];
+    module = operator.modules.at(-1) ?? null;
     moduleLevel = module?.phases?.length ?? 0;
 
     operatorDpsOptionsTagList = (dpsOptions.char[
@@ -254,12 +239,12 @@
           <input bind:value={trust} type="number" min="0" max="200" />
         </label>
 
-        {#if operator.skills.length > 0}
+        {#if operator.skillData.length > 0}
           <label>
             Skill
             <select bind:value={skill}>
-              {#each operator.skills as skill (skill.skillId)}
-                <option value={skill}>{skill.skillName}</option>
+              {#each operator.skillData as skill (skill.skillId)}
+                <option value={skill}>{skill.levels[0].name}</option>
               {/each}
             </select>
           </label>
@@ -280,6 +265,7 @@
           <label>
             Module
             <select bind:value={module}>
+              <option value={null}>No Module</option>
               {#each operator.modules as module (module.moduleId)}
                 <option value={module}>{module.moduleName}</option>
               {/each}
@@ -290,6 +276,7 @@
             Module Level
             <input
               type="number"
+              disabled={module == null}
               bind:value={moduleLevel}
               min="1"
               max={module?.phases?.length ?? 1}
