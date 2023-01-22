@@ -8,7 +8,7 @@ import rangeTable from "../ArknightsGameData/zh_CN/gamedata/excel/range_table.js
 import { descriptionToHtml } from "../src/description-parser";
 /**
  * @typedef { import("../src/output-types.js").Module } Module
- * @typedef { import("../src/output-types.js").ModulePhase } ModulePhase
+ * @typedef { import("../src/output-types.js").ModulePhaseCandidate } ModulePhase
  */
 
 // Module data is scattered across the following files:

@@ -188,23 +188,29 @@ export interface Skill {
 }
 
 /**
- * Represents a module of an operator at all stages.
+ * Represents an operator module.
  */
 export interface Module {
   moduleId: string;
+  /** e.g. "CHA-X", "CHA-Y" */
   moduleIcon: string;
   moduleName: string;
-  phases: {
-    candidates: ModulePhase[];
-  }[];
+  phases: ModulePhase;
 }
 
 /**
- * Represents a module of an operator at a specific stage AND potential.
+ * Represents an operator module at a specific module level.
  */
-export interface ModulePhase {
+type ModulePhase = Array<{
+  candidates: ModulePhaseCandidate[];
+}>;
+
+/**
+ * Represents an operator module at a specific module level *and* operator potential.
+ */
+export interface ModulePhaseCandidate {
   traitEffect: string | null;
-  traitEffectType: string; // "update" or "override"
+  traitEffectType: "update" | "override";
   talentEffect: string | null;
   talentIndex: number;
   displayRange: boolean;
