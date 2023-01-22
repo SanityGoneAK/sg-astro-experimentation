@@ -211,6 +211,13 @@ export interface ModulePhase {
   range: Range | null;
   attributeBlackboard: InterpolatedValue[];
   requiredPotentialRank: number; // 0-indexed
+  /**
+   * Stat changes for this operator's summons if they equip this module.
+   * Is an empty object if the operator has no summons, or if the module doesn't affect their stats.
+   */
+  tokenAttributeBlackboard: {
+    [summonCharacterId: string]: InterpolatedValue[];
+  };
 }
 
 interface Voice {

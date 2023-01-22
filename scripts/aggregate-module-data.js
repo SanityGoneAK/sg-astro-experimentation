@@ -136,6 +136,7 @@ export function aggregateModuleData() {
             talentIndex: -1,
             traitEffect: null,
             traitEffectType: "",
+            tokenAttributeBlackboard: currentPhase.tokenAttributeBlackboard,
           };
         }
       }
