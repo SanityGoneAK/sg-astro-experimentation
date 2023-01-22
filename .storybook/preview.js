@@ -1,4 +1,5 @@
 import "../src/layouts/Layout.css";
+import "../src/global-styles.css";
 
 export const parameters = {
   actions: { argTypesRegex: "^on[A-Z].*" },
