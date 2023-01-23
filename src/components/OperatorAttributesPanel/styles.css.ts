@@ -34,3 +34,8 @@ export const moduleKnobs = style({
 export const label = style({
   color: vars.colors.neutrals.gray,
 });
+
+export const statsMaterialsContainer = style({
+  padding: spacing(3),
+  background: vars.colors.neutrals.darktone,
+});

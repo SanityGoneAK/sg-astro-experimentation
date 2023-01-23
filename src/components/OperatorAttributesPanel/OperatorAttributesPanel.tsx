@@ -5,6 +5,7 @@ import EliteButtonGroup from "../EliteButtonGroup";
 import SliderWithInput from "../SliderWithInput";
 import PillButtonGroup from "../PillButtonGroup";
 import CustomCheckbox from "../CustomCheckbox";
+import CharacterStats from "../CharacterStats";
 import { operatorStore } from "../../pages/operators/_store";
 
 import * as classes from "./styles.css";
@@ -26,6 +27,13 @@ const OperatorAttributesPanel: React.FC = () => {
   const [moduleLevel, setModuleLevel] = useState<1 | 2 | 3>(3);
   const [isTrustBonusChecked, setTrustBonusChecked] = useState(false);
   const [isPotentialBonusChecked, setPotentialBonusChecked] = useState(false);
+
+  const moduleId =
+    moduleType === "None"
+      ? null
+      : operator.modules.find((module) =>
+          module.moduleIcon.endsWith(moduleType)
+        )!.moduleId;
 
   const handleEliteChange = (newElite: number) => {
     setElite(newElite);
@@ -82,6 +90,17 @@ const OperatorAttributesPanel: React.FC = () => {
             </div>
           )}
         </div>
+      </div>
+      <div className={classes.statsMaterialsContainer}>
+        <CharacterStats
+          character={operator}
+          elite={elite}
+          level={level}
+          moduleId={moduleId}
+          moduleLevel={moduleLevel}
+          usePotentialBonus={isPotentialBonusChecked}
+          useTrustBonus={isTrustBonusChecked}
+        />
       </div>
     </>
   );
