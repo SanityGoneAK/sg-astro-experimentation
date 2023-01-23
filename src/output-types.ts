@@ -34,6 +34,10 @@ export interface Operator extends Character {
   releaseOrder: number; // lower value means released earlier
   summons: Character[];
   modules: Module[];
+  /** The character ID of this operator's alter, or `null` if it doesn't have one. */
+  alterId: string | null;
+  /** The corresponding base operator's character ID if this operator is an alter, or `null` if this operator isn't an alter. */
+  baseOperatorId: string | null;
 }
 
 /**

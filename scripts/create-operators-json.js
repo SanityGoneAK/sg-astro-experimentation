@@ -13,6 +13,7 @@ import skinTable from "../ArknightsGameData/zh_CN/gamedata/excel/skin_table.json
 import { fetchJetroyzSkillTalentTranslations } from "./fetch-jetroyz-translations";
 import { getReleaseOrderAndLimitedLookup } from "./scrape-prts";
 import { aggregateModuleData } from "./aggregate-module-data.js";
+import { getAlterMapping } from "./get-alters.js";
 
 /** @type {{ [characterId: string]: string }} */
 const NAME_OVERRIDES = {
@@ -215,6 +216,7 @@ export async function createOperatorsJson(dataDir) {
 
   const operatorModulesMap = aggregateModuleData();
   const releaseOrderAndLimitedLookup = await getReleaseOrderAndLimitedLookup();
+  const { alterIdToBaseOpId, baseOpIdToAlterId } = getAlterMapping();
 
   const denormalizedOperators = denormalizedCharacters
     .filter((character) => character.profession !== "TOKEN")
@@ -225,6 +227,8 @@ export async function createOperatorsJson(dataDir) {
         ...releaseOrderAndLimitedLookup[character.cnName],
         summons: denormalizedSummons[character.charId] ?? [],
         modules: operatorModulesMap[character.charId] ?? [],
+        alterId: baseOpIdToAlterId[character.charId] ?? null,
+        baseOperatorId: alterIdToBaseOpId[character.charId] ?? null,
       },
     ]);
   // sort by descending rarity and descending release order
