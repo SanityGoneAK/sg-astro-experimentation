@@ -25,7 +25,7 @@ import {
   getMaxTrustStatIncrease,
   getPotStatIncreases,
   getStatsAtLevel,
-} from "../../utils/char-stats";
+} from "../../utils/character-stats";
 import { summonImage } from "../../utils/images";
 import CustomCheckbox from "../CustomCheckbox";
 import RibbonButton from "../RibbonButton";
