@@ -52,6 +52,7 @@ export const range = style({
   padding: spacing(2),
   display: "grid",
   gridTemplateColumns: "auto 1fr",
+  alignItems: "center",
   justifyItems: "center",
   background: vars.colors.neutrals.midtoneDarker,
   borderRadius: spacing(1),
