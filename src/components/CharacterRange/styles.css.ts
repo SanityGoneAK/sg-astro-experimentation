@@ -6,10 +6,11 @@ export const rangeTable = style({
   flexShrink: 0,
 });
 
-export const rangeRow = style({
+export const rangeCell = style({
   width: spacing(2),
   height: spacing(2),
   boxSizing: "border-box",
+  borderRadius: "2px",
 
   "@media": {
     [breakpoints.down("mobile")]: {
@@ -19,10 +20,10 @@ export const rangeRow = style({
   },
 });
 
-globalStyle(`${rangeRow}.active`, {
+globalStyle(`${rangeCell}.active`, {
   border: `2px solid ${vars.colors.neutrals.gray}`,
 });
 
-globalStyle(`${rangeRow}.operator`, {
+globalStyle(`${rangeCell}.operator`, {
   backgroundColor: vars.colors.neutrals.white,
 });

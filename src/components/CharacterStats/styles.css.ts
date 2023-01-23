@@ -3,6 +3,12 @@ import { spacing } from "../../theme-helpers";
 import { vars } from "../../theme.css";
 
 export const root = style({
+  display: "grid",
+  gridAutoFlow: "row",
+  rowGap: spacing(3),
+});
+
+export const dl = style({
   position: "relative",
   display: "grid",
   gridTemplateColumns: "1fr 1fr",
@@ -40,4 +46,14 @@ export const dd = style({
 
 export const iconPath = style({
   fill: vars.colors.neutrals.white,
+});
+
+export const range = style({
+  padding: spacing(2),
+  display: "grid",
+  gridTemplateColumns: "auto 1fr",
+  justifyItems: "center",
+  background: vars.colors.neutrals.midtoneDarker,
+  borderRadius: spacing(1),
+  color: vars.colors.neutrals.gray,
 });

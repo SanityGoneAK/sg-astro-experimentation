@@ -1,4 +1,3 @@
-import React from "react";
 import * as classes from "./styles.css";
 
 import type * as GameData from "../../gamedata-types";
@@ -49,7 +48,9 @@ export interface CharacterRangeProps {
   rangeObject: GameData.Range;
 }
 
-const CharacterRange: React.VFC<
+// FIXME due to some visually hidden styles the table is slightly too large
+// I still need to figure out how to compensate for it
+const CharacterRange: React.FC<
   CharacterRangeProps & React.HTMLAttributes<HTMLTableElement>
 > = (props) => {
   const { rangeObject, ...rest } = props;
@@ -76,7 +77,7 @@ const CharacterRange: React.VFC<
             {[...Array(cols).keys()].map((colIndex) => (
               <td
                 key={colIndex}
-                className={`${classes.rangeRow} ${grid[rowIndex][colIndex]}`}
+                className={`${classes.rangeCell} ${grid[rowIndex][colIndex]}`}
               >
                 <span className="visually-hidden">{`${grid[rowIndex][colIndex]} cell`}</span>
               </td>
