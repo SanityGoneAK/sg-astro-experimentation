@@ -8,6 +8,8 @@ export const knobsContainer = style({
   alignItems: "center",
   rowGap: spacing(2),
   background: `linear-gradient(to bottom, ${rawColors.neutrals.darktone}, ${rawColors.neutrals.midtoneDarker})`,
+  borderBottom: "1px solid",
+  borderBottomColor: vars.colors.neutrals.midtone,
 });
 
 export const eliteAndLevel = style({
