@@ -10,7 +10,6 @@ export const root = style({
   gridAutoFlow: "column",
   rowGap: spacing(2),
   columnGap: `calc(${spacing(6)} + 1px)`,
-  color: vars.colors.neutrals.gray,
   "::after": {
     content: "",
     position: "absolute",
@@ -23,10 +22,20 @@ export const root = style({
   },
 });
 
+export const statItem = style({
+  display: "grid",
+  gridTemplateColumns: "1fr auto",
+});
+
 export const dt = style({
   display: "inline-flex",
   alignItems: "center",
   columnGap: spacing(1),
+  color: vars.colors.neutrals.gray,
+});
+
+export const dd = style({
+  ...vars.newTypography.headerSemibold,
 });
 
 export const iconPath = style({
