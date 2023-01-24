@@ -31,7 +31,7 @@ const operator = operatorsJson[
   operatorId as keyof typeof operatorsJson
 ] as OutputTypes.Operator;
 operatorIdStore.set(operatorId);
-let relatedOperator = getRelatedCharacter(operator);
+const relatedOperator = getRelatedCharacter(operator);
 ---
 
 <script slot="head" define:vars={{ operatorId }}>
