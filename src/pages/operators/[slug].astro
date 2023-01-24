@@ -5,6 +5,7 @@ import Layout from "../../layouts/Layout.astro";
 import * as classes from "./_[slug].css";
 import { linkStyle } from "../../theme.css";
 import { operatorAvatar } from "../../utils/images";
+import { getRelatedCharacter } from "../../utils/related-character";
 import CharacterSplash from "../../components/CharacterSplash";
 import OperatorInfo from "../../components/OperatorInfo/OperatorInfo.astro";
 import InterpunctSpacer from "../../components/InterpunctSpacer/InterpunctSpacer.astro";
@@ -30,6 +31,7 @@ const operator = operatorsJson[
   operatorId as keyof typeof operatorsJson
 ] as OutputTypes.Operator;
 operatorIdStore.set(operatorId);
+let relatedOperator = getRelatedCharacter(operator);
 ---
 
 <script slot="head" define:vars={{ operatorId }}>
@@ -45,13 +47,26 @@ operatorIdStore.set(operatorId);
         </li>
         /
         <li class={classes.characterNavigationItem.bold}>{operator.name}</li>
-        <InterpunctSpacer />
-        <li class={classes.characterNavigationItem.alter}>
-          <img
-            class={classes.characterNavigationAlterImage}
-            src={operatorAvatar(operatorId)}
-          /><span>{operator.name}</span>
-        </li>
+
+        {
+          relatedOperator && (
+            <>
+              <InterpunctSpacer />
+              <li>
+                <a
+                  class={classes.characterNavigationItem.alter}
+                  href={`/operators/${slugify(relatedOperator.name)}`}
+                >
+                  <img
+                    class={classes.characterNavigationAlterImage}
+                    src={operatorAvatar(relatedOperator.charId)}
+                  />
+                  <span>{relatedOperator.name}</span>
+                </a>
+              </li>
+            </>
+          )
+        }
       </ul>
       <!-- TODO: Make this a component? -->
       <a class={classes.operatorGuideButton} href="#"
