@@ -23,7 +23,9 @@ export interface Character {
   favorKeyFrames: FavorKeyFrame[] | null;
   potentialRanks: PotentialRanks[];
   talents: Talent[];
-  skillData: Skill[];
+  skills: CharacterTableSkill[];
+  allSkillLvlup: SkillLevelUpgrade[];
+  skillData: SkillTableSkill[];
   [otherProperties: string]: unknown;
 }
 
@@ -61,7 +63,7 @@ interface CharacterPhase {
   range: Range;
   maxLevel: number;
   attributesKeyFrames: AttributeKeyFrame[];
-
+  evolveCost: ItemCost[] | null;
   [otherProperties: string]: unknown;
 }
 
@@ -75,8 +77,9 @@ export interface TalentPhase {
   };
   requiredPotentialRank: number;
   prefabKey: unknown; // unused
-  name: string;
-  description: string;
+  /** Can be `null` for e.g. summon talents. */
+  name: string | null;
+  description: string | null;
   // this object only has rangeId,
   // but we'll expect that the range has been denormalized ahead of time
   range: Range | null;
@@ -162,7 +165,7 @@ enum SkillSpType {
  */
 interface SkillLevel {
   name: string;
-  description: string;
+  description: string | null;
   // SkillLevelObject only has rangeId (of type string) in the game data,
   // but we expect it to be denormalized into a RangeObject before being passed to <SkillInfo />
   range: Range | null;
@@ -184,14 +187,52 @@ interface SkillLevel {
   prefabId: unknown; // unused
 }
 
+/** Represents a single object in the `skills` array of a given `character_table.json` entry. */
+export interface CharacterTableSkill {
+  skillId: string | null;
+  levelUpCostCond: MasteryUpgrade[];
+  unlockCond: {
+    phase: number;
+    level: number;
+  };
+  [otherProperties: string]: unknown;
+}
+
 /**
- * Represents an operator skill. (Or the skill of an inanimate object, who knows.)
+ * Represents an operator skill. Importantly, this is the object taken from `skill_table.json`,
+ * **not** the `skills` property on a given `character_table.json` entry.
  */
-export interface Skill {
+export interface SkillTableSkill {
   skillId: string;
   iconId: string | null;
   levels: SkillLevel[];
   [otherProperties: string]: unknown;
+}
+
+export interface MasteryUpgrade {
+  unlockCond: {
+    phase: number;
+    level: number;
+  };
+  lvlUpTime: number;
+  /** Can be null for e.g. summon skills. */
+  levelUpCost: ItemCost[] | null;
+}
+
+export interface SkillLevelUpgrade {
+  unlockCond: {
+    phase: number;
+    level: number;
+  };
+  /** Can be null for e.g. summon skills. */
+  lvlUpCost: ItemCost[] | null;
+}
+
+interface ItemCost {
+  id: string;
+  count: number;
+  /** This seems to always be `"MATERIAL"` */
+  type: string;
 }
 
 /**
@@ -217,7 +258,8 @@ type ModulePhase = Array<{
  */
 export interface ModulePhaseCandidate {
   traitEffect: string | null;
-  traitEffectType: "update" | "override";
+  /** Either `"update"` or `"override"`. */
+  traitEffectType: string;
   talentEffect: string | null;
   talentIndex: number;
   displayRange: boolean;
@@ -261,32 +303,21 @@ interface DefaultOperatorSkin extends BaseOperatorSkin {
   };
 }
 
-interface PurchasableOperatorSkin extends BaseOperatorSkin {
-  displaySkin: {
-    skinName: string;
-    modelName: string;
-    drawerList: string[];
-  };
-  obtainSources: SkinSource[];
-  cost: number;
-  tokenType: SkinCostTokenType;
-}
-
-interface NonPurchasableOperatorSkin {
-  displaySkin: {
-    skinName: string;
-    modelName: string;
-    drawerList: string[];
-  };
-  obtainSources: Array<Exclude<SkinSource, SkinSource.ContingencyContractStore | SkinSource.OutfitStore>>;
-  cost: null;
-  tokenType: null;
-}
-
 /**
  * Any other custom operator skin.
  */
-type SpecialOperatorSkin = PurchasableOperatorSkin | NonPurchasableOperatorSkin;
+interface SpecialOperatorSkin extends BaseOperatorSkin {
+  displaySkin: {
+    skinName: string;
+    modelName: string;
+    drawerList: string[];
+  };
+  /** @see `SkinSource` */
+  obtainSources: string[];
+  cost: number | null;
+  /** @see `SkinCostTokenType` */
+  tokenType: string | null;
+}
 
 export type Skin = DefaultOperatorSkin | SpecialOperatorSkin;
 

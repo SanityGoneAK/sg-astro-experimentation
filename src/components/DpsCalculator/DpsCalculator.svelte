@@ -22,7 +22,7 @@
   let level: number | null = 30;
   let potential: number | null = 1;
   let trust: number | null = 100;
-  let skill: OutputTypes.Skill | null = null;
+  let skill: OutputTypes.SkillTableSkill | null = null;
   let skillLevel: number | null = 7;
   let module: OutputTypes.Module | null = null;
   let moduleLevel: number | null = 1;
