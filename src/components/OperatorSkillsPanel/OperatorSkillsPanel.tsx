@@ -54,6 +54,16 @@ const OperatorSkillsPanel: React.FC = () => {
     };
   }, [skillNumber, skillLevel]);
 
+  const skillDisplayDuration = useMemo(() => {
+    if (activeSkillLevel.duration === -1) {
+      return "Infinite";
+    }
+    if (activeSkillLevel.duration === 0) {
+      return "Instant";
+    }
+    return `${activeSkillLevel.duration} sec`;
+  }, [activeSkillLevel.duration]);
+
   return (
     <>
       <div className={cx(sharedPanelClasses.knobsContainer, classes.knobs)}>
@@ -108,11 +118,7 @@ const OperatorSkillsPanel: React.FC = () => {
           <div className={classes.skillSpTypeItem}>
             <HourglassIcon />
             <dt>Duration</dt>
-            <dd>
-              {activeSkillLevel.duration === -1
-                ? "Infinite"
-                : `${activeSkillLevel.duration} sec`}
-            </dd>
+            <dd>{skillDisplayDuration}</dd>
           </div>
         </dl>
         {activeSkillLevel.description && (
