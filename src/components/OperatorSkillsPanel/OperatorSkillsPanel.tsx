@@ -1,6 +1,7 @@
 import { useMemo, useState } from "react";
 
 import { useStore } from "@nanostores/react";
+import cx from "clsx";
 
 import PillButtonGroup from "../PillButtonGroup";
 import SliderWithInput from "../SliderWithInput";
@@ -29,13 +30,15 @@ const OperatorSkillsPanel: React.FC = () => {
 
   return (
     <>
-      <div className={sharedPanelClasses.knobsContainer}>
-        <span className={classes.skillLabel}>Skill</span>
-        <PillButtonGroup
-          labels={skillLabels}
-          value={skillNumber}
-          onChange={setSkillNumber}
-        />
+      <div className={cx(sharedPanelClasses.knobsContainer, classes.knobs)}>
+        <div className={classes.skillSelect}>
+          <span>Skill</span>
+          <PillButtonGroup
+            labels={skillLabels}
+            value={skillNumber}
+            onChange={setSkillNumber}
+          />
+        </div>
         <SliderWithInput
           type="skill"
           value={skillLevel}

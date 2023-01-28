@@ -3,6 +3,20 @@ import { globalStyle, style } from "@vanilla-extract/css";
 import { spacing } from "../../theme-helpers";
 import { vars } from "../../theme.css";
 
+export const knobs = style({
+  display: "grid",
+  gridTemplateColumns: "auto 1fr",
+  columnGap: spacing(2),
+});
+
+export const skillSelect = style({
+  display: "grid",
+  gridAutoFlow: "column",
+  columnGap: spacing(1),
+  color: vars.colors.neutrals.gray,
+  alignItems: "center",
+});
+
 export const skillData = style({
   display: "grid",
   padding: spacing(3),
