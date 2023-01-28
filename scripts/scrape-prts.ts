@@ -181,13 +181,7 @@ export async function getSkinObtainSourceAndCosts() {
       if (skinId == null) {
         throw new Error(`Couldn't find skin ID for: ${cnSkinName}`);
       }
-      return [
-        skinId,
-        {
-          skinId,
-          ...rest,
-        },
-      ];
+      return [skinId, rest];
     })
   );
 }
