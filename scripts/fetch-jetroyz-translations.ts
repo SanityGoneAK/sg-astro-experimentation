@@ -1,4 +1,4 @@
-import axios from "axios";
+import axios from "./axios";
 
 import { fixJetSkillDescriptionTags } from "./fix-jet-skill-descs";
 
