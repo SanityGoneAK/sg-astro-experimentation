@@ -1,3 +1,5 @@
+import itemsJson from "../../data/items.json";
+
 const baseURL = "http://penguacestergonenemypresslabdbdare.stinggy.com";
 
 export const operatorAvatar = (charId: string, elite?: number): string => {
@@ -33,3 +35,6 @@ export const moduleImage = (moduleId: string): string =>
 
 export const moduleTypeImage = (moduleType: string): string =>
   `${baseURL}/equip/type/${moduleType}.png`;
+
+export const itemImage = (itemId: string): string =>
+  `${baseURL}/items/${itemsJson[itemId].iconId}.png`;
