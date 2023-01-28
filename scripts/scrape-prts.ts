@@ -7,6 +7,21 @@ const PRTS_BASE_URL = "https://prts.wiki";
 const PRTS_OPERATOR_LIST_URL = `${PRTS_BASE_URL}/w/%E5%B9%B2%E5%91%98%E4%B8%8A%E7%BA%BF%E6%97%B6%E9%97%B4%E4%B8%80%E8%A7%88`;
 const PRTS_SKIN_BRAND_LIST_URL = `${PRTS_BASE_URL}/w/%E6%97%B6%E8%A3%85%E5%9B%9E%E5%BB%8A`;
 
+export enum SkinSource {
+  ContingencyContractStore = "Contingency Contract Store",
+  OutfitStore = "Outfit Store",
+  RedemptionCode = "Redemption Code",
+  IntegratedStrategies = "Integrated Strategies",
+  Event = "Event",
+  RealWorldPromotion = "Real-world Promotion",
+  Unknown = "Unknown",
+}
+
+export enum SkinCostTokenType {
+  OriginiumPrime = "Originium Prime",
+  ContingencyContractToken = "Contingency Contract Token",
+}
+
 export async function getReleaseOrderAndLimitedLookup() {
   const res = await axios.get(PRTS_OPERATOR_LIST_URL);
   const $ = load(res.data);
@@ -69,27 +84,27 @@ export async function getSkinObtainSourceAndCosts() {
             .text()
             .trim()
             .split("/");
-          const allObtainSources = new Set<string>();
+          const allObtainSources = new Set<SkinSource>();
           cnOriginalObtainSources.forEach((cnOriginalObtainSource) => {
             switch (cnOriginalObtainSource) {
               case "机密圣所":
-                allObtainSources.add("Contingency Contract Store");
+                allObtainSources.add(SkinSource.ContingencyContractStore);
                 break;
               case "采购中心":
-                allObtainSources.add("Outfit Store");
+                allObtainSources.add(SkinSource.OutfitStore);
                 break;
               case "兑换码":
               case "特典兑换":
-                allObtainSources.add("Redemption Code");
+                allObtainSources.add(SkinSource.RedemptionCode);
                 break;
               case "集成战略":
-                allObtainSources.add("Integrated Strategies");
+                allObtainSources.add(SkinSource.IntegratedStrategies);
                 break;
               case "活动获得":
-                allObtainSources.add("Event");
+                allObtainSources.add(SkinSource.Event);
                 break;
               case "线下礼包":
-                allObtainSources.add("Real-world Promotion");
+                allObtainSources.add(SkinSource.RealWorldPromotion);
                 break;
               default:
                 console.warn(
@@ -100,10 +115,10 @@ export async function getSkinObtainSourceAndCosts() {
           });
 
           let cost: number | null = null;
-          let tokenType: string | null = null;
+          let tokenType: SkinCostTokenType | null = null;
 
-          if (allObtainSources.has("Outfit Store")) {
-            tokenType = "Originium Prime";
+          if (allObtainSources.has(SkinSource.OutfitStore)) {
+            tokenType = SkinCostTokenType.OriginiumPrime;
             const mostRecentCostTh = $(el)
               .find(
                 'th:contains("获取时限") img[alt^="图标 源石"], th:contains("复刻时限") img[alt^="图标 源石"]'
@@ -121,33 +136,37 @@ export async function getSkinObtainSourceAndCosts() {
             if (Number.isNaN(cost)) {
               console.warn(`Invalid cost: ${costString}`);
             }
-          } else if (!allObtainSources.has("Contingency Contract Store")) {
-            // we need to check if this can be purchased from the contingency contract store
-            // (e.g. when event skins can later be obtained via the CC store)
-            const contingencyContractCostTh = $(el)
-              .find(
-                'th:contains("获取时限") img[alt^="图标 合约赏金"], th:contains("复刻时限") img[alt^="图标 合约赏金"]'
-              )
-              .last()
-              .closest("th");
-            if (contingencyContractCostTh.length) {
-              allObtainSources.add("Contingency Contract Store");
-              tokenType = "Contingency Contract Token";
-              const costString = contingencyContractCostTh
-                .find("> div")
-                .text()
-                .trim();
-              cost = Number(costString);
-              if (Number.isNaN(cost) || cost === 0) {
-                console.warn(`Invalid cost: ${costString}`);
-              }
+          }
+
+          // if `allObtainSources.has(SkinSource.ContingencyContractStore)`, then we need to find the token cost for it
+          // if not, we still need to check if this can be purchased from the contingency contract store
+          // (e.g. when event skins can later be obtained via the CC store)
+          const contingencyContractCostTh = $(el)
+            .find(
+              'th:contains("获取时限") img[alt^="图标 合约赏金"], th:contains("复刻时限") img[alt^="图标 合约赏金"]'
+            )
+            .last()
+            .closest("th");
+          if (contingencyContractCostTh.length) {
+            allObtainSources.add(SkinSource.ContingencyContractStore);
+            tokenType = SkinCostTokenType.ContingencyContractToken;
+            const costString = contingencyContractCostTh
+              .find("> div")
+              .text()
+              .trim();
+            cost = Number(costString);
+            if (Number.isNaN(cost) || cost === 0) {
+              console.warn(`Invalid cost: ${costString}`);
             }
+          } else if (allObtainSources.has(SkinSource.ContingencyContractStore)) {
+            // uh oh, it's a CC skin but we couldn't find the cost
+            console.warn(`Couldn't find cost for CC skin: ${cnSkinName}`)
           }
 
           let obtainSources = [...allObtainSources];
           if (!allObtainSources.size) {
             console.warn("Unknown obtain source");
-            obtainSources = ["Unknown"];
+            obtainSources = [SkinSource.Unknown];
           }
           return {
             cnSkinName,

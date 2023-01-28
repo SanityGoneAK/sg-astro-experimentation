@@ -1,5 +1,8 @@
+import type { SkinSource, SkinCostTokenType } from "../scripts/scrape-prts";
 import type { InterpolatedValue } from "./description-parser";
 import type { Range } from "./gamedata-types";
+
+export type { SkinSource, SkinCostTokenType } from "../scripts/scrape-prts";
 
 // This file contains the output types of our gamedata scripts - the game data after it's been
 // processed by the scripts. These types do NOT fully conform to raw gamedata.
@@ -236,17 +239,56 @@ interface Voice {
   cvName: string[];
 }
 
-interface Skin {
+interface BaseOperatorSkin {
   skinId: string;
   illustId: string;
   avatarId: string;
   portraitId: string;
   displaySkin: {
-    skinName: string;
     modelName: string;
     drawerList: string[];
   };
 }
+
+/**
+ * Default Elite 0/1/2 operator art.
+ */
+interface DefaultOperatorSkin extends BaseOperatorSkin {
+  displaySkin: {
+    skinName: null;
+    modelName: string;
+    drawerList: string[];
+  };
+}
+
+interface PurchasableOperatorSkin extends BaseOperatorSkin {
+  displaySkin: {
+    skinName: string;
+    modelName: string;
+    drawerList: string[];
+  };
+  obtainSources: SkinSource[];
+  cost: number;
+  tokenType: SkinCostTokenType;
+}
+
+interface NonPurchasableOperatorSkin {
+  displaySkin: {
+    skinName: string;
+    modelName: string;
+    drawerList: string[];
+  };
+  obtainSources: Array<Exclude<SkinSource, SkinSource.ContingencyContractStore | SkinSource.OutfitStore>>;
+  cost: null;
+  tokenType: null;
+}
+
+/**
+ * Any other custom operator skin.
+ */
+type SpecialOperatorSkin = PurchasableOperatorSkin | NonPurchasableOperatorSkin;
+
+export type Skin = DefaultOperatorSkin | SpecialOperatorSkin;
 
 export type SearchResult =
   | OperatorSearchResult
