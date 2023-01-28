@@ -7,6 +7,7 @@ import SliderWithInput from "../SliderWithInput";
 import CharacterRange from "../CharacterRange";
 import { descriptionToHtml } from "../../description-parser";
 import { operatorStore } from "../../pages/operators/_store";
+import { skillIcon } from "../../utils/images";
 
 import * as classes from "./styles.css";
 import * as OutputTypes from "../../output-types";
@@ -21,8 +22,8 @@ const OperatorSkillsPanel: React.FC = () => {
     () => [...Array(numSkills).keys()].map((_, i) => i + 1),
     []
   );
-  const activeSkillLevel =
-    operator.skillData[skillNumber - 1].levels[skillLevel - 1];
+  const activeSkillTableSkill = operator.skillData[skillNumber - 1];
+  const activeSkillLevel = activeSkillTableSkill.levels[skillLevel - 1];
 
   return (
     <div className={classes.root}>
@@ -41,6 +42,13 @@ const OperatorSkillsPanel: React.FC = () => {
         />
       </div>
       <div className={classes.skillData}>
+        <img
+          src={skillIcon(
+            activeSkillTableSkill.iconId,
+            activeSkillTableSkill.skillId
+          )}
+          alt=""
+        />
         <h2>{activeSkillLevel.name}</h2>
         Activation {OutputTypes.SkillType[activeSkillLevel.skillType]}
         Recovery {OutputTypes.SkillSpType[activeSkillLevel.spData.spType]}
