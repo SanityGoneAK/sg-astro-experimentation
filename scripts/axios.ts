@@ -1,6 +1,6 @@
 import axios from "axios";
 
 const customAxiosInstance = axios.create({
-  timeout: 5000,
+  timeout: 0,
 });
 export default customAxiosInstance;

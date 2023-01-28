@@ -22,6 +22,31 @@ export enum SkinCostTokenType {
   ContingencyContractToken = "Contingency Contract Token",
 }
 
+export interface LimitedBanner {}
+
+/**
+ * Cursed regex to parse limited banner announcements containing text like:
+ * ```text
+ * ★★★★★★：夕[限定] \ 嵯峨（占6★出率的70%）
+ * ★★★★★：乌有（占5★出率的50%）
+ * ★★★★★★：年[限定] （在6★剩余出率【30%】中以5倍权值出率提升）
+ * ★★★★★★：迷迭香 [限定]  \\  泥岩（占6★出率的70%）
+ * ```
+ * where in this case we want to extract
+ * - number of stars in the line
+ * - all operators mentioned in the line
+ * - exclude any lines mentioning rerunning limited operators (like Nian here)
+ *
+ * We do this by checking for lines mentioning 70% / 50% rate-ups.
+ *
+ * Capturing groups:
+ * - `stars`: number of rarity stars
+ * - `firstOp`: first operator mentioned in the line
+ * - `secondOp`: second operator mentioned in the line, can be `undefined`
+ */
+const officialSiteBannerAnnouncementRegex =
+  /(?<stars>★+)：(?<firstOp>[^\s[（]+)\s*(?:\[限定\])?(?:\s*[\/\\]+\s*(?<secondOp>[^\s[（]+))?.*[75]0%/;
+
 export async function getReleaseOrderAndLimitedLookup() {
   const res = await axios.get(PRTS_OPERATOR_LIST_URL);
   const $ = load(res.data);
@@ -32,22 +57,68 @@ export async function getReleaseOrderAndLimitedLookup() {
       releaseOrder: number;
     };
   } = {};
-  $("#mw-content-text tr:has(td)").each((i, el) => {
-    const [
-      cnName,
-      _rarity,
-      _releaseDateTime,
-      _launchObtainSource,
-      obtainSource,
-      _announcement,
-    ] = $(el)
-      .find("td")
-      .map((_, el) => $(el).text());
-    releaseDateLimitedLookup[cnName] = {
-      isLimited: obtainSource.startsWith("限定"),
-      releaseOrder: i + 1,
-    };
-  });
+  const prtsLimitedBannerUrls = new Set<string>();
+  await Promise.all(
+    $("#mw-content-text tr:has(td)").map(async (i, el) => {
+      const [
+        cnName,
+        _rarity,
+        _releaseDateTime,
+        _launchObtainSource,
+        obtainSource,
+        _announcement,
+      ] = $(el)
+        .find("td")
+        .map((_, el) => $(el).text());
+      const isLimited = obtainSource.startsWith("限定");
+      releaseDateLimitedLookup[cnName] = {
+        isLimited,
+        releaseOrder: i + 1,
+      };
+      if (isLimited) {
+        const prtsOperatorUrl = $(el).find("td a").first().attr("href")!;
+        const $opPage = load(
+          (await axios.get(`${PRTS_BASE_URL}${prtsOperatorUrl}`)).data
+        );
+        const prtsBannerUrl = $opPage('tr:contains("获得方式") td a').attr(
+          "href"
+        )!;
+        prtsLimitedBannerUrls.add(prtsBannerUrl);
+      }
+    })
+  );
+
+  const limitedBanners = {};
+  await Promise.all(
+    [...prtsLimitedBannerUrls].map(async (prtsBannerUrl) => {
+      const $prtsBannerPage = load(
+        (await axios.get(`${PRTS_BASE_URL}${prtsBannerUrl}`)).data
+      );
+      const officialBannerUrl = $prtsBannerPage(
+        'a[href*="ak.hypergryph.com"]'
+      ).attr("href")!;
+      const $officialBannerPage = load(
+        (await axios.get(officialBannerUrl)).data
+      );
+      const bannerOperatorNames = $officialBannerPage('p:contains("★")')
+        .map((_, p) => {
+          const match = officialSiteBannerAnnouncementRegex.exec(
+            $officialBannerPage(p).text()
+          );
+          if (!match?.groups?.firstOp) {
+            return;
+          }
+          return [match.groups.firstOp, match.groups.secondOp].filter(Boolean);
+        })
+        .toArray()
+        .flat();
+      const bannerImageUrl = $officialBannerPage("img").attr("src")!;
+      console.log({
+        bannerOperatorNames,
+        bannerImageUrl,
+      });
+    })
+  );
 
   return releaseDateLimitedLookup;
 }
@@ -158,9 +229,11 @@ export async function getSkinObtainSourceAndCosts() {
             if (Number.isNaN(cost) || cost === 0) {
               console.warn(`Invalid cost: ${costString}`);
             }
-          } else if (allObtainSources.has(SkinSource.ContingencyContractStore)) {
+          } else if (
+            allObtainSources.has(SkinSource.ContingencyContractStore)
+          ) {
             // uh oh, it's a CC skin but we couldn't find the cost
-            console.warn(`Couldn't find cost for CC skin: ${cnSkinName}`)
+            console.warn(`Couldn't find cost for CC skin: ${cnSkinName}`);
           }
 
           let obtainSources = [...allObtainSources];
@@ -204,3 +277,6 @@ export async function getSkinObtainSourceAndCosts() {
     })
   );
 }
+
+// FIXME DEBUG
+getReleaseOrderAndLimitedLookup();
