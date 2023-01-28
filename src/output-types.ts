@@ -228,7 +228,7 @@ export interface SkillLevelUpgrade {
   lvlUpCost: ItemCost[] | null;
 }
 
-interface ItemCost {
+export interface ItemCost {
   id: string;
   count: number;
   /** This seems to always be `"MATERIAL"` */
