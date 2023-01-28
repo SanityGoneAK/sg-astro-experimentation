@@ -3,6 +3,7 @@ import path from "path";
 
 import { createOperatorsJson } from "./create-operators-json.js";
 import { createBranchesJson } from "./create-branches-json.js";
+import { createItemsJson } from "./create-items-json.js";
 
 const dataDir = path.join(__dirname, "../data");
 
@@ -11,6 +12,7 @@ const dataDir = path.join(__dirname, "../data");
   await Promise.all([
     createOperatorsJson(dataDir),
     createBranchesJson(dataDir),
+    createItemsJson(dataDir),
   ]);
 
   // unfortunately build-search-index depends on branches.json,

@@ -1,0 +1,512 @@
+{
+  "2001": {
+    "itemId": "2001",
+    "name": "Drill Battle Record",
+    "iconId": "sprite_exp_card_t1",
+    "rarity": 1
+  },
+  "2002": {
+    "itemId": "2002",
+    "name": "Frontline Battle Record",
+    "iconId": "sprite_exp_card_t2",
+    "rarity": 2
+  },
+  "2003": {
+    "itemId": "2003",
+    "name": "Tactical Battle Record",
+    "iconId": "sprite_exp_card_t3",
+    "rarity": 3
+  },
+  "2004": {
+    "itemId": "2004",
+    "name": "Strategic Battle Record",
+    "iconId": "sprite_exp_card_t4",
+    "rarity": 4
+  },
+  "3211": {
+    "itemId": "3211",
+    "name": "Vanguard Chip",
+    "iconId": "MTL_ASC_PIO1",
+    "rarity": 2
+  },
+  "3212": {
+    "itemId": "3212",
+    "name": "Vanguard Chip Pack",
+    "iconId": "MTL_ASC_PIO2",
+    "rarity": 3
+  },
+  "3213": {
+    "itemId": "3213",
+    "name": "Vanguard Dualchip",
+    "iconId": "MTL_ASC_PIO3",
+    "rarity": 4
+  },
+  "3221": {
+    "itemId": "3221",
+    "name": "Guard Chip",
+    "iconId": "MTL_ASC_GRD1",
+    "rarity": 2
+  },
+  "3222": {
+    "itemId": "3222",
+    "name": "Guard Chip Pack",
+    "iconId": "MTL_ASC_GRD2",
+    "rarity": 3
+  },
+  "3223": {
+    "itemId": "3223",
+    "name": "Guard Dualchip",
+    "iconId": "MTL_ASC_GRD3",
+    "rarity": 4
+  },
+  "3231": {
+    "itemId": "3231",
+    "name": "Defender Chip",
+    "iconId": "MTL_ASC_TNK1",
+    "rarity": 2
+  },
+  "3232": {
+    "itemId": "3232",
+    "name": "Defender Chip Pack",
+    "iconId": "MTL_ASC_TNK2",
+    "rarity": 3
+  },
+  "3233": {
+    "itemId": "3233",
+    "name": "Defender Dualchip",
+    "iconId": "MTL_ASC_TNK3",
+    "rarity": 4
+  },
+  "3241": {
+    "itemId": "3241",
+    "name": "Sniper Chip",
+    "iconId": "MTL_ASC_SNP1",
+    "rarity": 2
+  },
+  "3242": {
+    "itemId": "3242",
+    "name": "Sniper Chip Pack",
+    "iconId": "MTL_ASC_SNP2",
+    "rarity": 3
+  },
+  "3243": {
+    "itemId": "3243",
+    "name": "Sniper Dualchip",
+    "iconId": "MTL_ASC_SNP3",
+    "rarity": 4
+  },
+  "3251": {
+    "itemId": "3251",
+    "name": "Caster Chip",
+    "iconId": "MTL_ASC_CST1",
+    "rarity": 2
+  },
+  "3252": {
+    "itemId": "3252",
+    "name": "Caster Chip Pack",
+    "iconId": "MTL_ASC_CST2",
+    "rarity": 3
+  },
+  "3253": {
+    "itemId": "3253",
+    "name": "Caster Dualchip",
+    "iconId": "MTL_ASC_CST3",
+    "rarity": 4
+  },
+  "3261": {
+    "itemId": "3261",
+    "name": "Medic Chip",
+    "iconId": "MTL_ASC_MED1",
+    "rarity": 2
+  },
+  "3262": {
+    "itemId": "3262",
+    "name": "Medic Chip Pack",
+    "iconId": "MTL_ASC_MED2",
+    "rarity": 3
+  },
+  "3263": {
+    "itemId": "3263",
+    "name": "Medic Dualchip",
+    "iconId": "MTL_ASC_MED3",
+    "rarity": 4
+  },
+  "3271": {
+    "itemId": "3271",
+    "name": "Supporter Chip",
+    "iconId": "MTL_ASC_SUP1",
+    "rarity": 2
+  },
+  "3272": {
+    "itemId": "3272",
+    "name": "Supporter Chip Pack",
+    "iconId": "MTL_ASC_SUP2",
+    "rarity": 3
+  },
+  "3273": {
+    "itemId": "3273",
+    "name": "Supporter Dualchip",
+    "iconId": "MTL_ASC_SUP3",
+    "rarity": 4
+  },
+  "3281": {
+    "itemId": "3281",
+    "name": "Specialist Chip",
+    "iconId": "MTL_ASC_SPC1",
+    "rarity": 2
+  },
+  "3282": {
+    "itemId": "3282",
+    "name": "Specialist Chip Pack",
+    "iconId": "MTL_ASC_SPC2",
+    "rarity": 3
+  },
+  "3283": {
+    "itemId": "3283",
+    "name": "Specialist Dualchip",
+    "iconId": "MTL_ASC_SPC3",
+    "rarity": 4
+  },
+  "3301": {
+    "itemId": "3301",
+    "name": "Skill Summary - 1",
+    "iconId": "MTL_SKILL1",
+    "rarity": 1
+  },
+  "3302": {
+    "itemId": "3302",
+    "name": "Skill Summary - 2",
+    "iconId": "MTL_SKILL2",
+    "rarity": 2
+  },
+  "3303": {
+    "itemId": "3303",
+    "name": "Skill Summary - 3",
+    "iconId": "MTL_SKILL3",
+    "rarity": 3
+  },
+  "4001": {
+    "itemId": "4001",
+    "name": "LMD",
+    "iconId": "GOLD",
+    "rarity": 3
+  },
+  "30011": {
+    "itemId": "30011",
+    "name": "Orirock",
+    "iconId": "MTL_SL_G1",
+    "rarity": 0
+  },
+  "30012": {
+    "itemId": "30012",
+    "name": "Orirock Cube",
+    "iconId": "MTL_SL_G2",
+    "rarity": 1
+  },
+  "30013": {
+    "itemId": "30013",
+    "name": "Orirock Cluster",
+    "iconId": "MTL_SL_G3",
+    "rarity": 2
+  },
+  "30014": {
+    "itemId": "30014",
+    "name": "Orirock Concentration",
+    "iconId": "MTL_SL_G4",
+    "rarity": 3
+  },
+  "30021": {
+    "itemId": "30021",
+    "name": "Sugar Substitute",
+    "iconId": "MTL_SL_STRG1",
+    "rarity": 0
+  },
+  "30022": {
+    "itemId": "30022",
+    "name": "Sugar",
+    "iconId": "MTL_SL_STRG2",
+    "rarity": 1
+  },
+  "30023": {
+    "itemId": "30023",
+    "name": "Sugar Pack",
+    "iconId": "MTL_SL_STRG3",
+    "rarity": 2
+  },
+  "30024": {
+    "itemId": "30024",
+    "name": "Sugar Lump",
+    "iconId": "MTL_SL_STRG4",
+    "rarity": 3
+  },
+  "30031": {
+    "itemId": "30031",
+    "name": "Ester",
+    "iconId": "MTL_SL_RUSH1",
+    "rarity": 0
+  },
+  "30032": {
+    "itemId": "30032",
+    "name": "Polyester",
+    "iconId": "MTL_SL_RUSH2",
+    "rarity": 1
+  },
+  "30033": {
+    "itemId": "30033",
+    "name": "Polyester Pack",
+    "iconId": "MTL_SL_RUSH3",
+    "rarity": 2
+  },
+  "30034": {
+    "itemId": "30034",
+    "name": "Polyester Lump",
+    "iconId": "MTL_SL_RUSH4",
+    "rarity": 3
+  },
+  "30041": {
+    "itemId": "30041",
+    "name": "Oriron Shard",
+    "iconId": "MTL_SL_IRON1",
+    "rarity": 0
+  },
+  "30042": {
+    "itemId": "30042",
+    "name": "Oriron",
+    "iconId": "MTL_SL_IRON2",
+    "rarity": 1
+  },
+  "30043": {
+    "itemId": "30043",
+    "name": "Oriron Cluster",
+    "iconId": "MTL_SL_IRON3",
+    "rarity": 2
+  },
+  "30044": {
+    "itemId": "30044",
+    "name": "Oriron Block",
+    "iconId": "MTL_SL_IRON4",
+    "rarity": 3
+  },
+  "30051": {
+    "itemId": "30051",
+    "name": "Diketon",
+    "iconId": "MTL_SL_KETONE1",
+    "rarity": 0
+  },
+  "30052": {
+    "itemId": "30052",
+    "name": "Polyketon",
+    "iconId": "MTL_SL_KETONE2",
+    "rarity": 1
+  },
+  "30053": {
+    "itemId": "30053",
+    "name": "Aketon",
+    "iconId": "MTL_SL_KETONE3",
+    "rarity": 2
+  },
+  "30054": {
+    "itemId": "30054",
+    "name": "Keton Colloid",
+    "iconId": "MTL_SL_KETONE4",
+    "rarity": 3
+  },
+  "30061": {
+    "itemId": "30061",
+    "name": "Damaged Device",
+    "iconId": "MTL_SL_BOSS1",
+    "rarity": 0
+  },
+  "30062": {
+    "itemId": "30062",
+    "name": "Device",
+    "iconId": "MTL_SL_BOSS2",
+    "rarity": 1
+  },
+  "30063": {
+    "itemId": "30063",
+    "name": "Integrated Device",
+    "iconId": "MTL_SL_BOSS3",
+    "rarity": 2
+  },
+  "30064": {
+    "itemId": "30064",
+    "name": "Optimized Device",
+    "iconId": "MTL_SL_BOSS4",
+    "rarity": 3
+  },
+  "30073": {
+    "itemId": "30073",
+    "name": "Loxic Kohl",
+    "iconId": "MTL_SL_ALCOHOL1",
+    "rarity": 2
+  },
+  "30074": {
+    "itemId": "30074",
+    "name": "White Horse Kohl",
+    "iconId": "MTL_SL_ALCOHOL2",
+    "rarity": 3
+  },
+  "30083": {
+    "itemId": "30083",
+    "name": "Manganese Ore",
+    "iconId": "MTL_SL_MANGANESE1",
+    "rarity": 2
+  },
+  "30084": {
+    "itemId": "30084",
+    "name": "Manganese Trihydrate",
+    "iconId": "MTL_SL_MANGANESE2",
+    "rarity": 3
+  },
+  "30093": {
+    "itemId": "30093",
+    "name": "Grindstone",
+    "iconId": "MTL_SL_PG1",
+    "rarity": 2
+  },
+  "30094": {
+    "itemId": "30094",
+    "name": "Grindstone Pentahydrate",
+    "iconId": "MTL_SL_PG2",
+    "rarity": 3
+  },
+  "30103": {
+    "itemId": "30103",
+    "name": "RMA70-12",
+    "iconId": "MTL_SL_RMA7012",
+    "rarity": 2
+  },
+  "30104": {
+    "itemId": "30104",
+    "name": "RMA70-24",
+    "iconId": "MTL_SL_RMA7024",
+    "rarity": 3
+  },
+  "30115": {
+    "itemId": "30115",
+    "name": "Polymerization Preparation",
+    "iconId": "MTL_SL_PP",
+    "rarity": 4
+  },
+  "30125": {
+    "itemId": "30125",
+    "name": "Bipolar Nanoflake",
+    "iconId": "MTL_SL_BN",
+    "rarity": 4
+  },
+  "30135": {
+    "itemId": "30135",
+    "name": "D32 Steel",
+    "iconId": "MTL_SL_DS",
+    "rarity": 4
+  },
+  "30145": {
+    "itemId": "30145",
+    "name": "Crystalline Electronic Unit",
+    "iconId": "MTL_SL_OEU",
+    "rarity": 4
+  },
+  "30155": {
+    "itemId": "30155",
+    "name": "Sintered Core Crystals",
+    "iconId": "MTL_SL_SHJ",
+    "rarity": 4
+  },
+  "31013": {
+    "itemId": "31013",
+    "name": "Coagulating Gel",
+    "iconId": "MTL_SL_PGEL3",
+    "rarity": 2
+  },
+  "31014": {
+    "itemId": "31014",
+    "name": "Polymerized Gel",
+    "iconId": "MTL_SL_PGEL4",
+    "rarity": 3
+  },
+  "31023": {
+    "itemId": "31023",
+    "name": "Incandescent Alloy",
+    "iconId": "MTL_SL_IAM3",
+    "rarity": 2
+  },
+  "31024": {
+    "itemId": "31024",
+    "name": "Incandescent Alloy Block",
+    "iconId": "MTL_SL_IAM4",
+    "rarity": 3
+  },
+  "31033": {
+    "itemId": "31033",
+    "name": "Crystalline Component",
+    "iconId": "MTL_SL_OC3",
+    "rarity": 2
+  },
+  "31034": {
+    "itemId": "31034",
+    "name": "Crystalline Circuit",
+    "iconId": "MTL_SL_OC4",
+    "rarity": 3
+  },
+  "31043": {
+    "itemId": "31043",
+    "name": "Semi-Synthetic Solvent",
+    "iconId": "MTL_SL_SS",
+    "rarity": 2
+  },
+  "31044": {
+    "itemId": "31044",
+    "name": "Refined Solvent",
+    "iconId": "MTL_SL_RS",
+    "rarity": 3
+  },
+  "31053": {
+    "itemId": "31053",
+    "name": "Compound Cutting Fluid",
+    "iconId": "MTL_SL_CCF",
+    "rarity": 2
+  },
+  "31054": {
+    "itemId": "31054",
+    "name": "Cutting Fluid Solution",
+    "iconId": "MTL_SL_PLCF",
+    "rarity": 3
+  },
+  "31063": {
+    "itemId": "31063",
+    "name": "Transmuted Salt Cluster",
+    "iconId": "MTL_SL_ZY",
+    "rarity": 2
+  },
+  "31064": {
+    "itemId": "31064",
+    "name": "Transmuted Salt Block",
+    "iconId": "MTL_SL_ZYK",
+    "rarity": 3
+  },
+  "32001": {
+    "itemId": "32001",
+    "name": "Chip Catalyst",
+    "iconId": "MTL_ASC_DI",
+    "rarity": 3
+  },
+  "mod_unlock_token": {
+    "itemId": "mod_unlock_token",
+    "name": "Module Data Block",
+    "iconId": "mod_unlock_token",
+    "rarity": 4
+  },
+  "mod_update_token_2": {
+    "itemId": "mod_update_token_2",
+    "name": "Data Supplement Instrument",
+    "iconId": "mod_update_token_2",
+    "rarity": 4
+  },
+  "mod_update_token_1": {
+    "itemId": "mod_update_token_1",
+    "name": "Data Supplement Stick",
+    "iconId": "mod_update_token_1",
+    "rarity": 3
+  }
+}
