@@ -1,6 +1,5 @@
 import { useState } from "react";
 import EliteButtonGroup from "./EliteButtonGroup";
-import SvgRarityGradientDefs from "../SvgRarityGradientDefs";
 
 import type { ComponentStoryObj } from "@storybook/react";
 
@@ -14,10 +13,7 @@ export const Default: ComponentStoryObj<typeof EliteButtonGroup> = {
   render: (args) => {
     const [elite, setElite] = useState(args.currentElite);
     return (
-      <>
-        <EliteButtonGroup {...args} currentElite={elite} onChange={setElite} />
-        <SvgRarityGradientDefs />
-      </>
+      <EliteButtonGroup {...args} currentElite={elite} onChange={setElite} />
     );
   },
 };

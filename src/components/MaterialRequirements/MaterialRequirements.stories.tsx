@@ -8,30 +8,43 @@ export default {
 
 const Template: ComponentStoryObj<typeof MaterialRequirements> = {
   args: {
-    unlockCond: {
-      phase: 2,
-      level: 1,
-    },
+    minElite: 1,
+    minLevel: 80,
     itemCosts: [
+      // LMD x 180k
       {
-        id: "3303",
-        count: 2,
-        type: "MATERIAL",
+        id: "4001",
+        count: 180000,
       },
+      // Diketon r0 x 25
       {
-        id: "30044",
-        count: 1,
-        type: "MATERIAL",
+        id: "30051",
+        count: 25,
       },
+      // Orirock Cube r1 x 10
       {
-        id: "31023",
+        id: "30012",
+        count: 10,
+      },
+      // Integrated Device r2 x3
+      {
+        id: "30063",
         count: 3,
-        type: "MATERIAL",
+      },
+      // White Horse Kohl r3 x 5
+      {
+        id: "30074",
+        count: 5,
+      },
+      // Bipolar Nanoflake r4 x 1
+      {
+        id: "30125",
+        count: 1,
       },
     ],
   },
 };
 
-export const PineconeS1Mastery1 = {
+export const Default = {
   ...Template,
 };

@@ -1,3 +1,7 @@
+import React from "react";
+
+import SvgRarityGradientDefs from "../src/components/SvgRarityGradientDefs";
+
 import "../src/layouts/Layout.css";
 import "../src/global-styles.css";
 
@@ -10,3 +14,12 @@ export const parameters = {
     },
   },
 };
+
+export const decorators = [
+  (Story) => (
+    <>
+      <Story />
+      <SvgRarityGradientDefs />
+    </>
+  ),
+];

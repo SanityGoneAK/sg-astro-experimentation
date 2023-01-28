@@ -1,15 +1,15 @@
 import { itemImage } from "../../utils/images";
 import itemsJson from "../../../data/items.json";
+import { EliteOneIcon, EliteTwoIcon } from "../icons";
 
 import * as classes from "./styles.css";
 
 import type * as OutputTypes from "../../output-types";
 
 interface Props {
-  unlockCond?: {
-    phase: number;
-    level: number;
-  };
+  minElite?: number;
+  minLevel?: number;
+  minSkillLevel?: number;
   itemCosts: OutputTypes.ItemCost[];
 }
 
@@ -18,30 +18,51 @@ const shortNumberFormat = Intl.NumberFormat("en-US", {
   maximumFractionDigits: 2,
 });
 
-const MaterialRequirements: React.FC<Props> = ({ itemCosts, unlockCond }) => {
+const MaterialRequirements: React.FC<Props> = ({
+  itemCosts,
+  minElite = 0,
+  minLevel = 1,
+  minSkillLevel = 1,
+}) => {
   return (
     <div className={classes.root}>
-      {/* TODO unlockCond stuff */}
-      {/* TODO elite LMD costs */}
-      {itemCosts.map(({ id, count }) => {
-        const { name, rarity } = itemsJson[id as keyof typeof itemsJson];
-        return (
-          <div key={id} className={classes.itemStack}>
-            <div
-              className={
-                classes.itemRarityBg[
-                  rarity as keyof typeof classes.itemRarityBg
-                ]
-              }
-            />
-            <img className={classes.itemImage} src={itemImage(id)} alt={name} />
-            <span className={classes.count}>
-              <span className="visually-hidden">Count: {count}</span>
-              <span aria-hidden="true">{shortNumberFormat.format(count)}</span>
-            </span>
-          </div>
-        );
-      })}
+      {minElite > 0 && (
+        <div className={classes.minEliteMinLevel}>
+          {minElite === 1 && <EliteOneIcon active={true} />}
+          {minElite === 2 && <EliteTwoIcon active={true} />}
+          <span className={classes.minLevel}>Lv{minLevel}</span>
+        </div>
+      )}
+      {minSkillLevel > 1 &&
+        // TODO
+        null}
+      <div className={classes.items}>
+        {itemCosts.map(({ id, count }) => {
+          const { name, rarity } = itemsJson[id as keyof typeof itemsJson];
+          return (
+            <div key={id} className={classes.itemStack}>
+              <div
+                className={
+                  classes.itemRarityBg[
+                    rarity as keyof typeof classes.itemRarityBg
+                  ]
+                }
+              />
+              <img
+                className={classes.itemImage}
+                src={itemImage(id)}
+                alt={name}
+              />
+              <span className={classes.count}>
+                <span className="visually-hidden">Count: {count}</span>
+                <span aria-hidden="true">
+                  {shortNumberFormat.format(count)}
+                </span>
+              </span>
+            </div>
+          );
+        })}
+      </div>
     </div>
   );
 };

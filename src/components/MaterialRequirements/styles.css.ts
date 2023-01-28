@@ -10,8 +10,15 @@ export const root = style({
   display: "grid",
   gridAutoFlow: "column",
   gridAutoColumns: "min-content",
-  columnGap: spacing(1),
+  columnGap: spacing(2),
   justifyItems: "start",
+  alignItems: "center",
+});
+
+export const items = style({
+  display: "grid",
+  gridAutoFlow: "column",
+  columnGap: spacing(1),
 });
 
 export const itemStack = style({
@@ -85,4 +92,24 @@ export const count = style({
   fontWeight: 600,
   fontSize: 14,
   lineHeight: 1,
+});
+
+export const minEliteMinLevel = style({
+  display: "grid",
+  padding: spacing(1, 1.25),
+  gridTemplateColumns: "16px auto",
+  columnGap: spacing(1),
+  background: `${rgba(rawColors.neutrals.midtoneBrighter, 0.33)}`,
+  borderRadius: spacing(1),
+  alignItems: "center",
+});
+
+export const minLevel = style({
+  fontSize: 16,
+  fontWeight: 600,
+  lineHeight: 1,
+  background: rawColors.gradients.yellow,
+  // @ts-expect-error webkit specific property for gradient text
+  "-webkit-background-clip": "text",
+  "-webkit-text-fill-color": "transparent",
 });

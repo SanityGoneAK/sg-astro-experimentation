@@ -231,8 +231,8 @@ export interface SkillLevelUpgrade {
 export interface ItemCost {
   id: string;
   count: number;
-  /** This seems to always be `"MATERIAL"` */
-  type: string;
+  /** just `type`, which seems to always be `"MATERIAL"`, so very not useful*/
+  [otherProperties: string]: unknown;
 }
 
 /**
