@@ -118,11 +118,7 @@ const SearchBar: React.VFC<Props> = ({ placeholder, onSelected }) => {
       if (!option) return;
 
       if (option.type === "operator") {
-        window.location.href = `/operators/${
-          search.operatorsWithGuides[
-            option.name as keyof typeof search.operatorsWithGuides
-          ]
-        }`;
+        window.location.href = `/operators/${slugify(option.name)}`;
       } else if (option.type === "class") {
         window.location.href = `/operators#${slugify(option.class)}`;
       } else {
@@ -182,7 +178,7 @@ const SearchBar: React.VFC<Props> = ({ placeholder, onSelected }) => {
                       <Combobox.Option<"li", SearchResult | null>
                         key={result.charId}
                         className={classes.option}
-                        disabled={!hasGuide}
+                        disabled={false /*!hasGuide*/}
                         value={result}
                         onClick={() => handleOptionSelected(result)}
                       >
