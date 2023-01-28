@@ -34,8 +34,10 @@ const rarity = operator.rarity as 1 | 2 | 3 | 4 | 5 | 6;
       alt=""
     />
     <div class={classes.name}>
-      <h2 class={classes.baseName}>{baseName}</h2>
-      {alterName && <h3 class={classes.alterName}>The {alterName}</h3>}
+      <h1 class={classes.baseName}>
+        {baseName}
+        {alterName && <span class={classes.alterName}>The {alterName}</span>}
+      </h1>
     </div>
     <div class={classes.rarityAndLimitedness}>
       {
