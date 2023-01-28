@@ -28,6 +28,8 @@ const CharacterSplash: React.FC = () => {
         {skins.map((skin) => {
           return (
             <Tab.Panel className={classes.tabPanel} key={skin.skinId}>
+              {/* TODO: This image causes layout shift of the label when loading.
+                  Change to Astro native images / provide height */}
               <img
                 className={classes.tabPanelImage}
                 src={operatorSplash(skin.portraitId)}
