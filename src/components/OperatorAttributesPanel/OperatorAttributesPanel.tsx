@@ -9,6 +9,7 @@ import CharacterStats from "../CharacterStats";
 import { operatorStore } from "../../pages/operators/_store";
 
 import * as classes from "./styles.css";
+import * as sharedPanelClasses from "../OperatorTabs/sharedPanelStyles.css";
 
 const OperatorAttributesPanel: React.FC = () => {
   const operator = useStore(operatorStore);
@@ -42,7 +43,7 @@ const OperatorAttributesPanel: React.FC = () => {
 
   return (
     <>
-      <div className={classes.knobsContainer}>
+      <div className={sharedPanelClasses.knobsContainer}>
         <div className={classes.eliteAndLevel}>
           <EliteButtonGroup
             currentElite={elite}

@@ -1,4 +1,6 @@
 import { useMemo, useState } from "react";
+
+import cx from "clsx";
 import { useStore } from "@nanostores/react";
 
 import EliteButtonGroup from "../EliteButtonGroup";
@@ -7,6 +9,7 @@ import PotentialsDropdown from "../PotentialsDropdown";
 import { operatorStore } from "../../pages/operators/_store";
 
 import * as classes from "./styles.css";
+import * as sharedPanelClasses from "../OperatorTabs/sharedPanelStyles.css";
 
 const OperatorTalentsPanel: React.FC = () => {
   const operator = useStore(operatorStore);
@@ -37,19 +40,17 @@ const OperatorTalentsPanel: React.FC = () => {
 
   return (
     <>
-      <div className={classes.knobsContainer}>
+      <div className={cx(sharedPanelClasses.knobsContainer, classes.knobs)}>
         <EliteButtonGroup
           currentElite={elite}
           maxElite={maxElite}
           onChange={handleEliteChange}
         />
-        <div className={classes.potentialDropwdown}>
-          <PotentialsDropdown
-            potentialsToShow={potentialsMap[elite]}
-            currentPotential={potential}
-            onChange={setPotential}
-          ></PotentialsDropdown>
-        </div>
+        <PotentialsDropdown
+          potentialsToShow={potentialsMap[elite]}
+          currentPotential={potential}
+          onChange={setPotential}
+        />
       </div>
 
       <div>
