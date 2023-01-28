@@ -11,7 +11,10 @@ import voiceTable from "../ArknightsGameData/zh_CN/gamedata/excel/charword_table
 import skinTable from "../ArknightsGameData/zh_CN/gamedata/excel/skin_table.json";
 
 import { fetchJetroyzSkillTalentTranslations } from "./fetch-jetroyz-translations";
-import { getReleaseOrderAndLimitedLookup } from "./scrape-prts";
+import {
+  getReleaseOrderAndLimitedLookup,
+  getSkinObtainSourceAndCosts,
+} from "./scrape-prts";
 import { aggregateModuleData } from "./aggregate-module-data.js";
 import { getAlterMapping } from "./get-alters.js";
 
@@ -42,6 +45,7 @@ export async function createOperatorsJson(dataDir) {
 
   const { jetSkillTranslations, jetTalentTranslations } =
     await fetchJetroyzSkillTalentTranslations();
+  const skinSourceAndCostLookup = await getSkinObtainSourceAndCosts();
 
   const summonIdToOperatorId = {};
   const denormalizedCharacters = [
@@ -160,6 +164,17 @@ export async function createOperatorsJson(dataDir) {
           return skin.charId === charId;
         })
         .map((skin) => {
+          let skinSourcesAndCosts = {};
+          // if this is a special skin (i.e. not just an operator's default e0/e1/e2 art),
+          // look up the skin's obtain sources + cost
+          if (skin.displaySkin.skinName != null) {
+            skinSourcesAndCosts = skinSourceAndCostLookup[skin.skinId];
+            if (!skinSourcesAndCosts) {
+              console.warn(
+                `Couldn't find skin source / cost info for: ${skin.skinId}`
+              );
+            }
+          }
           return {
             skinId: skin.skinId,
             illustId: skin.illustId,
@@ -170,6 +185,7 @@ export async function createOperatorsJson(dataDir) {
               modelName: skin.displaySkin.modelName,
               drawerList: skin.displaySkin.drawerList,
             },
+            ...skinSourcesAndCosts,
           };
         });
 
@@ -214,7 +230,7 @@ export async function createOperatorsJson(dataDir) {
     {}
   );
 
-  const operatorModulesMap = aggregateModuleData();
+  const operatorModulesLookup = aggregateModuleData();
   const releaseOrderAndLimitedLookup = await getReleaseOrderAndLimitedLookup();
   const { alterIdToBaseOpId, baseOpIdToAlterId } = getAlterMapping();
 
@@ -226,7 +242,7 @@ export async function createOperatorsJson(dataDir) {
         ...character,
         ...releaseOrderAndLimitedLookup[character.cnName],
         summons: denormalizedSummons[character.charId] ?? [],
-        modules: operatorModulesMap[character.charId] ?? [],
+        modules: operatorModulesLookup[character.charId] ?? [],
         alterId: baseOpIdToAlterId[character.charId] ?? null,
         baseOperatorId: alterIdToBaseOpId[character.charId] ?? null,
       },
