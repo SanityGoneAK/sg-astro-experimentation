@@ -9,3 +9,4 @@ To start the dev server, simply:
 yarn install
 astro dev
 ```
+and the server will start at http://localhost:3000.
