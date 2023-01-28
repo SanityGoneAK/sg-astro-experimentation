@@ -14,6 +14,7 @@ const OperatorTalentsPanel: React.FC = () => {
   const operator = useStore(operatorStore);
   const maxElite = operator.phases.length - 1;
   const [elite, setElite] = useState(maxElite);
+  const [potential, setPotential] = useState(potentialsMap[maxElite][0]);
 
   // Compute the map of available potentials at each elite level.
   // Only needs to be done once, so an empty useMemo is used.
@@ -35,10 +36,6 @@ const OperatorTalentsPanel: React.FC = () => {
     setPotential(potentialsMap[maxElite][0]);
   };
 
-  const [potential, setPotential] = useState(potentialsMap[maxElite][0]);
-
-  console.log(operator.talents);
-  console.log(potentialsMap);
   return (
     <>
       <div className={classes.knobsContainer}>
