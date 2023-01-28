@@ -108,7 +108,11 @@ const OperatorSkillsPanel: React.FC = () => {
           <div className={classes.skillSpTypeItem}>
             <HourglassIcon />
             <dt>Duration</dt>
-            <dd>{activeSkillLevel.duration}</dd>
+            <dd>
+              {activeSkillLevel.duration === -1
+                ? "Infinite"
+                : `${activeSkillLevel.duration} sec`}
+            </dd>
           </div>
         </dl>
         {activeSkillLevel.description && (
