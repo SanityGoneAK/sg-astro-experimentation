@@ -6,6 +6,7 @@ import cx from "clsx";
 import PillButtonGroup from "../PillButtonGroup";
 import SliderWithInput from "../SliderWithInput";
 import CharacterRange from "../CharacterRange";
+import MaterialRequirements from "../MaterialRequirements";
 import { descriptionToHtml } from "../../description-parser";
 import { operatorStore } from "../../pages/operators/_store";
 import { skillIcon } from "../../utils/images";
@@ -27,6 +28,31 @@ const OperatorSkillsPanel: React.FC = () => {
   );
   const activeSkillTableSkill = operator.skillData[skillNumber - 1];
   const activeSkillLevel = activeSkillTableSkill.levels[skillLevel - 1];
+  const { itemCosts, minElite, minLevel } = useMemo(() => {
+    if (skillLevel === 1) {
+      return {
+        itemCosts: null,
+        minElite: 0,
+        minLevel: 1,
+      };
+    }
+    if (skillLevel <= 7) {
+      const upgrade = operator.allSkillLvlup[skillLevel - 1 - 1];
+      return {
+        itemCosts: upgrade.lvlUpCost,
+        minElite: upgrade.unlockCond.phase,
+        minLevel: upgrade.unlockCond.level,
+      };
+    }
+    // skillLevel > 7 means we're in masteries
+    const upgrade =
+      operator.skills[skillNumber - 1].levelUpCostCond[skillLevel - 7 - 1];
+    return {
+      itemCosts: upgrade.levelUpCost,
+      minElite: upgrade.unlockCond.phase,
+      minLevel: upgrade.unlockCond.level,
+    };
+  }, [skillNumber, skillLevel]);
 
   return (
     <>
@@ -100,6 +126,14 @@ const OperatorSkillsPanel: React.FC = () => {
           <CharacterRange
             className={classes.skillRange}
             rangeObject={activeSkillLevel.range}
+          />
+        )}
+        {itemCosts && (
+          <MaterialRequirements
+            itemCosts={itemCosts}
+            minElite={minElite}
+            minLevel={minLevel}
+            minSkillLevel={skillLevel - 1}
           />
         )}
       </div>
