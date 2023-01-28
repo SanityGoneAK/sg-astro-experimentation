@@ -147,13 +147,13 @@ export interface PotentialRanks {
   equivalentCost: unknown; // unused
 }
 
-enum SkillType {
+export enum SkillType {
   "Passive" = 0,
   "Manual Trigger",
   "Auto Trigger",
 }
 
-enum SkillSpType {
+export enum SkillSpType {
   "Per Second Recovery" = 1,
   "Offensive Recovery",
   "UNUSED",
