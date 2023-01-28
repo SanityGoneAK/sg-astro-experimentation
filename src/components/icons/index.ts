@@ -16,6 +16,8 @@ import PotentialSixIcon from "./PotentialSixIcon";
 import HealthIcon from "./HealthIcon";
 import HourglassIcon from "./HourglassIcon";
 import SearchIcon from "./SearchIcon";
+import SpCostIcon from "./SpCostIcon";
+import InitialSpIcon from "./InitialSpIcon";
 
 export {
   ArtsResistanceIcon,
@@ -36,4 +38,6 @@ export {
   HealthIcon,
   HourglassIcon,
   SearchIcon,
+  SpCostIcon,
+  InitialSpIcon,
 };

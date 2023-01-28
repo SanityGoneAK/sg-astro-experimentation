@@ -8,6 +8,7 @@ import CharacterRange from "../CharacterRange";
 import { descriptionToHtml } from "../../description-parser";
 import { operatorStore } from "../../pages/operators/_store";
 import { skillIcon } from "../../utils/images";
+import { SpCostIcon, InitialSpIcon, HourglassIcon } from "../icons";
 
 import * as classes from "./styles.css";
 import * as sharedPanelClasses from "../OperatorTabs/sharedPanelStyles.css";
@@ -27,7 +28,7 @@ const OperatorSkillsPanel: React.FC = () => {
   const activeSkillLevel = activeSkillTableSkill.levels[skillLevel - 1];
 
   return (
-    <div className={classes.root}>
+    <>
       <div className={sharedPanelClasses.knobsContainer}>
         <span className={classes.skillLabel}>Skill</span>
         <PillButtonGroup
@@ -43,34 +44,40 @@ const OperatorSkillsPanel: React.FC = () => {
         />
       </div>
       <div className={classes.skillData}>
-        <img
-          src={skillIcon(
-            activeSkillTableSkill.iconId,
-            activeSkillTableSkill.skillId
-          )}
-          alt=""
-        />
-        <h2>{activeSkillLevel.name}</h2>
-        <dl>
-          <div>
-            <dt>Activation</dt>
-            <dd>{OutputTypes.SkillType[activeSkillLevel.skillType]}</dd>
-          </div>
-          <div>
-            <dt>Recovery</dt>
-            <dd>{OutputTypes.SkillSpType[activeSkillLevel.spData.spType]}</dd>
-          </div>
-        </dl>
-        <dl>
-          <div>
+        <div className={classes.skillIconNameAndType}>
+          <img
+            className={classes.skillIcon}
+            src={skillIcon(
+              activeSkillTableSkill.iconId,
+              activeSkillTableSkill.skillId
+            )}
+            alt=""
+          />
+          <h2 className={classes.skillName}>{activeSkillLevel.name}</h2>
+          <dl className={classes.skillType}>
+            <div className={classes.skillTypeItem}>
+              <dt>Activation</dt>
+              <dd>{OutputTypes.SkillType[activeSkillLevel.skillType]}</dd>
+            </div>
+            <div className={classes.skillTypeItem}>
+              <dt>Recovery</dt>
+              <dd>{OutputTypes.SkillSpType[activeSkillLevel.spData.spType]}</dd>
+            </div>
+          </dl>
+        </div>
+        <dl className={classes.skillSpType}>
+          <div className={classes.skillSpTypeItem}>
+            <SpCostIcon />
             <dt>SP Cost</dt>
             <dd>{activeSkillLevel.spData.spCost}</dd>
           </div>
-          <div>
+          <div className={classes.skillSpTypeItem}>
+            <InitialSpIcon />
             <dt>Initial SP</dt>
             <dd>{activeSkillLevel.spData.initSp}</dd>
           </div>
-          <div>
+          <div className={classes.skillSpTypeItem}>
+            <HourglassIcon />
             <dt>Duration</dt>
             <dd>{activeSkillLevel.duration}</dd>
           </div>
@@ -87,10 +94,13 @@ const OperatorSkillsPanel: React.FC = () => {
           />
         )}
         {activeSkillLevel.range && (
-          <CharacterRange rangeObject={activeSkillLevel.range} />
+          <CharacterRange
+            className={classes.skillRange}
+            rangeObject={activeSkillLevel.range}
+          />
         )}
       </div>
-    </div>
+    </>
   );
 };
 export default OperatorSkillsPanel;
