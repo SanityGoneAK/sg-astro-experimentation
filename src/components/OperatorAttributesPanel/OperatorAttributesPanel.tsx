@@ -123,11 +123,16 @@ const OperatorAttributesPanel: React.FC = () => {
           useTrustBonus={isTrustBonusChecked}
         />
         {itemCosts.length > 0 && (
-          <MaterialRequirements
-            itemCosts={itemCosts}
-            minElite={minElite}
-            minLevel={minLevel}
-          />
+          <>
+            <h2 className={classes.promotionRequirementsHeading}>
+              Promotion Requirements
+            </h2>
+            <MaterialRequirements
+              itemCosts={itemCosts}
+              minElite={minElite}
+              minLevel={minLevel}
+            />
+          </>
         )}
       </div>
     </>
