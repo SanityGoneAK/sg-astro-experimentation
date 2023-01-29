@@ -22,6 +22,7 @@ export async function aggregateRiicData() {
   const jetRiicTranslations = await fetchJetroyzRiicTranslations();
 
   const opToRiicSkills: { [operatorId: string]: RiicSkill[] } = {};
+  const cursedSkillIdsRequiringJetTLs = new Set<string>();
   Object.values(cnBuildingData.chars)
     .filter((buffChar) => {
       const { charId } = buffChar;
@@ -34,17 +35,31 @@ export async function aggregateRiicData() {
         !char.isNotObtainable
       );
     })
-    .forEach((charRiicData) => {
-      const { charId } = charRiicData;
-      const charBuffs = charRiicData.buffChar.flatMap(({ buffData }) => {
-        return buffData.map((buff) => {
-          return {
-            buffId: buff.buffId,
-            minElite: buff.cond.phase,
-            minLevel: buff.cond.level,
-          };
-        });
-      });
+    .forEach((cnCharRiicData) => {
+      const { charId } = cnCharRiicData;
+      const enCharRiicData =
+        enBuildingData.chars[charId as keyof typeof enBuildingData.chars];
+      const charBuffs = cnCharRiicData.buffChar.flatMap(
+        ({ buffData }, skillIndex) => {
+          return buffData.map((cnBuff, skillLevelIndex) => {
+            if (enCharRiicData != null) {
+              const enBuff =
+                enCharRiicData.buffChar[skillIndex].buffData[skillLevelIndex];
+              if (cnBuff.buffId !== enBuff.buffId) {
+                console.warn(
+                  `Mismatch: CN buffId ${cnBuff.buffId} does not match EN buffId ${enBuff.buffId}; adding to forced Jet TL list`
+                );
+                cursedSkillIdsRequiringJetTLs.add(cnBuff.buffId);
+              }
+            }
+            return {
+              buffId: cnBuff.buffId,
+              minElite: cnBuff.cond.phase,
+              minLevel: cnBuff.cond.level,
+            };
+          });
+        }
+      );
 
       const charBuffsFull = charBuffs.map((charBuff) => {
         const { buffId } = charBuff;
@@ -57,7 +72,7 @@ export async function aggregateRiicData() {
 
         let name = buffProperties.buffName;
         let description = buffProperties.description;
-        if (!isInEN) {
+        if (!isInEN || cursedSkillIdsRequiringJetTLs.has(buffId)) {
           const jetTL = jetRiicTranslations[buffId];
           if (jetTL != null) {
             name = jetTL.name;
