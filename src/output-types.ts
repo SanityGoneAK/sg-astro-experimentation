@@ -1,3 +1,4 @@
+import type { RiicSkill } from "../scripts/aggregate-riic-data";
 import type { InterpolatedValue } from "./description-parser";
 import type { Range } from "./gamedata-types";
 
@@ -43,6 +44,7 @@ export interface Operator extends Character {
   alterId: string | null;
   /** The corresponding base operator's character ID if this operator is an alter, or `null` if this operator isn't an alter. */
   baseOperatorId: string | null;
+  riicSkills: RiicSkill[];
 }
 
 /**
