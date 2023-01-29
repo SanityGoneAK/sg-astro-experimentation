@@ -32,15 +32,16 @@ const OperatorSkillsPanel: React.FC = () => {
     if (skillLevel === 1) {
       return {
         itemCosts: null,
-        minElite: 0,
-        minLevel: 1,
+        minElite: undefined,
+        minLevel: undefined,
       };
     }
     if (skillLevel <= 7) {
       const upgrade = operator.allSkillLvlup[skillLevel - 1 - 1];
       return {
         itemCosts: upgrade.lvlUpCost,
-        minElite: upgrade.unlockCond.phase,
+        minElite:
+          upgrade.unlockCond.phase > 0 ? upgrade.unlockCond.phase : undefined,
         minLevel: upgrade.unlockCond.level,
       };
     }
