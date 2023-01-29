@@ -347,3 +347,15 @@ interface BranchSearchResult {
   class: string;
   subProfession: string;
 }
+
+export interface StageInfo {
+  stageId: string;
+  stageType: string;
+  difficulty: string;
+  levelId: string;
+  zoneId: string;
+  code: string;
+  hardStagedId: string;
+  mainStageId: string;
+  isCnOnly: boolean;
+}

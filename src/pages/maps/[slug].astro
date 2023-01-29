@@ -1,0 +1,45 @@
+---
+import slugify from "../../slugify";
+import Layout from "../../layouts/Layout.astro";
+
+import mapsJson from "../../../data/maps.json";
+import { levelScenePairs } from "../../../ArknightsGameData/zh_CN/gamedata/battle/battle_misc_table.json";
+
+import type * as OutputTypes from "../../output-types";
+
+export function getStaticPaths() {
+  return Object.entries(mapsJson).map(([stageId, stage]) => {
+    return {
+      params: {
+        slug: slugify(stageId),
+      },
+      props: { stageId },
+    };
+  });
+}
+
+function getCorrectLevelId(levelId) {
+  return levelScenePairs[levelId] ? levelScenePairs[levelId].levelId : levelId;
+}
+
+const { stageId } = Astro.props;
+const stageInfo = mapsJson[
+  stageId as keyof typeof mapsJson
+] as OutputTypes.StageInfo;
+const locale = stageInfo.isCnOnly ? "zh_CN" : "en_US";
+
+const stageData = await import(
+  "../../../ArknightsGameData/" +
+    locale +
+    "/gamedata/levels/" +
+    getCorrectLevelId(stageInfo.levelId).toLowerCase() +
+    ".json"
+);
+---
+
+<Layout title={stageInfo.stageId}>
+  <h2>
+    {stageInfo.stageId}
+    {stageData.options.characterLimit}
+  </h2>
+</Layout>

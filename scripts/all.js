@@ -4,6 +4,7 @@ import path from "path";
 import { createOperatorsJson } from "./create-operators-json.js";
 import { createBranchesJson } from "./create-branches-json.js";
 import { createItemsJson } from "./create-items-json.js";
+import { createMapsJson } from "./create-maps-json.js";
 
 const dataDir = path.join(__dirname, "../data");
 
@@ -13,6 +14,7 @@ const dataDir = path.join(__dirname, "../data");
     createOperatorsJson(dataDir),
     createBranchesJson(dataDir),
     createItemsJson(dataDir),
+    createMapsJson(dataDir),
   ]);
 
   // unfortunately build-search-index depends on branches.json,
