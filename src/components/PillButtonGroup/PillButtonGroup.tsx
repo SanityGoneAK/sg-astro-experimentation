@@ -13,7 +13,7 @@ interface Props<T> {
 
 const eventsToStartAnimatingOn = ["click", "touchstart", "hover"];
 
-const PillButtonGroup = <T extends number | string>({
+const PillButtonGroup = <T,>({
   labels,
   value,
   onChange,

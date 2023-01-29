@@ -30,7 +30,7 @@ const OperatorAttributesPanel: React.FC = () => {
     ];
   }, [operator.modules]);
   const [moduleType, setModuleType] = useState(moduleTypes.at(-1)!);
-  const [moduleLevel, setModuleLevel] = useState<1 | 2 | 3>(3);
+  const [moduleLevel, setModuleLevel] = useState(3);
   const [isTrustBonusChecked, setTrustBonusChecked] = useState(false);
   const [isPotentialBonusChecked, setPotentialBonusChecked] = useState(false);
 
