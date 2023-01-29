@@ -17,14 +17,13 @@ const OperatorRiicPanel: React.FC = () => {
               <div key={buffId}>
                 <img alt="" src={riicSkillIcon(skillIcon)} />
                 <h2>{name}</h2>
-                {/* <div
+                Elite: {minElite}
+                Level: {minLevel}
+                <div
                   dangerouslySetInnerHTML={{
                     __html: descriptionToHtml(description, []),
                   }}
-                /> */}
-                Elite: {minElite}
-                Level: {minLevel}
-                <p>{description}</p>
+                />
               </div>
             )
           )}
