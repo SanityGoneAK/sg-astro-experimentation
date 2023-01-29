@@ -1,8 +1,9 @@
-import type { SkinSource, SkinCostTokenType } from "../scripts/scrape-prts";
+import type { RiicSkill } from "../scripts/aggregate-riic-data";
 import type { InterpolatedValue } from "./description-parser";
 import type { Range } from "./gamedata-types";
 
 export type { SkinSource, SkinCostTokenType } from "../scripts/scrape-prts";
+export type { RiicSkill } from "../scripts/aggregate-riic-data";
 
 // This file contains the output types of our gamedata scripts - the game data after it's been
 // processed by the scripts. These types do NOT fully conform to raw gamedata.
@@ -43,6 +44,7 @@ export interface Operator extends Character {
   alterId: string | null;
   /** The corresponding base operator's character ID if this operator is an alter, or `null` if this operator isn't an alter. */
   baseOperatorId: string | null;
+  riicSkills: RiicSkill[];
 }
 
 /**

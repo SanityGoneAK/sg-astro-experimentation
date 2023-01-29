@@ -10,12 +10,16 @@ import rangeTable from "../ArknightsGameData/zh_CN/gamedata/excel/range_table.js
 import voiceTable from "../ArknightsGameData/zh_CN/gamedata/excel/charword_table.json";
 import skinTable from "../ArknightsGameData/zh_CN/gamedata/excel/skin_table.json";
 
-import { fetchJetroyzSkillTalentTranslations } from "./fetch-jetroyz-translations";
+import {
+  fetchJetroyzSkillTranslations,
+  fetchJetroyzTalentTranslations,
+} from "./fetch-jetroyz-translations";
 import {
   getReleaseOrderAndLimitedLookup,
   getSkinObtainSourceAndCosts,
 } from "./scrape-prts";
 import { aggregateModuleData } from "./aggregate-module-data.js";
+import { aggregateRiicData } from "./aggregate-riic-data";
 import { getAlterMapping } from "./get-alters.js";
 
 /** @type {{ [characterId: string]: string }} */
@@ -43,9 +47,19 @@ export async function createOperatorsJson(dataDir) {
     ([charId]) => !enCharacterIds.has(charId)
   );
 
-  const { jetSkillTranslations, jetTalentTranslations } =
-    await fetchJetroyzSkillTalentTranslations();
-  const skinSourceAndCostLookup = await getSkinObtainSourceAndCosts();
+  const [
+    jetSkillTranslations,
+    jetTalentTranslations,
+    skinSourceAndCostLookup,
+    releaseOrderAndLimitedLookup,
+    opToRiicSkillsMap,
+  ] = await Promise.all([
+    fetchJetroyzSkillTranslations(),
+    fetchJetroyzTalentTranslations(),
+    getSkinObtainSourceAndCosts(),
+    getReleaseOrderAndLimitedLookup(),
+    aggregateRiicData(),
+  ]);
 
   const summonIdToOperatorId = {};
   const denormalizedCharacters = [
@@ -231,7 +245,6 @@ export async function createOperatorsJson(dataDir) {
   );
 
   const operatorModulesLookup = aggregateModuleData();
-  const releaseOrderAndLimitedLookup = await getReleaseOrderAndLimitedLookup();
   const { alterIdToBaseOpId, baseOpIdToAlterId } = getAlterMapping();
 
   const denormalizedOperators = denormalizedCharacters
@@ -245,6 +258,7 @@ export async function createOperatorsJson(dataDir) {
         modules: operatorModulesLookup[character.charId] ?? [],
         alterId: baseOpIdToAlterId[character.charId] ?? null,
         baseOperatorId: alterIdToBaseOpId[character.charId] ?? null,
+        riicSkills: opToRiicSkillsMap[character.charId],
       },
     ]);
   // sort by descending rarity and descending release order
