@@ -68,9 +68,9 @@ export async function fetchJetroyzSkillTranslations() {
 }
 
 export async function fetchJetroyzRiicTranslations() {
-  const rawRiicTranslations = await axios.get<RiicTranslations>(
-    jetroytzRiicTranslationsUrl
-  );
+  const rawRiicTranslations = (
+    await axios.get<RiicTranslations>(jetroytzRiicTranslationsUrl)
+  ).data;
   /**
    * We really don't care about the `desc` property, only `descformat`, since that's what matches
    * the ingame building_data.json `description`. So, discard `desc` and rename `descformat`
