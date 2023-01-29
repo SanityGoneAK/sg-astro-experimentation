@@ -6,6 +6,8 @@ const jetroyzSkillsTranslationsUrl =
   "https://raw.githubusercontent.com/Aceship/AN-EN-Tags/master/json/ace/tl-skills.json";
 const jetroyzTalentsTranslationsUrl =
   "https://raw.githubusercontent.com/Aceship/AN-EN-Tags/master/json/ace/tl-talents.json";
+const jetroytzRiicTranslationsUrl =
+  "https://raw.githubusercontent.com/Aceship/AN-EN-Tags/master/json/ace/riic.json";
 
 interface SkillTranslations {
   [skillId: string]: {
@@ -26,6 +28,16 @@ interface TalentTranslations {
       desc: string;
     }>
   >;
+}
+
+interface RiicTranslations {
+  [riicSkillId: string]: {
+    name: string;
+    /** Plaintext RIIC skill description with no formatting markers, e.g. `+10` */
+    desc: string;
+    /** RIIC skill description with formatting markers, e.g. `<@cc.vup>+10</>` */
+    descformat: string;
+  };
 }
 
 export async function fetchJetroyzTalentTranslations() {
@@ -54,4 +66,26 @@ export async function fetchJetroyzSkillTranslations() {
   );
   return jetSkillTranslations;
 }
+
+export async function fetchJetroyzRiicTranslations() {
+  const rawRiicTranslations = await axios.get<RiicTranslations>(
+    jetroytzRiicTranslationsUrl
+  );
+  /**
+   * We really don't care about the `desc` property, only `descformat`, since that's what matches
+   * the ingame building_data.json `description`. So, discard `desc` and rename `descformat`
+   * to `description`.
+   */
+  const jetRiicTranslations = Object.fromEntries(
+    Object.entries(rawRiicTranslations).map(
+      ([riicSkillId, { name, descformat }]) => [
+        riicSkillId,
+        {
+          name,
+          description: descformat,
+        },
+      ]
+    )
+  );
+  return jetRiicTranslations;
 }

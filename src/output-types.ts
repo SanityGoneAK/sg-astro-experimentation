@@ -1,8 +1,8 @@
-import type { SkinSource, SkinCostTokenType } from "../scripts/scrape-prts";
 import type { InterpolatedValue } from "./description-parser";
 import type { Range } from "./gamedata-types";
 
 export type { SkinSource, SkinCostTokenType } from "../scripts/scrape-prts";
+export type { RiicSkill } from "../scripts/aggregate-riic-data";
 
 // This file contains the output types of our gamedata scripts - the game data after it's been
 // processed by the scripts. These types do NOT fully conform to raw gamedata.
