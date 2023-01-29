@@ -51,7 +51,7 @@ const OperatorAttributesPanel: React.FC = () => {
     }
     itemCosts.push(...(operator.phases[elite].evolveCost ?? []));
     return itemCosts;
-  }, [elite]);
+  }, [elite, operator.phases, operator.rarity]);
   const minElite = elite > 0 ? elite - 1 : 0;
   const minLevel = maxLevelAtElite(operator.rarity, minElite);
 

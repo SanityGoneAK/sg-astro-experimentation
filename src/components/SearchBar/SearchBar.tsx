@@ -1,4 +1,3 @@
-/* eslint-disable @next/next/no-img-element */
 import React, {
   useCallback,
   useEffect,
@@ -170,10 +169,10 @@ const SearchBar: React.FC<Props> = ({ placeholder, onSelected }) => {
                     Operators
                   </li>
                   {operatorResults.map((result) => {
-                    const hasGuide =
-                      search.operatorsWithGuides[
-                        result.name as keyof typeof search.operatorsWithGuides
-                      ] != null;
+                    // const hasGuide =
+                    //   search.operatorsWithGuides[
+                    //     result.name as keyof typeof search.operatorsWithGuides
+                    //   ] != null;
                     return (
                       <Combobox.Option<"li", SearchResult | null>
                         key={result.charId}

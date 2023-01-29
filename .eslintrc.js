@@ -46,6 +46,14 @@ module.exports = {
         ],
         "react-hooks/rules-of-hooks": "error",
         "react-hooks/exhaustive-deps": "warn",
+        "@typescript-eslint/no-explicit-any": "off",
+        "@typescript-eslint/no-non-null-assertion": "off",
+      },
+    },
+    {
+      files: ["*.stories.tsx"],
+      rules: {
+        "react-hooks/rules-of-hooks": "off",
       },
     },
   ],

@@ -24,7 +24,7 @@ const OperatorSkillsPanel: React.FC = () => {
   const [skillLevel, setSkillLevel] = useState(maxSkillLevel);
   const skillLabels = useMemo(
     () => [...Array(numSkills).keys()].map((_, i) => i + 1),
-    []
+    [numSkills]
   );
   const activeSkillTableSkill = operator.skillData[skillNumber - 1];
   const activeSkillLevel = activeSkillTableSkill.levels[skillLevel - 1];
@@ -53,7 +53,7 @@ const OperatorSkillsPanel: React.FC = () => {
       minElite: upgrade.unlockCond.phase,
       minLevel: upgrade.unlockCond.level,
     };
-  }, [skillNumber, skillLevel]);
+  }, [skillLevel, operator.skills, operator.allSkillLvlup, skillNumber]);
 
   const skillDisplayDuration = useMemo(() => {
     if (activeSkillLevel.duration === -1) {

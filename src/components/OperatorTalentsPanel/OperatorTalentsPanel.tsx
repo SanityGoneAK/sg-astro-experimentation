@@ -30,7 +30,7 @@ const OperatorTalentsPanel: React.FC = () => {
       });
     });
     return potentialsMap;
-  }, []);
+  }, [operator.talents]);
   const [potential, setPotential] = useState(potentialsMap[maxElite][0]);
 
   const handleEliteChange = (newElite: number) => {
