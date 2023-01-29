@@ -1,24 +1,34 @@
 import { Tab } from "@headlessui/react";
+import { useStore } from "@nanostores/react";
 
 import * as classes from "./styles.css";
+import { operatorStore } from "../../pages/operators/_store";
 import OperatorAttributesPanel from "../OperatorAttributesPanel";
 import OperatorRiicPanel from "../OperatorRiicPanel";
 import OperatorSkillsPanel from "../OperatorSkillsPanel";
 import OperatorTalentsPanel from "../OperatorTalentsPanel";
 
 const OperatorTabs: React.FC = () => {
+  const operator = useStore(operatorStore);
+  const tabs = [
+    "Attributes",
+    "Talents",
+    operator.skillData.length > 0 && "Skills",
+    "Modules",
+    "RIIC",
+    "Misc",
+  ].filter(Boolean) as string[];
+
   return (
     <Tab.Group as="div">
       <Tab.List className={classes.tabList}>
-        {["Attributes", "Talents", "Skills", "Modules", "RIIC", "Misc"].map(
-          (label) => {
-            return (
-              <Tab key={label} className={classes.tabListButton}>
-                {label}
-              </Tab>
-            );
-          }
-        )}
+        {tabs.map((label) => {
+          return (
+            <Tab key={label} className={classes.tabListButton}>
+              {label}
+            </Tab>
+          );
+        })}
       </Tab.List>
       <Tab.Panels>
         <Tab.Panel>
@@ -27,9 +37,11 @@ const OperatorTabs: React.FC = () => {
         <Tab.Panel>
           <OperatorTalentsPanel />
         </Tab.Panel>
-        <Tab.Panel>
-          <OperatorSkillsPanel />
-        </Tab.Panel>
+        {operator.skillData.length > 0 && (
+          <Tab.Panel>
+            <OperatorSkillsPanel />
+          </Tab.Panel>
+        )}
         <Tab.Panel>
           {/* TODO */}
           Modules panel
