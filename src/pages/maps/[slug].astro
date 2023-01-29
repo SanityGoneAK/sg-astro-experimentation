@@ -1,6 +1,7 @@
 ---
 import slugify from "../../slugify";
 import Layout from "../../layouts/Layout.astro";
+import MapViewer from "../../components/MapViewer";
 
 import mapsJson from "../../../data/maps.json";
 import { levelScenePairs } from "../../../ArknightsGameData/zh_CN/gamedata/battle/battle_misc_table.json";
@@ -42,4 +43,5 @@ const stageData = await import(
     {stageInfo.stageId}
     {stageData.options.characterLimit}
   </h2>
+  <MapViewer />
 </Layout>
