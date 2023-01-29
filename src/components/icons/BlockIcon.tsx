@@ -1,10 +1,8 @@
-import React from "react";
-
 type Props = React.HTMLAttributes<SVGElement> & {
   pathClassName?: string;
 };
 
-const BlockIcon: React.VFC<Props> = ({ pathClassName, ...rest }) => {
+const BlockIcon: React.FC<Props> = ({ pathClassName, ...rest }) => {
   return (
     <svg
       width="14"

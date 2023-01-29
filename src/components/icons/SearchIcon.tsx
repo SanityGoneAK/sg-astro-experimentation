@@ -1,6 +1,4 @@
-import React from "react";
-
-const SearchIcon: React.VFC<React.HTMLAttributes<SVGElement>> = (props) => {
+const SearchIcon: React.FC<React.HTMLAttributes<SVGElement>> = (props) => {
   return (
     <svg
       width="16"

@@ -73,7 +73,7 @@ interface Props {
   onSelected?: () => void;
 }
 
-const SearchBar: React.VFC<Props> = ({ placeholder, onSelected }) => {
+const SearchBar: React.FC<Props> = ({ placeholder, onSelected }) => {
   const inputRef = useRef<HTMLInputElement>(null);
   const [query, setQuery] = useState("");
   const index = useRef<null | Index<SearchResult>>(null);

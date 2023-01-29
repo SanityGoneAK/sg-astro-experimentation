@@ -1,5 +1,5 @@
-import React from "react";
 import cx from "clsx";
+
 import * as classes from "./styles.css";
 
 type Props = React.PropsWithChildren<React.HTMLAttributes<HTMLDivElement>>;

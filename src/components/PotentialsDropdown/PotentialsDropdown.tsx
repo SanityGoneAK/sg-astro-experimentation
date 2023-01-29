@@ -69,7 +69,7 @@ export interface PotentialsDropdownProps {
   onChange: (potential: number) => void;
 }
 
-const PotentialsDropdown: React.VFC<PotentialsDropdownProps> = (props) => {
+const PotentialsDropdown: React.FC<PotentialsDropdownProps> = (props) => {
   const { potentialsToShow, currentPotential, onChange } = props;
 
   const potList = potentialsToShow ?? [0, 1, 2, 3, 4, 5]; // default to all pots

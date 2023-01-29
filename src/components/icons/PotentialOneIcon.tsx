@@ -1,10 +1,8 @@
-import React from "react";
-
 type Props = React.HTMLAttributes<SVGElement> & {
   noPotentialPathClassName?: string;
 };
 
-const PotentialOneIcon: React.VFC<Props> = ({
+const PotentialOneIcon: React.FC<Props> = ({
   noPotentialPathClassName,
   ...rest
 }) => {
