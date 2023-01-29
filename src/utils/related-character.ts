@@ -1,4 +1,5 @@
 import operatorsJson from "../../data/operators.json";
+
 import type { Operator } from "../output-types";
 
 export const getRelatedCharacter = (operator: Operator): Operator | null => {

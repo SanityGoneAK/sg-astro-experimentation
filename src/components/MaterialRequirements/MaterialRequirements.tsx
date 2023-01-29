@@ -1,8 +1,7 @@
-import { itemImage } from "../../utils/images";
-import itemsJson from "../../../data/items.json";
-import { EliteOneIcon, EliteTwoIcon, EliteZeroIcon } from "../icons";
-
 import * as classes from "./styles.css";
+import itemsJson from "../../../data/items.json";
+import { itemImage } from "../../utils/images";
+import { EliteOneIcon, EliteTwoIcon, EliteZeroIcon } from "../icons";
 
 import type * as OutputTypes from "../../output-types";
 

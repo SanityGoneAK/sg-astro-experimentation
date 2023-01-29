@@ -4,20 +4,20 @@ import AttackSpeedIcon from "./AttackSpeedIcon";
 import BlockIcon from "./BlockIcon";
 import DefenseIcon from "./DefenseIcon";
 import DPCostIcon from "./DPCostIcon";
-import EliteZeroIcon from "./EliteZeroIcon";
 import EliteOneIcon from "./EliteOneIcon";
 import EliteTwoIcon from "./EliteTwoIcon";
-import PotentialOneIcon from "./PotentialOneIcon";
-import PotentialTwoIcon from "./PotentialTwoIcon";
-import PotentialThreeIcon from "./PotentialThreeIcon";
-import PotentialFourIcon from "./PotentialFourIcon";
-import PotentialFiveIcon from "./PotentialFiveIcon";
-import PotentialSixIcon from "./PotentialSixIcon";
+import EliteZeroIcon from "./EliteZeroIcon";
 import HealthIcon from "./HealthIcon";
 import HourglassIcon from "./HourglassIcon";
+import InitialSpIcon from "./InitialSpIcon";
+import PotentialFiveIcon from "./PotentialFiveIcon";
+import PotentialFourIcon from "./PotentialFourIcon";
+import PotentialOneIcon from "./PotentialOneIcon";
+import PotentialSixIcon from "./PotentialSixIcon";
+import PotentialThreeIcon from "./PotentialThreeIcon";
+import PotentialTwoIcon from "./PotentialTwoIcon";
 import SearchIcon from "./SearchIcon";
 import SpCostIcon from "./SpCostIcon";
-import InitialSpIcon from "./InitialSpIcon";
 
 export {
   ArtsResistanceIcon,

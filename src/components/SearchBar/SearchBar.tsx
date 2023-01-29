@@ -5,20 +5,20 @@ import React, {
   useRef,
   useState,
 } from "react";
-import FlexSearch, { Index } from "flexsearch";
+
 import { Combobox } from "@headlessui/react";
+import FlexSearch, { Index } from "flexsearch";
 import levenshtein from "js-levenshtein";
 
+import * as classes from "./styles.css";
+import search from "../../../data/search.json";
+import slugify, { subclassSlugify } from "../../slugify";
 import {
   operatorAvatar,
   operatorClassIcon,
   operatorBranchIcon,
 } from "../../utils/images";
-import slugify, { subclassSlugify } from "../../slugify";
 import SearchIcon from "../icons/SearchIcon";
-import search from "../../../data/search.json";
-
-import * as classes from "./styles.css";
 
 interface ClassSearchResult {
   type: "class";

@@ -1,11 +1,10 @@
 import { Tab } from "@headlessui/react";
 
+import * as classes from "./styles.css";
 import OperatorAttributesPanel from "../OperatorAttributesPanel";
 import OperatorRiicPanel from "../OperatorRiicPanel";
 import OperatorSkillsPanel from "../OperatorSkillsPanel";
 import OperatorTalentsPanel from "../OperatorTalentsPanel";
-
-import * as classes from "./styles.css";
 
 const OperatorTabs: React.FC = () => {
   return (

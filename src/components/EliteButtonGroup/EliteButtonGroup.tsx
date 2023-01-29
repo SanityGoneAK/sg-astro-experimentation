@@ -1,7 +1,7 @@
 import React from "react";
 
-import { EliteZeroIcon, EliteOneIcon, EliteTwoIcon } from "../icons";
 import * as classes from "./styles.css";
+import { EliteZeroIcon, EliteOneIcon, EliteTwoIcon } from "../icons";
 
 interface Props {
   maxElite: number;

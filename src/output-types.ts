@@ -1,6 +1,6 @@
-import type { RiicSkill } from "../scripts/aggregate-riic-data";
 import type { InterpolatedValue } from "./description-parser";
 import type { Range } from "./gamedata-types";
+import type { RiicSkill } from "../scripts/aggregate-riic-data";
 
 export type { SkinSource, SkinCostTokenType } from "../scripts/scrape-prts";
 export type { RiicSkill } from "../scripts/aggregate-riic-data";

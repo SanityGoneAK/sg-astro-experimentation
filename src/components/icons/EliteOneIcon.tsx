@@ -1,5 +1,5 @@
-import { rawColors } from "../../theme.css";
 import * as classes from "./eliteIconStyles.css";
+import { rawColors } from "../../theme.css";
 
 interface Props extends React.HTMLAttributes<SVGElement> {
   active?: boolean;

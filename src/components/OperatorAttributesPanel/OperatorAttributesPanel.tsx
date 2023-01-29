@@ -1,16 +1,17 @@
 import { useMemo, useState } from "react";
+
 import { useStore } from "@nanostores/react";
 
-import EliteButtonGroup from "../EliteButtonGroup";
-import SliderWithInput from "../SliderWithInput";
-import PillButtonGroup from "../PillButtonGroup";
-import CustomCheckbox from "../CustomCheckbox";
-import CharacterStats from "../CharacterStats";
-import MaterialRequirements from "../MaterialRequirements";
-import { operatorStore } from "../../pages/operators/_store";
-
 import * as classes from "./styles.css";
+import { operatorStore } from "../../pages/operators/_store";
+import CharacterStats from "../CharacterStats";
+import CustomCheckbox from "../CustomCheckbox";
+import EliteButtonGroup from "../EliteButtonGroup";
+import MaterialRequirements from "../MaterialRequirements";
 import * as sharedPanelClasses from "../OperatorTabs/sharedPanelStyles.css";
+import PillButtonGroup from "../PillButtonGroup";
+import SliderWithInput from "../SliderWithInput";
+
 import type * as OutputTypes from "../../output-types";
 
 const LMD_ITEM_ID = "4001";

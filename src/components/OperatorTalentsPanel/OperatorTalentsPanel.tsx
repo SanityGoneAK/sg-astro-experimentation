@@ -1,15 +1,14 @@
 import { useMemo, useState } from "react";
 
-import cx from "clsx";
 import { useStore } from "@nanostores/react";
-
-import EliteButtonGroup from "../EliteButtonGroup";
-import OperatorTalent from "../OperatorTalent/OperatorTalent";
-import PotentialsDropdown from "../PotentialsDropdown";
-import { operatorStore } from "../../pages/operators/_store";
+import cx from "clsx";
 
 import * as classes from "./styles.css";
+import { operatorStore } from "../../pages/operators/_store";
+import EliteButtonGroup from "../EliteButtonGroup";
 import * as sharedPanelClasses from "../OperatorTabs/sharedPanelStyles.css";
+import OperatorTalent from "../OperatorTalent/OperatorTalent";
+import PotentialsDropdown from "../PotentialsDropdown";
 
 const OperatorTalentsPanel: React.FC = () => {
   const operator = useStore(operatorStore);

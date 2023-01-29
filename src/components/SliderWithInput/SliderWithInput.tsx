@@ -1,5 +1,6 @@
-import { SliderUnstyled } from "@mui/base";
 import { useEffect, useRef, useState } from "react";
+
+import { SliderUnstyled } from "@mui/base";
 
 import * as classes from "./styles.css";
 

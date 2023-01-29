@@ -3,18 +3,17 @@ import { useMemo, useState } from "react";
 import { useStore } from "@nanostores/react";
 import cx from "clsx";
 
-import PillButtonGroup from "../PillButtonGroup";
-import SliderWithInput from "../SliderWithInput";
-import CharacterRange from "../CharacterRange";
-import MaterialRequirements from "../MaterialRequirements";
+import * as classes from "./styles.css";
 import { descriptionToHtml } from "../../description-parser";
+import * as OutputTypes from "../../output-types";
 import { operatorStore } from "../../pages/operators/_store";
 import { skillIcon } from "../../utils/images";
+import CharacterRange from "../CharacterRange";
 import { SpCostIcon, InitialSpIcon, HourglassIcon } from "../icons";
-
-import * as classes from "./styles.css";
+import MaterialRequirements from "../MaterialRequirements";
 import * as sharedPanelClasses from "../OperatorTabs/sharedPanelStyles.css";
-import * as OutputTypes from "../../output-types";
+import PillButtonGroup from "../PillButtonGroup";
+import SliderWithInput from "../SliderWithInput";
 
 const OperatorSkillsPanel: React.FC = () => {
   const operator = useStore(operatorStore);

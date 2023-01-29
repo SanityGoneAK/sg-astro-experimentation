@@ -1,10 +1,9 @@
 import { useStore } from "@nanostores/react";
-import { descriptionToHtml } from "../../description-parser";
-
-import { operatorStore } from "../../pages/operators/_store";
-import { riicSkillIcon } from "../../utils/images";
 
 import * as classes from "./styles.css";
+import { descriptionToHtml } from "../../description-parser";
+import { operatorStore } from "../../pages/operators/_store";
+import { riicSkillIcon } from "../../utils/images";
 
 const OperatorRiicPanel: React.FC = () => {
   const operator = useStore(operatorStore);

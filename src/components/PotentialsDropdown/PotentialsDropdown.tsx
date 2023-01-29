@@ -1,7 +1,7 @@
+import * as classes from "./styles.css";
 import DropdownSelect, {
   DropdownOption,
 } from "../DropdownSelect/DropdownSelect";
-
 import {
   PotentialFiveIcon,
   PotentialFourIcon,
@@ -10,8 +10,6 @@ import {
   PotentialThreeIcon,
   PotentialTwoIcon,
 } from "../icons";
-
-import * as classes from "./styles.css";
 
 const potentialLabel = (potential: number) => {
   let icon = null;

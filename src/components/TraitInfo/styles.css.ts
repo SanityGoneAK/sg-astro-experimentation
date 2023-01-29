@@ -1,6 +1,7 @@
 import { globalStyle, style } from "@vanilla-extract/css";
-import { vars } from "../../theme.css";
+
 import { spacing } from "../../theme-helpers";
+import { vars } from "../../theme.css";
 
 export const root = style({
   padding: spacing(3, 0, 0),

@@ -10,6 +10,8 @@ module.exports = {
     "eslint:recommended",
     "plugin:storybook/recommended",
     "plugin:prettier/recommended",
+    "plugin:import/recommended",
+    "plugin:import/typescript",
   ],
   plugins: ["@typescript-eslint", "react", "react-hooks", "prettier"],
   settings: {
@@ -71,5 +73,34 @@ module.exports = {
       },
     ],
     "react/no-unknown-property": ["error", { ignore: ["css"] }],
+    "eol-last": "warn",
+    "import/order": [
+      "warn",
+      {
+        "newlines-between": "always",
+        groups: [
+          "builtin",
+          "external",
+          "internal",
+          ["parent", "sibling", "index"],
+          ["object", "type", "unknown"],
+        ],
+        pathGroups: [
+          {
+            pattern: "react",
+            group: "builtin",
+          },
+          {
+            pattern: "react-dom",
+            group: "builtin",
+          },
+        ],
+        pathGroupsExcludedImportTypes: [],
+        alphabetize: {
+          order: "asc",
+          caseInsensitive: true,
+        },
+      },
+    ],
   },
 };
