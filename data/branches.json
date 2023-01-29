@@ -201,7 +201,7 @@
   },
   "wandermedic": {
     "branchName": "Wandering",
-    "trait": "Restores the HP of allies<br>Recovers <span class=\"\">Elemental damage</span> equal to <span class=\"keyword\">50%</span> of Attack Power<br>(Can heal <span class=\"\">Elemental damage</span> of unhurt units)",
+    "trait": "Restores the HP of allies<br>Recovers <span class=\"elemental-damage\">Elemental damage</span> equal to <span class=\"keyword\">50%</span> of Attack Power<br>(Can heal <span class=\"elemental-damage\">Elemental damage</span> of unhurt units)",
     "class": "Medic"
   },
   "slower": {

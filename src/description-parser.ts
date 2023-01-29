@@ -5,7 +5,7 @@ export interface InterpolatedValue {
   value: number;
 }
 
-const descriptionTagLeftDelim = "<(?:@ba.|\\$)[^>]+>";
+const descriptionTagLeftDelim = "<(?:@ba\\.|\\$|@cc\\.)[^>]+>";
 const descriptionTagRightDelim = "</>";
 
 const descriptionInterpolationRegex =
@@ -47,6 +47,7 @@ export const descriptionToHtml = (
           const tagName = recursiveMatch[i].value.slice(1, -1);
           let className = "";
           switch (tagName) {
+            // @ba are used on operator information
             case "@ba.vup":
               className = "value-up";
               break;
@@ -62,12 +63,37 @@ export const descriptionToHtml = (
             case "@ba.talpu":
               className = "potential";
               break;
+            case "@ba.dt.element":
+              className = "elemental-damage";
+              break;
+            // @cc tags are used for base
+            case "@cc.vup":
+              className = "base-value-up";
+              break;
+            case "@cc.vdown":
+              className = "base-value-down";
+              break;
+            case "@cc.rem":
+              className = "base-reminder-text";
+              break;
+            case "@cc.kw":
+              className = "base-keyword";
+              break;
             default:
-              if (tagName.slice(0, 1) === "$") {
-                className = "skill-tooltip";
+              // some @ tag we don't recognize
+              if (tagName.slice(0, 1) === "@") {
+                console.warn(`Unrecognized tag: ${tagName}`);
+              }
+              // $cc - base tooltip
+              // (i.e. Ursus Student Self-Governing Group / Perception Information)
+              // you can click on them to view a base tooltip
+              if (tagName.slice(0, 3) === "$cc") {
+                className = "base-tooltip";
                 break;
               }
-              console.warn(`Unrecognized tag: ${tagName}`);
+              // $ and not $cc (so it's a tooltip in a skill, usually statuses)
+              // you can click on them to view a tooltip (i.e. Bind)
+              className = "skill-tooltip";
               break;
           }
           resultingString += `<span class="${className}">`;
