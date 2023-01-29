@@ -6,12 +6,14 @@ import { fetchJetroyzRiicTranslations } from "./fetch-jetroyz-translations";
 import type * as GameDataTypes from "../src/gamedata-types";
 
 export interface RiicSkill {
-  buffId: string;
-  name: string;
-  description: string;
-  skillIcon: string;
-  minElite: number;
-  minLevel: number;
+  stages: Array<{
+    buffId: string;
+    name: string;
+    description: string;
+    skillIcon: string;
+    minElite: number;
+    minLevel: number;
+  }>;
 }
 
 /**
@@ -22,7 +24,6 @@ export async function aggregateRiicData() {
   const jetRiicTranslations = await fetchJetroyzRiicTranslations();
 
   const opToRiicSkills: { [operatorId: string]: RiicSkill[] } = {};
-  const cursedSkillIdsRequiringJetTLs = new Set<string>();
   Object.values(cnBuildingData.chars)
     .filter((buffChar) => {
       const { charId } = buffChar;
@@ -39,9 +40,17 @@ export async function aggregateRiicData() {
       const { charId } = cnCharRiicData;
       const enCharRiicData =
         enBuildingData.chars[charId as keyof typeof enBuildingData.chars];
-      const charBuffs = cnCharRiicData.buffChar.flatMap(
+      const charBuffs = cnCharRiicData.buffChar.map(
         ({ buffData }, skillIndex) => {
-          return buffData.map((cnBuff, skillLevelIndex) => {
+          const buffStages = buffData.map((cnBuff, skillLevelIndex) => {
+            let requiresJetTL = false;
+            const { buffId } = cnBuff;
+            const baseBuffStage = {
+              buffId,
+              minElite: cnBuff.cond.phase,
+              minLevel: cnBuff.cond.level,
+            };
+
             if (enCharRiicData != null) {
               const enBuff =
                 enCharRiicData.buffChar[skillIndex].buffData[skillLevelIndex];
@@ -49,48 +58,41 @@ export async function aggregateRiicData() {
                 console.warn(
                   `Mismatch: CN buffId ${cnBuff.buffId} does not match EN buffId ${enBuff.buffId}; adding to forced Jet TL list`
                 );
-                cursedSkillIdsRequiringJetTLs.add(cnBuff.buffId);
+                requiresJetTL = true;
               }
             }
+
+            const enBuffData =
+              enBuildingData.buffs[buffId as keyof typeof enBuildingData.buffs];
+            const cnBuffData =
+              cnBuildingData.buffs[buffId as keyof typeof cnBuildingData.buffs];
+            let name = enBuffData?.buffName ?? cnBuffData.buffName;
+            let description = enBuffData?.description ?? cnBuffData.description;
+            const jetTL = jetRiicTranslations[buffId];
+            if ((requiresJetTL || enBuffData == null) && jetTL != null) {
+              name = jetTL.name;
+              description = jetTL.description;
+            } else if (enBuffData == null) {
+              console.warn("No translation available for buff: " + buffId);
+            }
+
             return {
-              buffId: cnBuff.buffId,
-              minElite: cnBuff.cond.phase,
-              minLevel: cnBuff.cond.level,
+              ...baseBuffStage,
+              name,
+              description,
+              skillIcon: cnBuffData.skillIcon,
             };
           });
+
+          return {
+            stages: buffStages,
+          };
         }
       );
-
-      const charBuffsFull = charBuffs.map((charBuff) => {
-        const { buffId } = charBuff;
-        const isInEN =
-          enBuildingData.buffs[buffId as keyof typeof enBuildingData.buffs] !=
-          null;
-        const buffProperties =
-          enBuildingData.buffs[buffId as keyof typeof enBuildingData.buffs] ??
-          cnBuildingData.buffs[buffId as keyof typeof cnBuildingData.buffs];
-
-        let name = buffProperties.buffName;
-        let description = buffProperties.description;
-        if (!isInEN || cursedSkillIdsRequiringJetTLs.has(buffId)) {
-          const jetTL = jetRiicTranslations[buffId];
-          if (jetTL != null) {
-            name = jetTL.name;
-            description = jetTL.description;
-          } else {
-            console.warn("No translation available for buff: " + buffId);
-          }
-        }
-
-        return {
-          ...charBuff,
-          name,
-          description,
-          skillIcon: buffProperties.skillIcon,
-        };
-      });
-
-      opToRiicSkills[charId] = charBuffsFull;
+      opToRiicSkills[charId] = charBuffs;
     });
   return opToRiicSkills;
 }
+
+// FIXME DEBUG
+aggregateRiicData();
