@@ -1,5 +1,6 @@
 import { globalStyle, style, styleVariants } from "@vanilla-extract/css";
 import { transparentize } from "polished";
+
 import { breakpoints, spacing } from "../../theme-helpers";
 import { rawColors, vars } from "../../theme.css";
 

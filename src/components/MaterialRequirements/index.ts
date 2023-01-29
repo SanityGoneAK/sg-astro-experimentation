@@ -1,3 +1,3 @@
-import MaterialRequirements from './MaterialRequirements';
+import MaterialRequirements from "./MaterialRequirements";
 
 export default MaterialRequirements;

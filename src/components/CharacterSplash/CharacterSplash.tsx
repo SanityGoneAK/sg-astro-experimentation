@@ -1,10 +1,9 @@
 import { Tab } from "@headlessui/react";
 import { useStore } from "@nanostores/react";
 
-import { operatorSplash, operatorSplashAvatar } from "../../utils/images";
-import { operatorStore } from "../../pages/operators/_store";
-
 import * as classes from "./styles.css";
+import { operatorStore } from "../../pages/operators/_store";
+import { operatorSplash, operatorSplashAvatar } from "../../utils/images";
 
 const CharacterSplash: React.FC = () => {
   const { skins, voices } = useStore(operatorStore);

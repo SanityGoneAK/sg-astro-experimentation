@@ -3,18 +3,17 @@ import { useMemo, useState } from "react";
 import { useStore } from "@nanostores/react";
 import cx from "clsx";
 
-import PillButtonGroup from "../PillButtonGroup";
-import SliderWithInput from "../SliderWithInput";
-import CharacterRange from "../CharacterRange";
-import MaterialRequirements from "../MaterialRequirements";
+import * as classes from "./styles.css";
 import { descriptionToHtml } from "../../description-parser";
+import * as OutputTypes from "../../output-types";
 import { operatorStore } from "../../pages/operators/_store";
 import { skillIcon } from "../../utils/images";
+import CharacterRange from "../CharacterRange";
 import { SpCostIcon, InitialSpIcon, HourglassIcon } from "../icons";
-
-import * as classes from "./styles.css";
+import MaterialRequirements from "../MaterialRequirements";
 import * as sharedPanelClasses from "../OperatorTabs/sharedPanelStyles.css";
-import * as OutputTypes from "../../output-types";
+import PillButtonGroup from "../PillButtonGroup";
+import SliderWithInput from "../SliderWithInput";
 
 const OperatorSkillsPanel: React.FC = () => {
   const operator = useStore(operatorStore);
@@ -24,7 +23,7 @@ const OperatorSkillsPanel: React.FC = () => {
   const [skillLevel, setSkillLevel] = useState(maxSkillLevel);
   const skillLabels = useMemo(
     () => [...Array(numSkills).keys()].map((_, i) => i + 1),
-    []
+    [numSkills]
   );
   const activeSkillTableSkill = operator.skillData[skillNumber - 1];
   const activeSkillLevel = activeSkillTableSkill.levels[skillLevel - 1];
@@ -32,15 +31,16 @@ const OperatorSkillsPanel: React.FC = () => {
     if (skillLevel === 1) {
       return {
         itemCosts: null,
-        minElite: 0,
-        minLevel: 1,
+        minElite: undefined,
+        minLevel: undefined,
       };
     }
     if (skillLevel <= 7) {
       const upgrade = operator.allSkillLvlup[skillLevel - 1 - 1];
       return {
         itemCosts: upgrade.lvlUpCost,
-        minElite: upgrade.unlockCond.phase,
+        minElite:
+          upgrade.unlockCond.phase > 0 ? upgrade.unlockCond.phase : undefined,
         minLevel: upgrade.unlockCond.level,
       };
     }
@@ -52,7 +52,7 @@ const OperatorSkillsPanel: React.FC = () => {
       minElite: upgrade.unlockCond.phase,
       minLevel: upgrade.unlockCond.level,
     };
-  }, [skillNumber, skillLevel]);
+  }, [skillLevel, operator.skills, operator.allSkillLvlup, skillNumber]);
 
   const skillDisplayDuration = useMemo(() => {
     if (activeSkillLevel.duration === -1) {

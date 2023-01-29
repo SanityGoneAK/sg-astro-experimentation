@@ -1,6 +1,7 @@
-import { descriptionToHtml } from "../../description-parser";
-import type * as OutputTypes from "../../output-types";
 import * as classes from "./styles.css";
+import { descriptionToHtml } from "../../description-parser";
+
+import type * as OutputTypes from "../../output-types";
 
 interface Props {
   talent: OutputTypes.Talent;

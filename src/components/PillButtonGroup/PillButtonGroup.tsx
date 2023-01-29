@@ -1,5 +1,5 @@
+/* eslint-disable @typescript-eslint/restrict-template-expressions */
 import { useCallback, useEffect, useRef, useState } from "react";
-import cx from "clsx";
 
 import * as classes from "./styles.css";
 import { spacing } from "../../theme-helpers";
@@ -13,7 +13,7 @@ interface Props<T> {
 
 const eventsToStartAnimatingOn = ["click", "touchstart", "hover"];
 
-const PillButtonGroup = <T extends number | string>({
+const PillButtonGroup = <T,>({
   labels,
   value,
   onChange,
@@ -78,6 +78,7 @@ const PillButtonGroup = <T extends number | string>({
       });
       return () => {
         eventsToStartAnimatingOn.forEach((type) => {
+          // eslint-disable-next-line react-hooks/exhaustive-deps
           rootRef.current?.removeEventListener(type, beginAnimating);
         });
       };
@@ -86,7 +87,7 @@ const PillButtonGroup = <T extends number | string>({
         rootRef.current?.removeEventListener(type, beginAnimating);
       });
     }
-  }, [isAnimating]);
+  }, [beginAnimating, isAnimating]);
 
   useEffect(() => {
     // once thumb parts have been translated, show the thumb

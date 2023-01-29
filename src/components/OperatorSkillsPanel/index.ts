@@ -1,3 +1,3 @@
-import OperatorSkillsPanel from './OperatorSkillsPanel';
+import OperatorSkillsPanel from "./OperatorSkillsPanel";
 
 export default OperatorSkillsPanel;

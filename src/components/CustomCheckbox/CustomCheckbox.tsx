@@ -1,5 +1,7 @@
-import cx from "clsx";
 import React from "react";
+
+import cx from "clsx";
+
 import * as classes from "./styles.css";
 
 export interface CustomCheckboxProps

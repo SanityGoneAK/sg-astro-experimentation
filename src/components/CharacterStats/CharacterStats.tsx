@@ -1,5 +1,8 @@
 import { useMemo } from "react";
 
+import * as classes from "./styles.css";
+import { getStatsAtLevel } from "../../utils/character-stats";
+import CharacterRange from "../CharacterRange";
 import {
   ArtsResistanceIcon,
   AttackPowerIcon,
@@ -10,10 +13,6 @@ import {
   HealthIcon,
   HourglassIcon,
 } from "../icons";
-import CharacterRange from "../CharacterRange";
-import { getStatsAtLevel } from "../../utils/character-stats";
-
-import * as classes from "./styles.css";
 
 import type * as OutputTypes from "../../output-types";
 

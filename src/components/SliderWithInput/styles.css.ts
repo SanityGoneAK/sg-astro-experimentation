@@ -1,5 +1,5 @@
-import { globalStyle, style, styleVariants } from "@vanilla-extract/css";
 import { sliderUnstyledClasses } from "@mui/base/SliderUnstyled";
+import { globalStyle, style, styleVariants } from "@vanilla-extract/css";
 import { rgba } from "polished";
 
 import { breakpoints, spacing } from "../../theme-helpers";

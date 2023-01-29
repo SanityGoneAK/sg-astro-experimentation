@@ -1,8 +1,7 @@
-import { style, globalStyle, styleVariants } from "@vanilla-extract/css";
-import { rgba, transparentize } from "polished";
-import { breakpoints, spacing } from "../../theme-helpers";
-import { linkStyle, rawColors, vars } from "../../theme.css";
-// import { heading as defaultHeading } from "../../components/Layout/styles.css";
+import { style, styleVariants } from "@vanilla-extract/css";
+
+import { spacing } from "../../theme-helpers";
+import { linkStyle, vars } from "../../theme.css";
 
 export const container = style({
   width: "100%",

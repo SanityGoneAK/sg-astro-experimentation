@@ -1,10 +1,8 @@
-import React from "react";
-
 type Props = React.HTMLAttributes<SVGElement> & {
   pathClassName?: string;
 };
 
-const HealthIcon: React.VFC<Props> = ({ pathClassName, ...rest }) => {
+const HealthIcon: React.FC<Props> = ({ pathClassName, ...rest }) => {
   return (
     <svg
       width="14"

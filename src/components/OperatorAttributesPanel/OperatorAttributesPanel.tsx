@@ -1,15 +1,20 @@
 import { useMemo, useState } from "react";
+
 import { useStore } from "@nanostores/react";
 
-import EliteButtonGroup from "../EliteButtonGroup";
-import SliderWithInput from "../SliderWithInput";
-import PillButtonGroup from "../PillButtonGroup";
-import CustomCheckbox from "../CustomCheckbox";
-import CharacterStats from "../CharacterStats";
-import { operatorStore } from "../../pages/operators/_store";
-
 import * as classes from "./styles.css";
+import { operatorStore } from "../../pages/operators/_store";
+import CharacterStats from "../CharacterStats";
+import CustomCheckbox from "../CustomCheckbox";
+import EliteButtonGroup from "../EliteButtonGroup";
+import MaterialRequirements from "../MaterialRequirements";
 import * as sharedPanelClasses from "../OperatorTabs/sharedPanelStyles.css";
+import PillButtonGroup from "../PillButtonGroup";
+import SliderWithInput from "../SliderWithInput";
+
+import type * as OutputTypes from "../../output-types";
+
+const LMD_ITEM_ID = "4001";
 
 const OperatorAttributesPanel: React.FC = () => {
   const operator = useStore(operatorStore);
@@ -25,7 +30,7 @@ const OperatorAttributesPanel: React.FC = () => {
     ];
   }, [operator.modules]);
   const [moduleType, setModuleType] = useState(moduleTypes.at(-1)!);
-  const [moduleLevel, setModuleLevel] = useState<1 | 2 | 3>(3);
+  const [moduleLevel, setModuleLevel] = useState(3);
   const [isTrustBonusChecked, setTrustBonusChecked] = useState(false);
   const [isPotentialBonusChecked, setPotentialBonusChecked] = useState(false);
 
@@ -35,6 +40,21 @@ const OperatorAttributesPanel: React.FC = () => {
       : operator.modules.find((module) =>
           module.moduleIcon.endsWith(moduleType)
         )!.moduleId;
+
+  const itemCosts = useMemo(() => {
+    const itemCosts: OutputTypes.ItemCost[] = [];
+    const lmdCost = upgradeLmdCost(operator.rarity, elite);
+    if (lmdCost > 0) {
+      itemCosts.push({
+        id: LMD_ITEM_ID,
+        count: lmdCost,
+      });
+    }
+    itemCosts.push(...(operator.phases[elite].evolveCost ?? []));
+    return itemCosts;
+  }, [elite, operator.phases, operator.rarity]);
+  const minElite = elite > 0 ? elite - 1 : 0;
+  const minLevel = maxLevelAtElite(operator.rarity, minElite);
 
   const handleEliteChange = (newElite: number) => {
     setElite(newElite);
@@ -102,9 +122,75 @@ const OperatorAttributesPanel: React.FC = () => {
           usePotentialBonus={isPotentialBonusChecked}
           useTrustBonus={isTrustBonusChecked}
         />
+        {itemCosts.length > 0 && (
+          <MaterialRequirements
+            itemCosts={itemCosts}
+            minElite={minElite}
+            minLevel={minLevel}
+          />
+        )}
       </div>
     </>
   );
 };
 
 export default OperatorAttributesPanel;
+
+function maxLevelAtElite(rarity: number, elite: number) {
+  switch (rarity) {
+    case 1:
+    case 2:
+      return 30;
+    case 3:
+      if (elite === 1) return 55;
+      return 40;
+    case 4:
+      if (elite === 2) return 70;
+      if (elite === 1) return 60;
+      return 45;
+    case 5:
+      if (elite === 2) return 80;
+      if (elite === 1) return 70;
+      return 50;
+    case 6:
+      if (elite === 2) return 90;
+      if (elite === 1) return 80;
+      return 50;
+  }
+}
+
+function upgradeLmdCost(rarity: number, elite: number) {
+  switch (rarity) {
+    case 3:
+      if (elite === 1) {
+        return 10000;
+      }
+      return 0;
+    case 4:
+      if (elite === 2) {
+        return 60000;
+      }
+      if (elite === 1) {
+        return 15000;
+      }
+      return 0;
+    case 5:
+      if (elite === 2) {
+        return 120000;
+      }
+      if (elite === 1) {
+        return 20000;
+      }
+      return 0;
+    case 6:
+      if (elite === 2) {
+        return 180000;
+      }
+      if (elite === 1) {
+        return 30000;
+      }
+      return 0;
+    default:
+      return 0;
+  }
+}

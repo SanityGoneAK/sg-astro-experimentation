@@ -1,7 +1,7 @@
+import * as classes from "./styles.css";
 import DropdownSelect, {
   DropdownOption,
 } from "../DropdownSelect/DropdownSelect";
-
 import {
   PotentialFiveIcon,
   PotentialFourIcon,
@@ -10,8 +10,6 @@ import {
   PotentialThreeIcon,
   PotentialTwoIcon,
 } from "../icons";
-
-import * as classes from "./styles.css";
 
 const potentialLabel = (potential: number) => {
   let icon = null;
@@ -69,7 +67,7 @@ export interface PotentialsDropdownProps {
   onChange: (potential: number) => void;
 }
 
-const PotentialsDropdown: React.VFC<PotentialsDropdownProps> = (props) => {
+const PotentialsDropdown: React.FC<PotentialsDropdownProps> = (props) => {
   const { potentialsToShow, currentPotential, onChange } = props;
 
   const potList = potentialsToShow ?? [0, 1, 2, 3, 4, 5]; // default to all pots

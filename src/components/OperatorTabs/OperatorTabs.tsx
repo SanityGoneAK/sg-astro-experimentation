@@ -1,10 +1,10 @@
 import { Tab } from "@headlessui/react";
 
+import * as classes from "./styles.css";
 import OperatorAttributesPanel from "../OperatorAttributesPanel";
+import OperatorRiicPanel from "../OperatorRiicPanel";
 import OperatorSkillsPanel from "../OperatorSkillsPanel";
 import OperatorTalentsPanel from "../OperatorTalentsPanel";
-
-import * as classes from "./styles.css";
 
 const OperatorTabs: React.FC = () => {
   return (
@@ -30,9 +30,17 @@ const OperatorTabs: React.FC = () => {
         <Tab.Panel>
           <OperatorSkillsPanel />
         </Tab.Panel>
-        {["Modules", "RIIC", "Misc"].map((label) => {
-          return <Tab.Panel key={label}>{label} panel</Tab.Panel>;
-        })}
+        <Tab.Panel>
+          {/* TODO */}
+          Modules panel
+        </Tab.Panel>
+        <Tab.Panel>
+          <OperatorRiicPanel />
+        </Tab.Panel>
+        <Tab.Panel>
+          {/* TODO */}
+          Misc panel
+        </Tab.Panel>
       </Tab.Panels>
     </Tab.Group>
   );

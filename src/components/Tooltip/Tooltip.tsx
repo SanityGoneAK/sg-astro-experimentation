@@ -1,4 +1,3 @@
-import React from "react";
 import Tippy from "@tippyjs/react";
 
 import { themeName } from "./styles.css";
@@ -7,8 +6,14 @@ import "tippy.js/dist/tippy.css";
 
 import type { TippyProps } from "@tippyjs/react";
 
-const Tooltip: React.VFC<TippyProps> = ({ children, theme, ...rest }) => {
-  return null;
+const Tooltip: React.FC<TippyProps> = ({ children, theme, ...rest }) => {
+  // attempting to SSR this causes `astro build` to explode
+  // we don't actually care about SSRing a tooltip,
+  // so just return the tooltip trigger (children) in this case
+  if (typeof window === "undefined") {
+    return children;
+  }
+
   return (
     // offset: 8px is the height of the tooltip arrow, then spacing(0.5) is 4px
     <Tippy

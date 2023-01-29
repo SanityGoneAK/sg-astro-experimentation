@@ -1,4 +1,3 @@
-/* eslint-disable @next/next/no-img-element */
 import React, {
   useCallback,
   useEffect,
@@ -6,20 +5,20 @@ import React, {
   useRef,
   useState,
 } from "react";
-import FlexSearch, { Index } from "flexsearch";
+
 import { Combobox } from "@headlessui/react";
+import FlexSearch, { Index } from "flexsearch";
 import levenshtein from "js-levenshtein";
 
+import * as classes from "./styles.css";
+import search from "../../../data/search.json";
+import slugify, { subclassSlugify } from "../../slugify";
 import {
   operatorAvatar,
   operatorClassIcon,
   operatorBranchIcon,
 } from "../../utils/images";
-import slugify, { subclassSlugify } from "../../slugify";
 import SearchIcon from "../icons/SearchIcon";
-import search from "../../../data/search.json";
-
-import * as classes from "./styles.css";
 
 interface ClassSearchResult {
   type: "class";
@@ -73,7 +72,7 @@ interface Props {
   onSelected?: () => void;
 }
 
-const SearchBar: React.VFC<Props> = ({ placeholder, onSelected }) => {
+const SearchBar: React.FC<Props> = ({ placeholder, onSelected }) => {
   const inputRef = useRef<HTMLInputElement>(null);
   const [query, setQuery] = useState("");
   const index = useRef<null | Index<SearchResult>>(null);
@@ -170,10 +169,10 @@ const SearchBar: React.VFC<Props> = ({ placeholder, onSelected }) => {
                     Operators
                   </li>
                   {operatorResults.map((result) => {
-                    const hasGuide =
-                      search.operatorsWithGuides[
-                        result.name as keyof typeof search.operatorsWithGuides
-                      ] != null;
+                    // const hasGuide =
+                    //   search.operatorsWithGuides[
+                    //     result.name as keyof typeof search.operatorsWithGuides
+                    //   ] != null;
                     return (
                       <Combobox.Option<"li", SearchResult | null>
                         key={result.charId}

@@ -38,3 +38,6 @@ export const moduleTypeImage = (moduleType: string): string =>
 
 export const itemImage = (itemId: string): string =>
   `${baseURL}/items/${itemsJson[itemId as keyof typeof itemsJson].iconId}.png`;
+
+export const riicSkillIcon = (riicSkillIcon: string): string =>
+  `https://github.com/astral4/arkdata/raw/main/assets/torappu/dynamicassets/arts/building/skills/${riicSkillIcon}.png`;

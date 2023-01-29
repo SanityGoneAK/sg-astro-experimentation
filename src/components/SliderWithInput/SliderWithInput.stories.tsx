@@ -1,7 +1,8 @@
+import { useState } from "react";
+
 import SliderWithInput from "./SliderWithInput";
 
 import type { ComponentStoryObj } from "@storybook/react";
-import { useState } from "react";
 
 export default {
   component: SliderWithInput,
