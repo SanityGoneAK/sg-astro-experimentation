@@ -24,32 +24,37 @@ const OperatorTabs: React.FC = () => {
       <Tab.List className={classes.tabList}>
         {tabs.map((label) => {
           return (
-            <Tab key={label} className={classes.tabListButton}>
+            <Tab
+              key={label}
+              id={`operator-${label.toLowerCase()}-button`}
+              aria-controls={`operator-${label.toLowerCase()}-tabpanel`}
+              className={classes.tabListButton}
+            >
               {label}
             </Tab>
           );
         })}
       </Tab.List>
       <Tab.Panels>
-        <Tab.Panel>
+        <Tab.Panel id="operator-attributes-panel">
           <OperatorAttributesPanel />
         </Tab.Panel>
-        <Tab.Panel>
+        <Tab.Panel id="operator-talents-panel">
           <OperatorTalentsPanel />
         </Tab.Panel>
         {operator.skillData.length > 0 && (
-          <Tab.Panel>
+          <Tab.Panel id="operator-skills-panel">
             <OperatorSkillsPanel />
           </Tab.Panel>
         )}
-        <Tab.Panel>
+        <Tab.Panel id="operator-modules-panel">
           {/* TODO */}
           Modules panel
         </Tab.Panel>
-        <Tab.Panel>
+        <Tab.Panel id="operator-riic-panel">
           <OperatorRiicPanel />
         </Tab.Panel>
-        <Tab.Panel>
+        <Tab.Panel id="operator-misc-panel">
           {/* TODO */}
           Misc panel
         </Tab.Panel>
