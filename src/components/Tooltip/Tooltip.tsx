@@ -8,9 +8,10 @@ import type { TippyProps } from "@tippyjs/react";
 
 const Tooltip: React.FC<TippyProps> = ({ children, theme, ...rest }) => {
   // attempting to SSR this causes `astro build` to explode
-  // we don't actually care about SSRing a tooltip, so just return null in this case
+  // we don't actually care about SSRing a tooltip,
+  // so just return the tooltip trigger (children) in this case
   if (typeof window === "undefined") {
-    return null;
+    return children;
   }
 
   return (
