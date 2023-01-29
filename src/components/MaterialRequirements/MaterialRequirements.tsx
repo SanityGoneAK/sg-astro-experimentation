@@ -1,6 +1,6 @@
 import { itemImage } from "../../utils/images";
 import itemsJson from "../../../data/items.json";
-import { EliteOneIcon, EliteTwoIcon } from "../icons";
+import { EliteOneIcon, EliteTwoIcon, EliteZeroIcon } from "../icons";
 
 import * as classes from "./styles.css";
 
@@ -20,16 +20,17 @@ const shortNumberFormat = Intl.NumberFormat("en-US", {
 
 const MaterialRequirements: React.FC<Props> = ({
   itemCosts,
-  minElite = 0,
+  minElite,
   minLevel = 1,
   minSkillLevel = 1,
 }) => {
   return (
     <div className={classes.root}>
-      {minElite > 0 && (
+      {minElite != null && (
         <div className={classes.minEliteMinLevel}>
-          {minElite === 1 && <EliteOneIcon active={true} />}
-          {minElite === 2 && <EliteTwoIcon active={true} />}
+          {minElite === 0 && <EliteZeroIcon active />}
+          {minElite === 1 && <EliteOneIcon active />}
+          {minElite === 2 && <EliteTwoIcon active />}
           <span className={classes.minLevel}>Lv{minLevel}</span>
         </div>
       )}
