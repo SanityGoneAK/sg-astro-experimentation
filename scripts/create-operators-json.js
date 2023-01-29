@@ -10,7 +10,10 @@ import rangeTable from "../ArknightsGameData/zh_CN/gamedata/excel/range_table.js
 import voiceTable from "../ArknightsGameData/zh_CN/gamedata/excel/charword_table.json";
 import skinTable from "../ArknightsGameData/zh_CN/gamedata/excel/skin_table.json";
 
-import { fetchJetroyzSkillTalentTranslations } from "./fetch-jetroyz-translations";
+import {
+  fetchJetroyzSkillTranslations,
+  fetchJetroyzTalentTranslations,
+} from "./fetch-jetroyz-translations";
 import {
   getReleaseOrderAndLimitedLookup,
   getSkinObtainSourceAndCosts,
@@ -43,8 +46,10 @@ export async function createOperatorsJson(dataDir) {
     ([charId]) => !enCharacterIds.has(charId)
   );
 
-  const { jetSkillTranslations, jetTalentTranslations } =
-    await fetchJetroyzSkillTalentTranslations();
+  const [jetSkillTranslations, jetTalentTranslations] = await Promise.all([
+    fetchJetroyzSkillTranslations(),
+    fetchJetroyzTalentTranslations(),
+  ]);
   const skinSourceAndCostLookup = await getSkinObtainSourceAndCosts();
 
   const summonIdToOperatorId = {};

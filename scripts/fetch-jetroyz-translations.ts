@@ -28,14 +28,14 @@ interface TalentTranslations {
   >;
 }
 
-/**
- * Fetches Jetroyz's unofficial (is it really unofficial if he works for Yostar?) CN -> EN translations
- * for skills and talents from the Aceship repo hosted on GitHub.
- */
-export async function fetchJetroyzSkillTalentTranslations() {
+export async function fetchJetroyzTalentTranslations() {
   const jetTalentTranslations = (
     await axios.get<TalentTranslations>(jetroyzTalentsTranslationsUrl)
   ).data;
+  return jetTalentTranslations;
+}
+
+export async function fetchJetroyzSkillTranslations() {
   const rawSkillsTranslations = (
     await axios.get<SkillTranslations>(jetroyzSkillsTranslationsUrl)
   ).data;
@@ -52,9 +52,6 @@ export async function fetchJetroyzSkillTalentTranslations() {
       ]
     )
   );
-
-  return {
-    jetSkillTranslations,
-    jetTalentTranslations,
-  };
+  return jetSkillTranslations;
+}
 }
