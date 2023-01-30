@@ -30,8 +30,8 @@ export const directionHandleWrapper = style({
 });
 
 export const directionHandle = style({
-  width: spacing(8),
-  height: spacing(8),
+  width: spacing(4),
+  height: spacing(4),
   // position: "absolute",
   zIndex: 550,
   backgroundColor: "#A7E855",

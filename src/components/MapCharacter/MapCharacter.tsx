@@ -1,11 +1,13 @@
-import type { Character } from "../../output-types";
-import { operatorAvatar } from "../../utils/images";
+import { useState } from "react";
+
 import { useDraggable } from "@dnd-kit/core";
+import { CSS } from "@dnd-kit/utilities";
 
 import * as classes from "./styles.css";
-import { CSS } from "@dnd-kit/utilities";
-import { useState } from "react";
+import { operatorAvatar } from "../../utils/images";
 import MapCharacterDirectionSelector from "../MapCharacterDirectionSelector";
+
+import type { Character } from "../../output-types";
 
 interface Props {
   character: Character;
@@ -25,16 +27,18 @@ const MapCharacter: React.FC<Props> = ({ character, inMap }) => {
   return (
     <>
       {inMap && !direction && (
-        <div>
-          <MapCharacterDirectionSelector setDirection={setDirection} />
-        </div>
+        <MapCharacterDirectionSelector setDirection={setDirection} />
       )}
       <div
         ref={setNodeRef}
         style={style}
         {...listeners}
         {...attributes}
-        className={classes.base}
+        className={
+          inMap
+            ? classes.operatorPortrait.map
+            : classes.operatorPortrait.selector
+        }
       >
         <div
           className={

@@ -396,3 +396,10 @@ interface Tile {
   passableMask: number;
   [otherProperties: string]: unknown;
 }
+
+export interface DraggableCharacter {
+  row: number | null;
+  col: number | null;
+  charId: string;
+  characterObject: Character;
+}

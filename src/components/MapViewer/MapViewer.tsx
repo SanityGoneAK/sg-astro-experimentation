@@ -1,24 +1,18 @@
-import * as classes from "./styles.css";
+import { useCallback, useState } from "react";
+
 import { DndContext, DragEndEvent, DragStartEvent } from "@dnd-kit/core";
-import MapTile from "../MapTile";
+import { snapCenterToCursor } from "@dnd-kit/modifiers";
+
+import * as classes from "./styles.css";
 import operatorsJson from "../../../data/operators.json";
+import MapCharacter from "../MapCharacter";
+import MapCharacterTray from "../MapCharacterTray";
+import MapTile from "../MapTile";
 
 import type * as OutputTypes from "../../output-types";
-import MapCharacter from "../MapCharacter";
-import { useCallback, useState } from "react";
-import { func } from "prop-types";
-import { character } from "../MapTile/styles.css";
-import { snapCenterToCursor } from "@dnd-kit/modifiers";
 
 interface Props {
   stageData: OutputTypes.StageData;
-}
-
-interface DraggableCharacter {
-  row: number | null;
-  col: number | null;
-  charId: string;
-  characterObject: OutputTypes.Character;
 }
 
 const MapViewer: React.FC<Props> = ({ stageData }) => {
@@ -27,10 +21,11 @@ const MapViewer: React.FC<Props> = ({ stageData }) => {
 
   const [characters, setCharacters] = useState(() => getCharacters());
   const [movingPiece, setMovingPiece] =
-    useState<DraggableCharacter | null>(null);
+    useState<OutputTypes.DraggableCharacter | null>(null);
 
   const getSvgDefs = (
     <svg
+      className="visually-hidden"
       width="64"
       height="64"
       viewBox="0 0 64 64"
@@ -171,27 +166,29 @@ const MapViewer: React.FC<Props> = ({ stageData }) => {
       </defs>
     </svg>
   );
+  const checkCanDrop = useCallback(
+    function checkCanDrop(
+      moveToRow: number,
+      moveToCol: number,
+      movingPiece: OutputTypes.DraggableCharacter
+    ) {
+      const tileIndex = board[moveToRow][moveToCol];
+      const tile = tiles[tileIndex];
 
-  function checkCanDrop(
-    moveToRow: number,
-    moveToCol: number,
-    movingPiece: DraggableCharacter
-  ) {
-    const tileIndex = board[moveToRow][moveToCol];
-    const tile = tiles[tileIndex];
+      const characterPosition = movingPiece.characterObject.position;
 
-    const characterPosition = movingPiece.characterObject.position;
+      if (characterPosition == "MELEE" && tile.buildableType == 1) {
+        return true;
+      }
 
-    if (characterPosition == "MELEE" && tile.buildableType == 1) {
-      return true;
-    }
+      if (characterPosition == "RANGED" && tile.buildableType == 2) {
+        return true;
+      }
 
-    if (characterPosition == "RANGED" && tile.buildableType == 2) {
-      return true;
-    }
-
-    return false;
-  }
+      return false;
+    },
+    [board, tiles]
+  );
 
   function getCharacters() {
     const testOp = operatorsJson[
@@ -205,59 +202,67 @@ const MapViewer: React.FC<Props> = ({ stageData }) => {
         charId: testOp.charId,
         characterObject: testOp,
       },
-    ] as DraggableCharacter[];
+    ] as OutputTypes.DraggableCharacter[];
   }
+  const setCharacterCoordiantes = useCallback(
+    function setCharacterCoordiantes(
+      charId: string,
+      row: number | null,
+      col: number | null
+    ) {
+      const transformedCharacters = characters.map((character) => {
+        if (character.charId == charId) {
+          character.row = row;
+          character.col = col;
+        }
+        return character;
+      });
 
-  function setCharacterCoordiantes(
-    charId: string,
-    row: number | null,
-    col: number | null
-  ) {
-    const transformedCharacters = characters.map((character) => {
-      if (character.charId == charId) {
-        character.row = row;
-        character.col = col;
+      setCharacters(transformedCharacters);
+    },
+    [characters]
+  );
+
+  const handleDragStart = useCallback(
+    function handleDragStart(event: DragStartEvent) {
+      const activeCharacter = characters.find(
+        (character) => character.charId == event.active.id
+      );
+      if (activeCharacter) {
+        setMovingPiece(activeCharacter);
       }
-      return character;
-    });
+    },
+    [characters]
+  );
 
-    setCharacters(transformedCharacters);
-  }
-
-  function handleDragStart(event: DragStartEvent) {
-    const activeCharacter = characters.find(
-      (character) => character.charId == event.active.id
-    );
-    if (activeCharacter) {
-      setMovingPiece(activeCharacter);
-    }
-  }
-
-  function handleDragEnd(event: DragEndEvent) {
-    if (!movingPiece) {
-      return;
-    }
-    if (event.over == null) {
-      setCharacterCoordiantes(movingPiece.charId, null, null);
-      setMovingPiece(null);
-      return;
-    }
-
-    const [row, col] = event.over.id.toString().split("-").map(Number);
-
-    const tileAlreadyHasCharacter = characters.some(
-      (character) => character.row == row && character.col == col
-    );
-
-    if (event.over && !tileAlreadyHasCharacter) {
-      if (!checkCanDrop(row, col, movingPiece)) {
+  const handleDragEnd = useCallback(
+    function handleDragEnd(event: DragEndEvent) {
+      if (!movingPiece) {
+        return;
+      }
+      if (event.over == null) {
+        setCharacterCoordiantes(movingPiece.charId, null, null);
+        setMovingPiece(null);
         return;
       }
 
-      setCharacterCoordiantes(movingPiece.charId, row, col);
-    }
-    setMovingPiece(null);
-  }
+      const [row, col] = event.over.id.toString().split("-").map(Number);
+
+      const tileAlreadyHasCharacter = characters.some(
+        (character) => character.row == row && character.col == col
+      );
+
+      if (event.over && !tileAlreadyHasCharacter) {
+        if (!checkCanDrop(row, col, movingPiece)) {
+          return;
+        }
+
+        setCharacterCoordiantes(movingPiece.charId, row, col);
+      }
+      setMovingPiece(null);
+    },
+    [movingPiece, characters, checkCanDrop, setCharacterCoordiantes]
+  );
 
   const handleDragCancel = useCallback(() => {
     setMovingPiece(null);
@@ -270,7 +275,7 @@ const MapViewer: React.FC<Props> = ({ stageData }) => {
       onDragCancel={handleDragCancel}
       modifiers={[snapCenterToCursor]}
     >
-      <>
+      <div className={classes.container}>
         {getSvgDefs}
         {board.map((row, rowIndex) => {
           return (
@@ -307,18 +312,8 @@ const MapViewer: React.FC<Props> = ({ stageData }) => {
           );
         })}
 
-        {characters
-          .filter((character) => character.row == null && character.col == null)
-          .map((character) => {
-            return (
-              <MapCharacter
-                key={character.charId}
-                inMap={false}
-                character={character.characterObject}
-              ></MapCharacter>
-            );
-          })}
-      </>
+        <MapCharacterTray characters={characters} />
+      </div>
     </DndContext>
   );
 };
