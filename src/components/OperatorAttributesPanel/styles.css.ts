@@ -29,6 +29,12 @@ export const label = style({
 });
 
 export const statsMaterialsContainer = style({
+  display: "grid",
   padding: spacing(3),
+  rowGap: spacing(2),
   background: vars.colors.neutrals.darktone,
+});
+
+export const promotionRequirementsHeading = style({
+  ...vars.newTypography.header2,
 });

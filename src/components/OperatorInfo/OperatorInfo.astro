@@ -1,15 +1,9 @@
 ---
 import InterpunctSpacer from "../InterpunctSpacer/InterpunctSpacer.astro";
-import TraitInfo from "../TraitInfo/TraitInfo.astro";
-import ToggleButton from "../ToggleButton/ToggleButton.astro";
 import StarIcon from "../icons/StarIcon.astro";
-import {
-  operatorAvatar,
-  operatorBranchIcon,
-  operatorClassIcon,
-} from "../../utils/images";
+import OperatorBranchAndTrait from "../OperatorBranchAndTrait";
+import { operatorClassIcon } from "../../utils/images";
 import { professionToClass } from "../../utils/classes";
-import { subProfessionIdToBranch } from "../../utils/branches";
 import { getMeleeOrRangedOrBoth } from "./helpers";
 
 import * as classes from "./styles.css";
@@ -27,68 +21,38 @@ const rarity = operator.rarity as 1 | 2 | 3 | 4 | 5 | 6;
 ---
 
 <div class={classes.root}>
-  <div class={classes.portraitNameRarity}>
-    <img
-      class={classes.portrait}
-      src={operatorAvatar(operator.charId)}
-      alt=""
-    />
-    <div class={classes.name}>
-      <h1 class={classes.baseName}>
-        {baseName}
-        {alterName && <span class={classes.alterName}>The {alterName}</span>}
-      </h1>
-    </div>
-    <div class={classes.rarityAndLimitedness}>
+  <h1 class={classes.name}>
+    {baseName}
+    {alterName && <span class={classes.alterName}>The {alterName}</span>}
+  </h1>
+  <div class={classes.rarityClassBranch}>
+    <div class={classes.rarityClassBranchItem}>
+      <span class="visually-hidden">Rarity: {rarity}</span>
+      <span class={classes.rarityStars}>
+        {
+          Array(rarity)
+            .fill(null)
+            .map(() => <StarIcon rarity={rarity} />)
+        }
+      </span>
       {
         operator.isLimited && (
           <span class={classes.limitedText[rarity]}>Limited</span>
         )
       }
-      <span class="visually-hidden">Rarity: {rarity}</span>
-      {
-        Array(rarity)
-          .fill(null)
-          .map(() => <StarIcon rarity={rarity} />)
-      }
     </div>
-  </div>
-
-  <div class={classes.classBranchTraitToggle}>
-    <div class={classes.classBranch}>
-      <span class={classes.classBranchNameAndIconWrapper}>
-        <img
-          class={classes.classBranchIcon}
-          src={operatorClassIcon(operatorClass.toLowerCase())}
-          alt=""
-        />
-        {operatorClass}
-      </span>
-      <span class={classes.branchNameAndIconWrapper}>
-        <img
-          class={classes.classBranchIcon}
-          src={operatorBranchIcon(operator.subProfessionId)}
-          alt=""
-        />
-        {subProfessionIdToBranch(operator.subProfessionId)}
-      </span>
-      <InterpunctSpacer class={classes.spacer} />
-      <span class={classes.position}
-        >{getMeleeOrRangedOrBoth(operator.position, operator.description)}</span
-      >
+    <div class={classes.rarityClassBranchItem}>
+      <img
+        class={classes.classBranchIcon}
+        src={operatorClassIcon(operatorClass.toLowerCase())}
+        alt=""
+      />
+      <span>{operatorClass}</span>
     </div>
-
-    <ToggleButton
-      buttonId="trait-toggle"
-      containerId="trait-info-container"
-      initiallyVisible={false}
+    <OperatorBranchAndTrait client:idle />
+    <InterpunctSpacer />
+    <span class={classes.position}
+      >{getMeleeOrRangedOrBoth(operator.position, operator.description)}</span
     >
-      Trait
-    </ToggleButton>
   </div>
-
-  <TraitInfo
-    id="trait-info-container"
-    subProfessionId={operator.subProfessionId}
-  />
 </div>

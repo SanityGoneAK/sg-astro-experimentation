@@ -9,11 +9,15 @@ const CharacterSplash: React.FC = () => {
   const { skins, voices } = useStore(operatorStore);
 
   return (
-    <Tab.Group as={"div"} className={classes.container}>
+    <Tab.Group as="div" className={classes.container}>
       <Tab.List className={classes.tabList}>
         {skins.map((skin) => {
           return (
-            <Tab className={classes.tabIcon} key={skin.skinId}>
+            <Tab
+              id={`${skin.skinId}-button`}
+              className={classes.tabIcon}
+              key={skin.skinId}
+            >
               <img
                 className={classes.tabIconImage}
                 src={operatorSplashAvatar(skin.avatarId)}
@@ -26,7 +30,11 @@ const CharacterSplash: React.FC = () => {
       <Tab.Panels>
         {skins.map((skin) => {
           return (
-            <Tab.Panel className={classes.tabPanel} key={skin.skinId}>
+            <Tab.Panel
+              id={`${skin.skinId}-tabpanel`}
+              className={classes.tabPanel}
+              key={skin.skinId}
+            >
               {/* TODO: This image causes layout shift of the label when loading.
                   Change to Astro native images / provide height */}
               <img

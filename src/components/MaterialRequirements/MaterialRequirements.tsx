@@ -2,6 +2,7 @@ import * as classes from "./styles.css";
 import itemsJson from "../../../data/items.json";
 import { itemImage } from "../../utils/images";
 import { EliteOneIcon, EliteTwoIcon, EliteZeroIcon } from "../icons";
+import Tooltip from "../Tooltip";
 
 import type * as OutputTypes from "../../output-types";
 
@@ -40,26 +41,28 @@ const MaterialRequirements: React.FC<Props> = ({
         {itemCosts.map(({ id, count }) => {
           const { name, rarity } = itemsJson[id as keyof typeof itemsJson];
           return (
-            <div key={id} className={classes.itemStack}>
-              <div
-                className={
-                  classes.itemRarityBg[
-                    rarity as keyof typeof classes.itemRarityBg
-                  ]
-                }
-              />
-              <img
-                className={classes.itemImage}
-                src={itemImage(id)}
-                alt={name}
-              />
-              <span className={classes.count}>
-                <span className="visually-hidden">Count: {count}</span>
-                <span aria-hidden="true">
-                  {shortNumberFormat.format(count)}
+            <Tooltip key={id} content={name}>
+              <div className={classes.itemStack}>
+                <div
+                  className={
+                    classes.itemRarityBg[
+                      rarity as keyof typeof classes.itemRarityBg
+                    ]
+                  }
+                />
+                <img
+                  className={classes.itemImage}
+                  src={itemImage(id)}
+                  alt={name}
+                />
+                <span className={classes.count}>
+                  <span className="visually-hidden">Count: {count}</span>
+                  <span aria-hidden="true">
+                    {shortNumberFormat.format(count)}
+                  </span>
                 </span>
-              </span>
-            </div>
+              </div>
+            </Tooltip>
           );
         })}
       </div>
