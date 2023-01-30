@@ -2,6 +2,7 @@
 import slugify from "../../slugify";
 import Layout from "../../layouts/Layout.astro";
 import MapViewer from "../../components/MapViewer";
+import MapCharacterDirectionSelector from "../../components/MapCharacterDirectionSelector";
 
 import mapsJson from "../../../data/maps.json";
 import { levelScenePairs } from "../../../ArknightsGameData/zh_CN/gamedata/battle/battle_misc_table.json";
@@ -19,8 +20,10 @@ export function getStaticPaths() {
   });
 }
 
-function getCorrectLevelId(levelId) {
-  return levelScenePairs[levelId] ? levelScenePairs[levelId].levelId : levelId;
+function getCorrectLevelId(levelId: string): string {
+  return levelScenePairs[levelId as keyof typeof levelScenePairs]
+    ? levelScenePairs[levelId as keyof typeof levelScenePairs].levelId
+    : levelId;
 }
 
 const { stageId } = Astro.props;
@@ -38,10 +41,10 @@ const stageData = await import(
 );
 ---
 
-<Layout title={stageInfo.stageId}>
+<Layout title={stageInfo.code}>
   <h2>
-    {stageInfo.stageId}
-    {stageData.options.characterLimit}
+    {stageInfo.code}
   </h2>
-  <MapViewer />
+
+  <MapViewer stageData={stageData} client:visible />
 </Layout>

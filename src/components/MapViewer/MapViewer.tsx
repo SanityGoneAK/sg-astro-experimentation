@@ -1,9 +1,34 @@
 import * as classes from "./styles.css";
-import { DndContext } from "@dnd-kit/core";
+import { DndContext, DragEndEvent, DragStartEvent } from "@dnd-kit/core";
+import MapTile from "../MapTile";
+import operatorsJson from "../../../data/operators.json";
 
-interface Props {}
+import type * as OutputTypes from "../../output-types";
+import MapCharacter from "../MapCharacter";
+import { useCallback, useState } from "react";
+import { func } from "prop-types";
+import { character } from "../MapTile/styles.css";
+import { snapCenterToCursor } from "@dnd-kit/modifiers";
 
-const MapViewer: React.FC<Props> = () => {
+interface Props {
+  stageData: OutputTypes.StageData;
+}
+
+interface DraggableCharacter {
+  row: number | null;
+  col: number | null;
+  charId: string;
+  characterObject: OutputTypes.Character;
+}
+
+const MapViewer: React.FC<Props> = ({ stageData }) => {
+  const tiles = stageData.mapData.tiles;
+  const board = stageData.mapData.map;
+
+  const [characters, setCharacters] = useState(() => getCharacters());
+  const [movingPiece, setMovingPiece] =
+    useState<DraggableCharacter | null>(null);
+
   const getSvgDefs = (
     <svg
       width="64"
@@ -14,11 +39,13 @@ const MapViewer: React.FC<Props> = () => {
     >
       <defs>
         <rect
+          x="2"
+          y="2"
           id="tile_start"
           width="60"
           height="60"
           stroke="#F45C5C"
-          stroke-width="4"
+          strokeWidth="4"
         />
         <g id="tile_start_drone">
           <rect
@@ -27,35 +54,35 @@ const MapViewer: React.FC<Props> = () => {
             width="60"
             height="60"
             stroke="#F45C5C"
-            stroke-width="4"
+            strokeWidth="4"
           />
           <circle
             cx="23.5"
             cy="23.5"
             r="5.5"
             stroke="#F45C5C"
-            stroke-width="4"
+            strokeWidth="4"
           />
           <circle
             cx="40.5"
             cy="23.5"
             r="5.5"
             stroke="#F45C5C"
-            stroke-width="4"
+            strokeWidth="4"
           />
           <circle
             cx="23.5"
             cy="40.5"
             r="5.5"
             stroke="#F45C5C"
-            stroke-width="4"
+            strokeWidth="4"
           />
           <circle
             cx="40.5"
             cy="40.5"
             r="5.5"
             stroke="#F45C5C"
-            stroke-width="4"
+            strokeWidth="4"
           />
           <rect
             x="28.3685"
@@ -83,56 +110,216 @@ const MapViewer: React.FC<Props> = () => {
           />
         </g>
         <rect
+          x="2"
+          y="2"
           id="tile_end"
           width="60"
           height="60"
           stroke="#49B3FF"
-          stroke-width="4"
+          strokeWidth="4"
         />
         <rect
+          x="2"
+          y="2"
           id="tile_floor"
           width="60"
           height="60"
           fill="#191920"
           stroke="#24242E"
-          stroke-width="4"
+          strokeWidth="4"
         />
         <rect
+          x="2"
+          y="2"
           id="tile_forbidden"
           width="60"
           height="60"
           fill="#101014"
           stroke="#24242E"
-          stroke-width="4"
+          strokeWidth="4"
         />
         <rect
+          x="2"
+          y="2"
           id="tile_road"
           width="60"
           height="60"
           fill="#363643"
           stroke="#484858"
-          stroke-width="4"
+          strokeWidth="4"
         />
         <rect
+          x="2"
+          y="2"
           id="tile_road"
           width="60"
           height="60"
           fill="#363643"
           stroke="#484858"
-          stroke-width="4"
+          strokeWidth="4"
         />
         <rect
+          x="2"
+          y="2"
           id="tile_wall"
           width="60"
           height="60"
           fill="#87879B"
           stroke="#484858"
-          stroke-width="4"
+          strokeWidth="4"
         />
       </defs>
     </svg>
   );
 
-  return <DndContext>{getSvgDefs}</DndContext>;
+  function checkCanDrop(
+    moveToRow: number,
+    moveToCol: number,
+    movingPiece: DraggableCharacter
+  ) {
+    const tileIndex = board[moveToRow][moveToCol];
+    const tile = tiles[tileIndex];
+
+    const characterPosition = movingPiece.characterObject.position;
+
+    if (characterPosition == "MELEE" && tile.buildableType == 1) {
+      return true;
+    }
+
+    if (characterPosition == "RANGED" && tile.buildableType == 2) {
+      return true;
+    }
+
+    return false;
+  }
+
+  function getCharacters() {
+    const testOp = operatorsJson[
+      "char_102_texas" as keyof typeof operatorsJson
+    ] as OutputTypes.Character;
+
+    return [
+      {
+        row: null,
+        col: null,
+        charId: testOp.charId,
+        characterObject: testOp,
+      },
+    ] as DraggableCharacter[];
+  }
+
+  function setCharacterCoordiantes(
+    charId: string,
+    row: number | null,
+    col: number | null
+  ) {
+    const transformedCharacters = characters.map((character) => {
+      if (character.charId == charId) {
+        character.row = row;
+        character.col = col;
+      }
+      return character;
+    });
+
+    setCharacters(transformedCharacters);
+  }
+
+  function handleDragStart(event: DragStartEvent) {
+    const activeCharacter = characters.find(
+      (character) => character.charId == event.active.id
+    );
+    if (activeCharacter) {
+      setMovingPiece(activeCharacter);
+    }
+  }
+
+  function handleDragEnd(event: DragEndEvent) {
+    if (!movingPiece) {
+      return;
+    }
+    if (event.over == null) {
+      setCharacterCoordiantes(movingPiece.charId, null, null);
+      setMovingPiece(null);
+      return;
+    }
+
+    const [row, col] = event.over.id.toString().split("-").map(Number);
+
+    const tileAlreadyHasCharacter = characters.some(
+      (character) => character.row == row && character.col == col
+    );
+
+    if (event.over && !tileAlreadyHasCharacter) {
+      if (!checkCanDrop(row, col, movingPiece)) {
+        return;
+      }
+
+      setCharacterCoordiantes(movingPiece.charId, row, col);
+    }
+    setMovingPiece(null);
+  }
+
+  const handleDragCancel = useCallback(() => {
+    setMovingPiece(null);
+  }, []);
+
+  return (
+    <DndContext
+      onDragEnd={handleDragEnd}
+      onDragStart={handleDragStart}
+      onDragCancel={handleDragCancel}
+      modifiers={[snapCenterToCursor]}
+    >
+      <>
+        {getSvgDefs}
+        {board.map((row, rowIndex) => {
+          return (
+            <div className={classes.row} key={`row-${rowIndex}`}>
+              {row.map((rowTile, tileIndex) => {
+                const tile = tiles[rowTile];
+                const character = characters.find(
+                  (character) =>
+                    character.row == rowIndex && character.col == tileIndex
+                );
+                const canDrop = movingPiece
+                  ? checkCanDrop(rowIndex, tileIndex, movingPiece)
+                  : false;
+
+                return (
+                  <MapTile
+                    key={`tile-${rowIndex}-${tileIndex}`}
+                    tileType={tile.tileKey}
+                    validDropLocation={canDrop}
+                    rowIndex={rowIndex}
+                    tileIndex={tileIndex}
+                  >
+                    {character && (
+                      <MapCharacter
+                        key={character.charId}
+                        inMap={true}
+                        character={character.characterObject}
+                      ></MapCharacter>
+                    )}
+                  </MapTile>
+                );
+              })}
+            </div>
+          );
+        })}
+
+        {characters
+          .filter((character) => character.row == null && character.col == null)
+          .map((character) => {
+            return (
+              <MapCharacter
+                key={character.charId}
+                inMap={false}
+                character={character.characterObject}
+              ></MapCharacter>
+            );
+          })}
+      </>
+    </DndContext>
+  );
 };
 export default MapViewer;

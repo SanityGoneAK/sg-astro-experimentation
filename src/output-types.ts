@@ -361,3 +361,38 @@ export interface StageInfo {
   mainStageId: string;
   isCnOnly: boolean;
 }
+
+export interface StageData {
+  options: {
+    characterLimit: number;
+    maxLifePoint: number;
+    initialCost: number;
+    maxCost: number;
+    costIncreaseTime: number;
+    moveMultiplier: number;
+    steeringEnabled: boolean;
+    isTrainingLevel: boolean;
+    functionDisableMask: number;
+  };
+  levelId: string;
+  mapId: string;
+  bgmEvent: string;
+  mapData: MapData;
+  [otherProperties: string]: unknown;
+}
+
+interface MapData {
+  map: number[][];
+  tiles: Tile[];
+  width: number;
+  height: number;
+  [otherProperties: string]: unknown;
+}
+
+interface Tile {
+  tileKey: string;
+  heightType: number;
+  buildableType: number;
+  passableMask: number;
+  [otherProperties: string]: unknown;
+}
