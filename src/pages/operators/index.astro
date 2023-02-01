@@ -1,0 +1,21 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import operatorsJson from "../../../data/operators.json";
+import slugify from "../../slugify";
+
+import type * as OutputTypes from "../../output-types";
+
+const operators = Object.values(operatorsJson) as OutputTypes.Operator[];
+---
+
+<Layout title="Operator List">
+  <ul>
+    {
+      operators.map((op) => (
+        <li>
+          <a href={`/operators/${slugify(op.name)}`}>{op.name}</a>
+        </li>
+      ))
+    }
+  </ul>
+</Layout>
