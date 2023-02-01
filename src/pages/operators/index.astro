@@ -1,21 +1,60 @@
 ---
+import { getPicture } from "@astrojs/image";
+
 import Layout from "../../layouts/Layout.astro";
 import operatorsJson from "../../../data/operators.json";
 import slugify from "../../slugify";
+import * as classes from "./_index.css";
 
 import type * as OutputTypes from "../../output-types";
 
 const operators = Object.values(operatorsJson) as OutputTypes.Operator[];
+const portraits = Object.fromEntries(
+  await Promise.all(
+    operators.map(async (op) => {
+      const filename =
+        op.charId === "char_1001_amiya2"
+          ? "char_1001_amiya2_2"
+          : `${op.charId}_1`;
+      const src = import(
+        `../../../arknights-images/assets/arts/charportraits/${filename}.png`
+      );
+      const image = await getPicture({
+        src,
+        alt: "",
+        widths: [150],
+        aspectRatio: "1:2",
+        formats: ["avif", "webp"],
+      });
+      return [op.charId, image];
+    })
+  )
+);
 ---
 
 <Layout title="Operator List">
-  <ul>
+  <h1 class={classes.h1}>Operator List</h1>
+  <ul class={classes.operatorList}>
     {
-      operators.map((op) => (
-        <li>
-          <a href={`/operators/${slugify(op.name)}`}>{op.name}</a>
-        </li>
-      ))
+      operators.map((op) => {
+        const pictureData = portraits[op.charId];
+        return (
+          <li>
+            <a
+              href={`/operators/${slugify(op.name)}`}
+              class={classes.operatorCard}
+            >
+              <h2>{op.name}</h2>
+              <picture>
+                {pictureData.sources.map((sourceProps) => (
+                  <source {...sourceProps} />
+                ))}
+                <img {...pictureData.image} loading="lazy" />
+              </picture>
+            </a>
+          </li>
+        );
+      })
     }
   </ul>
 </Layout>
