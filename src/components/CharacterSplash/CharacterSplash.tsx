@@ -3,23 +3,27 @@ import { useStore } from "@nanostores/react";
 
 import * as classes from "./styles.css";
 import { operatorStore } from "../../pages/operators/_store";
-import { operatorSplash } from "../../utils/images";
 import Picture from "../Picture";
 
 import type { GetPictureResult } from "@astrojs/image/dist/lib/get-picture";
 
 interface Props {
-  avatarPictures: { [skinId: string]: GetPictureResult };
+  pictureDataMap: {
+    [skinId: string]: {
+      avatar: GetPictureResult;
+      fullart: GetPictureResult;
+    };
+  };
 }
 
-const CharacterSplash: React.FC<Props> = ({ avatarPictures }) => {
+const CharacterSplash: React.FC<Props> = ({ pictureDataMap }) => {
   const { skins, voices } = useStore(operatorStore);
 
   return (
     <Tab.Group as="div" className={classes.container}>
       <Tab.List className={classes.tabList}>
         {skins.map((skin) => {
-          const pictureData = avatarPictures[skin.skinId];
+          const avatarPictureData = pictureDataMap[skin.skinId].avatar;
           return (
             <Tab
               id={`${skin.skinId}-button`}
@@ -27,7 +31,7 @@ const CharacterSplash: React.FC<Props> = ({ avatarPictures }) => {
               key={skin.skinId}
             >
               <Picture
-                pictureData={pictureData}
+                pictureData={avatarPictureData}
                 className={classes.tabIconImage}
               />
             </Tab>
@@ -36,18 +40,16 @@ const CharacterSplash: React.FC<Props> = ({ avatarPictures }) => {
       </Tab.List>
       <Tab.Panels>
         {skins.map((skin) => {
+          const fullartPictureData = pictureDataMap[skin.skinId].fullart;
           return (
             <Tab.Panel
               id={`${skin.skinId}-tabpanel`}
               className={classes.tabPanel}
               key={skin.skinId}
             >
-              {/* TODO: This image causes layout shift of the label when loading.
-                  Change to Astro native images / provide height */}
-              <img
+              <Picture
+                pictureData={fullartPictureData}
                 className={classes.tabPanelImage}
-                src={operatorSplash(skin.portraitId)}
-                alt=""
               />
               <div className={classes.operatorInfo}>
                 <div className={classes.operatorInfoLabelContainer}>

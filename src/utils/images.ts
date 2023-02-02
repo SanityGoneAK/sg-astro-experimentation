@@ -102,3 +102,14 @@ export function importOperatorAvatar(
   }
   return lazyAvatarImport() as Promise<{ default: ImageMetadata }>;
 }
+
+export function importOperatorFullart(
+  skin: OutputTypes.Skin
+): Promise<{ default: ImageMetadata }> {
+  const { portraitId, type } = skin;
+  const filename = portraitId.replace("#", "__");
+  if (type === "skin") {
+    return import(`../../arknights-images/assets/skinpack/${filename}.png`);
+  }
+  return import(`../../arknights-images/assets/chararts/${filename}.png`);
+}
