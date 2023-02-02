@@ -101,7 +101,7 @@ export const inputContainer = style({
 export const input = style({
   boxSizing: "border-box",
   display: "inline-flex",
-  width: spacing(6),
+  width: spacing(7),
   padding: spacing(1, 2),
   background: vars.colors.neutrals.black,
   ...vars.newTypography.body,
