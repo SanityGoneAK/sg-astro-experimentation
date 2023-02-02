@@ -295,9 +295,10 @@ interface BaseOperatorSkin {
 }
 
 /**
- * Default Elite 0/1/2 operator art.
+ * Default Elite 0 operator art.
  */
-interface DefaultOperatorSkin extends BaseOperatorSkin {
+interface EliteZeroOperatorSkin extends BaseOperatorSkin {
+  type: "elite-zero";
   displaySkin: {
     skinName: null;
     modelName: string;
@@ -305,10 +306,19 @@ interface DefaultOperatorSkin extends BaseOperatorSkin {
   };
 }
 
-/**
- * Any other custom operator skin.
- */
+/** Elite 1 (for Amiya) or Elite 2 operator art. */
+interface EliteOneOrTwoOperatorSkin extends BaseOperatorSkin {
+  type: "elite-one-or-two";
+  displaySkin: {
+    skinName: null;
+    modelName: string;
+    drawerList: string[];
+  };
+}
+
+/** Custom operator skin art. */
 interface SpecialOperatorSkin extends BaseOperatorSkin {
+  type: "skin";
   displaySkin: {
     skinName: string;
     modelName: string;
@@ -321,7 +331,10 @@ interface SpecialOperatorSkin extends BaseOperatorSkin {
   tokenType: string | null;
 }
 
-export type Skin = DefaultOperatorSkin | SpecialOperatorSkin;
+export type Skin =
+  | EliteZeroOperatorSkin
+  | EliteOneOrTwoOperatorSkin
+  | SpecialOperatorSkin;
 
 export type SearchResult =
   | OperatorSearchResult

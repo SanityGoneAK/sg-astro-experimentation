@@ -1,26 +1,25 @@
 import { promises as fs } from "fs";
 import path from "path";
 
-import enCharacterTable from "../ArknightsGameData/en_US/gamedata/excel/character_table.json";
-import { patchChars as enPatchChars } from "../ArknightsGameData/en_US/gamedata/excel/char_patch_table.json";
-import cnCharacterTable from "../ArknightsGameData/zh_CN/gamedata/excel/character_table.json";
-import enSkillTable from "../ArknightsGameData/en_US/gamedata/excel/skill_table.json";
-import cnSkillTable from "../ArknightsGameData/zh_CN/gamedata/excel/skill_table.json";
-import rangeTable from "../ArknightsGameData/zh_CN/gamedata/excel/range_table.json";
-import voiceTable from "../ArknightsGameData/zh_CN/gamedata/excel/charword_table.json";
-import skinTable from "../ArknightsGameData/zh_CN/gamedata/excel/skin_table.json";
-
+import { aggregateModuleData } from "./aggregate-module-data.js";
+import { aggregateRiicData } from "./aggregate-riic-data";
 import {
   fetchJetroyzSkillTranslations,
   fetchJetroyzTalentTranslations,
 } from "./fetch-jetroyz-translations";
+import { getAlterMapping } from "./get-alters.js";
 import {
   getReleaseOrderAndLimitedLookup,
   getSkinObtainSourceAndCosts,
 } from "./scrape-prts";
-import { aggregateModuleData } from "./aggregate-module-data.js";
-import { aggregateRiicData } from "./aggregate-riic-data";
-import { getAlterMapping } from "./get-alters.js";
+import { patchChars as enPatchChars } from "../ArknightsGameData/en_US/gamedata/excel/char_patch_table.json";
+import enCharacterTable from "../ArknightsGameData/en_US/gamedata/excel/character_table.json";
+import enSkillTable from "../ArknightsGameData/en_US/gamedata/excel/skill_table.json";
+import cnCharacterTable from "../ArknightsGameData/zh_CN/gamedata/excel/character_table.json";
+import voiceTable from "../ArknightsGameData/zh_CN/gamedata/excel/charword_table.json";
+import rangeTable from "../ArknightsGameData/zh_CN/gamedata/excel/range_table.json";
+import cnSkillTable from "../ArknightsGameData/zh_CN/gamedata/excel/skill_table.json";
+import skinTable from "../ArknightsGameData/zh_CN/gamedata/excel/skin_table.json";
 
 /** @type {{ [characterId: string]: string }} */
 const NAME_OVERRIDES = {
@@ -178,10 +177,17 @@ export async function createOperatorsJson(dataDir) {
           return skin.charId === charId;
         })
         .map((skin) => {
+          let skinType = "elite-zero";
           let skinSourcesAndCosts = {};
-          // if this is a special skin (i.e. not just an operator's default e0/e1/e2 art),
-          // look up the skin's obtain sources + cost
-          if (skin.displaySkin.skinName != null) {
+          if (
+            skin.displaySkin.skinName == null &&
+            (skin.avatarId.endsWith("_1+") || skin.avatarId.endsWith("_2"))
+          ) {
+            skinType = "elite-one-or-two";
+            // if this is a special skin (i.e. not just an operator's default e0/e1/e2 art),
+            // look up the skin's obtain sources + cost
+          } else if (skin.displaySkin.skinName != null) {
+            skinType = "skin";
             skinSourcesAndCosts = skinSourceAndCostLookup[skin.skinId];
             if (!skinSourcesAndCosts) {
               console.warn(
@@ -190,6 +196,7 @@ export async function createOperatorsJson(dataDir) {
             }
           }
           return {
+            type: skinType,
             skinId: skin.skinId,
             illustId: skin.illustId,
             avatarId: skin.avatarId,
