@@ -1,5 +1,7 @@
 import itemsJson from "../../data/items.json";
 
+import type * as OutputTypes from "./../output-types";
+
 const baseURL = "http://penguacestergonenemypresslabdbdare.stinggy.com";
 
 export const operatorAvatar = (charId: string, elite?: number): string => {
@@ -52,4 +54,51 @@ export function importOperatorPortrait(
   return import(
     `../../arknights-images/assets/arts/charportraits/${filename}.png`
   );
+}
+
+const baseAvatars = import.meta.glob(
+  "../../arknights-images/assets/torappu/dynamicassets/arts/charavatars/*.png"
+);
+const eliteAvatars = import.meta.glob(
+  "../../arknights-images/assets/torappu/dynamicassets/arts/charavatars/elite/*.png"
+);
+const skinAvatars = import.meta.glob(
+  "../../arknights-images/assets/torappu/dynamicassets/arts/charavatars/skins/*.png"
+);
+export function importOperatorAvatar(
+  skin: OutputTypes.Skin
+): Promise<{ default: ImageMetadata }> {
+  const { avatarId, type } = skin;
+  const filename = avatarId.replace("#", "__");
+  let lazyAvatarImport;
+  switch (type) {
+    case "elite-zero":
+      lazyAvatarImport =
+        baseAvatars[
+          `../../arknights-images/assets/torappu/dynamicassets/arts/charavatars/${filename}.png`
+        ] ??
+        eliteAvatars[
+          `../../arknights-images/assets/torappu/dynamicassets/arts/charavatars/elite/${filename}.png`
+        ];
+      break;
+    case "elite-one-or-two":
+      lazyAvatarImport =
+        eliteAvatars[
+          `../../arknights-images/assets/torappu/dynamicassets/arts/charavatars/elite/${filename}.png`
+        ] ??
+        baseAvatars[
+          `../../arknights-images/assets/torappu/dynamicassets/arts/charavatars/${filename}.png`
+        ];
+      break;
+    case "skin":
+      lazyAvatarImport =
+        skinAvatars[
+          `../../arknights-images/assets/torappu/dynamicassets/arts/charavatars/skins/${filename}.png`
+        ];
+      break;
+  }
+  if (lazyAvatarImport == null) {
+    throw new Error("Couldn't locate file for avatarId: " + avatarId);
+  }
+  return lazyAvatarImport() as Promise<{ default: ImageMetadata }>;
 }

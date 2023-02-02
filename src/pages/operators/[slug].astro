@@ -1,10 +1,12 @@
 ---
+import { getPicture } from "@astrojs/image";
+
 import slugify from "../../slugify";
 import operatorsJson from "../../../data/operators.json";
 import Layout from "../../layouts/Layout.astro";
 import * as classes from "./_[slug].css";
 import { linkStyle } from "../../theme.css";
-import { operatorAvatar } from "../../utils/images";
+import { importOperatorAvatar, operatorAvatar } from "../../utils/images";
 import { getRelatedCharacter } from "../../utils/related-character";
 import CharacterSplash from "../../components/CharacterSplash";
 import OperatorInfo from "../../components/OperatorInfo/OperatorInfo.astro";
@@ -14,6 +16,7 @@ import SvgRarityGradientDefs from "../../components/SvgRarityGradientDefs";
 import { operatorIdStore } from "./_store";
 
 import type * as OutputTypes from "../../output-types";
+import type { GetPictureResult } from "@astrojs/image/dist/lib/get-picture";
 
 export function getStaticPaths() {
   return Object.entries(operatorsJson).map(([operatorId, operator]) => {
@@ -32,6 +35,21 @@ const operator = operatorsJson[
 ] as OutputTypes.Operator;
 operatorIdStore.set(operatorId);
 const relatedOperator = getRelatedCharacter(operator);
+const avatarPictures: { [skinId: string]: GetPictureResult } =
+  Object.fromEntries(
+    await Promise.all(
+      operator.skins.map(async (skin) => {
+        const picture = await getPicture({
+          src: importOperatorAvatar(skin),
+          alt: skin.name,
+          widths: [64],
+          aspectRatio: "1:1",
+          formats: ["avif", "webp"],
+        });
+        return [skin.skinId, picture];
+      })
+    )
+  );
 ---
 
 <script slot="head" define:vars={{ operatorId }}>
@@ -99,7 +117,7 @@ const relatedOperator = getRelatedCharacter(operator);
     </div>
     <div class={classes.characterContainer}>
       <section>
-        <CharacterSplash client:visible />
+        <CharacterSplash client:visible avatarPictures={avatarPictures} />
       </section>
       <section>
         <OperatorInfo operator={operator} />
