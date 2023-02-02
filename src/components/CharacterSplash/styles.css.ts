@@ -40,7 +40,7 @@ export const tabIcon = style({
       opacity: 1,
     },
     [`&[data-headlessui-state~=selected]::after`]: {
-      content: "``",
+      content: "",
       position: "absolute",
       height: "2px",
       width: "100%",
