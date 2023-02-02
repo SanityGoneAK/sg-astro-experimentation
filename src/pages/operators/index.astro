@@ -5,6 +5,7 @@ import Layout from "../../layouts/Layout.astro";
 import operatorsJson from "../../../data/operators.json";
 import slugify from "../../slugify";
 import * as classes from "./_index.css";
+import { importOperatorPortrait } from "../../utils/images";
 
 import type * as OutputTypes from "../../output-types";
 
@@ -12,15 +13,8 @@ const operators = Object.values(operatorsJson) as OutputTypes.Operator[];
 const portraits = Object.fromEntries(
   await Promise.all(
     operators.map(async (op) => {
-      const filename =
-        op.charId === "char_1001_amiya2"
-          ? "char_1001_amiya2_2"
-          : `${op.charId}_1`;
-      const src = import(
-        `../../../arknights-images/assets/arts/charportraits/${filename}.png`
-      );
       const image = await getPicture({
-        src,
+        src: importOperatorPortrait(op.charId),
         alt: "",
         widths: [150],
         aspectRatio: "1:2",

@@ -41,3 +41,15 @@ export const itemImage = (itemId: string): string =>
 
 export const riicSkillIcon = (riicSkillIcon: string): string =>
   `https://github.com/astral4/arkdata/raw/main/assets/torappu/dynamicassets/arts/building/skills/${riicSkillIcon}.png`;
+
+export function importOperatorPortrait(
+  operatorId: string
+): Promise<{ default: ImageMetadata }> {
+  const filename =
+    operatorId === "char_1001_amiya2"
+      ? "char_1001_amiya2_2"
+      : `${operatorId}_1`;
+  return import(
+    `../../../arknights-images/assets/arts/charportraits/${filename}.png`
+  );
+}
