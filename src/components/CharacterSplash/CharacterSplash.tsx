@@ -4,6 +4,7 @@ import { useStore } from "@nanostores/react";
 import * as classes from "./styles.css";
 import { operatorStore } from "../../pages/operators/_store";
 import { operatorSplash } from "../../utils/images";
+import Picture from "../Picture";
 
 import type { GetPictureResult } from "@astrojs/image/dist/lib/get-picture";
 
@@ -25,17 +26,10 @@ const CharacterSplash: React.FC<Props> = ({ avatarPictures }) => {
               className={classes.tabIcon}
               key={skin.skinId}
             >
-              <picture>
-                {pictureData.sources.map(({ srcset: srcSet, type }, i) => (
-                  <source key={i} srcSet={srcSet} type={type} />
-                ))}
-                {/* @ts-expect-error mismatch between astro-jsx & react-jsx types */}
-                <img
-                  className={classes.tabIconImage}
-                  {...pictureData.image}
-                  loading="lazy"
-                />
-              </picture>
+              <Picture
+                pictureData={pictureData}
+                className={classes.tabIconImage}
+              />
             </Tab>
           );
         })}

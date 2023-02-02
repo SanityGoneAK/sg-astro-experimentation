@@ -1,6 +1,7 @@
 ---
 import { getPicture } from "@astrojs/image";
 
+import Picture from "../../components/Picture";
 import Layout from "../../layouts/Layout.astro";
 import operatorsJson from "../../../data/operators.json";
 import slugify from "../../slugify";
@@ -41,12 +42,7 @@ const portraitPictures: { [operatorId: string]: GetPictureResult } =
               class={classes.operatorCard}
             >
               <h2>{op.name}</h2>
-              <picture>
-                {pictureData.sources.map((sourceProps) => (
-                  <source {...sourceProps} />
-                ))}
-                <img {...pictureData.image} loading="lazy" />
-              </picture>
+              <Picture pictureData={pictureData} />
             </a>
           </li>
         );
