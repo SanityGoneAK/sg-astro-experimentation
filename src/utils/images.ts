@@ -50,6 +50,6 @@ export function importOperatorPortrait(
       ? "char_1001_amiya2_2"
       : `${operatorId}_1`;
   return import(
-    `../../../arknights-images/assets/arts/charportraits/${filename}.png`
+    `../../arknights-images/assets/arts/charportraits/${filename}.png`
   );
 }
