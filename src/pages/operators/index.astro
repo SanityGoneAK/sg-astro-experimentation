@@ -8,22 +8,24 @@ import * as classes from "./_index.css";
 import { importOperatorPortrait } from "../../utils/images";
 
 import type * as OutputTypes from "../../output-types";
+import type { GetPictureResult } from "@astrojs/image/dist/lib/get-picture";
 
 const operators = Object.values(operatorsJson) as OutputTypes.Operator[];
-const portraits = Object.fromEntries(
-  await Promise.all(
-    operators.map(async (op) => {
-      const image = await getPicture({
-        src: importOperatorPortrait(op.charId),
-        alt: "",
-        widths: [150],
-        aspectRatio: "1:2",
-        formats: ["avif", "webp"],
-      });
-      return [op.charId, image];
-    })
-  )
-);
+const portraits: { [operatorId: string]: GetPictureResult } =
+  Object.fromEntries(
+    await Promise.all(
+      operators.map(async (op) => {
+        const image = await getPicture({
+          src: importOperatorPortrait(op.charId),
+          alt: "",
+          widths: [150],
+          aspectRatio: "1:2",
+          formats: ["avif", "webp"],
+        });
+        return [op.charId, image];
+      })
+    )
+  );
 ---
 
 <Layout title="Operator List">
