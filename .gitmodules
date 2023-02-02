@@ -7,3 +7,4 @@
 [submodule "arknights-images"]
 	path = arknights-images
 	url = https://github.com/SanityGoneAK/arknights-images.git
+	branch = "main"
