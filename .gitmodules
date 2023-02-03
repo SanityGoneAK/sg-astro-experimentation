@@ -4,7 +4,3 @@
 [submodule "viktorlab-fork"]
 	path = viktorlab-fork
 	url = https://github.com/iansjk/viktorlab-fork.git
-[submodule "arknights-images"]
-	path = arknights-images
-	url = https://github.com/SanityGoneAK/arknights-images.git
-	branch = "main"
