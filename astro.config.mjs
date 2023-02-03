@@ -1,18 +1,12 @@
 import path from "path";
-
-import image from "@astrojs/image";
+import { defineConfig } from "astro/config";
+import { vanillaExtractPlugin } from "@vanilla-extract/vite-plugin";
 import react from "@astrojs/react";
 import svelte from "@astrojs/svelte";
-import { vanillaExtractPlugin } from "@vanilla-extract/vite-plugin";
-import { defineConfig } from "astro/config";
 
 // https://astro.build/config
 export default defineConfig({
-  integrations: [
-    react(),
-    svelte(),
-    image({ serviceEntryPoint: "@astrojs/image/sharp" }),
-  ],
+  integrations: [react(), svelte()],
   vite: {
     plugins: [vanillaExtractPlugin()],
     build: {
