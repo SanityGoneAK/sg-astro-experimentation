@@ -21,7 +21,7 @@ const CharacterSplash: React.FC = () => {
               <img
                 className={classes.tabIconImage}
                 src={operatorSplashAvatar(skin.avatarId)}
-                alt="" // TODO this actually needs alt text (elite 0/1/2 or skin name)
+                alt={skin.name}
               />
             </Tab>
           );
@@ -40,7 +40,7 @@ const CharacterSplash: React.FC = () => {
               <img
                 className={classes.tabPanelImage}
                 src={operatorSplash(skin.portraitId)}
-                alt=""
+                alt={skin.name}
               />
               <div className={classes.operatorInfo}>
                 <div className={classes.operatorInfoLabelContainer}>
