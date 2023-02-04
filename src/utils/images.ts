@@ -44,4 +44,12 @@ export const itemImage = (itemId: string): string =>
   `${baseURL}/items/${itemsJson[itemId as keyof typeof itemsJson].iconId}.png`;
 
 export const riicSkillIcon = (riicSkillIcon: string): string =>
-  `https://github.com/astral4/arkdata/raw/main/assets/torappu/dynamicassets/arts/building/skills/${riicSkillIcon}.png`;
+  `https://github.com/SanityGoneAK/arknights-images/raw/main/assets/torappu/dynamicassets/arts/building/skills/${riicSkillIcon}.png`;
+
+export const operatorPortrait = (operatorId: string): string => {
+  const filename =
+    operatorId === "char_1001_amiya2"
+      ? "char_1001_amiya2_2"
+      : `${operatorId}_1`;
+  return `https://github.com/SanityGoneAK/arknights-images/raw/main/assets/arts/charportraits/${filename}.png`;
+};

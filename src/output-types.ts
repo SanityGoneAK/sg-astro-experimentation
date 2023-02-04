@@ -285,6 +285,7 @@ interface Voice {
 }
 
 interface BaseOperatorSkin {
+  name: string;
   skinId: string;
   illustId: string;
   avatarId: string;
@@ -296,25 +297,20 @@ interface BaseOperatorSkin {
 }
 
 /**
- * Default Elite 0/1/2 operator art.
+ * Default Elite 0 operator art.
  */
-interface DefaultOperatorSkin extends BaseOperatorSkin {
-  displaySkin: {
-    skinName: null;
-    modelName: string;
-    drawerList: string[];
-  };
+interface EliteZeroOperatorSkin extends BaseOperatorSkin {
+  type: "elite-zero";
 }
 
-/**
- * Any other custom operator skin.
- */
+/** Elite 1 (for Amiya) or Elite 2 operator art. */
+interface EliteOneOrTwoOperatorSkin extends BaseOperatorSkin {
+  type: "elite-one-or-two";
+}
+
+/** Custom operator skin art. */
 interface SpecialOperatorSkin extends BaseOperatorSkin {
-  displaySkin: {
-    skinName: string;
-    modelName: string;
-    drawerList: string[];
-  };
+  type: "skin";
   /** @see `SkinSource` */
   obtainSources: string[];
   cost: number | null;
@@ -322,7 +318,10 @@ interface SpecialOperatorSkin extends BaseOperatorSkin {
   tokenType: string | null;
 }
 
-export type Skin = DefaultOperatorSkin | SpecialOperatorSkin;
+export type Skin =
+  | EliteZeroOperatorSkin
+  | EliteOneOrTwoOperatorSkin
+  | SpecialOperatorSkin;
 
 export type SearchResult =
   | OperatorSearchResult

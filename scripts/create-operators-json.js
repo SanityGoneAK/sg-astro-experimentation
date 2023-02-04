@@ -1,26 +1,26 @@
 import { promises as fs } from "fs";
 import path from "path";
 
-import enCharacterTable from "../ArknightsGameData/en_US/gamedata/excel/character_table.json";
-import { patchChars as enPatchChars } from "../ArknightsGameData/en_US/gamedata/excel/char_patch_table.json";
-import cnCharacterTable from "../ArknightsGameData/zh_CN/gamedata/excel/character_table.json";
-import enSkillTable from "../ArknightsGameData/en_US/gamedata/excel/skill_table.json";
-import cnSkillTable from "../ArknightsGameData/zh_CN/gamedata/excel/skill_table.json";
-import rangeTable from "../ArknightsGameData/zh_CN/gamedata/excel/range_table.json";
-import voiceTable from "../ArknightsGameData/zh_CN/gamedata/excel/charword_table.json";
-import skinTable from "../ArknightsGameData/zh_CN/gamedata/excel/skin_table.json";
-
+import { aggregateModuleData } from "./aggregate-module-data.js";
+import { aggregateRiicData } from "./aggregate-riic-data";
 import {
   fetchJetroyzSkillTranslations,
   fetchJetroyzTalentTranslations,
 } from "./fetch-jetroyz-translations";
+import { getAlterMapping } from "./get-alters.js";
 import {
   getReleaseOrderAndLimitedLookup,
   getSkinObtainSourceAndCosts,
 } from "./scrape-prts";
-import { aggregateModuleData } from "./aggregate-module-data.js";
-import { aggregateRiicData } from "./aggregate-riic-data";
-import { getAlterMapping } from "./get-alters.js";
+import { patchChars as enPatchChars } from "../ArknightsGameData/en_US/gamedata/excel/char_patch_table.json";
+import enCharacterTable from "../ArknightsGameData/en_US/gamedata/excel/character_table.json";
+import enSkillTable from "../ArknightsGameData/en_US/gamedata/excel/skill_table.json";
+import enSkinTable from "../ArknightsGameData/en_US/gamedata/excel/skin_table.json";
+import cnCharacterTable from "../ArknightsGameData/zh_CN/gamedata/excel/character_table.json";
+import voiceTable from "../ArknightsGameData/zh_CN/gamedata/excel/charword_table.json";
+import rangeTable from "../ArknightsGameData/zh_CN/gamedata/excel/range_table.json";
+import cnSkillTable from "../ArknightsGameData/zh_CN/gamedata/excel/skill_table.json";
+import cnSkinTable from "../ArknightsGameData/zh_CN/gamedata/excel/skin_table.json";
 
 /** @type {{ [characterId: string]: string }} */
 const NAME_OVERRIDES = {
@@ -169,7 +169,7 @@ export async function createOperatorsJson(dataDir) {
         ? Object.values(voiceActorObject.dict)
         : [];
 
-      const charSkins = skinTable["charSkins"];
+      const charSkins = cnSkinTable["charSkins"];
       const skins = Object.values(charSkins)
         .filter((skin) => {
           // special case:
@@ -177,27 +177,44 @@ export async function createOperatorsJson(dataDir) {
           if (skin.skinId === "char_1001_amiya2#2") return false;
           return skin.charId === charId;
         })
-        .map((skin) => {
+        .map((cnSkin) => {
+          let skinType = "elite-zero";
           let skinSourcesAndCosts = {};
-          // if this is a special skin (i.e. not just an operator's default e0/e1/e2 art),
-          // look up the skin's obtain sources + cost
-          if (skin.displaySkin.skinName != null) {
-            skinSourcesAndCosts = skinSourceAndCostLookup[skin.skinId];
+          let elite;
+          if (
+            cnSkin.displaySkin.skinName == null &&
+            (cnSkin.avatarId.endsWith("_1+") || cnSkin.avatarId.endsWith("_2"))
+          ) {
+            skinType = "elite-one-or-two";
+            elite = cnSkin.avatarId.endsWith("_1+") ? 1 : 2;
+          } else if (cnSkin.displaySkin.skinName != null) {
+            // if this is a special skin (i.e. not just an operator's default e0/e1/e2 art),
+            // look up the skin's obtain sources + cost
+            skinType = "skin";
+            skinSourcesAndCosts = skinSourceAndCostLookup[cnSkin.skinId];
             if (!skinSourcesAndCosts) {
               console.warn(
-                `Couldn't find skin source / cost info for: ${skin.skinId}`
+                `Couldn't find skin source / cost info for: ${cnSkin.skinId}`
               );
             }
           }
+          const enSkin = enSkinTable["charSkins"][cnSkin.skinId];
+          let skinName;
+          if (skinType === "skin") {
+            skinName = `Skin: ${(enSkin ?? cnSkin).displaySkin.skinName}`;
+          } else {
+            skinName = `Elite ${elite ?? 0}`;
+          }
           return {
-            skinId: skin.skinId,
-            illustId: skin.illustId,
-            avatarId: skin.avatarId,
-            portraitId: skin.portraitId,
+            type: skinType,
+            name: skinName,
+            skinId: cnSkin.skinId,
+            illustId: cnSkin.illustId,
+            avatarId: cnSkin.avatarId,
+            portraitId: cnSkin.portraitId,
             displaySkin: {
-              skinName: skin.displaySkin.skinName,
-              modelName: skin.displaySkin.modelName,
-              drawerList: skin.displaySkin.drawerList,
+              modelName: cnSkin.displaySkin.modelName,
+              drawerList: cnSkin.displaySkin.drawerList,
             },
             ...skinSourcesAndCosts,
           };
