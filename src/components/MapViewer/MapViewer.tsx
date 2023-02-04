@@ -5,10 +5,12 @@ import { snapCenterToCursor } from "@dnd-kit/modifiers";
 
 import * as classes from "./styles.css";
 import operatorsJson from "../../../data/operators.json";
+import { getStatsAtLevel } from "../../utils/character-stats";
 import MapCharacter from "../MapCharacter";
 import MapCharacterTray from "../MapCharacterTray";
 import MapTile from "../MapTile";
 
+import MapWaveManager from "../MapWaveManager";
 import type * as OutputTypes from "../../output-types";
 
 interface Props {
@@ -20,6 +22,7 @@ const MapViewer: React.FC<Props> = ({ stageData }) => {
   const board = stageData.mapData.map;
 
   const [characters, setCharacters] = useState(() => getCharacters());
+  const [route, setRoute] = useState<OutputTypes.Route | null>(null);
   const [movingPiece, setMovingPiece] =
     useState<OutputTypes.DraggableCharacter | null>(null);
 
@@ -166,6 +169,28 @@ const MapViewer: React.FC<Props> = ({ stageData }) => {
       </defs>
     </svg>
   );
+
+  function getCharacters() {
+    const testOp = operatorsJson[
+      "char_197_poca" as keyof typeof operatorsJson
+    ] as OutputTypes.Character;
+
+    return [
+      {
+        row: null,
+        col: null,
+        charId: testOp.charId,
+        stats: getStatsAtLevel(testOp, {
+          eliteLevel: 2,
+          level: 80,
+          pots: false,
+          trust: false,
+        }),
+        characterObject: testOp,
+      },
+    ] as OutputTypes.DraggableCharacter[];
+  }
+
   const checkCanDrop = useCallback(
     function checkCanDrop(
       moveToRow: number,
@@ -190,20 +215,6 @@ const MapViewer: React.FC<Props> = ({ stageData }) => {
     [board, tiles]
   );
 
-  function getCharacters() {
-    const testOp = operatorsJson[
-      "char_102_texas" as keyof typeof operatorsJson
-    ] as OutputTypes.Character;
-
-    return [
-      {
-        row: null,
-        col: null,
-        charId: testOp.charId,
-        characterObject: testOp,
-      },
-    ] as OutputTypes.DraggableCharacter[];
-  }
   const setCharacterCoordiantes = useCallback(
     function setCharacterCoordiantes(
       charId: string,
@@ -219,6 +230,20 @@ const MapViewer: React.FC<Props> = ({ stageData }) => {
       });
 
       setCharacters(transformedCharacters);
+    },
+    [characters]
+  );
+
+  const removeCharacterFromMap = useCallback(
+    function (charId: string) {
+      const updatedCharacters = characters.map((character) => {
+        if (character.charId == charId) {
+          character.row = null;
+          character.col = null;
+        }
+        return character;
+      });
+      setCharacters(updatedCharacters);
     },
     [characters]
   );
@@ -269,52 +294,61 @@ const MapViewer: React.FC<Props> = ({ stageData }) => {
   }, []);
 
   return (
-    <DndContext
-      onDragEnd={handleDragEnd}
-      onDragStart={handleDragStart}
-      onDragCancel={handleDragCancel}
-      modifiers={[snapCenterToCursor]}
-    >
-      <div className={classes.container}>
-        {getSvgDefs}
-        {board.map((row, rowIndex) => {
-          return (
-            <div className={classes.row} key={`row-${rowIndex}`}>
-              {row.map((rowTile, tileIndex) => {
-                const tile = tiles[rowTile];
-                const character = characters.find(
-                  (character) =>
-                    character.row == rowIndex && character.col == tileIndex
-                );
-                const canDrop = movingPiece
-                  ? checkCanDrop(rowIndex, tileIndex, movingPiece)
-                  : false;
+    <>
+      <DndContext
+        onDragEnd={handleDragEnd}
+        onDragStart={handleDragStart}
+        onDragCancel={handleDragCancel}
+        modifiers={[snapCenterToCursor]}
+      >
+        <div></div>
+        <div className={classes.container}>
+          {getSvgDefs}
+          {board.map((row, rowIndex) => {
+            return (
+              <div className={classes.row} key={`row-${rowIndex}`}>
+                {row.map((rowTile, tileIndex) => {
+                  const tile = tiles[rowTile];
+                  const character = characters.find(
+                    (character) =>
+                      character.row == rowIndex && character.col == tileIndex
+                  );
+                  const canDrop = movingPiece
+                    ? checkCanDrop(rowIndex, tileIndex, movingPiece)
+                    : false;
 
-                return (
-                  <MapTile
-                    key={`tile-${rowIndex}-${tileIndex}`}
-                    tileType={tile.tileKey}
-                    validDropLocation={canDrop}
-                    rowIndex={rowIndex}
-                    tileIndex={tileIndex}
-                  >
-                    {character && (
-                      <MapCharacter
-                        key={character.charId}
-                        inMap={true}
-                        character={character.characterObject}
-                      ></MapCharacter>
-                    )}
-                  </MapTile>
-                );
-              })}
-            </div>
-          );
-        })}
+                  return (
+                    <MapTile
+                      key={`tile-${rowIndex}-${tileIndex}`}
+                      tileType={tile.tileKey}
+                      validDropLocation={canDrop}
+                      rowIndex={rowIndex}
+                      tileIndex={tileIndex}
+                    >
+                      {character && (
+                        <MapCharacter
+                          removeCharacter={removeCharacterFromMap}
+                          key={character.charId}
+                          inMap={true}
+                          character={character}
+                        ></MapCharacter>
+                      )}
+                    </MapTile>
+                  );
+                })}
+              </div>
+            );
+          })}
 
-        <MapCharacterTray characters={characters} />
-      </div>
-    </DndContext>
+          <MapCharacterTray characters={characters} />
+        </div>
+        <MapWaveManager
+          waves={stageData.waves}
+          routes={stageData.routes}
+          setRoute={setRoute}
+        />
+      </DndContext>
+    </>
   );
 };
 export default MapViewer;

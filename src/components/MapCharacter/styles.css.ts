@@ -58,7 +58,7 @@ export const direction = styleVariants({
   east: [
     directionBase,
     {
-      borderLeftColor: "#FED874",
+      borderRightColor: "#FED874",
     },
   ],
   south: [
@@ -70,7 +70,29 @@ export const direction = styleVariants({
   west: [
     directionBase,
     {
-      borderRightColor: "#FED874",
+      borderLeftColor: "#FED874",
     },
   ],
+});
+
+export const menuSelector = style({
+  border: "solid 4px #E8E8F2",
+  width: spacing(16),
+  height: spacing(16),
+  left: "-50%",
+  top: "-50%",
+  position: "absolute",
+  zIndex: 500,
+  transform: "rotateZ(45deg)",
+});
+
+export const removeCharacter = style({
+  background: vars.colors.accents.red,
+  position: "absolute",
+  border: "none",
+  rotate: "-45deg",
+  width: spacing(6),
+  height: spacing(6),
+  left: "-50%",
+  top: "25%",
 });

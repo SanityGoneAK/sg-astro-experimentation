@@ -1,6 +1,7 @@
 import type { InterpolatedValue } from "./description-parser";
 import type { Range } from "./gamedata-types";
 import type { RiicSkill } from "../scripts/aggregate-riic-data";
+import type { CharacterStatValues } from "./utils/character-stats";
 
 export type { SkinSource, SkinCostTokenType } from "../scripts/scrape-prts";
 export type { RiicSkill } from "../scripts/aggregate-riic-data";
@@ -378,6 +379,8 @@ export interface StageData {
   mapId: string;
   bgmEvent: string;
   mapData: MapData;
+  routes: Route[];
+  waves: Wave[];
   [otherProperties: string]: unknown;
 }
 
@@ -394,12 +397,64 @@ interface Tile {
   heightType: number;
   buildableType: number;
   passableMask: number;
-  [otherProperties: string]: unknown;
 }
 
 export interface DraggableCharacter {
   row: number | null;
   col: number | null;
   charId: string;
+  stats: CharacterStatValues;
   characterObject: Character;
+}
+
+export interface MapCoordinates {
+  row: number;
+  col: number;
+}
+
+export interface RouteCheckpoint {
+  type: number;
+  time: number;
+  position: MapCoordinates;
+  reachOffset: MapCoordinates;
+  randomizeReachOffset: boolean;
+  reachDistance: number;
+}
+
+export interface Route {
+  [otherProperties: string]: unknown;
+  motionMode: number;
+  startPosition: MapCoordinates;
+  endPosition: MapCoordinates;
+  checkpoints: RouteCheckpoint[];
+  allowDiagonalMove: boolean;
+  visitEveryTileCenter: boolean;
+  visitEveryNodeCenter: boolean;
+}
+
+export interface WaveFragment {
+  preDelay: 0.0;
+  actions: WaveFragmentAction[];
+  name: null | string;
+}
+
+export interface WaveFragmentAction {
+  actionType: number;
+  managedByScheduler: boolean;
+  key: string;
+  count: number;
+  preDelay: number;
+  interval: number;
+  routeIndex: number;
+  blockFragment: boolean;
+  autoPreviewRoute: boolean;
+  isUnharmfulAndAlwaysCountAsKilled: boolean;
+}
+
+export interface Wave {
+  preDelay: number;
+  postDelay: number;
+  maxTimeWaitingForNextWave: number;
+  fragments: WaveFragment[];
+  name: null | string;
 }

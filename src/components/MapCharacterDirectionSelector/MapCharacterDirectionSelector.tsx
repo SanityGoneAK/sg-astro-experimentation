@@ -20,7 +20,6 @@ interface Props {
 
 const MapCharacterDirectionSelector: React.FC<Props> = ({ setDirection }) => {
   function setDirectionTo(event: DragEndEvent) {
-    console.log(event?.over?.id);
     if (event.over && event.over.id && setDirection) {
       setDirection(event.over.id as string);
     }
@@ -37,8 +36,8 @@ const MapCharacterDirectionSelector: React.FC<Props> = ({ setDirection }) => {
 
       <div className={classes.directionSelector}>
         <MapCharacterDirectionZone direction="north" />
-        <MapCharacterDirectionZone direction="west" />
         <MapCharacterDirectionZone direction="east" />
+        <MapCharacterDirectionZone direction="west" />
         <MapCharacterDirectionZone direction="south" />
       </div>
     </DndContext>

@@ -19,6 +19,5 @@ export const container = style({
   borderRadius: spacing(1),
   borderWidth: spacing(0.5),
   borderStyle: "solid",
-  overflow: "hidden",
-  paddingTop: spacing(4)
+  paddingTop: spacing(4),
 });

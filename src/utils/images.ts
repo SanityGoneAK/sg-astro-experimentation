@@ -19,6 +19,10 @@ export const operatorSplashAvatar = (avatarId: string): string => {
   return `${baseURL}/avatars/${encodeURIComponent(avatarId)}.png`;
 };
 
+export const enemyAvatar = (enemyId: string): string => {
+  return `${baseURL}/enemy/${encodeURIComponent(enemyId)}.png`;
+};
+
 export const summonImage = (id: string): string => `/images/avatars/${id}.png`;
 
 export const operatorClassIcon = (operatorClass: string): string =>

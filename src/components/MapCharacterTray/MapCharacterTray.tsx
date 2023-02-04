@@ -18,7 +18,7 @@ const MapCharacterTray: React.FC<Props> = ({ characters }) => {
             <MapCharacter
               key={character.charId}
               inMap={false}
-              character={character.characterObject}
+              character={character}
             ></MapCharacter>
           );
         })}

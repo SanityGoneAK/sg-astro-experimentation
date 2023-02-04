@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useCallback, useState } from "react";
 
 import { useDraggable } from "@dnd-kit/core";
 import { CSS } from "@dnd-kit/utilities";
@@ -6,47 +6,85 @@ import { CSS } from "@dnd-kit/utilities";
 import * as classes from "./styles.css";
 import { operatorAvatar } from "../../utils/images";
 import MapCharacterDirectionSelector from "../MapCharacterDirectionSelector";
-
-import type { Character } from "../../output-types";
+import MapCharacterRange from "../MapCharacterRange";
+import type { DraggableCharacter } from "../../output-types";
 
 interface Props {
-  character: Character;
+  character: DraggableCharacter;
   inMap: boolean;
+  removeCharacter: (chardId: string) => void;
 }
 
-const MapCharacter: React.FC<Props> = ({ character, inMap }) => {
+const MapCharacter: React.FC<Props> = ({
+  character,
+  inMap,
+  removeCharacter,
+}) => {
   const { attributes, listeners, setNodeRef, transform } = useDraggable({
     id: character.charId,
   });
-  const [direction, setDirection] = useState<string | null>(null);
-
   const style = {
     transform: CSS.Translate.toString(transform),
   };
+
+  const [direction, setDirection] = useState<string | null>(null);
+  const [active, setActive] = useState<boolean>(false);
+
+  const openMenu = useCallback(function () {
+    setActive(true);
+  }, []);
 
   return (
     <>
       {inMap && !direction && (
         <MapCharacterDirectionSelector setDirection={setDirection} />
       )}
-      <div
-        ref={setNodeRef}
-        style={style}
-        {...listeners}
-        {...attributes}
-        className={
-          inMap
-            ? classes.operatorPortrait.map
-            : classes.operatorPortrait.selector
-        }
-      >
+      {!inMap && (
         <div
-          className={
-            classes.direction[direction as keyof typeof classes.direction]
-          }
-        ></div>
-        <img src={operatorAvatar(character.charId)} width="64" height="64" />
-      </div>
+          ref={setNodeRef}
+          style={style}
+          {...listeners}
+          {...attributes}
+          className={classes.operatorPortrait.selector}
+        >
+          <img src={operatorAvatar(character.charId)} width="64" height="64" />
+        </div>
+      )}
+      {inMap && (
+        <>
+          {active && (
+            <div className={classes.menuSelector}>
+              <button
+                className={classes.removeCharacter}
+                onClick={() => removeCharacter(character.charId)}
+              >
+                Remove
+              </button>
+            </div>
+          )}
+          {active && (
+            <MapCharacterRange
+              rangeObject={character.stats.rangeObject}
+              direction={direction}
+            />
+          )}
+          <div className={classes.operatorPortrait.map} onClick={openMenu}>
+            {direction && (
+              <div
+                className={
+                  classes.direction[direction as keyof typeof classes.direction]
+                }
+              ></div>
+            )}
+
+            <img
+              src={operatorAvatar(character.charId)}
+              width="64"
+              height="64"
+            />
+          </div>
+        </>
+      )}
     </>
   );
 };

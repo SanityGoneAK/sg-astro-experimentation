@@ -1,4 +1,4 @@
-const spacingUnitInPixels = 8;
+export const spacingUnitInPixels = 8;
 
 // This is for the purpose of better inlay hints.
 interface Spacing {
