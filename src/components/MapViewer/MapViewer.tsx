@@ -12,6 +12,7 @@ import MapTile from "../MapTile";
 
 import MapWaveManager from "../MapWaveManager";
 import type * as OutputTypes from "../../output-types";
+import MapRouteViewer from "../MapRouteViewer";
 
 interface Props {
   stageData: OutputTypes.StageData;
@@ -301,8 +302,10 @@ const MapViewer: React.FC<Props> = ({ stageData }) => {
         onDragCancel={handleDragCancel}
         modifiers={[snapCenterToCursor]}
       >
-        <div></div>
         <div className={classes.container}>
+          {route && (
+            <MapRouteViewer tiles={tiles} board={board} route={route} />
+          )}
           {getSvgDefs}
           {board.map((row, rowIndex) => {
             return (

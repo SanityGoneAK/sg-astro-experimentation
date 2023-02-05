@@ -391,7 +391,7 @@ interface MapData {
   [otherProperties: string]: unknown;
 }
 
-interface Tile {
+export interface Tile {
   tileKey: string;
   heightType: number;
   buildableType: number;
