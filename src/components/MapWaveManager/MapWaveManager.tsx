@@ -67,7 +67,7 @@ const MapWaveManager: React.FC<Props> = ({ waves, routes, setRoute }) => {
 
   const getNextAction = useCallback(
     (action: number | null) => {
-      if (action != null && actions.length > action) {
+      if (action != null && actions.length - 1 > action) {
         setActionIndex(action + 1);
         setRoute(routes[actions[action].routeIndex]);
         return;
@@ -87,6 +87,16 @@ const MapWaveManager: React.FC<Props> = ({ waves, routes, setRoute }) => {
       }
       setActionIndex(null);
       setRoute(null);
+    },
+    [actions, routes, setRoute]
+  );
+
+  const setAction = useCallback(
+    function (actionIndex: number) {
+      setActionIndex(actionIndex);
+      console.log(routes[actions[actionIndex].routeIndex]);
+      setRoute(routes[actions[actionIndex].routeIndex]);
+      window.scrollTo(0, 0);
     },
     [actions, routes, setRoute]
   );
@@ -151,7 +161,11 @@ const MapWaveManager: React.FC<Props> = ({ waves, routes, setRoute }) => {
         <tbody>
           {actions.map((action, key) => {
             return (
-              <tr className={classes.tableRow} key={key}>
+              <tr
+                className={classes.tableRow}
+                key={key}
+                onClick={() => setAction(key)}
+              >
                 <td className={classes.tableItem}>{key}</td>
                 <td className={classes.enemyTableItem}>
                   <img width={64} height={64} src={enemyAvatar(action.key)} />

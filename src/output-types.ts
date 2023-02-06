@@ -380,6 +380,10 @@ export interface StageData {
   mapData: MapData;
   routes: Route[];
   waves: Wave[];
+  predefines: {
+    [otherProperties: string]: unknown;
+    tokenCards: TokenCard[];
+  };
   [otherProperties: string]: unknown;
 }
 
@@ -398,12 +402,23 @@ export interface Tile {
   passableMask: number;
 }
 
-export interface DraggableCharacter {
+export interface DraggableEntity {
   row: number | null;
   col: number | null;
   charId: string;
+  range: "MELEE" | "RANGED";
+}
+
+export interface DraggableCharacter extends DraggableEntity {
+  type: "character";
   stats: CharacterStatValues;
   characterObject: Character;
+}
+
+export interface DraggableToken extends DraggableEntity {
+  type: "token";
+  tokeObject: TokenCard;
+  tokenId: string;
 }
 
 export interface MapCoordinates {
@@ -456,4 +471,23 @@ export interface Wave {
   maxTimeWaitingForNextWave: number;
   fragments: WaveFragment[];
   name: null | string;
+}
+
+export interface TokenCard {
+  initialCnt: number;
+  hidden: boolean;
+  alias: string;
+  uniEquipIds: null | any; //not sure
+  inst: {
+    characterKey: string;
+    level: number;
+    phase: number;
+    favorPoint: number;
+    potentialRank: number;
+  };
+  skillIndex: number;
+  mainSkillLvl: number;
+  skinId: string;
+  tmplId: string;
+  overrideSkillBlackboard: null | any;
 }

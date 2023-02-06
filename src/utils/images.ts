@@ -25,6 +25,9 @@ export const enemyAvatar = (enemyId: string): string => {
 
 export const summonImage = (id: string): string => `/images/avatars/${id}.png`;
 
+export const tokenImage = (id: string): string => `${baseURL}/avatars/${id}.png`;
+
+
 export const operatorClassIcon = (operatorClass: string): string =>
   `${baseURL}/classes/class_${operatorClass}.png`;
 

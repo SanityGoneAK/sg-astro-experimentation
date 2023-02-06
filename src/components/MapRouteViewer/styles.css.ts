@@ -6,6 +6,7 @@ export const container = style({
     top:" 0",
     position: "absolute",
     zIndex: "1000",
+    pointerEvents: "none",
 })
 export const root = style({
 

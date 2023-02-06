@@ -19,6 +19,10 @@ export const tableRow = style({
   background: vars.colors.neutrals.midtone,
   borderBottom: `1px solid ${vars.colors.neutrals.midtoneBrighter}`,
   borderCollapse: "collapse",
+  ":hover": {
+    background: vars.colors.neutrals.midtoneBrighter,
+    cursor: "pointer",
+  }
 });
 
 export const tableItem = style({

@@ -11,4 +11,6 @@ export const tray = style({
   borderTopLeftRadius: spacing(1),
   borderTopRightRadius: spacing(1),
   width: "100%",
+  display: "flex",
+  gap: spacing(1)
 });

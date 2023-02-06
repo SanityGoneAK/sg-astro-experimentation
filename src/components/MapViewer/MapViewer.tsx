@@ -13,165 +13,18 @@ import MapTile from "../MapTile";
 import MapWaveManager from "../MapWaveManager";
 import type * as OutputTypes from "../../output-types";
 import MapRouteViewer from "../MapRouteViewer";
+import MapTileDefinitions from "../MapTileDefinitions";
+import MapToken from "../MapToken";
 
 interface Props {
   stageData: OutputTypes.StageData;
 }
 
 const MapViewer: React.FC<Props> = ({ stageData }) => {
-  const tiles = stageData.mapData.tiles;
-  const board = stageData.mapData.map;
+  const [tiles, setTiles] = useState(stageData.mapData.tiles);
+  const [board, setBoard] = useState(stageData.mapData.map);
 
-  const [characters, setCharacters] = useState(() => getCharacters());
-  const [route, setRoute] = useState<OutputTypes.Route | null>(null);
-  const [movingPiece, setMovingPiece] =
-    useState<OutputTypes.DraggableCharacter | null>(null);
-
-  const getSvgDefs = (
-    <svg
-      className="visually-hidden"
-      width="64"
-      height="64"
-      viewBox="0 0 64 64"
-      fill="none"
-      xmlns="http://www.w3.org/2000/svg"
-    >
-      <defs>
-        <rect
-          x="2"
-          y="2"
-          id="tile_start"
-          width="60"
-          height="60"
-          stroke="#F45C5C"
-          strokeWidth="4"
-        />
-        <g id="tile_start_drone">
-          <rect
-            x="2"
-            y="2.00002"
-            width="60"
-            height="60"
-            stroke="#F45C5C"
-            strokeWidth="4"
-          />
-          <circle
-            cx="23.5"
-            cy="23.5"
-            r="5.5"
-            stroke="#F45C5C"
-            strokeWidth="4"
-          />
-          <circle
-            cx="40.5"
-            cy="23.5"
-            r="5.5"
-            stroke="#F45C5C"
-            strokeWidth="4"
-          />
-          <circle
-            cx="23.5"
-            cy="40.5"
-            r="5.5"
-            stroke="#F45C5C"
-            strokeWidth="4"
-          />
-          <circle
-            cx="40.5"
-            cy="40.5"
-            r="5.5"
-            stroke="#F45C5C"
-            strokeWidth="4"
-          />
-          <rect
-            x="28.3685"
-            y="25.5401"
-            width="14.7833"
-            height="4"
-            transform="rotate(45 28.3685 25.5401)"
-            fill="#F45C5C"
-          />
-          <rect
-            x="38.4546"
-            y="28.6875"
-            width="15.227"
-            height="4"
-            transform="rotate(135 38.4546 28.6875)"
-            fill="#F45C5C"
-          />
-          <rect
-            x="36"
-            y="28"
-            width="8"
-            height="8"
-            transform="rotate(90 36 28)"
-            fill="#F45C5C"
-          />
-        </g>
-        <rect
-          x="2"
-          y="2"
-          id="tile_end"
-          width="60"
-          height="60"
-          stroke="#49B3FF"
-          strokeWidth="4"
-        />
-        <rect
-          x="2"
-          y="2"
-          id="tile_floor"
-          width="60"
-          height="60"
-          fill="#191920"
-          stroke="#24242E"
-          strokeWidth="4"
-        />
-        <rect
-          x="2"
-          y="2"
-          id="tile_forbidden"
-          width="60"
-          height="60"
-          fill="#101014"
-          stroke="#24242E"
-          strokeWidth="4"
-        />
-        <rect
-          x="2"
-          y="2"
-          id="tile_road"
-          width="60"
-          height="60"
-          fill="#363643"
-          stroke="#484858"
-          strokeWidth="4"
-        />
-        <rect
-          x="2"
-          y="2"
-          id="tile_road"
-          width="60"
-          height="60"
-          fill="#363643"
-          stroke="#484858"
-          strokeWidth="4"
-        />
-        <rect
-          x="2"
-          y="2"
-          id="tile_wall"
-          width="60"
-          height="60"
-          fill="#87879B"
-          stroke="#484858"
-          strokeWidth="4"
-        />
-      </defs>
-    </svg>
-  );
-
-  function getCharacters() {
+  const getCharacters = useCallback(function getCharacters() {
     const testOp = operatorsJson[
       "char_197_poca" as keyof typeof operatorsJson
     ] as OutputTypes.Character;
@@ -181,6 +34,8 @@ const MapViewer: React.FC<Props> = ({ stageData }) => {
         row: null,
         col: null,
         charId: testOp.charId,
+        range: testOp.position,
+        type: "character",
         stats: getStatsAtLevel(testOp, {
           eliteLevel: 2,
           level: 80,
@@ -190,24 +45,59 @@ const MapViewer: React.FC<Props> = ({ stageData }) => {
         characterObject: testOp,
       },
     ] as OutputTypes.DraggableCharacter[];
-  }
+  }, []);
+
+  const getTokens = useCallback(
+    function () {
+      const rangeMapping = {
+        trap_001_crate: "MELEE",
+      };
+      const tokens = [] as OutputTypes.DraggableToken[];
+
+      stageData.predefines.tokenCards.forEach((token) => {
+        for (let index = 1; index < token.initialCnt; index++) {
+          tokens.push({
+            row: null,
+            col: null,
+            charId: token.inst.characterKey,
+            tokenId: token.inst.characterKey + "-" + index,
+            type: "token",
+            tokeObject: token,
+            range: rangeMapping[
+              token.inst.characterKey as keyof typeof rangeMapping
+            ] as "MELEE" | "RANGED",
+          });
+        }
+      });
+
+      return tokens;
+    },
+    [stageData.predefines.tokenCards]
+  );
+
+  const [characters, setCharacters] = useState(() => getCharacters());
+  const [tokens, setTokens] = useState(() => getTokens());
+  const [route, setRoute] = useState<OutputTypes.Route | null>(null);
+  const [movingPiece, setMovingPiece] = useState<
+    OutputTypes.DraggableCharacter | OutputTypes.DraggableToken | null
+  >(null);
 
   const checkCanDrop = useCallback(
     function checkCanDrop(
       moveToRow: number,
       moveToCol: number,
-      movingPiece: OutputTypes.DraggableCharacter
+      movingPiece: OutputTypes.DraggableEntity
     ) {
       const tileIndex = board[moveToRow][moveToCol];
       const tile = tiles[tileIndex];
 
-      const characterPosition = movingPiece.characterObject.position;
+      const entityPosition = movingPiece.range;
 
-      if (characterPosition == "MELEE" && tile.buildableType == 1) {
+      if (entityPosition == "MELEE" && tile.buildableType == 1) {
         return true;
       }
 
-      if (characterPosition == "RANGED" && tile.buildableType == 2) {
+      if (entityPosition == "RANGED" && tile.buildableType == 2) {
         return true;
       }
 
@@ -217,11 +107,7 @@ const MapViewer: React.FC<Props> = ({ stageData }) => {
   );
 
   const setCharacterCoordiantes = useCallback(
-    function setCharacterCoordiantes(
-      charId: string,
-      row: number | null,
-      col: number | null
-    ) {
+    function (charId: string, row: number | null, col: number | null) {
       const transformedCharacters = characters.map((character) => {
         if (character.charId == charId) {
           character.row = row;
@@ -233,6 +119,21 @@ const MapViewer: React.FC<Props> = ({ stageData }) => {
       setCharacters(transformedCharacters);
     },
     [characters]
+  );
+
+  const setTokenCoordinates = useCallback(
+    function (tokenId: string, row: number | null, col: number | null) {
+      const transformedTokens = tokens.map((token) => {
+        if (token.tokenId == tokenId) {
+          token.row = row;
+          token.col = col;
+        }
+        return token;
+      });
+
+      setTokens(transformedTokens);
+    },
+    [tokens]
   );
 
   const removeCharacterFromMap = useCallback(
@@ -249,16 +150,48 @@ const MapViewer: React.FC<Props> = ({ stageData }) => {
     [characters]
   );
 
+  const removeTokenFromMap = useCallback(
+    function (tokenId: string) {
+      const updatedToken = tokens.map((token) => {
+        if (
+          token.tokenId == tokenId &&
+          token.row != null &&
+          token.col != null
+        ) {
+          setTiles(
+            tiles.map((tile, index) => {
+              if (index == board[token.row][token.col]) {
+                tile.passableMask = 3;
+              }
+              return tile;
+            })
+          );
+          token.row = null;
+          token.col = null;
+        }
+        return token;
+      });
+      setTokens(updatedToken);
+    },
+    [board, tiles, tokens]
+  );
+
   const handleDragStart = useCallback(
     function handleDragStart(event: DragStartEvent) {
       const activeCharacter = characters.find(
         (character) => character.charId == event.active.id
       );
+      const activeToken = tokens.find(
+        (token) => token.tokenId == event.active.id
+      );
       if (activeCharacter) {
         setMovingPiece(activeCharacter);
       }
+      if (activeToken) {
+        setMovingPiece(activeToken);
+      }
     },
-    [characters]
+    [characters, tokens]
   );
 
   const handleDragEnd = useCallback(
@@ -274,20 +207,45 @@ const MapViewer: React.FC<Props> = ({ stageData }) => {
 
       const [row, col] = event.over.id.toString().split("-").map(Number);
 
-      const tileAlreadyHasCharacter = characters.some(
-        (character) => character.row == row && character.col == col
-      );
+      const tileAlreadyHasCharacter =
+        characters.some(
+          (character) => character.row == row && character.col == col
+        ) || tokens.some((token) => token.row == row && token.col == col);
 
       if (event.over && !tileAlreadyHasCharacter) {
         if (!checkCanDrop(row, col, movingPiece)) {
           return;
         }
 
-        setCharacterCoordiantes(movingPiece.charId, row, col);
+        if (movingPiece.type == "character") {
+          setCharacterCoordiantes(movingPiece.charId, row, col);
+        }
+
+        if (movingPiece.type == "token") {
+          setTiles(
+            tiles.map((tile, index) => {
+              if (index == board[row][col]) {
+                tile.passableMask = 2;
+              }
+              return tile;
+            })
+          );
+          console.log(tiles, board[row][col]);
+          setTokenCoordinates(movingPiece.tokenId, row, col);
+        }
       }
       setMovingPiece(null);
     },
-    [movingPiece, characters, checkCanDrop, setCharacterCoordiantes]
+    [
+      movingPiece,
+      characters,
+      tokens,
+      setCharacterCoordiantes,
+      checkCanDrop,
+      tiles,
+      board,
+      setTokenCoordinates,
+    ]
   );
 
   const handleDragCancel = useCallback(() => {
@@ -306,7 +264,7 @@ const MapViewer: React.FC<Props> = ({ stageData }) => {
           {route && (
             <MapRouteViewer tiles={tiles} board={board} route={route} />
           )}
-          {getSvgDefs}
+          <MapTileDefinitions />
           {board.map((row, rowIndex) => {
             return (
               <div className={classes.row} key={`row-${rowIndex}`}>
@@ -315,6 +273,9 @@ const MapViewer: React.FC<Props> = ({ stageData }) => {
                   const character = characters.find(
                     (character) =>
                       character.row == rowIndex && character.col == tileIndex
+                  );
+                  const token = tokens.find(
+                    (token) => token.row == rowIndex && token.col == tileIndex
                   );
                   const canDrop = movingPiece
                     ? checkCanDrop(rowIndex, tileIndex, movingPiece)
@@ -336,6 +297,14 @@ const MapViewer: React.FC<Props> = ({ stageData }) => {
                           character={character}
                         ></MapCharacter>
                       )}
+                      {token && (
+                        <MapToken
+                          removeToken={removeTokenFromMap}
+                          key={token.tokenId}
+                          inMap={true}
+                          token={token}
+                        ></MapToken>
+                      )}
                     </MapTile>
                   );
                 })}
@@ -343,7 +312,7 @@ const MapViewer: React.FC<Props> = ({ stageData }) => {
             );
           })}
 
-          <MapCharacterTray characters={characters} />
+          <MapCharacterTray characters={characters} tokens={tokens} />
         </div>
         <MapWaveManager
           waves={stageData.waves}

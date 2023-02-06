@@ -23,10 +23,14 @@ export const sidebar = style({
 
 export const mainbar = style({
   flexGrow: 1,
+  display: "flex",
+  flexDirection: "column",
 });
 
 export const content = style({
   padding: spacing(3),
+  height: "100%",
+  overflow: "scroll",
 });
 
 export const logoContainer = style({

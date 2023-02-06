@@ -7,7 +7,7 @@ import type * as GameData from "../../gamedata-types";
 
 interface Props {
   rangeObject: GameData.Range;
-  direction: string;
+  direction: string | null;
 }
 
 const MapCharacterRange: React.FC<Props> = ({ rangeObject, direction }) => {
