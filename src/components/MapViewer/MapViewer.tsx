@@ -7,7 +7,7 @@ import * as classes from "./styles.css";
 import operatorsJson from "../../../data/operators.json";
 import { getStatsAtLevel } from "../../utils/character-stats";
 import MapCharacter from "../MapCharacter";
-import MapCharacterTray from "../MapCharacterTray";
+import MapEntitiesTray from "../MapEntitiesTray";
 import MapTile from "../MapTile";
 
 import MapWaveManager from "../MapWaveManager";
@@ -24,59 +24,54 @@ const MapViewer: React.FC<Props> = ({ stageData }) => {
   const [tiles, setTiles] = useState(stageData.mapData.tiles);
   const [board, setBoard] = useState(stageData.mapData.map);
 
-  const getCharacters = useCallback(function getCharacters() {
+  const getDraggableEntities = useCallback(() => {
+    const rangeMapping = {
+      trap_001_crate: "MELEE",
+    };
+    const entities = [] as Array<
+      OutputTypes.DraggableToken | OutputTypes.DraggableCharacter
+    >;
+
     const testOp = operatorsJson[
       "char_197_poca" as keyof typeof operatorsJson
     ] as OutputTypes.Character;
 
-    return [
-      {
-        row: null,
-        col: null,
-        charId: testOp.charId,
-        range: testOp.position,
-        type: "character",
-        stats: getStatsAtLevel(testOp, {
-          eliteLevel: 2,
-          level: 80,
-          pots: false,
-          trust: false,
-        }),
-        characterObject: testOp,
-      },
-    ] as OutputTypes.DraggableCharacter[];
-  }, []);
+    entities.push({
+      row: null,
+      col: null,
+      charId: testOp.charId,
+      range: testOp.position,
+      type: "character",
+      stats: getStatsAtLevel(testOp, {
+        eliteLevel: 2,
+        level: 80,
+        pots: false,
+        trust: false,
+      }),
+      characterObject: testOp,
+    });
 
-  const getTokens = useCallback(
-    function () {
-      const rangeMapping = {
-        trap_001_crate: "MELEE",
-      };
-      const tokens = [] as OutputTypes.DraggableToken[];
+    stageData.predefines.tokenCards.forEach((token) => {
+      for (let index = 1; index < token.initialCnt; index++) {
+        entities.push({
+          row: null,
+          col: null,
+          charId: token.inst.characterKey,
+          tokenId: token.inst.characterKey + "-" + index,
+          type: "token",
+          tokeObject: token,
+          range: rangeMapping[
+            token.inst.characterKey as keyof typeof rangeMapping
+          ] as "MELEE" | "RANGED",
+        });
+      }
+    });
+    return entities;
+  }, [stageData.predefines.tokenCards]);
 
-      stageData.predefines.tokenCards.forEach((token) => {
-        for (let index = 1; index < token.initialCnt; index++) {
-          tokens.push({
-            row: null,
-            col: null,
-            charId: token.inst.characterKey,
-            tokenId: token.inst.characterKey + "-" + index,
-            type: "token",
-            tokeObject: token,
-            range: rangeMapping[
-              token.inst.characterKey as keyof typeof rangeMapping
-            ] as "MELEE" | "RANGED",
-          });
-        }
-      });
-
-      return tokens;
-    },
-    [stageData.predefines.tokenCards]
-  );
-
-  const [characters, setCharacters] = useState(() => getCharacters());
-  const [tokens, setTokens] = useState(() => getTokens());
+  // const [characters, setCharacters] = useState(() => getCharacters());
+  // const [tokens, setTokens] = useState(() => getTokens());
+  const [entities, setEntity] = useState(() => getDraggableEntities());
   const [route, setRoute] = useState<OutputTypes.Route | null>(null);
   const [movingPiece, setMovingPiece] = useState<
     OutputTypes.DraggableCharacter | OutputTypes.DraggableToken | null
@@ -106,92 +101,70 @@ const MapViewer: React.FC<Props> = ({ stageData }) => {
     [board, tiles]
   );
 
-  const setCharacterCoordiantes = useCallback(
-    function (charId: string, row: number | null, col: number | null) {
-      const transformedCharacters = characters.map((character) => {
-        if (character.charId == charId) {
-          character.row = row;
-          character.col = col;
+  const setDraggableEntityCoordinates = useCallback(
+    (charId: string, row: number | null, col: number | null) => {
+      const transformedCharacters = entities.map((entity) => {
+        if (entity.type == "character" && entity.charId == charId) {
+          entity.row = row;
+          entity.col = col;
         }
-        return character;
+        if (entity.type == "token" && entity.tokenId == charId) {
+          entity.row = row;
+          entity.col = col;
+        }
+        return entity;
       });
 
-      setCharacters(transformedCharacters);
+      setEntity(transformedCharacters);
     },
-    [characters]
+    [entities]
   );
 
-  const setTokenCoordinates = useCallback(
-    function (tokenId: string, row: number | null, col: number | null) {
-      const transformedTokens = tokens.map((token) => {
-        if (token.tokenId == tokenId) {
-          token.row = row;
-          token.col = col;
+  const removeEntityFromMap = useCallback(
+    (charId: string) => {
+      const transformedCharacters = entities.map((entity) => {
+        if (entity.type == "character" && entity.charId == charId) {
+          entity.row = null;
+          entity.col = null;
         }
-        return token;
-      });
-
-      setTokens(transformedTokens);
-    },
-    [tokens]
-  );
-
-  const removeCharacterFromMap = useCallback(
-    function (charId: string) {
-      const updatedCharacters = characters.map((character) => {
-        if (character.charId == charId) {
-          character.row = null;
-          character.col = null;
-        }
-        return character;
-      });
-      setCharacters(updatedCharacters);
-    },
-    [characters]
-  );
-
-  const removeTokenFromMap = useCallback(
-    function (tokenId: string) {
-      const updatedToken = tokens.map((token) => {
-        if (
-          token.tokenId == tokenId &&
-          token.row != null &&
-          token.col != null
-        ) {
+        if (entity.type == "token" && entity.tokenId == charId) {
           setTiles(
             tiles.map((tile, index) => {
-              if (index == board[token.row][token.col]) {
+              // Idk why it keeps complaining about this one
+              if (index == board[entity.row][entity.col]) {
                 tile.passableMask = 3;
               }
               return tile;
             })
           );
-          token.row = null;
-          token.col = null;
+          entity.row = null;
+          entity.col = null;
         }
-        return token;
+        return entity;
       });
-      setTokens(updatedToken);
+
+      setEntity(transformedCharacters);
     },
-    [board, tiles, tokens]
+    [board, entities, tiles]
   );
 
   const handleDragStart = useCallback(
     function handleDragStart(event: DragStartEvent) {
-      const activeCharacter = characters.find(
-        (character) => character.charId == event.active.id
-      );
-      const activeToken = tokens.find(
-        (token) => token.tokenId == event.active.id
-      );
-      if (activeCharacter) {
-        setMovingPiece(activeCharacter);
-      }
-      if (activeToken) {
-        setMovingPiece(activeToken);
+      const activeEntity = entities.find((entity) => {
+        if (entity.type == "character" && entity.charId == event.active.id) {
+          return true;
+        }
+        if (entity.type == "token" && entity.tokenId == event.active.id) {
+          return true;
+        }
+
+        return false;
+      });
+      if (activeEntity) {
+        setMovingPiece(activeEntity);
       }
     },
-    [characters, tokens]
+    [entities]
   );
 
   const handleDragEnd = useCallback(
@@ -199,27 +172,27 @@ const MapViewer: React.FC<Props> = ({ stageData }) => {
       if (!movingPiece) {
         return;
       }
+      const entityId =
+        movingPiece.type == "character"
+          ? movingPiece.charId
+          : movingPiece.tokenId;
       if (event.over == null) {
-        setCharacterCoordiantes(movingPiece.charId, null, null);
-        setMovingPiece(null);
+        setDraggableEntityCoordinates(entityId, null, null);
         return;
       }
 
       const [row, col] = event.over.id.toString().split("-").map(Number);
 
-      const tileAlreadyHasCharacter =
-        characters.some(
-          (character) => character.row == row && character.col == col
-        ) || tokens.some((token) => token.row == row && token.col == col);
+      const tileAlreadyHasCharacter = entities.some(
+        (entity) => entity.row == row && entity.col == col
+      );
 
       if (event.over && !tileAlreadyHasCharacter) {
         if (!checkCanDrop(row, col, movingPiece)) {
           return;
         }
 
-        if (movingPiece.type == "character") {
-          setCharacterCoordiantes(movingPiece.charId, row, col);
-        }
+        setDraggableEntityCoordinates(entityId, row, col);
 
         if (movingPiece.type == "token") {
           setTiles(
@@ -230,21 +203,17 @@ const MapViewer: React.FC<Props> = ({ stageData }) => {
               return tile;
             })
           );
-          console.log(tiles, board[row][col]);
-          setTokenCoordinates(movingPiece.tokenId, row, col);
         }
       }
       setMovingPiece(null);
     },
     [
       movingPiece,
-      characters,
-      tokens,
-      setCharacterCoordiantes,
+      entities,
+      setDraggableEntityCoordinates,
       checkCanDrop,
       tiles,
       board,
-      setTokenCoordinates,
     ]
   );
 
@@ -270,12 +239,9 @@ const MapViewer: React.FC<Props> = ({ stageData }) => {
               <div className={classes.row} key={`row-${rowIndex}`}>
                 {row.map((rowTile, tileIndex) => {
                   const tile = tiles[rowTile];
-                  const character = characters.find(
-                    (character) =>
-                      character.row == rowIndex && character.col == tileIndex
-                  );
-                  const token = tokens.find(
-                    (token) => token.row == rowIndex && token.col == tileIndex
+                  const entity = entities.find(
+                    (entity) =>
+                      entity.row == rowIndex && entity.col == tileIndex
                   );
                   const canDrop = movingPiece
                     ? checkCanDrop(rowIndex, tileIndex, movingPiece)
@@ -289,20 +255,20 @@ const MapViewer: React.FC<Props> = ({ stageData }) => {
                       rowIndex={rowIndex}
                       tileIndex={tileIndex}
                     >
-                      {character && (
+                      {entity?.type == "character" && (
                         <MapCharacter
-                          removeCharacter={removeCharacterFromMap}
-                          key={character.charId}
+                          removeCharacter={removeEntityFromMap}
+                          key={entity.charId}
                           inMap={true}
-                          character={character}
+                          character={entity}
                         ></MapCharacter>
                       )}
-                      {token && (
+                      {entity?.type == "token" && (
                         <MapToken
-                          removeToken={removeTokenFromMap}
-                          key={token.tokenId}
+                          removeToken={removeEntityFromMap}
+                          key={entity.tokenId}
                           inMap={true}
-                          token={token}
+                          token={entity}
                         ></MapToken>
                       )}
                     </MapTile>
@@ -312,7 +278,7 @@ const MapViewer: React.FC<Props> = ({ stageData }) => {
             );
           })}
 
-          <MapCharacterTray characters={characters} tokens={tokens} />
+          <MapEntitiesTray entities={entities} />
         </div>
         <MapWaveManager
           waves={stageData.waves}

@@ -12,7 +12,7 @@ import type { DraggableCharacter } from "../../output-types";
 interface Props {
   character: DraggableCharacter;
   inMap: boolean;
-  removeCharacter: (chardId: string) => void;
+  removeCharacter?: (chardId: string) => void;
 }
 
 const MapCharacter: React.FC<Props> = ({

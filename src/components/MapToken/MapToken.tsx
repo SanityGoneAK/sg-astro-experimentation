@@ -12,7 +12,7 @@ import { summonImage, tokenImage } from "../../utils/images";
 interface Props {
   token: OutputTypes.DraggableToken;
   inMap: boolean;
-  removeToken: (tokenId: string) => void;
+  removeToken?: (tokenId: string) => void;
 }
 
 const MapToken: React.FC<Props> = ({ token, inMap, removeToken }) => {

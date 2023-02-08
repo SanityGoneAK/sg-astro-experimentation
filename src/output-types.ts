@@ -406,7 +406,7 @@ export interface DraggableEntity {
   row: number | null;
   col: number | null;
   charId: string;
-  range: "MELEE" | "RANGED";
+  range: string;
 }
 
 export interface DraggableCharacter extends DraggableEntity {
