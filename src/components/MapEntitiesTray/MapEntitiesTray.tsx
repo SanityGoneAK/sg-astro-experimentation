@@ -1,20 +1,30 @@
 import * as classes from "./styles.css";
 
 import MapCharacter from "../MapCharacter";
+import MapToken from "../MapToken";
 
 import type * as OutputTypes from "../../output-types";
-import MapToken from "../MapToken";
 
 interface Props {
   entities: Array<OutputTypes.DraggableToken | OutputTypes.DraggableCharacter>;
 }
 
 const MapEntitiesTray: React.FC<Props> = ({ entities }) => {
+  const availableEntities = entities.filter(
+    (entity) => entity.row == null && entity.col == null
+  );
+
+  const tokensByChardId = availableEntities
+    .filter((entity) => entity.type == "token")
+    .reduce((acc, curr) => {
+      acc.set(curr.charId, [...(acc.get(curr.charId) ?? []), curr]);
+      return acc;
+    }, new Map<string, Array<OutputTypes.DraggableToken | OutputTypes.DraggableCharacter>>());
+
   return (
     <div className={classes.tray}>
-      {entities
-        .filter((entity) => entity.row == null && entity.col == null)
-        .map((entity) => {
+      <>
+        {availableEntities.map((entity) => {
           if (entity.type == "character") {
             return (
               <MapCharacter
@@ -24,16 +34,25 @@ const MapEntitiesTray: React.FC<Props> = ({ entities }) => {
               ></MapCharacter>
             );
           }
+        })}
+      </>
+      <>
+        {[...tokensByChardId.entries()].map(([charId, group]) => {
+          const entity = group[0];
           if (entity.type == "token") {
             return (
-              <MapToken
-                key={entity.tokenId}
-                inMap={false}
-                token={entity}
-              ></MapToken>
+              <div className={classes.tokenGroup} key={charId}>
+                <MapToken
+                  key={entity.tokenId}
+                  inMap={false}
+                  token={entity}
+                ></MapToken>
+                <span className={classes.tokenQuantity}>{group.length}</span>
+              </div>
             );
           }
         })}
+      </>
     </div>
   );
 };

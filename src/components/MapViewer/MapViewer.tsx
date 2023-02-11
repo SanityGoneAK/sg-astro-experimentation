@@ -178,6 +178,7 @@ const MapViewer: React.FC<Props> = ({ stageData }) => {
           : movingPiece.tokenId;
       if (event.over == null) {
         setDraggableEntityCoordinates(entityId, null, null);
+        setMovingPiece(null);
         return;
       }
 
@@ -246,7 +247,6 @@ const MapViewer: React.FC<Props> = ({ stageData }) => {
                   const canDrop = movingPiece
                     ? checkCanDrop(rowIndex, tileIndex, movingPiece)
                     : false;
-
                   return (
                     <MapTile
                       key={`tile-${rowIndex}-${tileIndex}`}

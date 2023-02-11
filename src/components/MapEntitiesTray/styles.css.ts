@@ -14,3 +14,16 @@ export const tray = style({
   display: "flex",
   gap: spacing(1)
 });
+
+export const tokenGroup = style({
+  position: "relative",
+})
+
+export const tokenQuantity = style({
+  position: "absolute",
+  background: vars.colors.neutrals.midtoneDarker,
+  padding: spacing(0.5, 1),
+  bottom: spacing(-1),
+  right: spacing(-1),
+  borderRadius: spacing(0.5),
+})
