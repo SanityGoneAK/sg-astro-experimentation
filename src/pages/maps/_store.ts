@@ -3,9 +3,9 @@ import { action, atom, computed, map } from "nanostores";
 import { levelScenePairs } from "../../../ArknightsGameData/zh_CN/gamedata/battle/battle_misc_table.json";
 import mapsJson from "../../../data/maps.json";
 import operatorsJson from "../../../data/operators.json";
+import { getStatsAtLevel } from "../../utils/character-stats";
 
 import type * as OutputTypes from "../../output-types";
-import { getStatsAtLevel } from "../../utils/character-stats";
 
 export const stageIdStore = atom<string>(
   typeof window !== "undefined" ? (window as any).stageId : ""
