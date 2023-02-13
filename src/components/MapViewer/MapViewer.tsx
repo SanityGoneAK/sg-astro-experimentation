@@ -2,6 +2,7 @@ import { useCallback, useState } from "react";
 
 import { DndContext, DragEndEvent, DragStartEvent } from "@dnd-kit/core";
 import { snapCenterToCursor } from "@dnd-kit/modifiers";
+import { useStore } from "@nanostores/react";
 
 import * as classes from "./styles.css";
 import operatorsJson from "../../../data/operators.json";
@@ -9,12 +10,19 @@ import { getStatsAtLevel } from "../../utils/character-stats";
 import MapCharacter from "../MapCharacter";
 import MapEntitiesTray from "../MapEntitiesTray";
 import MapTile from "../MapTile";
+import {
+  entitiesStore,
+  operatorStore,
+  tokensStore,
+  removeOperatorCoordinates,
+} from "../../pages/maps/_store";
 
 import MapWaveManager from "../MapWaveManager";
 import type * as OutputTypes from "../../output-types";
 import MapRouteViewer from "../MapRouteViewer";
 import MapTileDefinitions from "../MapTileDefinitions";
 import MapToken from "../MapToken";
+import MapCharacterSearch from "../MapCharacterSearch";
 
 interface Props {
   stageData: OutputTypes.StageData;
@@ -24,54 +32,57 @@ const MapViewer: React.FC<Props> = ({ stageData }) => {
   const [tiles, setTiles] = useState(stageData.mapData.tiles);
   const [board, setBoard] = useState(stageData.mapData.map);
 
-  const getDraggableEntities = useCallback(() => {
-    const rangeMapping = {
-      trap_001_crate: "MELEE",
-    };
-    const entities = [] as Array<
-      OutputTypes.DraggableToken | OutputTypes.DraggableCharacter
-    >;
+  const entities = useStore(entitiesStore);
+  // uncomment this once ready
+  // const entities = useStore(entitiesStore);
+  // const [operatorIds, setOperatorIds] = useState<string[]>(["char_197_poca"]);
+  // const getDraggableEntities = useCallback(() => {
+  //   const rangeMapping = {
+  //     trap_001_crate: "MELEE",
+  //   };
+  //   const entities = [] as Array<
+  //     OutputTypes.DraggableToken | OutputTypes.DraggableCharacter
+  //   >;
 
-    const testOp = operatorsJson[
-      "char_197_poca" as keyof typeof operatorsJson
-    ] as OutputTypes.Character;
+  //   operatorIds.forEach((opId) => {
+  //     const operator = operatorsJson[
+  //       opId as keyof typeof operatorsJson
+  //     ] as OutputTypes.Character;
+  //     entities.push({
+  //       row: null,
+  //       col: null,
+  //       charId: opId,
+  //       range: operator.position,
+  //       type: "character",
+  //       stats: getStatsAtLevel(operator, {
+  //         eliteLevel: 2,
+  //         level: 80,
+  //         pots: false,
+  //         trust: false,
+  //       }),
+  //       characterObject: operator,
+  //     });
+  //   });
 
-    entities.push({
-      row: null,
-      col: null,
-      charId: testOp.charId,
-      range: testOp.position,
-      type: "character",
-      stats: getStatsAtLevel(testOp, {
-        eliteLevel: 2,
-        level: 80,
-        pots: false,
-        trust: false,
-      }),
-      characterObject: testOp,
-    });
+  //   stageData.predefines.tokenCards.forEach((token) => {
+  //     for (let index = 1; index < token.initialCnt; index++) {
+  //       entities.push({
+  //         row: null,
+  //         col: null,
+  //         charId: token.inst.characterKey,
+  //         tokenId: token.inst.characterKey + "-" + index,
+  //         type: "token",
+  //         tokeObject: token,
+  //         range: rangeMapping[
+  //           token.inst.characterKey as keyof typeof rangeMapping
+  //         ] as "MELEE" | "RANGED",
+  //       });
+  //     }
+  //   });
+  //   return entities;
+  // }, [operatorIds, stageData.predefines.tokenCards]);
 
-    stageData.predefines.tokenCards.forEach((token) => {
-      for (let index = 1; index < token.initialCnt; index++) {
-        entities.push({
-          row: null,
-          col: null,
-          charId: token.inst.characterKey,
-          tokenId: token.inst.characterKey + "-" + index,
-          type: "token",
-          tokeObject: token,
-          range: rangeMapping[
-            token.inst.characterKey as keyof typeof rangeMapping
-          ] as "MELEE" | "RANGED",
-        });
-      }
-    });
-    return entities;
-  }, [stageData.predefines.tokenCards]);
-
-  // const [characters, setCharacters] = useState(() => getCharacters());
-  // const [tokens, setTokens] = useState(() => getTokens());
-  const [entities, setEntity] = useState(() => getDraggableEntities());
+  // const [entities, setEntity] = useState(() => getDraggableEntities());
   const [route, setRoute] = useState<OutputTypes.Route | null>(null);
   const [movingPiece, setMovingPiece] = useState<
     OutputTypes.DraggableCharacter | OutputTypes.DraggableToken | null
@@ -103,35 +114,46 @@ const MapViewer: React.FC<Props> = ({ stageData }) => {
 
   const setDraggableEntityCoordinates = useCallback(
     (charId: string, row: number | null, col: number | null) => {
-      const transformedCharacters = entities.map((entity) => {
+      entities.forEach((entity) => {
         if (entity.type == "character" && entity.charId == charId) {
           entity.row = row;
           entity.col = col;
+          operatorStore.setKey(entity.charId, entity);
         }
         if (entity.type == "token" && entity.tokenId == charId) {
           entity.row = row;
           entity.col = col;
+          tokensStore.setKey(
+            entity.charId,
+            tokensStore.get()[entity.charId].map((token) => {
+              if (token.tokenId == entity.tokenId) {
+                token = entity;
+              }
+              return token;
+            })
+          );
         }
-        return entity;
       });
-
-      setEntity(transformedCharacters);
     },
     [entities]
   );
 
   const removeEntityFromMap = useCallback(
     (charId: string) => {
-      const transformedCharacters = entities.map((entity) => {
+      entities.forEach((entity) => {
         if (entity.type == "character" && entity.charId == charId) {
           entity.row = null;
           entity.col = null;
+          removeOperatorCoordinates(entity);
         }
         if (entity.type == "token" && entity.tokenId == charId) {
           setTiles(
             tiles.map((tile, index) => {
-              // Idk why it keeps complaining about this one
-              if (index == board[entity.row][entity.col]) {
+              if (
+                entity.row != null &&
+                entity.col != null &&
+                index == board[entity.row][entity.col]
+              ) {
                 tile.passableMask = 3;
               }
               return tile;
@@ -139,11 +161,19 @@ const MapViewer: React.FC<Props> = ({ stageData }) => {
           );
           entity.row = null;
           entity.col = null;
-        }
-        return entity;
-      });
 
-      setEntity(transformedCharacters);
+          tokensStore.setKey(
+            entity.charId,
+            tokensStore.get()[entity.charId].map((token) => {
+              if (token.tokenId == entity.tokenId) {
+                token = entity;
+              }
+              return token;
+            })
+          );
+        }
+      });
+      console.log(entities);
     },
     [board, entities, tiles]
   );
@@ -222,6 +252,10 @@ const MapViewer: React.FC<Props> = ({ stageData }) => {
     setMovingPiece(null);
   }, []);
 
+  const handleOperatorSelected = useCallback((operatorId: string) => {
+    // setOperatorIds((old) => [...new Set(old), operatorId]);
+  }, []);
+
   return (
     <>
       <DndContext
@@ -280,6 +314,7 @@ const MapViewer: React.FC<Props> = ({ stageData }) => {
 
           <MapEntitiesTray entities={entities} />
         </div>
+        {/* <MapCharacterSearch /> */}
         <MapWaveManager
           waves={stageData.waves}
           routes={stageData.routes}

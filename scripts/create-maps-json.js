@@ -22,7 +22,7 @@ export async function createMapsJson(dataDir) {
   const enStageIds = Object.keys(enMaps);
   const cnStageIds = Object.keys(cnMaps);
   const allStages = new Set([...cnStageIds, ...enStageIds]);
-  await fs.mkdir(path.join(dataDir, "/maps"), { recursive: true });
+  // await fs.mkdir(path.join(dataDir, "/maps"), { recursive: true });
 
   const allStageEntries = [...allStages].map((stageId) => {
     const stage = enMaps[stageId] ?? cnMaps[stageId];
@@ -65,7 +65,6 @@ export async function createMapsJson(dataDir) {
   });
 
   const stagesJson = Object.fromEntries(allStageEntries);
-  console.log(allStageEntries);
 
   await fs.writeFile(
     path.join(dataDir, "maps.json"),

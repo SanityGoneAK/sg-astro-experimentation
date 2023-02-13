@@ -33,7 +33,7 @@ interface BranchSearchResult {
   subProfession: string;
 }
 
-interface OperatorSearchResult {
+export interface OperatorSearchResult {
   type: "operator";
   charId: string;
   name: string;

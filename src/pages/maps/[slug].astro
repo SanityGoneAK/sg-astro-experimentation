@@ -41,6 +41,10 @@ const stageData = await import(
 );
 ---
 
+<script slot="head" define:vars={{ stageId }}>
+  window.stageId = stageId;
+</script>
+
 <Layout title={stageInfo.code}>
   <h2>
     {stageInfo.code}

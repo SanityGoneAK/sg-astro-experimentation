@@ -104,34 +104,6 @@ const MapWaveManager: React.FC<Props> = ({ waves, routes, setRoute }) => {
   return (
     <div className={classes.waveContainer}>
       <div className={classes.details}>
-        <div>
-          {action != null && (
-            <p>
-              <span>Wave {actions[action].waveIndex}</span>
-              <br />
-              <span>
-                Index
-                {actions[action].enemyRangeStart -
-                  actions[action].enemyRangeEnd ==
-                0
-                  ? actions[action].enemyRangeStart
-                  : `${actions[action].enemyRangeStart} - ${actions[action].enemyRangeEnd}`}
-              </span>
-              <br />
-              <span>Current wave {actions[action].elapsedTime}s</span>
-              <br />
-              <span>Interval {actions[action].interval}s</span>
-              <br />
-              Current enemy
-              <img
-                width={64}
-                height={64}
-                src={enemyAvatar(actions[action].key)}
-              />
-              <span>x{actions[action].count}</span>
-            </p>
-          )}
-        </div>
         <div className={classes.buttonContainer}>
           <button
             className={classes.actionButton}
@@ -146,6 +118,42 @@ const MapWaveManager: React.FC<Props> = ({ waves, routes, setRoute }) => {
             Increase
           </button>
         </div>
+        {action != null && (
+          <div className={classes.actionDetails}>
+            <ul>
+              <li>
+                <span>Wave</span>
+                <span>{actions[action].waveIndex}</span>
+              </li>
+              <li>
+                <span>Index</span>
+                <span>
+                  {actions[action].enemyRangeStart -
+                    actions[action].enemyRangeEnd ==
+                  0
+                    ? actions[action].enemyRangeStart
+                    : `${actions[action].enemyRangeStart} - ${actions[action].enemyRangeEnd}`}
+                </span>
+              </li>
+              <li>
+                <span>Elapsed Time</span>
+                <span>{actions[action].elapsedTime}s</span>
+              </li>
+              <li>
+                <span>Interval</span>
+                <span>{actions[action].interval}s</span>
+              </li>
+            </ul>
+            <div>
+              <img
+                width={64}
+                height={64}
+                src={enemyAvatar(actions[action].key)}
+              />
+              <span>x{actions[action].count}</span>
+            </div>
+          </div>
+        )}
       </div>
       <table className={classes.table}>
         <thead>

@@ -1,5 +1,4 @@
 import * as classes from "./styles.css";
-
 import MapCharacter from "../MapCharacter";
 import MapToken from "../MapToken";
 
@@ -14,7 +13,7 @@ const MapEntitiesTray: React.FC<Props> = ({ entities }) => {
     (entity) => entity.row == null && entity.col == null
   );
 
-  const tokensByChardId = availableEntities
+  const tokensByCharId = availableEntities
     .filter((entity) => entity.type == "token")
     .reduce((acc, curr) => {
       acc.set(curr.charId, [...(acc.get(curr.charId) ?? []), curr]);
@@ -31,22 +30,18 @@ const MapEntitiesTray: React.FC<Props> = ({ entities }) => {
                 key={entity.charId}
                 inMap={false}
                 character={entity}
-              ></MapCharacter>
+              />
             );
           }
         })}
       </>
       <>
-        {[...tokensByChardId.entries()].map(([charId, group]) => {
+        {[...tokensByCharId.entries()].map(([charId, group]) => {
           const entity = group[0];
           if (entity.type == "token") {
             return (
               <div className={classes.tokenGroup} key={charId}>
-                <MapToken
-                  key={entity.tokenId}
-                  inMap={false}
-                  token={entity}
-                ></MapToken>
+                <MapToken key={entity.tokenId} inMap={false} token={entity} />
                 <span className={classes.tokenQuantity}>{group.length}</span>
               </div>
             );

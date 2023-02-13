@@ -41,11 +41,13 @@ export const enemyTableItem = style({
 export const details = style({
   display: "flex",
   justifyContent: "space-between",
+  flexDirection: "column",
 });
 
 export const buttonContainer = style({
   display: "flex",
   gap: spacing(2),
+  marginLeft: "auto",
 });
 
 export const actionButton = style({
@@ -56,3 +58,9 @@ export const actionButton = style({
   borderRadius: spacing(12),
   height: spacing(5),
 });
+
+export const actionDetails = style({
+  display: "flex",
+  width: "100%",
+justifyContent: "space-between",
+})
