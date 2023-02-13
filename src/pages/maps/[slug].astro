@@ -46,10 +46,10 @@ const stageData = await import(
 </script>
 
 <Layout title={stageInfo.code}>
-  <h2>
-    {stageInfo.code}
-  </h2>
   <section class={classes.container}>
+    <h2>
+      {stageInfo.code}
+    </h2>
     <MapViewer stageData={stageData} client:visible />
   </section>
 </Layout>
