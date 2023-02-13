@@ -7,14 +7,18 @@ const maps = Object.values(mapsJson);
 ---
 
 <Layout title="Map List">
-    <h2>
-      Map List
-    </h2>
-    <section>
-        <ul>
-        {maps.map(map => {
-            return (<li><a href={`/maps/${slugify(map.stageId)}`}>{map.code}</a></li>)
-        })}
-        </ul>
-    </section>
-  </Layout>
+  <h2>Map List</h2>
+  <section>
+    <ul>
+      {
+        maps.map((map) => {
+          return (
+            <li>
+              <a href={`/maps/${slugify(map.stageId)}`}>{map.code}</a>
+            </li>
+          );
+        })
+      }
+    </ul>
+  </section>
+</Layout>
