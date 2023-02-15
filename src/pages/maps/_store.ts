@@ -17,158 +17,105 @@ const getCorrectLevelId = (levelId: string): string => {
     : levelId;
 };
 
-const getDefaultTokens = async () => {
-  const rangeMapping = {
-    trap_001_crate: "MELEE",
-  };
-
-  const stageId = typeof window !== "undefined" ? (window as any).stageId : "";
-
-  const stageInfo = mapsJson[
-    stageIdStore.get() as keyof typeof mapsJson
-  ] as OutputTypes.StageInfo;
-  const locale = stageInfo.isCnOnly ? "zh_CN" : "en_US";
-  const stageData = (await import(
-    "../../../ArknightsGameData/" +
-      locale +
-      "/gamedata/levels/" +
-      getCorrectLevelId(stageInfo.levelId).toLowerCase() +
-      ".json"
-  )) as OutputTypes.StageData;
-
-  const tokens: OutputTypes.DraggableToken[] = [];
-  stageData.predefines.tokenCards.forEach((token) => {
-    for (let index = 1; index < token.initialCnt; index++) {
-      tokens.push({
-        row: null,
-        col: null,
-        charId: token.inst.characterKey,
-        tokenId: token.inst.characterKey + "-" + index,
-        type: "token",
-        tokeObject: token,
-        range: rangeMapping[
-          token.inst.characterKey as keyof typeof rangeMapping
-        ] as "MELEE" | "RANGED",
-      });
-    }
-  });
-
-  return tokens.reduce((acc, cur) => {
-    (acc[cur.charId] = acc[cur.charId] || []).push(cur);
-    return acc;
-  }, {} as Record<string, OutputTypes.DraggableToken[]>);
-};
-
-const getDebugOperators = (): Record<
-  string,
-  OutputTypes.DraggableCharacter
-> => {
+const getDebugOperators = () => {
   const operatorIds = ["char_197_poca", "char_1028_texas2"];
   const operators = operatorIds.map((opId) => {
     const operator = operatorsJson[
       opId as keyof typeof operatorsJson
     ] as OutputTypes.Character;
 
-    return [
-      opId,
-      {
-        row: null,
-        col: null,
-        charId: opId,
-        range: operator.position,
-        type: "character",
-        stats: getStatsAtLevel(operator, {
-          eliteLevel: 2,
-          level: 80,
-          pots: false,
-          trust: false,
-        }),
-        characterObject: operator,
-      },
-    ];
+    return {
+      row: null,
+      col: null,
+      charId: opId,
+      range: operator.position,
+      type: "character",
+      stats: getStatsAtLevel(operator, {
+        eliteLevel: 2,
+        level: 80,
+        pots: false,
+        trust: false,
+      }),
+      characterObject: operator,
+    };
   });
 
-  return Object.fromEntries(operators);
+  return operators as OutputTypes.DraggableCharacter[];
 };
 
-export const operatorStore = map<
-  Record<string, OutputTypes.DraggableCharacter>
->(getDebugOperators());
-export const tokensStore = map<Record<string, OutputTypes.DraggableToken[]>>(
-  {}
+export const operatorStore = atom<OutputTypes.DraggableCharacter[]>(
+  getDebugOperators()
 );
+export const tokensStore = atom<OutputTypes.DraggableToken[]>([]);
+
+export const tokensByCharId = computed([tokensStore], (tokens) => {
+  return tokens.reduce((acc, curr) => {
+    acc.set(curr.charId, [...(acc.get(curr.charId) ?? []), curr]);
+    return acc;
+  }, new Map<string, Array<OutputTypes.DraggableToken>>());
+});
 
 export const entitiesStore = computed(
   [operatorStore, tokensStore],
   (operators, tokens) => {
-    return [
-      ...Object.values(operators),
-      ...Object.values(tokens).flatMap((token) => token),
-    ];
+    return [...operators, ...tokens];
   }
 );
 
-export const removeOperatorCoordinates = action(
+// Actions
+export const retreatOperator = action(
   operatorStore,
-  "removeOperatorCoordinates",
+  "retreatOperator",
   (store, entity: OutputTypes.DraggableCharacter) => {
-    store.set({ ...store.get(), [entity.charId]: entity });
-    return store;
+    return store.get().map((entityObject) => {
+      if (entity.charId == entityObject.charId) {
+        entity.row = null;
+        entity.col = null;
+        return entity;
+      }
+      return entityObject;
+    });
   }
 );
-
-// const getDefaultTokens = async () => {
-//   const rangeMapping = {
-//     trap_001_crate: "MELEE",
-//   };
-
-//   const stageInfo = mapsJson[
-//     stageIdStore.get() as keyof typeof mapsJson
-//   ] as OutputTypes.StageInfo;
-//   const locale = stageInfo.isCnOnly ? "zh_CN" : "en_US";
-//   const stageData = (await import(
-//     "../../../ArknightsGameData/" +
-//       locale +
-//       "/gamedata/levels/" +
-//       getCorrectLevelId(stageInfo.levelId).toLowerCase() +
-//       ".json"
-//   )) as OutputTypes.StageData;
-
-//   const tokens: OutputTypes.DraggableToken[] = [];
-//   stageData.predefines.tokenCards.forEach((token) => {
-//     for (let index = 1; index < token.initialCnt; index++) {
-//       tokens.push({
-//         row: null,
-//         col: null,
-//         charId: token.inst.characterKey,
-//         tokenId: token.inst.characterKey + "-" + index,
-//         type: "token",
-//         tokeObject: token,
-//         range: rangeMapping[
-//           token.inst.characterKey as keyof typeof rangeMapping
-//         ] as "MELEE" | "RANGED",
-//       });
-//     }
-//   });
-
-//   return tokens;
-// };
-
-// export const operatorStore = atom<OutputTypes.DraggableCharacter[]>([]);
-// export const tokensStore = atom<OutputTypes.DraggableToken[]>(
-//   await getDefaultTokens()
-// );
-
-// export const tokensByCharId = computed([tokensStore], (tokens) => {
-//   tokens.reduce((acc, curr) => {
-//     acc.set(curr.charId, [...(acc.get(curr.charId) ?? []), curr]);
-//     return acc;
-//   }, new Map<string, Array<OutputTypes.DraggableToken>>());
-// });
-
-// export const entitiesStore = computed(
-//   [operatorStore, tokensStore],
-//   (operators, tokens) => {
-//     return new Set([...operators, ...tokens]);
-//   }
-// );
+export const retreatToken = action(
+  tokensStore,
+  "retreatToken",
+  (store, entity: OutputTypes.DraggableToken) => {
+    return store.get().map((entityObject) => {
+      if (entity.tokenId == entityObject.tokenId) {
+        entity.row = null;
+        entity.col = null;
+        return entity;
+      }
+      return entityObject;
+    });
+  }
+);
+export const deployOperator = action(
+  operatorStore,
+  "deployOperator",
+  (store, entity: OutputTypes.DraggableCharacter, col, row) => {
+    return store.get().map((entityObject) => {
+      if (entity.charId == entityObject.charId) {
+        entity.row = row;
+        entity.col = col;
+        return entity;
+      }
+      return entityObject;
+    });
+  }
+);
+export const deployToken = action(
+  tokensStore,
+  "deployToken",
+  (store, entity: OutputTypes.DraggableToken, col, row) => {
+    return store.get().map((entityObject) => {
+      if (entity.tokenId == entityObject.tokenId) {
+        entity.row = row;
+        entity.col = col;
+        return entity;
+      }
+      return entityObject;
+    });
+  }
+);

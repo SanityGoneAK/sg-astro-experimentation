@@ -1,24 +1,18 @@
+import { useStore } from "@nanostores/react";
+
 import * as classes from "./styles.css";
+import { entitiesStore, tokensByCharId } from "../../pages/maps/_store";
 import MapCharacter from "../MapCharacter";
 import MapToken from "../MapToken";
 
 import type * as OutputTypes from "../../output-types";
 
-interface Props {
-  entities: Array<OutputTypes.DraggableToken | OutputTypes.DraggableCharacter>;
-}
-
-const MapEntitiesTray: React.FC<Props> = ({ entities }) => {
+const MapEntitiesTray: React.FC = () => {
+  const entities = useStore(entitiesStore);
+  const tokens = useStore(tokensByCharId);
   const availableEntities = entities.filter(
     (entity) => entity.row == null && entity.col == null
   );
-
-  const tokensByCharId = availableEntities
-    .filter((entity) => entity.type == "token")
-    .reduce((acc, curr) => {
-      acc.set(curr.charId, [...(acc.get(curr.charId) ?? []), curr]);
-      return acc;
-    }, new Map<string, Array<OutputTypes.DraggableToken | OutputTypes.DraggableCharacter>>());
 
   return (
     <div className={classes.tray}>
@@ -36,7 +30,7 @@ const MapEntitiesTray: React.FC<Props> = ({ entities }) => {
         })}
       </>
       <>
-        {[...tokensByCharId.entries()].map(([charId, group]) => {
+        {[...tokens.entries()].map(([charId, group]) => {
           const entity = group[0];
           if (entity.type == "token") {
             return (

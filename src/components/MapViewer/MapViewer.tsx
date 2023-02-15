@@ -14,7 +14,10 @@ import {
   entitiesStore,
   operatorStore,
   tokensStore,
-  removeOperatorCoordinates,
+  retreatOperator,
+  retreatToken,
+  deployOperator,
+  deployToken,
 } from "../../pages/maps/_store";
 
 import MapWaveManager from "../MapWaveManager";
@@ -116,22 +119,10 @@ const MapViewer: React.FC<Props> = ({ stageData }) => {
     (charId: string, row: number | null, col: number | null) => {
       entities.forEach((entity) => {
         if (entity.type == "character" && entity.charId == charId) {
-          entity.row = row;
-          entity.col = col;
-          operatorStore.setKey(entity.charId, entity);
+          deployOperator(entity, col, row);
         }
         if (entity.type == "token" && entity.tokenId == charId) {
-          entity.row = row;
-          entity.col = col;
-          tokensStore.setKey(
-            entity.charId,
-            tokensStore.get()[entity.charId].map((token) => {
-              if (token.tokenId == entity.tokenId) {
-                token = entity;
-              }
-              return token;
-            })
-          );
+          deployToken(entity, col, row);
         }
       });
     },
@@ -142,9 +133,7 @@ const MapViewer: React.FC<Props> = ({ stageData }) => {
     (charId: string) => {
       entities.forEach((entity) => {
         if (entity.type == "character" && entity.charId == charId) {
-          entity.row = null;
-          entity.col = null;
-          removeOperatorCoordinates(entity);
+          retreatOperator(entity);
         }
         if (entity.type == "token" && entity.tokenId == charId) {
           setTiles(
@@ -159,21 +148,9 @@ const MapViewer: React.FC<Props> = ({ stageData }) => {
               return tile;
             })
           );
-          entity.row = null;
-          entity.col = null;
-
-          tokensStore.setKey(
-            entity.charId,
-            tokensStore.get()[entity.charId].map((token) => {
-              if (token.tokenId == entity.tokenId) {
-                token = entity;
-              }
-              return token;
-            })
-          );
+          retreatToken(entity);
         }
       });
-      console.log(entities);
     },
     [board, entities, tiles]
   );
@@ -312,7 +289,7 @@ const MapViewer: React.FC<Props> = ({ stageData }) => {
             );
           })}
 
-          <MapEntitiesTray entities={entities} />
+          <MapEntitiesTray />
         </div>
         {/* <MapCharacterSearch /> */}
         <MapWaveManager
