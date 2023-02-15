@@ -11,12 +11,6 @@ export const stageIdStore = atom<string>(
   typeof window !== "undefined" ? (window as any).stageId : ""
 );
 
-const getCorrectLevelId = (levelId: string): string => {
-  return levelScenePairs[levelId as keyof typeof levelScenePairs]
-    ? levelScenePairs[levelId as keyof typeof levelScenePairs].levelId
-    : levelId;
-};
-
 const getDebugOperators = () => {
   const operatorIds = ["char_197_poca", "char_1028_texas2"];
   const operators = operatorIds.map((opId) => {
@@ -67,14 +61,16 @@ export const retreatOperator = action(
   operatorStore,
   "retreatOperator",
   (store, entity: OutputTypes.DraggableCharacter) => {
-    return store.get().map((entityObject) => {
-      if (entity.charId == entityObject.charId) {
-        entity.row = null;
-        entity.col = null;
-        return entity;
-      }
-      return entityObject;
-    });
+    return store.set(
+      store.get().map((entityObject) => {
+        if (entity.charId == entityObject.charId) {
+          entity.row = null;
+          entity.col = null;
+          return entity;
+        }
+        return entityObject;
+      })
+    );
   }
 );
 export const retreatToken = action(

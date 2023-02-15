@@ -1,4 +1,4 @@
-import { useCallback, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 
 import { DndContext, DragEndEvent, DragStartEvent } from "@dnd-kit/core";
 import { snapCenterToCursor } from "@dnd-kit/modifiers";
@@ -36,6 +36,35 @@ const MapViewer: React.FC<Props> = ({ stageData }) => {
   const [board, setBoard] = useState(stageData.mapData.map);
 
   const entities = useStore(entitiesStore);
+
+  // const getDefaultTokens = useCallback(() => {
+  //   const rangeMapping = {
+  //     trap_001_crate: "MELEE",
+  //   };
+  //   const tokens: OutputTypes.DraggableToken[] = [];
+  //   stageData.predefines.tokenCards.forEach((token) => {
+  //     for (let index = 1; index < token.initialCnt; index++) {
+  //       tokens.push({
+  //         row: null,
+  //         col: null,
+  //         charId: token.inst.characterKey,
+  //         tokenId: token.inst.characterKey + "-" + index,
+  //         type: "token",
+  //         tokeObject: token,
+  //         range: rangeMapping[
+  //           token.inst.characterKey as keyof typeof rangeMapping
+  //         ] as "MELEE" | "RANGED",
+  //       });
+  //     }
+  //   });
+
+  //   return tokens;
+  // }, [stageData.predefines.tokenCards]);
+
+  // useEffect(() => {
+  //   tokensStore.set(getDefaultTokens());
+  // }, []);
+
   // uncomment this once ready
   // const entities = useStore(entitiesStore);
   // const [operatorIds, setOperatorIds] = useState<string[]>(["char_197_poca"]);

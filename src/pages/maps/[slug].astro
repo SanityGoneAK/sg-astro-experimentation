@@ -40,33 +40,6 @@ const stageData = await import(
     getCorrectLevelId(stageInfo.levelId).toLowerCase() +
     ".json"
 ) as OutputTypes.StageData;
-
-
-// const getDefaultTokens = () => {
-//   const rangeMapping = {
-//     trap_001_crate: "MELEE",
-//   }
-//   const tokens: OutputTypes.DraggableToken[] = [];
-//   stageData.predefines.tokenCards.forEach((token) => {
-//     for (let index = 1; index < token.initialCnt; index++) {
-//       tokens.push({
-//         row: null,
-//         col: null,
-//         charId: token.inst.characterKey,
-//         tokenId: token.inst.characterKey + "-" + index,
-//         type: "token",
-//         tokeObject: token,
-//         range: rangeMapping[
-//           token.inst.characterKey as keyof typeof rangeMapping
-//         ] as "MELEE" | "RANGED",
-//       });
-//     }
-//   });
-
-//   return tokens;
-// };
-
-// tokensStore.set(getDefaultTokens())
 ---
 
 <script slot="head" define:vars={{ stageId }}>
