@@ -11,6 +11,30 @@ export const stageIdStore = atom<string>(
   typeof window !== "undefined" ? (window as any).stageId : ""
 );
 
+const getDefaultTokens = (stageData: OutputTypes.StageData) => {
+  const rangeMapping = {
+    trap_001_crate: "MELEE",
+  };
+  const tokens: OutputTypes.DraggableToken[] = [];
+  stageData.predefines.tokenCards.forEach((token) => {
+    for (let index = 1; index < token.initialCnt; index++) {
+      tokens.push({
+        row: null,
+        col: null,
+        charId: token.inst.characterKey,
+        tokenId: token.inst.characterKey + "-" + index,
+        type: "token",
+        tokeObject: token,
+        range: rangeMapping[
+          token.inst.characterKey as keyof typeof rangeMapping
+        ] as "MELEE" | "RANGED",
+      });
+    }
+  });
+
+  return tokens;
+};
+
 const getDebugOperators = () => {
   const operatorIds = ["char_197_poca", "char_1028_texas2"];
   const operators = operatorIds.map((opId) => {
@@ -113,5 +137,12 @@ export const deployToken = action(
       }
       return entityObject;
     });
+  }
+);
+export const setTokenDefaults = action(
+  tokensStore,
+  "setTokenDefaults",
+  (store, stageData: OutputTypes.StageData) => {
+    store.set(getDefaultTokens(stageData));
   }
 );

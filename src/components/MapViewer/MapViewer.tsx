@@ -18,6 +18,7 @@ import {
   retreatToken,
   deployOperator,
   deployToken,
+  setTokenDefaults,
 } from "../../pages/maps/_store";
 
 import MapWaveManager from "../MapWaveManager";
@@ -37,84 +38,10 @@ const MapViewer: React.FC<Props> = ({ stageData }) => {
 
   const entities = useStore(entitiesStore);
 
-  // const getDefaultTokens = useCallback(() => {
-  //   const rangeMapping = {
-  //     trap_001_crate: "MELEE",
-  //   };
-  //   const tokens: OutputTypes.DraggableToken[] = [];
-  //   stageData.predefines.tokenCards.forEach((token) => {
-  //     for (let index = 1; index < token.initialCnt; index++) {
-  //       tokens.push({
-  //         row: null,
-  //         col: null,
-  //         charId: token.inst.characterKey,
-  //         tokenId: token.inst.characterKey + "-" + index,
-  //         type: "token",
-  //         tokeObject: token,
-  //         range: rangeMapping[
-  //           token.inst.characterKey as keyof typeof rangeMapping
-  //         ] as "MELEE" | "RANGED",
-  //       });
-  //     }
-  //   });
+  useEffect(() => {
+    setTokenDefaults(stageData);
+  }, []);
 
-  //   return tokens;
-  // }, [stageData.predefines.tokenCards]);
-
-  // useEffect(() => {
-  //   tokensStore.set(getDefaultTokens());
-  // }, []);
-
-  // uncomment this once ready
-  // const entities = useStore(entitiesStore);
-  // const [operatorIds, setOperatorIds] = useState<string[]>(["char_197_poca"]);
-  // const getDraggableEntities = useCallback(() => {
-  //   const rangeMapping = {
-  //     trap_001_crate: "MELEE",
-  //   };
-  //   const entities = [] as Array<
-  //     OutputTypes.DraggableToken | OutputTypes.DraggableCharacter
-  //   >;
-
-  //   operatorIds.forEach((opId) => {
-  //     const operator = operatorsJson[
-  //       opId as keyof typeof operatorsJson
-  //     ] as OutputTypes.Character;
-  //     entities.push({
-  //       row: null,
-  //       col: null,
-  //       charId: opId,
-  //       range: operator.position,
-  //       type: "character",
-  //       stats: getStatsAtLevel(operator, {
-  //         eliteLevel: 2,
-  //         level: 80,
-  //         pots: false,
-  //         trust: false,
-  //       }),
-  //       characterObject: operator,
-  //     });
-  //   });
-
-  //   stageData.predefines.tokenCards.forEach((token) => {
-  //     for (let index = 1; index < token.initialCnt; index++) {
-  //       entities.push({
-  //         row: null,
-  //         col: null,
-  //         charId: token.inst.characterKey,
-  //         tokenId: token.inst.characterKey + "-" + index,
-  //         type: "token",
-  //         tokeObject: token,
-  //         range: rangeMapping[
-  //           token.inst.characterKey as keyof typeof rangeMapping
-  //         ] as "MELEE" | "RANGED",
-  //       });
-  //     }
-  //   });
-  //   return entities;
-  // }, [operatorIds, stageData.predefines.tokenCards]);
-
-  // const [entities, setEntity] = useState(() => getDraggableEntities());
   const [route, setRoute] = useState<OutputTypes.Route | null>(null);
   const [movingPiece, setMovingPiece] = useState<
     OutputTypes.DraggableCharacter | OutputTypes.DraggableToken | null

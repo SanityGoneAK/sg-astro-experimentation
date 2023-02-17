@@ -1,42 +1,43 @@
 import { useStore } from "@nanostores/react";
 
 import * as classes from "./styles.css";
-import { entitiesStore, tokensByCharId } from "../../pages/maps/_store";
+import { operatorStore, tokensByCharId } from "../../pages/maps/_store";
 import MapCharacter from "../MapCharacter";
 import MapToken from "../MapToken";
 
-import type * as OutputTypes from "../../output-types";
-
 const MapEntitiesTray: React.FC = () => {
-  const entities = useStore(entitiesStore);
+  const operators = useStore(operatorStore);
   const tokens = useStore(tokensByCharId);
-  const availableEntities = entities.filter(
-    (entity) => entity.row == null && entity.col == null
+  const availableOperators = operators.filter(
+    (operator) => operator.row == null && operator.col == null
   );
 
   return (
     <div className={classes.tray}>
       <>
-        {availableEntities.map((entity) => {
-          if (entity.type == "character") {
-            return (
-              <MapCharacter
-                key={entity.charId}
-                inMap={false}
-                character={entity}
-              />
-            );
-          }
+        {availableOperators.map((operator) => {
+          return (
+            <MapCharacter
+              key={operator.charId}
+              inMap={false}
+              character={operator}
+            />
+          );
         })}
       </>
       <>
         {[...tokens.entries()].map(([charId, group]) => {
-          const entity = group[0];
-          if (entity.type == "token") {
+          const availableTokens = group.filter(
+            (token) => token.col == null && token.row == null
+          );
+          const entity = availableTokens[0];
+          if (entity && entity.type == "token") {
             return (
               <div className={classes.tokenGroup} key={charId}>
                 <MapToken key={entity.tokenId} inMap={false} token={entity} />
-                <span className={classes.tokenQuantity}>{group.length}</span>
+                <span className={classes.tokenQuantity}>
+                  {availableTokens.length}
+                </span>
               </div>
             );
           }
