@@ -19,6 +19,7 @@ import {
   deployOperator,
   deployToken,
   setTokenDefaults,
+  currentRouteStore,
 } from "../../pages/maps/_store";
 
 import MapWaveManager from "../MapWaveManager";
@@ -37,12 +38,12 @@ const MapViewer: React.FC<Props> = ({ stageData }) => {
   const [board, setBoard] = useState(stageData.mapData.map);
 
   const entities = useStore(entitiesStore);
+  const route = useStore(currentRouteStore);
 
   useEffect(() => {
     setTokenDefaults(stageData);
   }, []);
 
-  const [route, setRoute] = useState<OutputTypes.Route | null>(null);
   const [movingPiece, setMovingPiece] = useState<
     OutputTypes.DraggableCharacter | OutputTypes.DraggableToken | null
   >(null);
@@ -248,11 +249,7 @@ const MapViewer: React.FC<Props> = ({ stageData }) => {
           <MapEntitiesTray />
         </div>
         {/* <MapCharacterSearch /> */}
-        <MapWaveManager
-          waves={stageData.waves}
-          routes={stageData.routes}
-          setRoute={setRoute}
-        />
+        <MapWaveManager waves={stageData.waves} routes={stageData.routes} />
       </DndContext>
     </>
   );

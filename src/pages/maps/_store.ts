@@ -11,6 +11,7 @@ export const stageIdStore = atom<string>(
   typeof window !== "undefined" ? (window as any).stageId : ""
 );
 
+// Utility Functions
 const getDefaultTokens = (stageData: OutputTypes.StageData) => {
   const rangeMapping = {
     trap_001_crate: "MELEE",
@@ -34,7 +35,6 @@ const getDefaultTokens = (stageData: OutputTypes.StageData) => {
 
   return tokens;
 };
-
 const getDebugOperators = () => {
   const operatorIds = ["char_197_poca", "char_1028_texas2"];
   const operators = operatorIds.map((opId) => {
@@ -61,18 +61,21 @@ const getDebugOperators = () => {
   return operators as OutputTypes.DraggableCharacter[];
 };
 
+// Stores
 export const operatorStore = atom<OutputTypes.DraggableCharacter[]>(
   getDebugOperators()
 );
 export const tokensStore = atom<OutputTypes.DraggableToken[]>([]);
+export const currentActionIndexStore = atom<number | null>(null);
+export const currentRouteStore = atom<OutputTypes.Route | null>(null);
 
+// Computed Stores
 export const tokensByCharId = computed([tokensStore], (tokens) => {
   return tokens.reduce((acc, curr) => {
     acc.set(curr.charId, [...(acc.get(curr.charId) ?? []), curr]);
     return acc;
   }, new Map<string, Array<OutputTypes.DraggableToken>>());
 });
-
 export const entitiesStore = computed(
   [operatorStore, tokensStore],
   (operators, tokens) => {
@@ -144,5 +147,21 @@ export const setTokenDefaults = action(
   "setTokenDefaults",
   (store, stageData: OutputTypes.StageData) => {
     store.set(getDefaultTokens(stageData));
+  }
+);
+
+export const setActionIndex = action(
+  currentActionIndexStore,
+  "setActionIndex",
+  (store, newIndex) => {
+    store.set(newIndex);
+  }
+);
+
+export const setRoute = action(
+  currentRouteStore,
+  "setrOUTE",
+  (store, route: OutputTypes.Route | null) => {
+    store.set(route);
   }
 );

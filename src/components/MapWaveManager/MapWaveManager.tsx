@@ -3,11 +3,17 @@ import type * as OutputTypes from "../../output-types";
 import { useCallback, useMemo, useState } from "react";
 import type { Index } from "flexsearch";
 import { enemyAvatar } from "../../utils/images";
+import {
+  currentActionIndexStore,
+  currentRouteStore,
+  setActionIndex,
+  setRoute,
+} from "../../pages/maps/_store";
+import { useStore } from "@nanostores/react";
 
 interface Props {
   waves: OutputTypes.Wave[];
   routes: OutputTypes.Route[];
-  setRoute: (route: OutputTypes.Route | null) => void;
 }
 
 interface WaveFragmentAction extends OutputTypes.WaveFragmentAction {
@@ -18,8 +24,8 @@ interface WaveFragmentAction extends OutputTypes.WaveFragmentAction {
   enemyRangeEnd: number;
 }
 
-const MapWaveManager: React.FC<Props> = ({ waves, routes, setRoute }) => {
-  const [action, setActionIndex] = useState<number | null>(null);
+const MapWaveManager: React.FC<Props> = ({ waves, routes }) => {
+  const action = useStore(currentActionIndexStore);
 
   const actions = useMemo(() => {
     const actions: WaveFragmentAction[] = [];
@@ -75,7 +81,7 @@ const MapWaveManager: React.FC<Props> = ({ waves, routes, setRoute }) => {
       setActionIndex(0);
       setRoute(routes[actions[0].routeIndex]);
     },
-    [actions, routes, setRoute]
+    [actions, routes]
   );
 
   const getPrevAction = useCallback(
@@ -88,7 +94,7 @@ const MapWaveManager: React.FC<Props> = ({ waves, routes, setRoute }) => {
       setActionIndex(null);
       setRoute(null);
     },
-    [actions, routes, setRoute]
+    [actions, routes]
   );
 
   const setAction = useCallback(
@@ -98,7 +104,7 @@ const MapWaveManager: React.FC<Props> = ({ waves, routes, setRoute }) => {
       setRoute(routes[actions[actionIndex].routeIndex]);
       window.scrollTo(0, 0);
     },
-    [actions, routes, setRoute]
+    [actions, routes]
   );
 
   return (

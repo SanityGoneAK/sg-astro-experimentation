@@ -4,6 +4,8 @@ import { Grid, BestFirstFinder, Heuristic } from "pathfinding";
 import * as classes from "./styles.css";
 
 import type * as OutputTypes from "../../output-types";
+import { useStore } from "@nanostores/react";
+import { currentRouteStore } from "../../pages/maps/_store";
 
 interface Props {
   route: OutputTypes.Route;
