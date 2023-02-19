@@ -1,13 +1,10 @@
 import { action, atom, computed, map } from "nanostores";
 
-import { levelScenePairs } from "../../../ArknightsGameData/zh_CN/gamedata/battle/battle_misc_table.json";
-import mapsJson from "../../../data/maps.json";
+import enemies from "../../../data/enemies.json";
 import operatorsJson from "../../../data/operators.json";
 import { getStatsAtLevel } from "../../utils/character-stats";
 
 import type * as OutputTypes from "../../output-types";
-
-
 
 export const stageIdStore = atom<string>(
   typeof window !== "undefined" ? (window as any).stageId : ""
@@ -137,10 +134,19 @@ export const currentRouteStore = computed(
     return null;
   }
 );
-export const currentAction = computed(
+export const currentEnemyStore = computed(
   [currentActionIndexStore, actionsStore],
   (actionIndex, actions) => {
-    if (actionIndex && actions.length > 0) {
+    if (actionIndex != null && actions.length > 0) {
+      return enemies[actions[actionIndex].key as keyof typeof enemies];
+    }
+    return null;
+  }
+);
+export const currentActionStore = computed(
+  [currentActionIndexStore, actionsStore],
+  (actionIndex, actions) => {
+    if (actionIndex != null && actions.length > 0) {
       return actions[actionIndex];
     }
     return null;

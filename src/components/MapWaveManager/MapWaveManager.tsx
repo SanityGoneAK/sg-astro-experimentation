@@ -3,7 +3,8 @@ import { useStore } from "@nanostores/react";
 import * as classes from "./styles.css";
 import {
   actionsStore,
-  currentActionIndexStore,
+  currentActionStore,
+  currentEnemyStore,
   decreaseActionIndex,
   increaseActionIndex,
   setActionIndex,
@@ -11,8 +12,9 @@ import {
 import { enemyAvatar } from "../../utils/images";
 
 const MapWaveManager: React.FC = () => {
-  const action = useStore(currentActionIndexStore);
+  const action = useStore(currentActionStore);
   const actions = useStore(actionsStore);
+  const enemy = useStore(currentEnemyStore);
 
   return (
     <div className={classes.waveContainer}>
@@ -36,34 +38,36 @@ const MapWaveManager: React.FC = () => {
             <ul>
               <li>
                 <span>Wave</span>
-                <span>{actions[action].waveIndex}</span>
+                <span>{action.waveIndex}</span>
               </li>
               <li>
                 <span>Index</span>
                 <span>
-                  {actions[action].enemyRangeStart -
-                    actions[action].enemyRangeEnd ==
-                  0
-                    ? actions[action].enemyRangeStart
-                    : `${actions[action].enemyRangeStart} - ${actions[action].enemyRangeEnd}`}
+                  {action.enemyRangeStart - action.enemyRangeEnd == 0
+                    ? action.enemyRangeStart
+                    : `${action.enemyRangeStart} - ${action.enemyRangeEnd}`}
                 </span>
               </li>
               <li>
                 <span>Elapsed Time</span>
-                <span>{actions[action].elapsedTime}s</span>
+                <span>{action.elapsedTime}s</span>
               </li>
               <li>
                 <span>Interval</span>
-                <span>{actions[action].interval}s</span>
+                <span>{action.interval}s</span>
               </li>
             </ul>
             <div>
-              <img
-                width={64}
-                height={64}
-                src={enemyAvatar(actions[action].key)}
-              />
-              <span>x{actions[action].count}</span>
+              <img width={64} height={64} src={enemyAvatar(action.key)} />
+              <span>x{action.count}</span>
+              <ul>
+                <li>
+                  <span>HP</span>
+                  <span>
+                    {enemy && enemy.attributes[0].attributes.maxHp.m_value}
+                  </span>
+                </li>
+              </ul>
             </div>
           </div>
         )}
