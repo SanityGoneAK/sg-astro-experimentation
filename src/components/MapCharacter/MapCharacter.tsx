@@ -4,22 +4,19 @@ import { useDraggable } from "@dnd-kit/core";
 import { CSS } from "@dnd-kit/utilities";
 
 import * as classes from "./styles.css";
+import { retreatOperator } from "../../pages/maps/_store";
 import { operatorAvatar } from "../../utils/images";
 import MapCharacterDirectionSelector from "../MapCharacterDirectionSelector";
 import MapCharacterRange from "../MapCharacterRange";
+
 import type { DraggableCharacter } from "../../output-types";
 
 interface Props {
   character: DraggableCharacter;
   inMap: boolean;
-  removeCharacter?: (chardId: string) => void;
 }
 
-const MapCharacter: React.FC<Props> = ({
-  character,
-  inMap,
-  removeCharacter,
-}) => {
+const MapCharacter: React.FC<Props> = ({ character, inMap }) => {
   const { attributes, listeners, setNodeRef, transform } = useDraggable({
     id: character.charId,
   });
@@ -56,18 +53,18 @@ const MapCharacter: React.FC<Props> = ({
             <div className={classes.menuSelector}>
               <button
                 className={classes.removeCharacter}
-                onClick={() => removeCharacter(character.charId)}
+                onClick={() => retreatOperator(character)}
               >
                 Remove
               </button>
             </div>
           )}
-          {active && (
+          {
             <MapCharacterRange
               rangeObject={character.stats.rangeObject}
               direction={direction}
             />
-          )}
+          }
           <div className={classes.operatorPortrait.map} onClick={openMenu}>
             {direction && (
               <div

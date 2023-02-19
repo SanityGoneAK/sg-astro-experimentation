@@ -7,6 +7,8 @@ import { getStatsAtLevel } from "../../utils/character-stats";
 
 import type * as OutputTypes from "../../output-types";
 
+
+
 export const stageIdStore = atom<string>(
   typeof window !== "undefined" ? (window as any).stageId : ""
 );
@@ -60,6 +62,49 @@ const getDebugOperators = () => {
 
   return operators as OutputTypes.DraggableCharacter[];
 };
+const getActionData = (waves: OutputTypes.Wave[]) => {
+  const actions: OutputTypes.WaveFragmentAction[] = [];
+  let elapsedTime = 0;
+  let enemyCount = 0;
+  waves.forEach((wave, index) => {
+    let waveElapsedTime = 0;
+    elapsedTime += wave.preDelay;
+
+    wave.fragments.forEach((fragment) => {
+      waveElapsedTime += fragment.preDelay;
+      let maxFragmentTime = waveElapsedTime;
+      fragment.actions
+        .sort((a, b) => a.preDelay - b.preDelay)
+        .forEach((action) => {
+          if (action.actionType == 0) {
+            // All actions of a fragment are triggered at the same time, they are just delayed using the action.preDelay
+            // The Math.max here is to figure out which one takes the longest to come out and add that at the end of the wave.
+            maxFragmentTime = Math.max(
+              maxFragmentTime,
+              waveElapsedTime +
+                action.preDelay +
+                (action.count - 1) * action.interval
+            );
+            actions.push({
+              ...action,
+              waveIndex: index,
+              elapsedTime: waveElapsedTime + action.preDelay + elapsedTime,
+              waveElapsedTime: waveElapsedTime + action.preDelay,
+              enemyRangeStart: enemyCount + 1,
+              enemyRangeEnd: enemyCount + action.count,
+            });
+            enemyCount += action.count;
+          }
+        });
+      waveElapsedTime = maxFragmentTime;
+    });
+    // Waves would wait up to 50 seconds until you start the next wave.
+    // PRTS just adds 5 seconds between waves.
+    elapsedTime += waveElapsedTime + 5;
+    waveElapsedTime += wave.postDelay;
+  });
+  return actions;
+};
 
 // Stores
 export const operatorStore = atom<OutputTypes.DraggableCharacter[]>(
@@ -67,7 +112,8 @@ export const operatorStore = atom<OutputTypes.DraggableCharacter[]>(
 );
 export const tokensStore = atom<OutputTypes.DraggableToken[]>([]);
 export const currentActionIndexStore = atom<number | null>(null);
-export const currentRouteStore = atom<OutputTypes.Route | null>(null);
+export const actionsStore = atom<OutputTypes.WaveFragmentAction[]>([]);
+export const routesStore = atom<OutputTypes.Route[]>([]);
 
 // Computed Stores
 export const tokensByCharId = computed([tokensStore], (tokens) => {
@@ -82,22 +128,45 @@ export const entitiesStore = computed(
     return [...operators, ...tokens];
   }
 );
+export const currentRouteStore = computed(
+  [currentActionIndexStore, actionsStore, routesStore],
+  (actionIndex, actions, routes) => {
+    if (actionIndex != null && actions.length > 0 && routes.length > 0) {
+      return routes[actions[actionIndex].routeIndex];
+    }
+    return null;
+  }
+);
+export const currentAction = computed(
+  [currentActionIndexStore, actionsStore],
+  (actionIndex, actions) => {
+    if (actionIndex && actions.length > 0) {
+      return actions[actionIndex];
+    }
+    return null;
+  }
+);
 
 // Actions
-export const retreatOperator = action(
-  operatorStore,
-  "retreatOperator",
-  (store, entity: OutputTypes.DraggableCharacter) => {
-    return store.set(
-      store.get().map((entityObject) => {
-        if (entity.charId == entityObject.charId) {
-          entity.row = null;
-          entity.col = null;
-          return entity;
-        }
-        return entityObject;
-      })
-    );
+export const setTokenDefaults = action(
+  tokensStore,
+  "setTokenDefaults",
+  (store, stageData: OutputTypes.StageData) => {
+    store.set(getDefaultTokens(stageData));
+  }
+);
+export const deployToken = action(
+  tokensStore,
+  "deployToken",
+  (store, entity: OutputTypes.DraggableToken, col, row) => {
+    return store.get().map((entityObject) => {
+      if (entity.tokenId == entityObject.tokenId) {
+        entity.row = row;
+        entity.col = col;
+        return entity;
+      }
+      return entityObject;
+    });
   }
 );
 export const retreatToken = action(
@@ -128,40 +197,59 @@ export const deployOperator = action(
     });
   }
 );
-export const deployToken = action(
-  tokensStore,
-  "deployToken",
-  (store, entity: OutputTypes.DraggableToken, col, row) => {
-    return store.get().map((entityObject) => {
-      if (entity.tokenId == entityObject.tokenId) {
-        entity.row = row;
-        entity.col = col;
-        return entity;
-      }
-      return entityObject;
-    });
-  }
-);
-export const setTokenDefaults = action(
-  tokensStore,
-  "setTokenDefaults",
-  (store, stageData: OutputTypes.StageData) => {
-    store.set(getDefaultTokens(stageData));
+export const retreatOperator = action(
+  operatorStore,
+  "retreatOperator",
+  (store, entity: OutputTypes.DraggableCharacter) => {
+    return store.set(
+      store.get().map((entityObject) => {
+        if (entity.charId == entityObject.charId) {
+          entity.row = null;
+          entity.col = null;
+          return entity;
+        }
+        return entityObject;
+      })
+    );
   }
 );
 
+export const setActionDefaults = action(
+  actionsStore,
+  "setActionDefaults",
+  (store, waves: OutputTypes.Wave[]) => {
+    store.set(getActionData(waves));
+  }
+);
+export const increaseActionIndex = action(
+  currentActionIndexStore,
+  "increaseActionIndex",
+  (store) => {
+    const action = store.get();
+    if (action != null && actionsStore.get().length - 1 > action) {
+      store.set(action + 1);
+      console.log(store.get());
+      return;
+    }
+    store.set(0);
+  }
+);
+export const decreaseActionIndex = action(
+  currentActionIndexStore,
+  "decreaseActionIndex",
+  (store) => {
+    const action = store.get();
+    if (action != null && action > 0) {
+      store.set(action - 1);
+      return;
+    }
+    store.set(null);
+  }
+);
 export const setActionIndex = action(
   currentActionIndexStore,
   "setActionIndex",
   (store, newIndex) => {
     store.set(newIndex);
-  }
-);
-
-export const setRoute = action(
-  currentRouteStore,
-  "setrOUTE",
-  (store, route: OutputTypes.Route | null) => {
-    store.set(route);
   }
 );

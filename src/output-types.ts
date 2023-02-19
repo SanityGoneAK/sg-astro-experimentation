@@ -450,8 +450,8 @@ export interface WaveFragment {
   preDelay: 0.0;
   actions: WaveFragmentAction[];
   name: null | string;
-}
 
+}
 export interface WaveFragmentAction {
   actionType: number;
   managedByScheduler: boolean;
@@ -463,6 +463,11 @@ export interface WaveFragmentAction {
   blockFragment: boolean;
   autoPreviewRoute: boolean;
   isUnharmfulAndAlwaysCountAsKilled: boolean;
+  waveIndex: number;
+  elapsedTime: number;
+  waveElapsedTime: number;
+  enemyRangeStart: number;
+  enemyRangeEnd: number;
 }
 
 export interface Wave {

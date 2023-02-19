@@ -6,10 +6,6 @@ import { useStore } from "@nanostores/react";
 
 import * as classes from "./styles.css";
 import operatorsJson from "../../../data/operators.json";
-import { getStatsAtLevel } from "../../utils/character-stats";
-import MapCharacter from "../MapCharacter";
-import MapEntitiesTray from "../MapEntitiesTray";
-import MapTile from "../MapTile";
 import {
   entitiesStore,
   operatorStore,
@@ -20,14 +16,19 @@ import {
   deployToken,
   setTokenDefaults,
   currentRouteStore,
+  setActionDefaults,
+  routesStore,
 } from "../../pages/maps/_store";
-
-import MapWaveManager from "../MapWaveManager";
-import type * as OutputTypes from "../../output-types";
+import MapCharacter from "../MapCharacter";
+import MapCharacterSearch from "../MapCharacterSearch";
+import MapEntitiesTray from "../MapEntitiesTray";
 import MapRouteViewer from "../MapRouteViewer";
+import MapTile from "../MapTile";
 import MapTileDefinitions from "../MapTileDefinitions";
 import MapToken from "../MapToken";
-import MapCharacterSearch from "../MapCharacterSearch";
+import MapWaveManager from "../MapWaveManager";
+
+import type * as OutputTypes from "../../output-types";
 
 interface Props {
   stageData: OutputTypes.StageData;
@@ -42,7 +43,9 @@ const MapViewer: React.FC<Props> = ({ stageData }) => {
 
   useEffect(() => {
     setTokenDefaults(stageData);
-  }, []);
+    setActionDefaults(stageData.waves);
+    routesStore.set(stageData.routes);
+  }, [stageData]);
 
   const [movingPiece, setMovingPiece] = useState<
     OutputTypes.DraggableCharacter | OutputTypes.DraggableToken | null
@@ -249,7 +252,7 @@ const MapViewer: React.FC<Props> = ({ stageData }) => {
           <MapEntitiesTray />
         </div>
         {/* <MapCharacterSearch /> */}
-        <MapWaveManager waves={stageData.waves} routes={stageData.routes} />
+        <MapWaveManager />
       </DndContext>
     </>
   );

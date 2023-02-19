@@ -1,111 +1,18 @@
-import * as classes from "./styles.css";
-import type * as OutputTypes from "../../output-types";
-import { useCallback, useMemo, useState } from "react";
-import type { Index } from "flexsearch";
-import { enemyAvatar } from "../../utils/images";
-import {
-  currentActionIndexStore,
-  currentRouteStore,
-  setActionIndex,
-  setRoute,
-} from "../../pages/maps/_store";
 import { useStore } from "@nanostores/react";
 
-interface Props {
-  waves: OutputTypes.Wave[];
-  routes: OutputTypes.Route[];
-}
+import * as classes from "./styles.css";
+import {
+  actionsStore,
+  currentActionIndexStore,
+  decreaseActionIndex,
+  increaseActionIndex,
+  setActionIndex,
+} from "../../pages/maps/_store";
+import { enemyAvatar } from "../../utils/images";
 
-interface WaveFragmentAction extends OutputTypes.WaveFragmentAction {
-  waveIndex: number;
-  elapsedTime: number;
-  waveElapsedTime: number;
-  enemyRangeStart: number;
-  enemyRangeEnd: number;
-}
-
-const MapWaveManager: React.FC<Props> = ({ waves, routes }) => {
+const MapWaveManager: React.FC = () => {
   const action = useStore(currentActionIndexStore);
-
-  const actions = useMemo(() => {
-    const actions: WaveFragmentAction[] = [];
-    let elapsedTime = 0;
-    let enemyCount = 0;
-    waves.forEach((wave, index) => {
-      let waveElapsedTime = 0;
-      elapsedTime += wave.preDelay;
-
-      wave.fragments.forEach((fragment) => {
-        waveElapsedTime += fragment.preDelay;
-        let maxFragmentTime = waveElapsedTime;
-        fragment.actions
-          .sort((a, b) => a.preDelay - b.preDelay)
-          .forEach((action) => {
-            if (action.actionType == 0) {
-              // All actions of a fragment are triggered at the same time, they are just delayed using the action.preDelay
-              // The Math.max here is to figure out which one takes the longest to come out and add that at the end of the wave.
-              maxFragmentTime = Math.max(
-                maxFragmentTime,
-                waveElapsedTime +
-                  action.preDelay +
-                  (action.count - 1) * action.interval
-              );
-              actions.push({
-                ...action,
-                waveIndex: index,
-                elapsedTime: waveElapsedTime + action.preDelay + elapsedTime,
-                waveElapsedTime: waveElapsedTime + action.preDelay,
-                enemyRangeStart: enemyCount + 1,
-                enemyRangeEnd: enemyCount + action.count,
-              });
-              enemyCount += action.count;
-            }
-          });
-        waveElapsedTime = maxFragmentTime;
-      });
-      // Waves would wait up to 50 seconds until you start the next wave.
-      // PRTS just adds 5 seconds between waves.
-      elapsedTime += waveElapsedTime + 5;
-      waveElapsedTime += wave.postDelay;
-    });
-    return actions;
-  }, [waves]);
-
-  const getNextAction = useCallback(
-    (action: number | null) => {
-      if (action != null && actions.length - 1 > action) {
-        setActionIndex(action + 1);
-        setRoute(routes[actions[action].routeIndex]);
-        return;
-      }
-      setActionIndex(0);
-      setRoute(routes[actions[0].routeIndex]);
-    },
-    [actions, routes]
-  );
-
-  const getPrevAction = useCallback(
-    (action: number | null) => {
-      if (action != null && action > 0) {
-        setActionIndex(action - 1);
-        setRoute(routes[actions[action].routeIndex]);
-        return;
-      }
-      setActionIndex(null);
-      setRoute(null);
-    },
-    [actions, routes]
-  );
-
-  const setAction = useCallback(
-    function (actionIndex: number) {
-      setActionIndex(actionIndex);
-      console.log(routes[actions[actionIndex].routeIndex]);
-      setRoute(routes[actions[actionIndex].routeIndex]);
-      window.scrollTo(0, 0);
-    },
-    [actions, routes]
-  );
+  const actions = useStore(actionsStore);
 
   return (
     <div className={classes.waveContainer}>
@@ -113,13 +20,13 @@ const MapWaveManager: React.FC<Props> = ({ waves, routes }) => {
         <div className={classes.buttonContainer}>
           <button
             className={classes.actionButton}
-            onClick={() => getPrevAction(action)}
+            onClick={() => decreaseActionIndex()}
           >
             Decrease
           </button>
           <button
             className={classes.actionButton}
-            onClick={() => getNextAction(action)}
+            onClick={() => increaseActionIndex()}
           >
             Increase
           </button>
@@ -161,43 +68,47 @@ const MapWaveManager: React.FC<Props> = ({ waves, routes }) => {
           </div>
         )}
       </div>
-      <table className={classes.table}>
-        <thead>
-          <tr className={classes.tableRow}>
-            <th className={classes.tableItem}>#</th>
-            <th className={classes.tableItem}>Enemy</th>
-            <th className={classes.tableItem}>Index</th>
-            <th className={classes.tableItem}>Interval</th>
-            <th className={classes.tableItem}>Timestamp</th>
-            <th className={classes.tableItem}>Wave Time</th>
-          </tr>
-        </thead>
-        <tbody>
-          {actions.map((action, key) => {
-            return (
-              <tr
-                className={classes.tableRow}
-                key={key}
-                onClick={() => setAction(key)}
-              >
-                <td className={classes.tableItem}>{key}</td>
-                <td className={classes.enemyTableItem}>
-                  <img width={64} height={64} src={enemyAvatar(action.key)} />
-                  <span>x{action.count}</span>
-                </td>
-                <td className={classes.tableItem}>
-                  {action.enemyRangeStart - action.enemyRangeEnd == 0
-                    ? action.enemyRangeStart
-                    : `${action.enemyRangeStart} - ${action.enemyRangeEnd}`}
-                </td>
-                <td className={classes.tableItem}>{action.interval}s</td>
-                <td className={classes.tableItem}>{action.elapsedTime}s</td>
-                <td className={classes.tableItem}>{action.waveElapsedTime}s</td>
-              </tr>
-            );
-          })}
-        </tbody>
-      </table>
+      {actions != null && (
+        <table className={classes.table}>
+          <thead>
+            <tr className={classes.tableRow}>
+              <th className={classes.tableItem}>#</th>
+              <th className={classes.tableItem}>Enemy</th>
+              <th className={classes.tableItem}>Index</th>
+              <th className={classes.tableItem}>Interval</th>
+              <th className={classes.tableItem}>Timestamp</th>
+              <th className={classes.tableItem}>Wave Time</th>
+            </tr>
+          </thead>
+          <tbody>
+            {actions.map((action, key) => {
+              return (
+                <tr
+                  className={classes.tableRow}
+                  key={key}
+                  onClick={() => setActionIndex(key)}
+                >
+                  <td className={classes.tableItem}>{key}</td>
+                  <td className={classes.enemyTableItem}>
+                    <img width={64} height={64} src={enemyAvatar(action.key)} />
+                    <span>x{action.count}</span>
+                  </td>
+                  <td className={classes.tableItem}>
+                    {action.enemyRangeStart - action.enemyRangeEnd == 0
+                      ? action.enemyRangeStart
+                      : `${action.enemyRangeStart} - ${action.enemyRangeEnd}`}
+                  </td>
+                  <td className={classes.tableItem}>{action.interval}s</td>
+                  <td className={classes.tableItem}>{action.elapsedTime}s</td>
+                  <td className={classes.tableItem}>
+                    {action.waveElapsedTime}s
+                  </td>
+                </tr>
+              );
+            })}
+          </tbody>
+        </table>
+      )}
     </div>
   );
 };

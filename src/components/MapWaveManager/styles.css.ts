@@ -22,12 +22,12 @@ export const tableRow = style({
   ":hover": {
     background: vars.colors.neutrals.midtoneBrighter,
     cursor: "pointer",
-  }
+  },
 });
 
 export const tableItem = style({
-    padding: spacing(1, 2),
-    textAlign: "center",
+  padding: spacing(1, 2),
+  textAlign: "center",
 });
 
 export const enemyTableItem = style({
@@ -36,7 +36,7 @@ export const enemyTableItem = style({
   justifyContent: "center",
   padding: spacing(1, 2),
   textAlign: "center",
-})
+});
 
 export const details = style({
   display: "flex",
@@ -62,5 +62,6 @@ export const actionButton = style({
 export const actionDetails = style({
   display: "flex",
   width: "100%",
-justifyContent: "space-between",
-})
+  justifyContent: "space-between",
+  marginTop: spacing(2),
+});
