@@ -56,6 +56,27 @@ export interface Summon extends Character {
 }
 
 /**
+ * Represents an Arknights enemy
+ */
+export interface Enemy {
+  enemyId: string;
+  enemyIndex: string;
+  enemyTags: string[];
+  sortId: number;
+  name: string;
+  enemyRace: string;
+  enemyLevel: string;
+  description: string;
+  attackType: string;
+  endure: string;
+  attack: string;
+  defence: string;
+  resistance: string;
+  ability: unknown;
+  levels: EnemyLevels[];
+}
+
+/**
  * Represents a "phase" of an Arknights character (an operator or summon or something else).
  * At a specific phase, they might have different max levels, attribute keyframes, and ranges.
  */
@@ -384,6 +405,7 @@ export interface StageData {
     [otherProperties: string]: unknown;
     tokenCards: TokenCard[];
   };
+  enemyDbRefs: EnemyDbRefs[];
   [otherProperties: string]: unknown;
 }
 
@@ -450,7 +472,6 @@ export interface WaveFragment {
   preDelay: 0.0;
   actions: WaveFragmentAction[];
   name: null | string;
-
 }
 export interface WaveFragmentAction {
   actionType: number;
@@ -495,4 +516,44 @@ export interface TokenCard {
   skinId: string;
   tmplId: string;
   overrideSkillBlackboard: null | any;
+}
+
+export interface EnemyDbRefs {
+  useDb: boolean;
+  id: string;
+  level: number;
+  overwrittenData: null | EnemyLevels[];
+}
+
+export interface EnemyLevels {
+  level?: number;
+  attributes: EnemyAttributes;
+  lifePointReduce: EnemyAttributeValue;
+  rangeRadius: EnemyAttributeValue;
+  [otherProperties: string]: unknown;
+}
+
+export interface EnemyAttributes {
+  maxHp: EnemyAttributeValue;
+  atk: EnemyAttributeValue;
+  def: EnemyAttributeValue;
+  magicResistance: EnemyAttributeValue;
+  cost: EnemyAttributeValue;
+  blockCnt: EnemyAttributeValue;
+  moveSpeed: EnemyAttributeValue;
+  attackSpeed: EnemyAttributeValue;
+  baseAttackTime: EnemyAttributeValue;
+  respawnTime: EnemyAttributeValue;
+  hpRecoveryPerSec: EnemyAttributeValue;
+  spRecoveryPerSec: EnemyAttributeValue;
+  maxDeployCount: EnemyAttributeValue;
+  massLevel: EnemyAttributeValue;
+  baseForceLevel: EnemyAttributeValue;
+  stunImmune: EnemyAttributeValue;
+  silenceImmune: EnemyAttributeValue;
+}
+
+interface EnemyAttributeValue {
+  m_defined: boolean;
+  m_value: number | boolean;
 }

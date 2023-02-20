@@ -20,10 +20,17 @@ export async function createEnemiesJson(dataDir) {
       ? cnEnemyDb.find((dbEntry) => dbEntry.Key == enemyId)
       : enEnemyDb.find((dbEntry) => dbEntry.Key == enemyId);
 
-    const attributes = enemyInfo.Value.map((value) => {
+    const levels = enemyInfo.Value.map((value) => {
       return {
         level: value.level,
         attributes: value.enemyData.attributes,
+        lifePointReduce: value.enemyData.lifePointReduce,
+        levelType: value.enemyData.levelType,
+        rangeRadius: value.enemyData.rangeRadius,
+        numOfExtraDrops: value.enemyData.numOfExtraDrops,
+        talentBlackboard: value.enemyData.talentBlackboard,
+        skills: value.enemyData.skills,
+        spData: value.enemyData.spData,
       };
     });
 
@@ -43,7 +50,7 @@ export async function createEnemiesJson(dataDir) {
         defence: enemy.defence,
         resistance: enemy.resistance,
         ability: enemy.ability,
-        attributes: attributes,
+        levels: levels,
       },
     ];
   });

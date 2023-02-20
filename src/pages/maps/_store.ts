@@ -1,6 +1,6 @@
-import { action, atom, computed, map } from "nanostores";
+import { action, atom, computed } from "nanostores";
 
-import enemies from "../../../data/enemies.json";
+import enemiesJson from "../../../data/enemies.json";
 import operatorsJson from "../../../data/operators.json";
 import { getStatsAtLevel } from "../../utils/character-stats";
 
@@ -138,7 +138,7 @@ export const currentEnemyStore = computed(
   [currentActionIndexStore, actionsStore],
   (actionIndex, actions) => {
     if (actionIndex != null && actions.length > 0) {
-      return enemies[actions[actionIndex].key as keyof typeof enemies];
+      return enemiesJson[actions[actionIndex].key as keyof typeof enemiesJson];
     }
     return null;
   }
