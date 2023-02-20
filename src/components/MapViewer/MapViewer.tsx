@@ -29,6 +29,7 @@ import MapToken from "../MapToken";
 import MapWaveManager from "../MapWaveManager";
 
 import type * as OutputTypes from "../../output-types";
+import MapEnemyPanel from "../MapEnemyPanel";
 
 interface Props {
   stageData: OutputTypes.StageData;
@@ -252,6 +253,7 @@ const MapViewer: React.FC<Props> = ({ stageData }) => {
           <MapEntitiesTray />
         </div>
         {/* <MapCharacterSearch /> */}
+        <MapEnemyPanel mapEnemy={stageData.enemyDbRefs} />
         <MapWaveManager />
       </DndContext>
     </>

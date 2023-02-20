@@ -57,18 +57,6 @@ const MapWaveManager: React.FC = () => {
                 <span>{action.interval}s</span>
               </li>
             </ul>
-            <div>
-              <img width={64} height={64} src={enemyAvatar(action.key)} />
-              <span>x{action.count}</span>
-              <ul>
-                <li>
-                  <span>HP</span>
-                  <span>
-                    {enemy && enemy.attributes[0].attributes.maxHp.m_value}
-                  </span>
-                </li>
-              </ul>
-            </div>
           </div>
         )}
       </div>

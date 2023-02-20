@@ -62,7 +62,6 @@ export interface Enemy {
   enemyId: string;
   enemyIndex: string;
   enemyTags: string[];
-  sortId: number;
   name: string;
   enemyRace: string;
   enemyLevel: string;
@@ -522,7 +521,7 @@ export interface EnemyDbRefs {
   useDb: boolean;
   id: string;
   level: number;
-  overwrittenData: null | EnemyLevels[];
+  overwrittenData: null | EnemyLevels;
 }
 
 export interface EnemyLevels {

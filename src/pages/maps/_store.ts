@@ -138,7 +138,9 @@ export const currentEnemyStore = computed(
   [currentActionIndexStore, actionsStore],
   (actionIndex, actions) => {
     if (actionIndex != null && actions.length > 0) {
-      return enemiesJson[actions[actionIndex].key as keyof typeof enemiesJson];
+      return enemiesJson[
+        actions[actionIndex].key as keyof typeof enemiesJson
+      ] as OutputTypes.Enemy;
     }
     return null;
   }

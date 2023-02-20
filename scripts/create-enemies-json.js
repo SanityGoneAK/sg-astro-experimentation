@@ -38,8 +38,8 @@ export async function createEnemiesJson(dataDir) {
       enemyId,
       {
         enemyId: enemyId,
-        enemyIndex: enemy.Index,
-        enemyTags: enemy.tags,
+        enemyIndex: enemy.enemyIndex,
+        enemyTags: enemy.enemyTags,
         name: enemy.name,
         enemyRace: enemy.enemyRace,
         enemyLevel: enemy.enemyLevel,
