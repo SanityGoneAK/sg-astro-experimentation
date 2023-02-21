@@ -53,6 +53,7 @@ const getDebugOperators = () => {
         pots: false,
         trust: false,
       }),
+      skill: operator.skillData[1],
       characterObject: operator,
     };
   });

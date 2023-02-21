@@ -19,7 +19,7 @@ export const cellBase = style({
 });
 
 export const cell = styleVariants({
-  operator: [cellBase, { border: "solid 1px red" }],
+  operator: [cellBase],
   active: [
     cellBase,
     { background: vars.colors.accents.yellowLight, opacity: 0.4 },

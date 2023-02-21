@@ -41,6 +41,6 @@ export const directionHandle = style({
 });
 
 export const directionZone = style({
-  background: "#D3FF9B",
+  // background: "#D3FF9B",
   opacity: 0.6,
 });

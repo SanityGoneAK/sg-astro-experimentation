@@ -21,4 +21,5 @@ export const container = style({
   borderStyle: "solid",
   paddingTop: spacing(4),
   position: "relative",
+  marginBottom: spacing(1),
 });

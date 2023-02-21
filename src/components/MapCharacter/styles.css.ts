@@ -31,6 +31,7 @@ export const operatorPortrait = styleVariants({
     {
       borderRadius: spacing(12),
       overflow: "hidden",
+      background: "none",
     },
   ],
 });
@@ -76,23 +77,39 @@ export const direction = styleVariants({
 });
 
 export const menuSelector = style({
-  border: "solid 4px #E8E8F2",
   width: spacing(16),
   height: spacing(16),
   left: "-50%",
   top: "-50%",
   position: "absolute",
   zIndex: 500,
-  transform: "rotateZ(45deg)",
+  pointerEvents: "all",
 });
 
 export const removeCharacter = style({
   background: vars.colors.accents.red,
   position: "absolute",
   border: "none",
-  rotate: "-45deg",
   width: spacing(6),
   height: spacing(6),
-  left: "-50%",
-  top: "25%",
+  left: 0,
+  top: 0,
 });
+
+export const skill = style({
+  background: vars.colors.accents.red,
+  padding: "0",
+  position: "absolute",
+  border: "none",
+  width: spacing(6),
+  height: spacing(6),
+  bottom: 0,
+  right: 0,
+})
+
+export const selectorRing = style({
+  transform: "rotateZ(45deg)",
+  border: "solid 4px #E8E8F2",
+  width: spacing(16),
+  height: spacing(16),
+})

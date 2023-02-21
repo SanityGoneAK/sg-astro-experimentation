@@ -27,7 +27,7 @@ const MapCharacterRange: React.FC<Props> = ({ rangeObject, direction }) => {
   const skillStyle = {
     top: `${(2 + 64) * -operatorCoordinates.row}px`,
     left: `${(2 + 64) * -operatorCoordinates.col}px`,
-    rotate: `${getDirectionInDegrees(direction)}deg`,
+    rotate: `${getDirectionInDegrees(direction ?? "east")}deg`,
     transformOrigin: `calc(64px * ${operatorCoordinates.col + 1} + 2px * ${
       operatorCoordinates.col
     } - 32px) calc(64px * ${operatorCoordinates.row + 1} + 2px * ${

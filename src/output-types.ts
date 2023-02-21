@@ -433,6 +433,7 @@ export interface DraggableEntity {
 export interface DraggableCharacter extends DraggableEntity {
   type: "character";
   stats: CharacterStatValues;
+  skill: SkillTableSkill;
   characterObject: Character;
 }
 

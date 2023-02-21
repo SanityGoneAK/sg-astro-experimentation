@@ -19,17 +19,18 @@ import {
   setActionDefaults,
   routesStore,
 } from "../../pages/maps/_store";
+import MapActionsTable from "../MapActionsTable";
 import MapCharacter from "../MapCharacter";
 import MapCharacterSearch from "../MapCharacterSearch";
+import MapEnemyPanel from "../MapEnemyPanel";
 import MapEntitiesTray from "../MapEntitiesTray";
 import MapRouteViewer from "../MapRouteViewer";
 import MapTile from "../MapTile";
 import MapTileDefinitions from "../MapTileDefinitions";
 import MapToken from "../MapToken";
-import MapWaveManager from "../MapWaveManager";
+import MapWaveDetails from "../MapWaveDetails";
 
 import type * as OutputTypes from "../../output-types";
-import MapEnemyPanel from "../MapEnemyPanel";
 
 interface Props {
   stageData: OutputTypes.StageData;
@@ -253,8 +254,9 @@ const MapViewer: React.FC<Props> = ({ stageData }) => {
           <MapEntitiesTray />
         </div>
         {/* <MapCharacterSearch /> */}
+        <MapWaveDetails />
         <MapEnemyPanel mapEnemy={stageData.enemyDbRefs} />
-        <MapWaveManager />
+        <MapActionsTable />
       </DndContext>
     </>
   );

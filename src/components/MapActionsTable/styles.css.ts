@@ -1,18 +1,13 @@
 import { style } from "@vanilla-extract/css";
-
 import { spacing } from "../../theme-helpers";
 import { vars } from "../../theme.css";
-
-export const waveContainer = style({
-  margin: spacing(2, 0),
-});
 
 export const table = style({
   borderCollapse: "collapse",
   borderRadius: spacing(1),
   overflow: "hidden",
   width: "100%",
-  marginTop: spacing(2),
+  marginTop: spacing(1),
 });
 
 export const tableRow = style({
@@ -36,32 +31,4 @@ export const enemyTableItem = style({
   justifyContent: "center",
   padding: spacing(1, 2),
   textAlign: "center",
-});
-
-export const details = style({
-  display: "flex",
-  justifyContent: "space-between",
-  flexDirection: "column",
-});
-
-export const buttonContainer = style({
-  display: "flex",
-  gap: spacing(2),
-  marginLeft: "auto",
-});
-
-export const actionButton = style({
-  background: "transparent",
-  border: `solid 1px ${vars.colors.neutrals.gray}`,
-  padding: spacing(0.5, 1.5),
-  color: vars.colors.neutrals.gray,
-  borderRadius: spacing(12),
-  height: spacing(5),
-});
-
-export const actionDetails = style({
-  display: "flex",
-  width: "100%",
-  justifyContent: "space-between",
-  marginTop: spacing(2),
 });
