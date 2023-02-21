@@ -12,12 +12,12 @@ export const tray = style({
   borderTopRightRadius: spacing(1),
   width: "100%",
   display: "flex",
-  gap: spacing(1)
+  gap: spacing(1),
 });
 
 export const tokenGroup = style({
   position: "relative",
-})
+});
 
 export const tokenQuantity = style({
   position: "absolute",
@@ -26,4 +26,24 @@ export const tokenQuantity = style({
   bottom: spacing(-1),
   right: spacing(-1),
   borderRadius: spacing(0.5),
-})
+});
+
+export const addCharacter = style({
+  width: spacing(8),
+  height: spacing(8),
+  position: "relative",
+  display: "flex",
+  alignItems: "center",
+  justifyContent: "center",
+  ":after": {
+    content: "''",
+    position: "absolute",
+    width: "100%",
+    height: "100%",
+    top: "0",
+    left: "0",
+    border: `1px solid ${vars.colors.neutrals.white}`,
+    opacity: "0.5",
+    borderRadius: spacing(0.5),
+  },
+});
