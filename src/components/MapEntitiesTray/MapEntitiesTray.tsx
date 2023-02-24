@@ -1,7 +1,11 @@
 import { useStore } from "@nanostores/react";
 
 import * as classes from "./styles.css";
-import { operatorStore, tokensByCharId } from "../../pages/maps/_store";
+import {
+  openModal,
+  operatorStore,
+  tokensByCharId,
+} from "../../pages/maps/_store";
 import MapCharacter from "../MapCharacter";
 import MapToken from "../MapToken";
 
@@ -43,7 +47,7 @@ const MapEntitiesTray: React.FC = () => {
           }
         })}
       </>
-      <div className={classes.addCharacter}>
+      <div className={classes.addCharacter} onClick={() => openModal()}>
         <svg
           width="24"
           height="24"

@@ -230,7 +230,6 @@ const MapViewer: React.FC<Props> = ({ stageData }) => {
                     >
                       {entity?.type == "character" && (
                         <MapCharacter
-                          removeCharacter={removeEntityFromMap}
                           key={entity.charId}
                           inMap={true}
                           character={entity}
@@ -253,7 +252,7 @@ const MapViewer: React.FC<Props> = ({ stageData }) => {
 
           <MapEntitiesTray />
         </div>
-        {/* <MapCharacterSearch /> */}
+        <MapCharacterSearch />
         <MapWaveDetails />
         <MapEnemyPanel mapEnemy={stageData.enemyDbRefs} />
         <MapActionsTable />

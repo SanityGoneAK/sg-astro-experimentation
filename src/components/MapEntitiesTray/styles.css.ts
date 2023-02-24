@@ -35,6 +35,10 @@ export const addCharacter = style({
   display: "flex",
   alignItems: "center",
   justifyContent: "center",
+  cursor: "pointer",
+  ":hover": {
+    background: vars.colors.neutrals.midtoneBrighter,
+  },
   ":after": {
     content: "''",
     position: "absolute",

@@ -112,6 +112,7 @@ export const tokensStore = atom<OutputTypes.DraggableToken[]>([]);
 export const currentActionIndexStore = atom<number | null>(null);
 export const actionsStore = atom<OutputTypes.WaveFragmentAction[]>([]);
 export const routesStore = atom<OutputTypes.Route[]>([]);
+export const characterSearchModalStore = atom<boolean>(false);
 
 // Computed Stores
 export const tokensByCharId = computed([tokensStore], (tokens) => {
@@ -260,5 +261,46 @@ export const setActionIndex = action(
   "setActionIndex",
   (store, newIndex) => {
     store.set(newIndex);
+  }
+);
+
+export const openModal = action(
+  characterSearchModalStore,
+  "openModal",
+  (store) => {
+    store.set(true);
+  }
+);
+export const closeModal = action(
+  characterSearchModalStore,
+  "closeModal",
+  (store) => {
+    store.set(false);
+  }
+);
+
+export const addOperator = action(
+  operatorStore,
+  "addOperator",
+  (store, operator: OutputTypes.Operator) => {
+    const current = store.get();
+    if (current.some((storeOp) => storeOp.charId == operator.charId)) return;
+    const draggable = {
+      row: null,
+      col: null,
+      charId: operator.charId,
+      range: operator.position,
+      type: "character",
+      stats: getStatsAtLevel(operator, {
+        eliteLevel: 2,
+        level: 80,
+        pots: false,
+        trust: false,
+      }),
+      skill: operator.skillData[1],
+      characterObject: operator,
+    } as OutputTypes.DraggableCharacter;
+    current.push(draggable);
+    store.set(current);
   }
 );
