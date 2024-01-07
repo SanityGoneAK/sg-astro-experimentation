@@ -9,7 +9,7 @@
     "preview": "astro preview",
     "astro": "astro",
     "update-game-data": "git submodule update --init --recursive --remote && sucrase-node ./scripts/all.js",
-    "storybook": "start-storybook -p 6006",
+    "storybook": "export NODE_OPTIONS=--openssl-legacy-provider && start-storybook -p 6006",
     "build-storybook": "build-storybook"
   },
   "dependencies": {
